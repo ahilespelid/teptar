@@ -1,0 +1,20 @@
+{
+    "name":"teptar/stat",
+    "version":"1.0.0",
+    "require":{
+        "php":">=5.3.0"
+    },
+    "autoload": {
+        "files": [
+            "core/Config.php", 
+            "core/Functions/pa.php", 
+            "core/Functions/pn.php"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "App\\Controllers\\": "app/",
+            "App\\Models\\"     : "app/",
+            "App\\Views\\"      : "app/"
+        }
+    } 
+}

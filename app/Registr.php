@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Registry
+class Registr
 {
     public  $log,
             $date,
@@ -19,7 +19,7 @@ class Registry
         $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');
     }
 
-    public function setException($exception): Registry
+    public function setException($exception): Registr
     {
         /*/ Присвоение значений свойствам если параметр $exception класса Exception /*/
         if ($exception instanceof \Exception) {

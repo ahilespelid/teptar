@@ -19,7 +19,7 @@ class Registry
         $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');
     }
 
-    public function setException($exception): static
+    public function setException($exception): Registry
     {
         /*/ Присвоение значений свойствам если параметр $exception класса Exception /*/
         if ($exception instanceof \Exception) {
@@ -36,7 +36,7 @@ class Registry
         return $this;
     }
 
-    public function getException($type = null): array|string
+    public function getException($type = null)
     {
         /*/ Если запрошен тип исключения 'array' выдать исключение в виде массива /*/
         if ($type == 'array') {
@@ -56,10 +56,15 @@ class Registry
 
     public function writeLog()
     {
+        /*/ Создание файла log.txt если он не существует /*/
+        if (!file_exists($this->log)) {
+            fopen($this->log, "w");
+        }
+
         /*/ Создание новой записи текущего исключения /*/
         $entry = PHP_EOL . $this->date .' '. $this->message .' '. $this->filename .' (line '. $this->line .')';
 
-        /*/ Удаление записи из log.txt если такая запись уже существует /*/
+        /*/ Удаление записи из log.txt если идентичная запись уже существует /*/
         $contents = file_get_contents($this->log);
         $contents = str_replace($entry, '', $contents);
         file_put_contents($this->log, $contents);

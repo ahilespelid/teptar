@@ -1,0 +1,572 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+Обнуляющие теги
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Open Sans Medium";
+  src: url(../fonts/OpenSans-Medium.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans Regular";
+  src: url(../fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans SemiBold";
+  src: url(../fonts/OpenSans-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans Light";
+  src: url(../fonts/OpenSans-Light.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans Bold";
+  src: url(../fonts/OpenSans-Bold.ttf);
+}
+
+body {
+  background-color: #eef2f4;
+  margin: 0;
+  font-family: "Open Sans Regular";
+  display: flex;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  min-width: 300px;
+}
+
+.user__notification, .user__info__arrow, .sort__block__element, .menu__body__list a,
+.menu__footer__toggle a, .reports-title__my-reports__btn button, .variables, .reports-footer__submit__button button{
+  cursor: pointer;
+}
+
+.user__info {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  font-family: "Open Sans Medium";
+}
+
+.user__info__name {
+  color: #fff;
+  width: 140px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+  text-align: start;
+  margin-left: 11px;
+}
+
+.user__info__post {
+  font-size: 10px;
+  line-height: 10px;
+  opacity: 0.85;
+  font-family: "Open Sans Bold";
+}
+
+.user__info__avatar {
+  border-radius: 100%;
+  border: 2px solid #fff;
+  background-image: url("../assets/img/avatar.jpg");
+  background-position: center;
+  background-size: 70px;
+  background-repeat: no-repeat;
+}
+
+.body {
+  width: 94%;
+  margin: 20px auto;
+  height: 100%;
+  color: #535C69;
+  border-radius: 3px;
+  font-family: "Open Sans Medium";
+}
+
+.body__back-button {
+  width: 100%;
+  height: 61px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.body__back-button a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: #535c69;
+}
+
+.body__back-button img {
+  margin-left: 16px;
+  margin-right: 4px;
+}
+
+.body__back-button__icons {
+  display: flex;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.reports-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.reports-title__my-reports {
+  display: flex;
+  align-items: center;
+}
+
+.reports-title__my-reports__text {
+  display: flex;
+  align-items: center;
+}
+
+.reports-title__my-reports__text {
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: 0.01em;
+  margin-right: 6px;
+}
+
+.reports-title__my-reports__btn button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12px;
+  margin-left: 24px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 23px;
+  gap: 6px;
+  width: 180px;
+  height: 40px;
+  background: #00B894;
+  border: none;
+  border-radius: 1px;
+  transition: 0.3s;
+  font-family: "Open Sans Regular";
+}
+
+.sort {
+  position: relative;
+  width: 233px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border: 1px solid #535C6940;
+  cursor: default;
+}
+
+.sort__toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sort__toggle img {
+  margin-right: 5px;
+}
+
+.sort__toggle span{
+  margin-left: 4px;
+}
+
+.sort__block, .sort__block__year, .sort__block__month {
+  position: absolute;
+  z-index: 2;
+  opacity: 1;
+  width: 233px;
+  text-align: center;
+  line-height: 30px;
+  right: 5px;
+  left: 0px;
+  top: 40px;
+  transition: 0.3s;
+  padding: 14px 15px;
+  background-color: #fff;
+}
+
+.sort__block__element {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-align: start;
+  transition: 0.3s;
+}
+
+.sort__block__element img {
+  margin-right: 6px;
+}
+
+.sort__block__element:not(:last-child) {
+  padding-bottom: 18px;
+}
+
+.sort__block__element:hover {
+  transition: 0.3s;
+  color: #929aa4;
+}
+
+.reports-form {
+  width: 100%;
+  height: 70px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.reports-form__header {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.sort-month {
+  position: relative;
+  width: 233px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border: 1px solid #535C6940;
+  cursor: default;
+  margin-left: 15px;
+}
+
+.sort__toggle__month {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sort-year {
+  position: relative;
+  width: 233px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  border: 1px solid #535C6940;
+  cursor: default;
+  margin-left: 12px;
+}
+
+.sort__toggle__year {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reports-form__body {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+  margin-top: 6px;
+  position: relative;
+}
+
+.reports-form__body__textarea {
+  width: 100%;
+  height: 180px;
+  border-radius: 4px;
+  border: none;
+  resize: none;
+  display: flex;
+  align-items: start;
+  font-size: 14px;
+  font-family: "Open Sans Regular";
+  outline: none;
+  padding: 10px 14px;
+}
+
+.reports-form__body__icons {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  bottom: 16px;
+  cursor: pointer;
+}
+
+.reports-form__body__icons a{
+  text-decoration: none;
+  color: #535C69;
+}
+
+.reports-form__body__icon {
+  display: flex;
+  align-items: center;
+}
+
+.reports-form__body__icon img{
+  margin-right: 6px;
+}
+
+.reports-form__body__icon:first-child {
+  margin-left: 14px;
+}
+.reports-form__body__icon:not(:first-child) {
+  margin-left: 24px;
+}
+
+.reports-form__footer {
+  margin-top: 6px;
+}
+
+.reports-form__footer__first-block {
+  display: flex;
+}
+
+.reports-form__footer__first-block__element {
+  width: 50%;
+  height: 70px;
+  display: flex;
+  border-radius: 4px;
+  align-items: center;
+  background-color: #fff;
+  justify-content: space-between;
+}
+
+.reports-form__footer__first-block__element:first-child {
+  min-width: 470px;
+}
+
+.reports-form__footer__first-block__element span {
+  margin-left: 14px;
+}
+
+.reports-form__footer__first-block__element:not(:first-child) {
+  margin-left: 6px;
+}
+
+.first-block__element__worker {
+  width: 310px;
+  height: 40px;
+  border: 1px solid rgba(83, 92, 105, 0.25);
+  margin-right: 11px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.first-block__element__add {
+  min-width: 80px;
+}
+
+.add-button {
+  width: 169px;
+  height: 40px;
+  display: flex;
+  color: #fff;
+  align-items: center;
+  font-size: 14px;
+  margin-right: 15px;
+  font-family: "Open Sans Regular";
+  justify-content: center;
+  cursor: pointer;
+  background-color: #157DCD;
+}
+
+.add-button img{
+  margin-left: 12px;
+}
+
+.blue-button {
+  width: 155px;
+  height: 30px;
+  color: #fff;
+  display: flex;
+  margin-left: 5px;
+  padding: 0 0 0 10px ;
+  font-size: 14px;
+  fill: #fff;
+  fill-opacity: 1;
+  align-items: center;
+  font-family: "Open Sans Regular";
+  background-color: #157DCD;
+}
+
+.blue-button span {
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+}
+
+.blue-button span img{
+  margin-left: 14px;
+}
+
+.clear-button {
+  margin-right: 4px;
+  font-family: "Open Sans Regular";
+  font-size: 14px;
+}
+
+.clear-button span {
+  display: flex;
+  align-items: center;
+}
+
+.clear-button span img{
+  margin-right: 12px;
+}
+
+.reports-form__footer__submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 70px;
+  background-color: #fff;
+  margin-top: 6px;
+  padding: 15px 14px;
+}
+
+.reports-form__footer__submit__buttons {
+  display: flex;
+  align-items: center;
+}
+
+.add-report-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 23px;
+  gap: 6px;
+  width: 180px;
+  height: 40px;
+  background: #00B894;
+  border: none;
+  border-radius: 1px;
+  transition: 0.3s;
+  font-family: "Open Sans Regular";
+  cursor: pointer;
+}
+
+.cancel-report-btn {
+  margin-left: 24px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-report-btn img, .cancel-report-btn img {
+  margin-right: 6px;
+}
+
+.reports-form__footer__save__buttons {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.reports-form__footer__save__buttons input {
+  width: 16px;
+  height: 16px;
+}
+
+.none {
+  opacity: 0;
+  display: none;
+  transition: 0.3s;
+}
+
+@media screen and (min-width: 2560px) and (max-width: 2732px) {
+
+}
+
+@media screen and (max-width: 2560px) and (min-width: 2048px) {
+
+}
+
+@media screen and (max-width: 2048px) and (min-width: 1920px) {
+
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1280px) {
+
+}
+
+@media screen and (max-width: 1280px) and (min-width: 1024px) {
+
+}

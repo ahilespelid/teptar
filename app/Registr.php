@@ -1,6 +1,6 @@
 <?php namespace App;
 
-class Registry{
+class Registr{
     public  $log,
                 $date,
                 $message,
@@ -13,8 +13,7 @@ class Registry{
 
     }
 
-    public function setException($exception): static
-    {
+    public function setException($exception){
         if ($exception instanceof \Exception) {
             $this->message = $exception->getMessage();
             $this->filename = $exception->getFile();
@@ -23,13 +22,10 @@ class Registry{
             $this->message = $exception['message'];
             $this->filename = $exception['filename'];
             $this->line = $exception['line'];
-        }
-
-        return $this;
+        }return $this;
     }
 
-    public function getException($type = null): array|string
-    {
+    public function getException($type = null){
         if ($type != 'array') {
             $date = '<span style="color: #ce4040">' . $this->date . '</span> ';
 
@@ -44,8 +40,7 @@ class Registry{
         }
     }
 
-    public function writeLog()
-    {
+    public function writeLog(){
         $entry = PHP_EOL . $this->date .' '. $this->message .' '. $this->filename .' (line '. $this->line .')';
 
         $contents = file_get_contents($this->log);

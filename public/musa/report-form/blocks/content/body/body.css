@@ -14,15 +14,24 @@
   margin-bottom: 10px;
   font-size: 17px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 .body__back-button a {
   text-decoration: none;
+  display: flex;
+  align-items: center;
   color: #535c69;
 }
 
 .body__back-button img {
   margin-left: 16px;
   margin-right: 4px;
+}
+
+.body__back-button__icons {
+  display: flex;
+  align-items: center;
+  margin-right: 25px;
 }

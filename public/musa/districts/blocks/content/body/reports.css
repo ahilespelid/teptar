@@ -1,0 +1,22 @@
+.reports {
+  width: 100%;
+  height: 477px;
+  border-radius: 4px;
+  font-size: 14px;
+  overflow-y: scroll;
+}
+
+.reports__decrease-height {
+  height: 480px;
+}
+
+.reports::-webkit-scrollbar {
+  width: 5px;               /* ширина scrollbar */
+}
+.reports::-webkit-scrollbar-track {
+  background: #eceded;      /* цвет дорожки */
+}
+.reports::-webkit-scrollbar-thumb {
+  background-color: #a4aab0;  /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+}

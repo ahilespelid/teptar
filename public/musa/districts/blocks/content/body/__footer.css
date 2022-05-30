@@ -9,26 +9,24 @@
 
 .reports-footer__action {
   position: relative;
-  width: 395px;
+  width: 350px;
   height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 10px;
-  border: 1px solid #535C6940;
+  border: 1px solid #535c6940;
   -moz-user-select: none;
   -o-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
 }
-
 .reports-footer__action img {
   padding-right: 6.5px;
 }
 
 .variables {
-  font-size: 14px;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -71,10 +69,4 @@
   text-align: right;
   font-size: 12px;
   margin-right: 36px;
-}
-
-.none {
-  opacity: 0;
-  display: none;
-  transition: 0.3s;
 }

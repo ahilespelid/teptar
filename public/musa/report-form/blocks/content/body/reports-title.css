@@ -57,18 +57,19 @@
 .sort__toggle {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 .sort__toggle img {
-  margin-left: 20px;
+  margin-right: 5px;
 }
 
 .sort__toggle span{
   margin-left: 4px;
 }
 
-.sort__block {
+.sort__block, .sort__block__year, .sort__block__month {
   position: absolute;
   z-index: 2;
   opacity: 1;
@@ -78,8 +79,9 @@
   right: 5px;
   left: 0px;
   top: 40px;
-  padding: 14px 15px;
   transition: 0.3s;
+  padding: 14px 15px;
+  background-color: #fff;
 }
 
 .sort__block__element {

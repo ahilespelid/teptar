@@ -1,10 +1,3 @@
-header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .header__main {
   width: 100%;
   padding: 15px 0px 15px 36px;
@@ -103,7 +96,7 @@ header {
   border-radius: 100%;
   image-rendering: crisp-edges;
   border: 2px solid #fff;
-  background-image: url("./assets/img/avatar.jpg");
+  background-image: url("../../assets/img/avatar.jpg");
   background-position: center;
   background-size: 100px;
   background-repeat: no-repeat;
@@ -123,68 +116,4 @@ header {
 
 @media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
   img {image-rendering: -o-crisp-edges;}
-}
-
-@media screen and (max-width: 2732px) {
-
-}
-
-@media screen and (max-width: 2560px) {
-
-}
-
-@media screen and (max-width: 2048px) {
-
-}
-
-@media screen and (min-width: 1920px) {
-
-  .header__input {
-    height: 119px;
-  }
-
-  .header__main {
-    padding: 0 0 0 36px;
-  }
-
-  .user__notification img {
-    width: 32px;
-    height: 32px;
-  }
-
-  .user__info {
-    margin-right: 50px;
-  }
-
-  .user__info__name {
-    font-size: 18px;
-    width: 170px;
-    line-height: 24.51px;
-  }
-
-  .user__info__post {
-    font-size: 14px;
-    line-height: 19.07px;
-  }
-
-  .user__info__avatar {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-@media screen and (max-width: 1600px) {
-
-}
-
-@media screen and (max-width: 1440px) {
-
-}
-
-@media screen and (max-width: 1280px){ 
-
-}
-
-@media screen and (max-width: 1024px){ 
-
 }

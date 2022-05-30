@@ -2,7 +2,8 @@
     "name":"teptar/stat",
     "version":"1.0.0",
     "require":{
-        "php":">=7.4.0"
+        "php":">=7.4.0",
+      "ext-pdo": "*"
     },
     "autoload": {
         "files": [

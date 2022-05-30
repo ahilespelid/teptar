@@ -1,4 +1,5 @@
 <?php namespace App; use PDO;
+use PDOException;
 
 abstract class Model{
     private $host, $base, $user, $pass;

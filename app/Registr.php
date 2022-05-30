@@ -13,7 +13,7 @@ class Registr
     public function __construct()
     {
         /*/ Путь к файлу log.txt /*/
-        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['app'] . _DS_ . 'log.txt';
+        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['log'] . _DS_ . 'log.txt';
 
         /*/ Форматирование текущей даты /*/
         $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');

@@ -12,8 +12,8 @@ class Registr
 
     public function __construct()
     {
-        /*/ Путь к файлу log.txt /*/
-        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['log'] . _DS_ . 'log.txt';
+        /*/ Путь к файлу php.txt /*/
+        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['log'] . _DS_ . 'php.txt';
 
         /*/ Форматирование текущей даты /*/
         $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');
@@ -56,7 +56,7 @@ class Registr
 
     public function writeLog()
     {
-        /*/ Создание файла log.txt если он не существует /*/
+        /*/ Создание файла php.txt если он не существует /*/
         if (!file_exists($this->log)) {
             fopen($this->log, "w");
         }
@@ -64,12 +64,12 @@ class Registr
         /*/ Создание новой записи текущего исключения /*/
         $entry = PHP_EOL . $this->date .' '. $this->message .' '. $this->filename .' (line '. $this->line .')';
 
-        /*/ Удаление записи из log.txt если идентичная запись уже существует /*/
+        /*/ Удаление записи из php.txt если идентичная запись уже существует /*/
         $contents = file_get_contents($this->log);
         $contents = str_replace($entry, '', $contents);
         file_put_contents($this->log, $contents);
 
-        /*/ Добавление новой записи в log.txt /*/
+        /*/ Добавление новой записи в php.txt /*/
         file_put_contents($this->log, $entry, FILE_APPEND | LOCK_EX);
     }
 }

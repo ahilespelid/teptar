@@ -2,7 +2,7 @@
     "name":"teptar/stat",
     "version":"1.0.0",
     "require":{
-        "php":">=5.3.0"
+        "php":">=8.0.0"
     },
     "autoload": {
         "files": [

@@ -1,0 +1,7 @@
+
+[16:25 | 30 May 2022] The value has to be 1 or lower /Users/deniev/Server/www/public/index.php (line 31)
+[16:25 | 30 May 2022] Undefined constant "variable" www/public/index.php (line 17)
+[16:26 | 30 May 2022] The value has to be 1 or lower /Users/deniev/Server/www/public/index.php (line 31)
+[16:26 | 30 May 2022] Undefined constant "variable" www/public/index.php (line 17)
+[16:28 | 30 May 2022] The value has to be 1 or lower /Users/deniev/Server/www/public/index.php (line 31)
+[16:28 | 30 May 2022] Undefined constant "variable" www/public/index.php (line 17)

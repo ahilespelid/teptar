@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 <?php use App\Registr;
+=======
+<?php
+use App\Registry;
+
+>>>>>>> f6fd1e3818409331b7e47c2e445de17edc3b336a
 /*/ Ядро /*/
 require_once('..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php');
 //$route = new App\Route; $route->run();

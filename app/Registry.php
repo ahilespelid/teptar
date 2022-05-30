@@ -1,19 +1,22 @@
-<?php
+<?php namespace App;
 
-namespace App;
-
-class Registry
-{
+class Registry{
     public  $log,
-            $date,
-            $message,
-            $filename,
-            $line;
+                $date,
+                $message,
+                $filename,
+                $line;
 
+<<<<<<< HEAD
     public function __construct()
     {
         /*/ Путь к файлу log.txt /*/
         $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['app'] . _DS_ . 'log.txt';
+=======
+    public function __construct(){
+        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['cor'] . _DS_ . 'log.txt';
+        $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');
+>>>>>>> 2abc0fbaf8fff6d74932829071d1bf34af71d018
 
         /*/ Форматирование текущей даты /*/
         $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');

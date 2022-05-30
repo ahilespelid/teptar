@@ -2,25 +2,22 @@
 
 namespace App;
 
-class Registr
-{
+class Registr {
     public  $log,
             $date,
             $message,
             $filename,
             $line;
 
-    public function __construct()
-    {
-        /*/ Путь к файлу php.txt /*/
+    public function __construct() {
+        /*/ Путь к файлу лога (php.txt) /*/
         $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['log'] . _DS_ . 'php.txt';
 
         /*/ Форматирование текущей даты /*/
         $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');
     }
 
-    public function setException($exception): Registr
-    {
+    public function setException($exception) { /*/ Метод принимает исключение на обработку /*/
         /*/ Присвоение значений свойствам если параметр $exception класса Exception /*/
         if ($exception instanceof \Exception) {
             $this->message = $exception->getMessage();
@@ -36,8 +33,7 @@ class Registr
         return $this;
     }
 
-    public function getException($type = null)
-    {
+    public function getException($type = null) { /*/ Метод выдает обработанное исключение /*/
         /*/ Если запрошен тип исключения 'array' выдать исключение в виде массива /*/
         if ($type == 'array') {
             return [
@@ -46,7 +42,7 @@ class Registr
                 'filename' => $this->filename,
                 'line' => $this->line
             ];
-        /*/ В противном случае выдать исклюение в форматированном виде /*/
+        /*/ В противном случае выдать исключение в форматированном виде /*/
         } else {
             $date = '<span style="color: #ce4040">' . $this->date . '</span> ';
 
@@ -54,8 +50,7 @@ class Registr
         }
     }
 
-    public function writeLog()
-    {
+    public function writeLog() { /*/ Метод добавляет запись в лог файл (php.txt) /*/
         /*/ Создание файла php.txt если он не существует /*/
         if (!file_exists($this->log)) {
             fopen($this->log, "w");

@@ -1,18 +1,14 @@
-<?php
+<?php namespace App;
 
-namespace App;
-
-class Registry
-{
+class Registry{
     public  $log,
-            $date,
-            $message,
-            $filename,
-            $line;
+                $date,
+                $message,
+                $filename,
+                $line;
 
-    public function __construct()
-    {
-        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['app'] . _DS_ . 'log.txt';
+    public function __construct(){
+        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['cor'] . _DS_ . 'log.txt';
         $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');
 
     }

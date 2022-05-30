@@ -1,0 +1,108 @@
+.comparison {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.comparison__title {
+    color: white;
+    background: #17212b;
+    border-radius: 12px;
+}
+
+.comparison__title h3 {
+    padding: 16px 20px;
+    font-weight: 600;
+    font-size: 22px;
+    margin: unset;
+}
+
+.comparison__info {
+    background: #17212b;
+    border-radius: 12px;
+    margin-top: 6px;
+    display: flex;
+    color: #fff;
+    padding: 20px;
+}
+
+.comparison__info_number {
+    font-size: 24px;
+    font-weight: 600;
+    margin-right: 16px;
+}
+
+.comparison__info_description {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.comparison__indicators {
+    justify-content: space-between;
+    padding: 24px 24px 0 24px;
+    border-radius: 12px;
+    background: #17212b;
+    margin-top: 6px;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.comparison__indicator {
+    justify-content: space-between;
+    width: calc(100% / 10 - 8px);
+    padding: 14px 14px 14px 0;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    background: #1b2734;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    height: 70px;
+    color: white;
+}
+
+.comparison__indicator:hover, .comparison__indicator:hover .progress-circle span {
+    background: #1f2c3a;
+}
+
+.progress-circle {
+    box-sizing: border-box;
+    border-radius: 50%;
+    padding: 9px;
+    height: 40px;
+    width: 40px;
+}
+
+.progress-circle .circle {
+    box-sizing: border-box;
+    border-radius: 100%;
+    background: #26323e;
+    display: block;
+    padding: 5px;
+    height: 100%;
+    width: 100%;
+}
+
+.progress-circle span {
+    border-radius: 100%;
+    background: #1b2734;
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.comparison__indicator-number {
+    border-left: 3px solid #60b251;
+    line-height: 34px;
+    padding-left: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 4px 0;
+}
+
+.comparison__indicator-number .icon-info {
+    color: rgba(255,255,255,0.25);
+    position: relative;
+    margin-left: 1px;
+    top: 1px;
+}

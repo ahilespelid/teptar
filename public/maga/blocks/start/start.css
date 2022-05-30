@@ -1,0 +1,99 @@
+.start {
+    display: flex;
+    height: 450px;
+}
+
+.start__welcome, .start__info {
+    background-size: cover !important;
+    border-radius: 12px;
+    position: relative;
+    flex-basis: 100%;
+    min-width: 620px;
+    color: white;
+}
+
+.start__welcome {
+    background: url('/assets/images/grozny.jpg') center;
+    margin-right: 24px;
+}
+
+.start__info {
+    background: url('/assets/images/kadyrov.jpg') center;
+}
+
+.start__backdrop {
+    background: rgba(19, 25, 34, 0.85);
+    border-radius: 11px;
+    height: 100%;
+}
+
+.start_centered {
+    transform: translate(-50%, -50%);
+    width: calc(100% - 140px);
+    justify-content: center;
+    position: absolute;
+    display: flex;
+    left: 50%;
+    top: 50%;
+}
+
+.start__image {
+    margin-right: 28px;
+    position: relative;
+    min-width: 160px;
+}
+
+.start__image img {
+    transform: translateY(-50%);
+    position: absolute;
+    width: 160px;
+    top: 50%;
+}
+
+.start__image.start__image_size_s {
+    min-width: 110px;
+}
+
+.start__image_size_s img {
+    width: 110px;
+}
+
+.start__description h3 {
+    margin-bottom: 18px;
+    line-height: 36px;
+    font-weight: 500;
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.start__description p {
+    font-size: 12px;
+    line-height: 18px;
+    opacity: 0.75;
+}
+
+.start__button i {
+    position: relative;
+    font-size: 16px;
+    width: 12px;
+    display: block;
+    float: left;
+    margin-right: 8px;
+}
+
+
+.start__button {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid #11A880;
+    text-decoration: unset;
+    border-radius: 8px;
+    margin-top: 18px;
+    display: table;
+    color: #11A880;
+    padding: 10px 12px;
+    font-size: 12px;
+}
+
+.start__button:hover {
+    background: rgba(255,255,255,0.2);
+}

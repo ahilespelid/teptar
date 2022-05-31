@@ -1,11 +1,11 @@
-@import "../../blocks/menu/menu.css";
-@import "../../blocks/menu/__main.css";
-@import "../../blocks/menu/__header.css";
-@import "../../blocks/menu/__body.css";
-@import "../../blocks/menu/__footer.css";
+@import "../../../reusable-blocks/menu/menu.css";
+@import "../../../reusable-blocks/menu/__main.css";
+@import "../../../reusable-blocks/menu/__header.css";
+@import "../../../reusable-blocks/menu/__body.css";
+@import "../../../reusable-blocks/menu/__footer.css";
 @import "../../blocks/content/content.css";
-@import "../../blocks/content/header/header.css";
-@import "../../blocks/content/header/__main.css";
+@import "../../../reusable-blocks/header/header.css";
+@import "../../../reusable-blocks/header/__main.css";
 @import "../../blocks/content/body/body.css";
 @import "../../blocks/content/body/__reports.css";
 @import "../../blocks/content/body/__reports-title.css";
@@ -119,91 +119,6 @@ body {
 
 @media screen and (min-width: 1920px) {
 
-  .menu {
-    height: 100vh;
-  }
-
-  .menu {
-    width: 500px;
-  }
-
-  .menu__body div {
-    padding-left: 40px;
-    font-size: 22px;
-  }
-
-  .menu__body img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .active {
-    width: 260px;
-  }
-
-  .menu__header {
-    padding: 40px 24px;
-    height: 118px;
-    justify-content: flex-start;
-  }
-
-  .menu__header__text {
-    font-size: 20px;
-    width: 242px;
-    line-height: 29.4px;
-  }
-
-  .menu__header img{
-    width: 70px;
-    height: 70px;
-  }
-
-  .menu__folded .menu__header {
-    padding: 24px 30px;
-  }
-
-  .menu__folded .menu__header img {
-    width: 70px;
-    height: 70px;
-  }
-
-  .menu__footer {
-    padding-left: 40px;
-  }
-
-  .menu__footer__text {
-    font-size: 20px;
-  }
-
-  .menu__folded {
-    width: 146px;
-  }
-
-  .menu__folded .menu__body {
-    padding-left: 46px;
-  }
-
-  .menu__folded .active {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-  }
-
-  .menu__folded .menu__body__list img {
-    margin-left: 10px;
-  }
-
-  .menu__folded .menu__footer img {
-    margin-left: 16px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .menu__folded .menu__footer__toggle {
-    padding-top: 50%;
-  }
-
   .header__input {
     height: 119px;
   }
@@ -247,7 +162,7 @@ body {
   }
 
   .reports {
-    height: 812px;
+    height: 70vh;
     font-size: 16px;
   }
 
@@ -260,7 +175,7 @@ body {
   }
 
   .reports__decrease-height {
-    height: 732px;
+    height: 62vh;
   }
 
   .reports-title__my-reports__text {
@@ -289,4 +204,10 @@ body {
 
 @media screen and (max-width: 1024px){
 
+}
+
+@media screen and (max-height: 700px) {
+  .menu__footer {
+    max-height: 100px;
+  }
 }

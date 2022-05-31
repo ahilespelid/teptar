@@ -1,8 +1,8 @@
 .menu__footer {
   padding-left: 25px;
-  height: 15%;
   vertical-align: bottom;
   flex-grow: 1;
+  position: relative;
 }
 
 .menu__footer__text {
@@ -10,7 +10,12 @@
   font-size: 12px;
 }
 
-.menu__footer__toggle a {
+.menu__footer a {
+  position: absolute;
+  bottom: 50px;
+}
+
+.menu__footer a {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -19,11 +24,11 @@
   padding-top: 50%;
 }
 
-.menu__footer__toggle a:hover {
+.menu__footer a:hover {
   transition: 0.1s;
 }
 
-.menu__footer__toggle img{
+.menu__footer img{
   margin-right: 14px;
   margin-left: 1px;
 }

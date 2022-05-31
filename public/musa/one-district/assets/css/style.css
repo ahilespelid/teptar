@@ -7,9 +7,9 @@
 @import "../../../reusable-blocks/header/__main.css";
 @import "../../blocks/content/content.css";
 @import "../../blocks/content/body/body.css";
-@import "../../blocks/content/body/__reports.css";
 @import "../../blocks/content/body/__reports-title.css";
 @import "../../blocks/content/body/__reports-footer.css";
+@import "../../blocks/content/body/__reports.css";
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -247,7 +247,7 @@ body {
   }
 
   .reports {
-    height: 812px;
+    height: 62vh;
     font-size: 16px;
   }
 
@@ -260,7 +260,7 @@ body {
   }
 
   .reports__decrease-height {
-    height: 732px;
+    height: 58vh;
   }
 
   .reports-title__my-reports__text {
@@ -289,4 +289,10 @@ body {
 
 @media screen and (max-width: 1024px){
 
+}
+
+@media screen and (max-height: 700px) {
+  .menu__footer {
+    max-height: 100px;
+  }
 }

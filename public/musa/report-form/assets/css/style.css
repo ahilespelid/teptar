@@ -259,3 +259,9 @@ body {
 @media screen and (max-width: 1024px){
 
 }
+
+@media screen and (max-height: 700px) {
+  .menu__footer {
+    max-height: 100px;
+  }
+}

@@ -121,10 +121,7 @@ body {
 
   .menu {
     height: 100vh;
-  }
-
-  .menu {
-    width: 500px;
+    width: 460px;
   }
 
   .menu__body div {
@@ -204,6 +201,11 @@ body {
     padding-top: 50%;
   }
 
+  .menu__body__list a {
+    margin-bottom: 28px;
+    line-height: 29.96px;
+  }
+
   .header__input {
     height: 119px;
   }
@@ -247,11 +249,20 @@ body {
   }
 
   .reports {
-    height: 62vh;
+    max-height: 62vh;
     font-size: 16px;
   }
 
+  .reports-list__body__avatar {
+    min-width: 24px;
+    height: 24px;
+  }
+
   .reports-footer {
+    height: 80px;
+  }
+
+  .body__back-button {
     height: 80px;
   }
 
@@ -260,7 +271,7 @@ body {
   }
 
   .reports__decrease-height {
-    height: 58vh;
+    max-height: 58vh;
   }
 
   .reports-title__my-reports__text {
@@ -288,11 +299,192 @@ body {
 }
 
 @media screen and (max-width: 1024px){
+  .menu {
+    width: 256px;
+  }
 
+  .menu__body div {
+    padding-left: 28px;
+    font-size: 14px;
+  }
+
+  .menu__body img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .active {
+    width: 180px;
+  }
+
+  .menu__header {
+    padding: 9px 12px;
+    height: 70px;
+    justify-content: flex-start;
+  }
+
+  .menu__header__text {
+    font-size: 12px;
+    width: 242px;
+    line-height: 17.64px;
+  }
+
+  .menu__header img{
+    width: 50px;
+    height: 50px;
+  }
+
+  .menu__folded .menu__header {
+    padding: 24px 28px;
+  }
+
+  .menu__folded .menu__header img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .menu__footer {
+    padding-left: 30px;
+  }
+
+  .menu__footer__text {
+    font-size: 12px;
+  }
+
+  .menu__folded {
+    width: 120px;
+  }
+
+  .menu__folded .menu__body {
+    padding-left: 36px;
+  }
+
+  .menu__folded .active {
+    width: 37px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+  }
+
+  .menu__folded .menu__body__list img {
+    margin-left: 10px;
+  }
+
+  .menu__folded .menu__footer img {
+    margin-left: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .header__input {
+    height: 60px;
+  }
+
+  .header__main {
+    padding: 0 0 0 36px;
+  }
+
+  .user__notification img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .user__info {
+    margin-right: 50px;
+  }
+
+  .user__info__name {
+    font-size: 14px;
+    width: 140px;
+    line-height: 19.07px;
+  }
+
+  .user__info__post {
+    font-size: 10px;
+    line-height: 13.62px;
+  }
+
+  .user__info__avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .user__info__arrow img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .sort {
+    width: 191px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .sort__block {
+    width: 191px;
+  }
+
+  .reports {
+    height: 60vh;
+    font-size: 12px;
+  }
+
+  .reports-footer {
+    height: 60px;
+  }
+
+  .reports-list__body__element {
+    height: 80px
+  }
+
+  .reports__decrease-height {
+    height: 52vh;
+  }
+
+  .reports-title__my-reports {
+    font-size: 32px;
+  }
+
+  .reports-title__my-reports__btn button {
+    width: 220px;
+    height: 50px;
+    font-size: 18px;
+  }
+}
+
+
+@media screen and (max-height: 800px) {
+  .menu__footer {
+    max-height: 200px;
+  }
+
+  .menu {
+    min-height: 100vh;
+  }
 }
 
 @media screen and (max-height: 700px) {
   .menu__footer {
     max-height: 100px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .menu__footer {
+    max-height: 100px;
+  }
+
+  .menu {
+    min-height: 600px;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .menu__footer {
+    max-height: 100px;
+  }
+
+  .menu {
+    min-height: 600px;
   }
 }

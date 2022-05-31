@@ -1,12 +1,3 @@
-let content = document.querySelector(".content")
-let menu = document.querySelector(".menu")
-let toggle = document.querySelector(".menu__footer__toggle")
-let reportsFooter = document.querySelector(".reports-footer")
-let reportsActionsVariable = document.querySelector(".reports-footer__action__sort")
-let sortToggle = document.querySelector(".sort__toggle")
-let sortBlock = document.querySelector(".sort__block")
-let sortBlockElement = document.querySelectorAll(".sort__block__element")
-
 let reports = [
   {
     "name": "Грозный",

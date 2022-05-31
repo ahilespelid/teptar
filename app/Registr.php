@@ -1,19 +1,34 @@
 <?php namespace App;
 
+<<<<<<< .mine
 class Registr{
+=======
+class Registr {
+>>>>>>> .theirs
     public  $log,
             $date,
             $message,
             $filename,
             $line;
 
+<<<<<<< .mine
     public function __construct(){
         $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['app'] . _DS_ . 'log.txt'; /*/ Путь к файлу log.txt /*/
         $this->date = (new \DateTime('now'))->format('[H:i | d M Y]'); /*/ Форматирование текущей даты /*/
+
+
+
+=======
+    public function __construct() {
+        /*/ Путь к файлу лога (php.txt) /*/
+        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['log'] . _DS_ . 'php.txt';
+
+        /*/ Форматирование текущей даты /*/
+        $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');
+>>>>>>> .theirs
     }
 
-    public function setException($exception): Registr
-    {
+    public function setException($exception) { /*/ Метод принимает исключение на обработку /*/
         /*/ Присвоение значений свойствам если параметр $exception класса Exception /*/
         if ($exception instanceof \Exception) {
             $this->message = $exception->getMessage();
@@ -29,8 +44,7 @@ class Registr{
         return $this;
     }
 
-    public function getException($type = null)
-    {
+    public function getException($type = null) { /*/ Метод выдает обработанное исключение /*/
         /*/ Если запрошен тип исключения 'array' выдать исключение в виде массива /*/
         if ($type == 'array') {
             return [
@@ -39,7 +53,7 @@ class Registr{
                 'filename' => $this->filename,
                 'line' => $this->line
             ];
-        /*/ В противном случае выдать исклюение в форматированном виде /*/
+        /*/ В противном случае выдать исключение в форматированном виде /*/
         } else {
             $date = '<span style="color: #ce4040">' . $this->date . '</span> ';
 
@@ -47,22 +61,19 @@ class Registr{
         }
     }
 
-    public function writeLog()
-    {
-        /*/ Создание файла log.txt если он не существует /*/
-        if (!file_exists($this->log)) {
-            fopen($this->log, "w");
-        }
+    public function writeLog() { /*/ Метод добавляет запись в лог файл (php.txt) /*/
+        /*/ Создание файла php.txt если он не существует /*/
+        if (!file_exists($this->log)){fopen($this->log, "w");}
 
         /*/ Создание новой записи текущего исключения /*/
         $entry = PHP_EOL . $this->date .' '. $this->message .' '. $this->filename .' (line '. $this->line .')';
 
-        /*/ Удаление записи из log.txt если идентичная запись уже существует /*/
+        /*/ Удаление записи из php.txt если идентичная запись уже существует /*/
         $contents = file_get_contents($this->log);
         $contents = str_replace($entry, '', $contents);
         file_put_contents($this->log, $contents);
 
-        /*/ Добавление новой записи в log.txt /*/
+        /*/ Добавление новой записи в php.txt /*/
         file_put_contents($this->log, $entry, FILE_APPEND | LOCK_EX);
     }
 }

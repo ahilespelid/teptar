@@ -10,6 +10,7 @@ $GLOBALS['path']['pub'] = $_SERVER['DOCUMENT_ROOT']._DS_;
 
 $GLOBALS['path']['app'] = 'app';
 $GLOBALS['path']['cor'] = 'core';
+$GLOBALS['path']['log'] = 'log';
 $GLOBALS['path']['con'] = 'Controllers';
 $GLOBALS['path']['mod'] = 'Models';
 $GLOBALS['path']['vie'] = 'Views';

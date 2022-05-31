@@ -1,31 +1,19 @@
 <?php namespace App;
 
-<<<<<<< .mine
-class Registr{
-=======
+
 class Registr {
->>>>>>> .theirs
     public  $log,
             $date,
             $message,
             $filename,
             $line;
 
-<<<<<<< .mine
-    public function __construct(){
-        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['app'] . _DS_ . 'log.txt'; /*/ Путь к файлу log.txt /*/
-        $this->date = (new \DateTime('now'))->format('[H:i | d M Y]'); /*/ Форматирование текущей даты /*/
-
-
-
-=======
     public function __construct() {
         /*/ Путь к файлу лога (php.txt) /*/
         $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['log'] . _DS_ . 'php.txt';
 
         /*/ Форматирование текущей даты /*/
         $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');
->>>>>>> .theirs
     }
 
     public function setException($exception) { /*/ Метод принимает исключение на обработку /*/

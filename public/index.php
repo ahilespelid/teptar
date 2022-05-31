@@ -31,8 +31,8 @@ try {
 } catch (Exception $exception) {
     echo '<br>';
     $registry->setException($exception);
-    pa($registry->getException('array'));
     $registry->writeLog();
+    pa($registry->getException('array'));
 }
 
 try {

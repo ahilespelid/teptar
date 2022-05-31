@@ -1,6 +1,4 @@
-<?php
-
-namespace App;
+<?php namespace App;
 
 class Registr {
     public  $log,
@@ -52,9 +50,7 @@ class Registr {
 
     public function writeLog() { /*/ Метод добавляет запись в лог файл (php.txt) /*/
         /*/ Создание файла php.txt если он не существует /*/
-        if (!file_exists($this->log)) {
-            fopen($this->log, "w");
-        }
+        if (!file_exists($this->log)){fopen($this->log, "w");}
 
         /*/ Создание новой записи текущего исключения /*/
         $entry = PHP_EOL . $this->date .' '. $this->message .' '. $this->filename .' (line '. $this->line .')';

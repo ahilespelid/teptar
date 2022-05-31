@@ -8,7 +8,7 @@
     "autoload": {
         "files": [
             "core/Functions/pa.php", 
-            "core/Functions/pn.php"
+            "core/Functions/pn.php",
             "core/Config.php", 
             "core/Model.php",
             "core/Registr.php",

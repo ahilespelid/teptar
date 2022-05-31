@@ -9,5 +9,5 @@ return array(
     'App\\Views\\' => array($baseDir . '/app'),
     'App\\Models\\' => array($baseDir . '/app'),
     'App\\Controllers\\' => array($baseDir . '/app'),
-    'App\\' => array($baseDir . '/app'),
+    'App\\' => array($baseDir . '/core'),
 );

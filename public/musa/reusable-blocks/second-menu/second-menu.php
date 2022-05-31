@@ -8,13 +8,13 @@
             <div class="menu__body__list">
                 <a href="#" class="active"><img src="./assets/img/svg/archive.svg"><span>Мои отчеты</span></a>
                 <a href="#"><img src="./assets/img/svg/save.svg"><span>Диск</span></a>
+                <a href="#"><img src="./assets/img/svg/order.svg"><span>Новости</span></a>
+                <a href="#"><img src="./assets/img/svg/darhboard_alt.svg"><span>Контакт-центр</span></a>
                 <a href="#"><img src="./assets/img/svg/archive_alt.svg"><span>Отчеты</span></a>
             </div>
             <div class="menu__body__list">
                 <a href="#"><img src="./assets/img/svg/user.svg"><span>Служба поддержки</span></a>
-                <a href="#"><img src="./assets/img/svg/darhboard_alt.svg"><span>Контакт-центр</span></a>
                 <a href="#"><img src="./assets/img/svg/setting.svg"><span>Настройки</span></a>
-                <a href="#"><img src="./assets/img/svg/user.svg"><span>Профиль</span></a>
             </div>
         </nav>
     </div>

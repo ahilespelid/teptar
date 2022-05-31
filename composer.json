@@ -12,11 +12,10 @@
             "core/Config.php", 
             "core/Model.php",
             "core/Registr.php",
-            "core/Route.php",
-            
+            "core/Route.php"     
         ],
         "psr-4": {
-            "App\\": "app/",
+            "App\\": "app/", "App\\": "core/",
             "App\\Controllers\\": "app/",
             "App\\Models\\"     : "app/",
             "App\\Views\\"      : "app/"

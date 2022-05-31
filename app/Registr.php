@@ -1,22 +1,15 @@
-<?php
+<?php namespace App;
 
-namespace App;
-
-class Registr
-{
+class Registr{
     public  $log,
             $date,
             $message,
             $filename,
             $line;
 
-    public function __construct()
-    {
-        /*/ Путь к файлу log.txt /*/
-        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['app'] . _DS_ . 'log.txt';
-
-        /*/ Форматирование текущей даты /*/
-        $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');
+    public function __construct(){
+        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['app'] . _DS_ . 'log.txt'; /*/ Путь к файлу log.txt /*/
+        $this->date = (new \DateTime('now'))->format('[H:i | d M Y]'); /*/ Форматирование текущей даты /*/
     }
 
     public function setException($exception): Registr

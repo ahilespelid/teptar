@@ -1,15 +1,18 @@
-<?php namespace App\Controllers;
+<?php 
+namespace App\Controllers ;
+use App\Models;
+
 class MainController{
     public      $view, $model;
     protected   $pageData = [];
 
     public function __construct() {
         //$this->view  = new App\View;
-        //$this->model = new App\Model;
+        $this->model = new \App\Models\PageModel();
     }
     public function index(){
-        echo 'Главная страница';
-        phpinfo();        
+        echo '<br>Главная страница<br>';
+        //phpinfo();        
     }    
     public function notfound(){
         echo 

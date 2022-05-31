@@ -1,15 +1,16 @@
-<?php namespace App; use PDO;
-use PDOException;
+<?php 
+namespace App;  
+use PDO, PDOException;
 
-abstract class Model{
+abstract class Data{
     private $host, $base, $user, $pass;
     protected $pdo;
     
     function __construct(){
-        (string) $this->host = '194.67.90.250';
-        (string) $this->base = 'teptar';
-        (string) $this->user = 'tepuser';
-        (string) $this->pass = '-Txh9y#j_sJM';
+        (string) $this->host = $GLOBALS['db']['host'];
+        (string) $this->base = $GLOBALS['db']['base'];
+        (string) $this->user = $GLOBALS['db']['user'];
+        (string) $this->pass = $GLOBALS['db']['pass'];
         (object) $this->pdo = $this->connPDO();
     } 
          

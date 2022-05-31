@@ -1,10 +1,9 @@
-<?php use App\Registr;
-
+<?php 
 /*/ Ядро /*/
 require_once('..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php');
-//$route = new App\Route; $route->run();
 
-$registry = new Registr();
+$bug = new App\Registr();
+$route = new App\Route(); $route->run();
 
 $object = [
     'message' => 'Undefined constant "variable"',
@@ -15,31 +14,31 @@ $object = [
 try {
     throw new Exception();
 } catch (Exception $exception) {
-    $registry->setException($object);
-    echo $registry->getException();
+    $bug->setException($object);
+    echo $bug->getException();
 }
 
 try {
     throw new Exception('The value has to be 1 or lower');
 } catch (Exception $exception) {
-    $registry->setException($exception);
-    echo $registry->getException();
-}
-
-try {
-    throw new Exception('The value has to be 1 or lower');
-} catch (Exception $exception) {
-    echo '<br>';
-    $registry->setException($exception);
-    $registry->writeLog();
-    pa($registry->getException('array'));
+    $bug->setException($exception);
+    echo $bug->getException();
 }
 
 try {
     throw new Exception('The value has to be 1 or lower');
 } catch (Exception $exception) {
     echo '<br>';
-    $registry->setException($object);
-    pa($registry->getException('array'));
-    $registry->writeLog();
+    $bug->setException($exception);
+    $bug->writeLog();
+    pa($bug->getException('array'));
+}
+
+try {
+    throw new Exception('The value has to be 1 or lower');
+} catch (Exception $exception) {
+    echo '<br>';
+    $bug->setException($object);
+    pa($bug->getException('array'));
+    $bug->writeLog();
 }

@@ -8,9 +8,14 @@ define('_DS_',DIRECTORY_SEPARATOR);
 $GLOBALS['path']['dev'] = realpath(dirname(__DIR__)._DS_)._DS_;
 $GLOBALS['path']['pub'] = $_SERVER['DOCUMENT_ROOT']._DS_;
 
-$GLOBALS['path']['app'] = 'app';
-$GLOBALS['path']['cor'] = 'core';
-$GLOBALS['path']['log'] = 'log';
-$GLOBALS['path']['con'] = 'Controllers';
-$GLOBALS['path']['mod'] = 'Models';
-$GLOBALS['path']['vie'] = 'Views';
+$GLOBALS['path']['app']         = 'app';
+$GLOBALS['path']['cor']          = 'core';
+$GLOBALS['path']['log']          = 'log';
+$GLOBALS['path']['con']         = 'Controllers';
+$GLOBALS['path']['mod']        = 'Models';
+$GLOBALS['path']['vie']          = 'Views';
+
+$GLOBALS['db']['host']           = '194.67.90.250';
+$GLOBALS['db']['base']          = 'teptar';
+$GLOBALS['db']['user']           = 'tepuser';
+$GLOBALS['db']['pass']          = '-Txh9y#j_sJM';

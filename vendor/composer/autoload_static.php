@@ -4,13 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit46beb34df20db08a4e60a1084eec78a4
+class ComposerStaticInit8d5e23ef095bfcd2b1a6dc5c315321f5
 {
     public static $files = array (
         '091bb482e31030af96936a1127ccdf46' => __DIR__ . '/../..' . '/core/Functions/pa.php',
         '632f4deffadac08b8ceb28a5a5e426e1' => __DIR__ . '/../..' . '/core/Functions/pn.php',
         'ad1daf2aa123e565e53965b3bc86a542' => __DIR__ . '/../..' . '/core/Config.php',
-        'f48a0310568b8971be5844279ca77b12' => __DIR__ . '/../..' . '/core/Model.php',
+        '7ee6d0bf90921534438b9231d1be51b7' => __DIR__ . '/../..' . '/core/Data.php',
         '93da09a2cc7688dda67d8076b828bd92' => __DIR__ . '/../..' . '/core/Registr.php',
         'b650c1d675421a0e33cc39d60e6b50cd' => __DIR__ . '/../..' . '/core/Route.php',
     );
@@ -20,7 +20,6 @@ class ComposerStaticInit46beb34df20db08a4e60a1084eec78a4
         array (
             'App\\Views\\' => 10,
             'App\\Models\\' => 11,
-            'App\\Controllers\\' => 16,
             'App\\' => 4,
         ),
     );
@@ -28,20 +27,20 @@ class ComposerStaticInit46beb34df20db08a4e60a1084eec78a4
     public static $prefixDirsPsr4 = array (
         'App\\Views\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app',
+            0 => __DIR__ . '/../..' . '/app/Views',
         ),
         'App\\Models\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app',
-        ),
-        'App\\Controllers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app',
+            0 => __DIR__ . '/../..' . '/app/Models',
         ),
         'App\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/core',
+            0 => __DIR__ . '/../..' . '/app',
         ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/../..' . '/core',
     );
 
     public static $classMap = array (
@@ -51,9 +50,10 @@ class ComposerStaticInit46beb34df20db08a4e60a1084eec78a4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit46beb34df20db08a4e60a1084eec78a4::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit46beb34df20db08a4e60a1084eec78a4::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit46beb34df20db08a4e60a1084eec78a4::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit8d5e23ef095bfcd2b1a6dc5c315321f5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit8d5e23ef095bfcd2b1a6dc5c315321f5::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit8d5e23ef095bfcd2b1a6dc5c315321f5::$fallbackDirsPsr4;
+            $loader->classMap = ComposerStaticInit8d5e23ef095bfcd2b1a6dc5c315321f5::$classMap;
 
         }, null, ClassLoader::class);
     }

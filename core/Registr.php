@@ -1,67 +1,68 @@
-<?php namespace App;
-
+<?php 
+namespace App;
 
 class Registr {
-    public  $log,
-            $date,
-            $message,
-            $filename,
-            $line;
+    public  $logFile,
+                $exDate,
+                $exMessage,
+                $exFileName,
+                $exLine,
+                $logPull;
 
     public function __construct() {
+        $this->logPull = array();
         /*/ Путь к файлу лога (php.txt) /*/
-        $this->log = $GLOBALS['path']['dev'] . $GLOBALS['path']['log'] . _DS_ . 'php.txt';
+        $this->logFile = $GLOBALS['path']['dev'] . $GLOBALS['path']['log'] . _DS_ . 'php.txt';
 
         /*/ Форматирование текущей даты /*/
-        $this->date = (new \DateTime('now'))->format('[H:i | d M Y]');
+        $this->exDate = (new \DateTime('now'))->format('[H:i | d M Y]');
     }
 
     public function setException($exception) { /*/ Метод принимает исключение на обработку /*/
         /*/ Присвоение значений свойствам если параметр $exception класса Exception /*/
         if ($exception instanceof \Exception) {
-            $this->message = $exception->getMessage();
-            $this->filename = $exception->getFile();
-            $this->line = $exception->getLine();
+            $this->exMessage = $exMessage = $exception->getMessage();
+            $this->exFileName = $exFileName = $exception->getFile();
+            $this->exLine = $exLine  = $exception->getLine();
+            $exDate = $this->exDate;
+            
         /*/ Присвоение значений свойствам если тип параметра $exception 'array' /*/
         } else {
-            $this->message = $exception['message'];
-            $this->filename = $exception['filename'];
-            $this->line = $exception['line'];
+            $this->exMessage = $exception['message'];
+            $this->exFileName = $exception['filename'];
+            $this->exLine = $exception['line'];
         }
-
+        $this->logPull[] = array('date'          => $exDate,
+                                                'message' => $exMessage,
+                                                'filename' => $exFileName,
+                                                'line'          => $exLine);
         return $this;
     }
 
-    public function getException($type = null) { /*/ Метод выдает обработанное исключение /*/
-        /*/ Если запрошен тип исключения 'array' выдать исключение в виде массива /*/
-        if ($type == 'array') {
-            return [
-                'date' => $this->date,
-                'message' => $this->message,
-                'filename' => $this->filename,
-                'line' => $this->line
-            ];
-        /*/ В противном случае выдать исключение в форматированном виде /*/
+    public function getException($type = false) { /*/ Метод выдает обработанное исключение /*/
+        if ($type) {
+       /*/ Если тип исключения 'false' выдать исключение в форматированном виде /*/
+            return '<span style="color: #ce4040">' . $this->exDate . '</span> '.
+                        $this->exMessage . ' <b>' . $this->exFileName. '</b> <small>(line ' . $this->exLine . ')</small><br>';
         } else {
-            $date = '<span style="color: #ce4040">' . $this->date . '</span> ';
-
-            return $date . $this->message . ' <b>' . $this->filename . '</b> <small>(line ' . $this->line . ')</small><br>';
+        /*/ Иначе массив /*/
+             return $this->logPull;
         }
     }
 
     public function writeLog() { /*/ Метод добавляет запись в лог файл (php.txt) /*/
         /*/ Создание файла php.txt если он не существует /*/
-        if (!file_exists($this->log)){fopen($this->log, "w");}
+        if (!file_exists($this->logFile)){fopen($this->logFile, "w");}
 
         /*/ Создание новой записи текущего исключения /*/
-        $entry = PHP_EOL . $this->date .' '. $this->message .' '. $this->filename .' (line '. $this->line .')';
+        $entry = PHP_EOL . $this->exDate .' '. $this->exMessage .' '. $this->exFileName .' (line '. $this->exLine .')';
 
         /*/ Удаление записи из php.txt если идентичная запись уже существует /*/
-        $contents = file_get_contents($this->log);
+        $contents = file_get_contents($this->logFile);
         $contents = str_replace($entry, '', $contents);
-        file_put_contents($this->log, $contents);
+        file_put_contents($this->logFile, $contents);
 
         /*/ Добавление новой записи в php.txt /*/
-        file_put_contents($this->log, $entry, FILE_APPEND | LOCK_EX);
+        file_put_contents($this->logFile, $entry, FILE_APPEND | LOCK_EX);
     }
 }

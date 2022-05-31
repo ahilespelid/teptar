@@ -105,7 +105,7 @@
             <div class="reports-form__footer">
               <div class="reports-form__footer__first-block">
                 <div class="reports-form__footer__first-block__element">
-                  <span>Помощник</span>
+                  <span class="reports-form__footer__assistant">Помощник</span>
                   <div class="first-block__element__worker">
                     <div class="blue-button">
                       <span>Руслан Грозный<img width="12" height="12" src="../assets/img/svg/light/rename_light.svg"></span>

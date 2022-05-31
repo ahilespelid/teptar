@@ -79,8 +79,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
     sortBlock.classList.toggle("none")
   })
 
-  let variables = Array.from(sortBlockElement)
+  let reportsElements = document.querySelectorAll(".reports-list__body__line")
 
+  let variables = Array.from(sortBlockElement)
+  let reportElements = Array.from(reportsElements)
 
   checkboxArray.map(item => {
     item.addEventListener("click", (e) => {
@@ -97,7 +99,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
         reportsBlock.classList.remove("reports__decrease-height")
         reportsFooter.classList.add("none")
       }
-      e.path[2].classList.toggle("checked")
+      console.log(e)
+      reportElements.map(item => {
+        console.log(item.children[0].children[0].checked)
+        if(item.children[0].children[0].checked) {
+          item.classList.add("checked")
+        } else {
+          item.classList.remove("checked")
+        }
+      })
     })
   })
 

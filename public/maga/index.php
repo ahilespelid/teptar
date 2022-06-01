@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="blocks/styles.css">
         <link rel="stylesheet" type="text/css" href="blocks/browsers.css">
         <link rel="stylesheet" type="text/css" href="blocks/fonts.css">
+        <base href="/maga">
     </head>
 
     <body>

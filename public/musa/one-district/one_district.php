@@ -22,7 +22,7 @@
 </head>
 <body>
 
-      <?php include "../reusable-blocks/menu/menu.php";?>
+      <?php include "../reusable-blocks/districts-menu/menu.php";?>
       <div class="content">
         <?php include "../reusable-blocks/header/header.php";?>
         <div class="body">

@@ -1,17 +1,19 @@
+.menu__folded .menu__body {
+  padding-left: 18px;
+}
+
 .menu__folded .menu__body__list img {
   margin-right: 0;
+  margin-left: 8px;
 }
 
-.menu__folded .active img {
-  padding-left: 10px;
-}
-
-.menu__folded .active {
-  margin-right: 12px;
-}
 
 .menu__body div{
   padding-left: 25px;
+}
+
+.menu__folded .menu__body div {
+  padding-left: 0;
 }
 
 .menu__body__list {
@@ -23,33 +25,19 @@
 }
 
 .menu__body__list a {
-  height: 30px;
+  height: 23px;
   display: flex;
   align-items: center;
   margin-bottom: 18px;
   transition: 0.2s;
   text-decoration: none;
   color: #535c69;
-  width: 85%;
-  padding: 10px;
+  width: 180px;
   white-space: nowrap;
-}
-
-.menu__folded .menu__body__list {
-  padding-left: 18px;
-}
-
-.menu__folded .menu__body__list a {
-  width: 35px;
-  border-radius: 10px;
 }
 
 .menu__body__list a span {
   min-width: 170px;
-}
-
-.menu__folded .menu__body__list a span {
-  min-width: 40px;
 }
 
 .menu__body__list a:hover {
@@ -63,15 +51,6 @@
 .menu__body__list a:hover {
   color: #fff;
   background: #535c69;
-}
-
-.menu__folded .menu__body__list a:hover {
-  color: #fff !important;
-  background: #535c69;
-}
-
-.menu__footer a {
-  margin-left: 9px;
 }
 
 

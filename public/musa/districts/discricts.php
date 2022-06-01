@@ -49,24 +49,23 @@
               </div>
             </div>
           </div>
-          <div class="reports-list__title">
-            <div class="reports-list__title__body">
-              <div class="reports-list__title__element">
-                Районы
-              </div>
-              <div class="reports-list__title__element reports-list__title__second-element">
-                Крайний срок
-              </div>
-              <div class="reports-list__title__element reports-list__title__third-element">
-                Эффективность
-              </div>
-              <div class="reports-list__title__element reports-list__title__fourth-element">
-                Участники
-              </div>
-            </div>
-          </div>
+
           <div class="reports">
             <div class="reports-list">
+                <div class="reports-list__title">
+                    <div class="reports-list__title__element">
+                        Районы
+                    </div>
+                    <div class="reports-list__title__element reports-list__title__second-element">
+                        Крайний срок
+                    </div>
+                    <div class="reports-list__title__element reports-list__title__third-element">
+                        Эффективность
+                    </div>
+                    <div class="reports-list__title__element reports-list__title__fourth-element">
+                        Участники
+                    </div>
+                </div>
                 <div class="reports-list__body">
                 </div>
             </div>

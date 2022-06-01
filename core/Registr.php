@@ -1,5 +1,6 @@
 <?php 
-namespace App;
+namespace App; 
+use Exception;
 
 class Registr {
     public  $logFile,
@@ -7,6 +8,7 @@ class Registr {
                 $exMessage,
                 $exFileName,
                 $exLine,
+                $trFileName,
                 $logPull;
 
     public function __construct() {
@@ -20,22 +22,22 @@ class Registr {
 
     public function setException($exception) { /*/ Метод принимает исключение на обработку /*/
         /*/ Присвоение значений свойствам если параметр $exception класса Exception /*/
-        if ($exception instanceof \Exception) {
-            $this->exMessage = $exMessage = $exception->getMessage();
-            $this->exFileName = $exFileName = $exception->getFile();
-            $this->exLine = $exLine  = $exception->getLine();
-            $exDate = $this->exDate;
-            
-        /*/ Присвоение значений свойствам если тип параметра $exception 'array' /*/
-        } else {
-            $this->exMessage = $exception['message'];
-            $this->exFileName = $exception['filename'];
-            $this->exLine = $exception['line'];
-        }
-        $this->logPull[] = array('date'          => $exDate,
-                                                'message' => $exMessage,
-                                                'filename' => $exFileName,
-                                                'line'          => $exLine);
+        $backtrace = debug_backtrace();
+       $this->trFileName = $trFileName = (!empty($backtrace[0]['file'])) ? $backtrace[0]['file'] . ' : ' .$backtrace[0]['line'] : 'undefined';
+        
+        $this->exMessage = $exMessage = ($exception instanceof \Exception) ? $exception->getMessage() : 
+            ((!empty($exception['mess'])) ? $exception['mess'] : 'Calling the set Exception method of the Register class with an empty parameter');
+        $this->exFileName = $exFileName =  ($exception instanceof \Exception) ? $exception->getFile() : 
+            ($exception['file']               );
+        $this->exLine = $exLine  =  ($exception instanceof \Exception) ? $exception->getLine() : 
+            ($exception['line']              );
+        $exDate = $this->exDate;
+
+         $this->logPull[] = array('Date'      => $exDate,
+                                                'Mess'     => $exMessage,
+                                                'File'        => $exFileName,
+                                                'Line'       => $exLine,
+                                                'Call'        => $trFileName);
         return $this;
     }
 

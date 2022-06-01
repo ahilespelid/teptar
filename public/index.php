@@ -6,8 +6,8 @@ $bug = new App\Registr();
 $route = new App\Route(); $route->run();
 
 $object = [
-    'message' => 'Undefined constant "variable"',
-    'filename' => 'www/public/index.php',
+    'mess' => 'Undefined constant "variable"',
+    'file' => 'www/public/index.php',
     'line' => '17',
 ];
 

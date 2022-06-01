@@ -2,9 +2,12 @@
 namespace App;  
 use PDO, PDOException;
 
-abstract class Data{
-    private $host, $base, $user, $pass;
-    protected $pdo;
+class Data{
+    public $host,
+                $base, 
+                $user, 
+                $pass,
+                $pdo;
     
     function __construct(){
         (string) $this->host = $GLOBALS['db']['host'];
@@ -15,11 +18,8 @@ abstract class Data{
     } 
          
     public function connPDO(){
-        try{
-            $pdo = new \PDO("mysql:dbname=$this->base;host=$this->host", $this->user, $this->pass);
+            $pdo = new \PDO("mysql:dbname=".$this->base.";host=".$this->host."", $this->user, $this->pass);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $pdo;
-        }catch (PDOException $e){echo 'ERROR: ' . $e->getMessage();}
-        return false;
     }
 }

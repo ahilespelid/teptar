@@ -13,11 +13,18 @@ class PageModel extends \App\Data{
         //\pa((array) $GLOBALS['bug']);
         var_dump( $GLOBALS['bug']); /*/
     }
-    public function getById($id){
-        return $this->PDO->query("SELECT * FROM page WHERE id=$id");
+    public function getById($id = 1){
+        echo self::host.'<br>'.$this->base.'<br>'.$this->user.'<br>'.$this->pass.'<br>';
+        echo $this->host.'<br>'.$this->base.'<br>'.$this->user.'<br>'.$this->pass.'<br>';
+        //$this->connPDO();
+        $id = (int) $id;
+        
+        pa($GLOBALS['db']); 
+        pa($this->pdo); 
+        //return $this->pdo->query("SELECT * FROM page WHERE id=$id");
     }
 
     public function getByRange($from, $to){
-        return $this->PDO->query("SELECT * FROM page WHERE id>=$from AND id<=$to");
+        return $this->pdo->query("SELECT * FROM page WHERE id>=$from AND id<=$to");
     }
 }

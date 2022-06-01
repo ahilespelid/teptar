@@ -40,6 +40,7 @@
     margin-bottom: 6px;
     border-radius: 8px;
     padding: 10px 12px;
+    line-height: 20px;
     font-size: 12px;
     color: #fff;
 }
@@ -47,6 +48,7 @@
 .actions__info-item:last-child {
     margin-bottom: 0;
 }
+
 .actions__reports-rating {
     text-align: right;
     padding-top: 8px;
@@ -71,4 +73,108 @@
 
 .actions__reports-date .icon-document {
     margin-right: 2px;
+}
+
+.actions__info-item .avatar img {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+}
+
+.actions__info-item .post {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+}
+
+.actions__activity-info {
+    display: flex;
+}
+
+.actions__activity-info .info {
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.actions__activity-info .name {
+    font-size: 14px;
+}
+
+.actions__activity-info .avatar {
+    margin-right: 10px;
+    min-width: 40px;
+}
+
+.actions__activity-info .status {
+    flex-basis: 100%;
+}
+
+.actions__activity-info .status {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.actions__activity-info .status span {
+    color: rgba(255,255,255,0.25);
+}
+
+.actions__activity-info .status span.active {
+    color: white;
+}
+
+.actions__activity-content {
+    display: flex;
+    justify-content: right;
+    margin-top: 20px;
+}
+
+.actions__activity-content .item {
+    background: #1B2734;
+    border-radius: 4px;
+    padding: 14px;
+    margin-right: 10px;
+}
+
+.actions__activity-content .item:last-child {
+    margin: unset;
+}
+
+.actions__activity-indicators {
+    margin-top: 20px;
+}
+
+.indicators-list {
+    display: flex;
+}
+
+.actions__activity-indicators .indicators-list .list .item {
+    background: #1b2734;
+    border-radius: 4px;
+    height: 40px;
+    float: left;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.actions__activity-indicators .indicators-list .title {
+    min-width: 150px;
+    margin-left: 50px;
+}
+
+.actions__activity-indicators .indicators-list .list .item:hover {
+    background: #233344;
+}
+
+.indicator-description {
+    background: #1b2734;
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-left: 50px;
+    margin-top: 12px;
 }

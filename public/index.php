@@ -15,30 +15,25 @@ try {
     throw new Exception();
 } catch (Exception $exception) {
     $bug->setException($object);
-    echo $bug->getException();
 }
 
 try {
     throw new Exception('The value has to be 1 or lower');
 } catch (Exception $exception) {
     $bug->setException($exception);
-    echo $bug->getException();
 }
 
 try {
     throw new Exception('The value has to be 1 or lower');
 } catch (Exception $exception) {
-    echo '<br>';
     $bug->setException($exception);
-    $bug->writeLog();
-    pa($bug->getException('array'));
+
 }
 
 try {
     throw new Exception('The value has to be 1 or lower');
 } catch (Exception $exception) {
-    echo '<br>';
     $bug->setException($object);
-    pa($bug->getException('array'));
-    $bug->writeLog();
+    //$bug->writeLog();
 }
+pa($bug->getException());

@@ -57,10 +57,11 @@ class Registr {
         /*/ Создание новой записи текущего исключения /*/
         $entry = PHP_EOL . $this->exDate .' '. $this->exMessage .' '. $this->exFileName .' (line '. $this->exLine .')';
 
-        /*/ Удаление записи из php.txt если идентичная запись уже существует /*/
+        /*/ Удаление записи из php.txt если идентичная запись уже существует /*/ 
         $contents = file_get_contents($this->logFile);
-        $contents = str_replace($entry, '', $contents);
-        file_put_contents($this->logFile, $contents);
+        if(strpos($contents, $entry)){
+            file_put_contents($this->logFile, str_replace($entry, '', $contents));
+        }
 
         /*/ Добавление новой записи в php.txt /*/
         file_put_contents($this->logFile, $entry, FILE_APPEND | LOCK_EX);

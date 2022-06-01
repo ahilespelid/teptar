@@ -23,3 +23,4 @@
 [02:54 | 01 Jun 2022] The value has to be 1 or lower /var/www/public/index.php (line 29)
 [02:57 | 01 Jun 2022] The value has to be 1 or lower /var/www/public/index.php (line 29)
 [02:58 | 01 Jun 2022] The value has to be 1 or lower /var/www/public/index.php (line 29)
+[17:43 | 01 Jun 2022] Failed to identify the Register object /var/www/core/Config.php (line 23)

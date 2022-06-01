@@ -23,16 +23,24 @@ class Registr {
     public function setException($exception) { /*/ Метод принимает исключение на обработку /*/
         /*/ Присвоение значений свойствам если параметр $exception класса Exception /*/
         $backtrace = debug_backtrace();
-       $this->trFileName = $trFileName = (!empty($backtrace[0]['file'])) ? $backtrace[0]['file'] . ' : ' .$backtrace[0]['line'] : 'undefined';
+        $this->trFileName = $trFileName = (!empty($backtrace[0]['file'])) ? $backtrace[0]['file'] . ' : ' .$backtrace[0]['line'] : 'undefined';
         
+        if ($exception instanceof \Exception){
+            $this->exMessage = $exMessage =  $exception->getMessage();
+            $this->exFileName = $exFileName =  $exception->getFile();
+            $this->exLine = $exLine  =  $exception->getLine();              
+        } else {
+            \pa($exception);
+        }
+        /*/
         $this->exMessage = $exMessage = ($exception instanceof \Exception) ? $exception->getMessage() : 
-            ((!empty($exception['mess'])) ? $exception['mess'] : 'Calling the set Exception method of the Register class with an empty parameter');
+            ((!empty($exception['mess'])) ? $exception['mess'] : 'Calling the setException method of the Register class with an empty parameter');
         $this->exFileName = $exFileName =  ($exception instanceof \Exception) ? $exception->getFile() : 
-            ($exception['file']               );
+            ((!empty($exception['file'])) ? $exception['file'] : __FILE__);
         $this->exLine = $exLine  =  ($exception instanceof \Exception) ? $exception->getLine() : 
-            ($exception['line']              );
+             ((!empty($exception['line'])) ? $exception['line'] : __LINE__);
         $exDate = $this->exDate;
-
+        /*/
          $this->logPull[] = array('Date'      => $exDate,
                                                 'Mess'     => $exMessage,
                                                 'File'        => $exFileName,
@@ -41,15 +49,8 @@ class Registr {
         return $this;
     }
 
-    public function getException($type = false) { /*/ Метод выдает обработанное исключение /*/
-        if ($type) {
-       /*/ Если тип исключения 'false' выдать исключение в форматированном виде /*/
-            return '<span style="color: #ce4040">' . $this->exDate . '</span> '.
-                        $this->exMessage . ' <b>' . $this->exFileName. '</b> <small>(line ' . $this->exLine . ')</small><br>';
-        } else {
-        /*/ Иначе массив /*/
+    public function getException() { /*/ Метод выдает обработанное исключение /*/
              return $this->logPull;
-        }
     }
 
     public function writeLog() { /*/ Метод добавляет запись в лог файл (php.txt) /*/

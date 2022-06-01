@@ -1,140 +1,150 @@
+@import "navbar/navbar.css";
 @import "start/start.css";
 @import "rating/rating.css";
 @import "statistics/statistics.css";
 @import "comparison/comparison.css";
 @import "actions/actions.css";
+@import "districts/districts.css";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-@font-face {
-    font-family: 'icomoon';
-    src:  url('/assets/fonts/icomoon.eot?1gvaa4');
-    src:  url('/assets/fonts/icomoon.eot?1gvaa4#iefix') format('embedded-opentype'),
-    url('/assets/fonts/icomoon.ttf?1gvaa4') format('truetype'),
-    url('/assets/fonts/icomoon.woff?1gvaa4') format('woff'),
-    url('/assets/fonts/icomoon.svg?1gvaa4#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
+/* Global */
+
+body {
+    background: #0e1621;
+    font-family: 'Open Sans', serif;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
+img {
+    max-width: 100%;
+}
+
+/* Container */
+
+.container {
+    max-width: 1440px;
+    margin: calc(100px + 24px) auto;
+}
+
+/* Tables */
+
+.sortable-table th {
+    cursor: pointer;
+}
+
+.sortable-table thead {
+    user-select: none;
+    text-align: left;
+}
+
+.sortable-table .sortable-icon:before {
+    content: "\e90d";
     font-family: 'icomoon' !important;
-    speak: never;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 10px;
+    position: relative;
 }
 
-.icon-archive_alt:before {
-    content: "\e90e";
-}
-.icon-archive:before {
-    content: "\e90f";
-}
-.icon-arrow_drop_down:before {
-    content: "\e910";
-}
-.icon-calendar:before {
-    content: "\e911";
-}
-.icon-darhboard_alt:before {
-    content: "\e912";
-}
-.icon-expand_left_right:before {
-    content: "\e913";
-}
-.icon-folder_alt:before {
-    content: "\e914";
-}
-.icon-import_light:before {
-    content: "\e915";
-}
-.icon-menu:before {
-    content: "\e916";
-}
-.icon-notifications:before {
-    content: "\e917";
-}
-.icon-order:before {
-    content: "\e918";
-}
-.icon-plus-circle:before {
-    content: "\e919";
-}
-.icon-rename:before {
-    content: "\e91a";
-}
-.icon-save_light:before {
-    content: "\e91b";
-}
-.icon-setting:before {
-    content: "\e91c";
-}
-.icon-sort:before {
-    content: "\e91d";
-}
-.icon-trophy:before {
-    content: "\e91e";
-}
-.icon-user:before {
-    content: "\e91f";
-}
-.icon-desk:before {
-    content: "\e909";
-}
-.icon-document-add:before {
-    content: "\e905";
-}
-.icon-document-check:before {
-    content: "\e906";
-}
-.icon-document-update:before {
-    content: "\e907";
-}
-.icon-star:before {
-    content: "\e908";
-}
-.icon-chevron-down:before {
-    content: "\e90a";
-}
-.icon-sortable-down:before {
+.sortable-table .th-sort-asc .sortable-icon::before {
     content: "\e90b";
+    font-size: 4px;
+    top: -3px;
 }
-.icon-sortable-up:before {
+
+.sortable-table .th-sort-desc .sortable-icon::before {
     content: "\e90c";
-}
-.icon-sortable:before {
-    content: "\e90d";
-}
-.icon-map:before {
-    content: "\e904";
-}
-.icon-search:before {
-    content: "\e903";
-}
-.icon-check:before {
-    content: "\e900";
-}
-.icon-info:before {
-    content: "\e901";
-}
-.icon-document:before {
-    content: "\e902";
+    font-size: 4px;
+    top: -3px;
 }
 
-body {
-    background: #0e1621;
-    font-family: 'Open Sans', serif;
-    margin-bottom: 200px;
+.table-avatar {
+    background-position: center;
+    background-size: cover;
+    border-radius: 100%;
+    margin-right: 8px;
+    height: 40px;
+    width: 40px;
+    float: left;
 }
 
-.container {
-    width: 1280px;
-    margin: 200px auto 0;
+.table-progress-bar {
+    border-radius: 0 8px 8px 0;
+    height: 34px;
+    line-height: 34px;
+    box-sizing: border-box;
+}
+
+.table-progress-bar-gradient {
+    background: linear-gradient(90deg, rgba(23,33,43,0.8) 0%, rgba(255,255,255,0) 60%);
+    padding-left: 10px;
+    font-size: 12px;
+}
+
+/* Collapsable */
+
+.collapsible-button {
+    background-color: unset;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+}
+.collapsible-button .icon-chevron-down {
+    float: right;
+    transition: 0.3s;
+    position: relative;
+    top: 2px;
+}
+.collapsible.active .icon-chevron-down {
+    transform: rotate(180deg);
+    top: 6px;
+}
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+/* Buttons */
+
+.button {
+    white-space: nowrap;
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    border: unset;
+    height: 40px;
+}
+
+.button-success {
+    background: #61B252;
+    color: #fff;
+}
+.button-success:hover {
+    background: #569D48;
+}
+
+.button-link {
+    background: unset;
+    color: #fff;
+}
+.button-link:hover {
+    background: rgba(255,255,255,0.02);
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.button .icon {
+    font-size: 12px;
+    position: relative;
+    right: 2px;
+    top: 1px;
 }

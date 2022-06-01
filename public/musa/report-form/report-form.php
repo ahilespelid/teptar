@@ -57,7 +57,7 @@
             <div class="sort">
               <span class="sort__toggle">
                 Шаблоны отчетов
-                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down_black.svg">
+                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down.svg">
               </span>
               <div class="sort__block none">
                 <div class="sort__block__element">Отчет</div>
@@ -69,7 +69,7 @@
               <div class="sort-month">
               <span class="sort__toggle__month">
                 Месяц отчета
-                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down_black.svg">
+                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down.svg">
               </span>
                 <div class="sort__block__month none">
                   <div class="sort__block__element">Отчет</div>
@@ -78,7 +78,7 @@
               <div class="sort-year">
               <span class="sort__toggle__year">
                 Год отчета
-                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down_black.svg">
+                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down.svg">
               </span>
                 <div class="sort__block__year none">
                   <div class="sort__block__element">Отчет</div>

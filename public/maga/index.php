@@ -10,7 +10,8 @@
         <link rel="stylesheet" type="text/css" href="blocks/styles.css">
         <link rel="stylesheet" type="text/css" href="blocks/browsers.css">
         <link rel="stylesheet" type="text/css" href="blocks/fonts.css">
-        <base href="http://194.67.90.250/maga/">
+
+        <base href="/maga">
     </head>
 
     <body>

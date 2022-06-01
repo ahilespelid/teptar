@@ -1,19 +1,19 @@
 <?php 
 namespace App;  
 use PDO, PDOException;
+define('dbHost',  $GLOBALS['db']['host']);
+define('dbBase',  $GLOBALS['db']['base']);
+define('dbUser',  $GLOBALS['db']['user']);
+define('dbPass',  $GLOBALS['db']['pass']);
 
-class Data{
-    public $host,
-                $base, 
-                $user, 
-                $pass,
+abstract class Data{
+    public $host = dbHost,
+                $base =dbBase, 
+                $user = dbUser, 
+                $pass = dbPass,
                 $pdo;
     
     function __construct(){
-        (string) $this->host = $GLOBALS['db']['host'];
-        (string) $this->base = $GLOBALS['db']['base'];
-        (string) $this->user = $GLOBALS['db']['user'];
-        (string) $this->pass = $GLOBALS['db']['pass'];
         (object) $this->pdo = $this->connPDO();
     } 
          

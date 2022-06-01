@@ -32,10 +32,11 @@
 }
 
 .rating__title h3 {
-    padding: 16px 20px;
+    padding: 14px 20px 16px;
     font-weight: 600;
     font-size: 22px;
     margin: unset;
+    line-height: 34px;
 }
 
 .rating__diagram {

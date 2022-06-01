@@ -7,10 +7,11 @@ class MainController{
     protected   $pageData = [];
 
     public function __construct() {
-        //$this->view  = new App\View;
-        $this->model = new \App\Models\PageModel();
+       //$this->view  = new App\View;
+        $this->model = new \App\Models\PageModel;
     }
     public function index(){
+        \pa($this->model->getById());
         echo '<br>Главная страница<br>';
         //phpinfo();        
     }    

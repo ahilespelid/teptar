@@ -1,18 +1,11 @@
 <?php  
-namespace App\Model;  
-use App, Exception;
+namespace App\Models;  
+use App;
 
 class PageModel extends \App\Data{
     public $resID, $resRange;
 
     public function __construct() {
-        try {
-            $bug = (is_object($GLOBALS['bug']) && $GLOBALS['bug'] instanceof \App\Regist) ? $GLOBALS['bug'] : false;
-            if(is_object($bug)){throw new Exception('Failed to identify the Register object');}
-        } catch (Exception $e) {
-             echo '<span style="color: #ce4040">' .(new \DateTime('now'))->format('[H:i | d M Y]'). '</span> '.
-                        $e->getMessage() . ' <b>' . $e->getFile(). '</b> <small>(line ' . $e->getLine() . ')</small><br>';
-        }        
         
        /*/  var_dump($bug);
         echo '<br>';

@@ -6,16 +6,15 @@ class PageModel extends \App\Data{
     public $resID, $resRange, $pdo;
 
     public function __construct() {
-         $this->connPDO();
-}
+         $this->pdo = $this->connPDO();
+    }
     public function getById($id = 1){
         //echo $this->host.'<br>'.$this->base.'<br>'.$this->user.'<br>'.$this->pass.'<br>';
        
         $id = (int) $id;
-        
-        pa($GLOBALS['db']); 
-        pa($this->pdo); 
-        return $this->pdo->query("SELECT * FROM page WHERE id=$id");
+         
+        pa($this); 
+        return $this->pdo->query("SELECT * FROM pages WHERE id=$id");
     }
 
     public function getByRange($from, $to){

@@ -11,7 +11,7 @@ class MainController{
         $this->model = new \App\Models\PageModel;
     }
     public function index(){
-        $this->model->getById();
+        \pa($this->model->getById()->fetch());
         echo '<br>Главная страница<br>';
         //phpinfo();        
     }    

@@ -19,17 +19,17 @@ function handleUncaughtException($e){
     $bugClassCheck =  (is_object($bug)) ? true : false;
      
     $extMessage = ($bugClassCheck) ? $e->getMessage() : 'Failed to identify the Register object'; 
-    $extFile          = ($bugClassCheck) ? $e->getFile()          : __FILE__;
+    $exFile          = ($bugClassCheck) ? $e->getFile()          : __FILE__;
     $exLine          = ($bugClassCheck) ? $e->getLine()         : __LINE__;
     $exDate         =  (new \DateTime('now'))->format('[H:i | d M Y]');
  
      if($bugClassCheck){
          $bug->setException($e);
      }else{        
-        $o = (object)['message' => $extMessage, 'file' => $extFile, 'line' => $exLine];
+        $o = (object)['message' => $extMessage, 'file' => $exFile, 'line' => $exLine];
         (new \App\Registr)->setException($o)->writeLog(); 
      } 
-     echo '<span style="color: #ce4040">' .$exDate. '</span> '.$extMessage.' <b>'.'$extFile'.'</b> <small>(line ' .'$exLine'. ')</small><br>';   
+     echo '<span style="color: #ce4040">' .$exDate. '</span> '.$extMessage.' <b>'.'$exFile'.'</b> <small>(line ' .'$exLine'. ')</small><br>';   
     return false;
 }
 /*/ Цепляем удочку для ошибок глобально /*/ 

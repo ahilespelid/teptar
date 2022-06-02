@@ -25,7 +25,7 @@ class Registr {
         $backtrace = debug_backtrace();
         $this->trFileName = $trFileName = (!empty($backtrace[0]['file'])) ? $backtrace[0]['file'] . ' : ' .$backtrace[0]['line'] : 'undefined';
         
-        if ($exception instanceof Exception){
+        if ($exception instanceof \Exception){
             $this->exMessage = $exMessage =  $exception->getMessage();
             $this->exFileName = $exFileName =  $exception->getFile();
             $this->exLine = $exLine  =  $exception->getLine();              

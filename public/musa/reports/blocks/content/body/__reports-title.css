@@ -45,13 +45,12 @@
 
 .sort {
   position: relative;
-  width: 233px;
   height: 40px;
   display: flex;
   align-items: center;
   padding-left: 10px;
   border: 1px solid #535C6940;
-  cursor: default;
+  cursor: pointer;
 }
 
 .sort__toggle {
@@ -101,4 +100,13 @@
 .sort__block__element:hover {
   transition: 0.3s;
   color: #929aa4;
+}
+
+.sort-element {
+  margin-right: 6px;
+}
+
+.sort__icon {
+  margin-left: 15px !important;
+  margin-right: 10px;
 }

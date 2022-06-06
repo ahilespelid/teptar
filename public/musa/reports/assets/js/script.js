@@ -1,4 +1,4 @@
-let reports = [
+var reports = [
   {
     "name": "Отчет 2021",
     "activity": "2021-12-21",

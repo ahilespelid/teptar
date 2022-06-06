@@ -1,7 +1,7 @@
-let reports = [
+var reports = [
   {
     "name": "Грозный",
-    "activity": "2021-12-21",
+    "activity": "30 мая 2022, 15:00",
     "term": "Дорабатывается",
     "assistant": [{
       "name": "Ибрагим Грозный",
@@ -32,7 +32,7 @@ let reports = [
   },
   {
     "name": "Грозный",
-    "activity": "2021-12-21",
+    "activity": "30 мая 2022, 15:00",
     "term": "Успешно",
     "assistant": {
       "name": "Ибрагим Грозный",
@@ -45,7 +45,7 @@ let reports = [
   },
   {
     "name": "Грозный",
-    "activity": "2021-12-21",
+    "activity": "30 мая 2022, 15:00",
     "term": "В работе",
     "assistant": [{
       "name": "Ибрагим Грозный",
@@ -63,7 +63,7 @@ let reports = [
   },
   {
     "name": "Грозный",
-    "activity": "2021-12-21",
+    "activity": "30 мая 2022, 15:00",
     "term": "В работе",
     "assistant": {
       "name": "Ибрагим Грозный",
@@ -76,7 +76,7 @@ let reports = [
   },
   {
     "name": "Грозный",
-    "activity": "2021-12-21",
+    "activity": "30 мая 2022, 15:00",
     "term": "В работе",
     "assistant": {
       "name": "Ибрагим Грозный",
@@ -89,7 +89,7 @@ let reports = [
   },
   {
     "name": "Грозный",
-    "activity": "2021-12-21",
+    "activity": "30 мая 2022, 15:00",
     "term": "В работе",
     "assistant": {
       "name": "Ибрагим Грозный",
@@ -102,7 +102,7 @@ let reports = [
   },
   {
     "name": "Грозный",
-    "activity": "2021-12-21",
+    "activity": "30 мая 2022, 15:00",
     "term": "В работе",
     "assistant": {
       "name": "Ибрагим Грозный",
@@ -115,7 +115,7 @@ let reports = [
   },
   {
     "name": "Грозный",
-    "activity": "2021-12-21",
+    "activity": "30 мая 2022, 15:00",
     "term": "В работе",
     "assistant": {
       "name": "Ибрагим Грозный",

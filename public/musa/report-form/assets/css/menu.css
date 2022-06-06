@@ -20,7 +20,7 @@
   box-shadow: -1px 3px 29px -5px rgba(34, 60, 80, 0.2);
 }
 
-.menu, .user__info__avatar, .body__back-button, .sort__block, .reports, .reports-list__body__avatar, .reports-footer, .reports-footer__action__sort{
+.menu, .user__info__avatar, .body__back-button, .sort__block, .reports, .reports__body__avatar, .reports-footer, .reports-footer__action__sort{
   background-color: #fff;
 }
 
@@ -105,9 +105,7 @@
   min-width: 170px;
 }
 
-.menu__body__list a:hover {
-  color: #939ba7;
-}
+
 
 .menu__body__list img {
   margin-right: 6px;
@@ -146,6 +144,7 @@
 
 .menu__footer__toggle a:hover {
   transition: 0.1s;
+
 }
 
 .menu__footer__toggle img{

@@ -1,11 +1,8 @@
-document.addEventListener("DOMContentLoaded", (e) => {
+$(document).ready(function() {
 
-  let sortToggle = document.querySelector(".sort__toggle")
-  let sortBlock = document.querySelector(".sort__block")
-
-  sortToggle.addEventListener("click", e => {
+  $(".sort").on("click", function(e) {
     e.stopPropagation()
-    sortBlock.classList.toggle("none")
+    $(".sort__block").toggleClass("none")
   })
 
 })

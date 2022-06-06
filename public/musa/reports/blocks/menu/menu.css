@@ -20,7 +20,7 @@
   box-shadow: -1px 3px 29px -5px rgba(34, 60, 80, 0.2);
 }
 
-.menu, .user__info__avatar, .body__back-button, .sort__block, .reports, .reports-list__body__avatar, .reports-footer, .reports-footer__action__sort{
+.menu, .user__info__avatar, .body__back-button, .sort__block, .reports, .reports__body__avatar, .reports-footer, .reports-footer__action__sort{
   background-color: #fff;
 }
 

@@ -5,6 +5,10 @@
   <meta name="description" content="Список отчетов">
   <meta name="keywords" content="Список отчетов, Тептар, тептар">
   <link type="text/css" rel="stylesheet" href="./assets/css/style.css">
+  <script src="../jquery-3.6.0.min.js"></script>
+  <!--[if lte IE 10]>
+        <link rel="stylesheet" href="./assets/css/style-for-ie9.css">
+  <![endif]-->
   <script type="text/javascript" src="./assets/js/script.js"></script>
   <script src="../reusable-blocks/menu/menu.js"></script>
   <script src="../reusable-blocks/menu/__main.js"></script>
@@ -23,8 +27,11 @@
 <body>
 
       <?php include "../reusable-blocks/districts-menu/menu.php";?>
+
       <div class="content">
+
         <?php include "../reusable-blocks/header/header.php";?>
+
         <div class="body">
           <div class="body__back-button">
             <a href="#">
@@ -46,12 +53,12 @@
                 <span class="sort__toggle__time">Году</span>
                 <img src="../assets/img/svg/sort.svg">
               </span>
-              <div class="sort__block none">
-                <div class="sort__block__element"><img src="../assets/img/svg/folder_alt.svg">По годам</div>
-                <div class="sort__block__element"><img src="../assets/img/svg/save.svg">По месяцам</div>
-                <div class="sort__block__element"><img src="../assets/img/svg/save.svg">По важности</div>
-                <div class="sort__block__element"><img src="../assets/img/svg/save.svg">По просмотрам</div>
-              </div>
+                <div class="sort__block none">
+                    <div class="sort__block__element"><span class="icon-folder_alt sort-element"></span>По годам</div>
+                    <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По месяцам</div>
+                    <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По важности</div>
+                    <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По просмотрам</div>
+                </div>
             </div>
           </div>
           <div class="reports">
@@ -75,7 +82,28 @@
                     Ответственный
                   </div>
             </div>
-              <div class="reports-list__body">
+              <div class="reports__body">
+
+              <div class="reports__body__line" style="display: none;">
+                        <div class="reports__body__line__name">
+                            <input type="checkbox" id="checkbox-0" class="reports__body__checkbox">
+                            <i class="icon-menu reports__body__i"></i>
+                            <span>Отчет 2021<span>
+                        </div>
+                        <div class="reports__body__line__activity"></div>
+                        <div class="reports__body__line__term"></div>
+                        <div class="reports__body__line__assistant">
+                            <div class="name-block">
+                                <img class="reports__body__avatar"><span class="name"></span>
+                            </div>
+                        </div>
+                        <div class="reports__body__line__responsible">
+                            <div class="name-block">
+                                <img src="assets/img/avatar.jpg" class="reports__body__avatar"><span class="name"></span>
+                            </div>
+                        </div>
+                    </div>
+
               </div>
             </div>
           </div>
@@ -96,7 +124,8 @@
                     Выгрузить в PDF
                   </div>
                 </div>
-                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down_black.svg" alt="&#x2193">
+<!--                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down_black.svg" alt="&#x2193">-->
+                  <span class="icon-arrow_drop_down dropdown-arrow"></span>
               </div>
               <div class="reports-footer__submit__button">
                 <button>Применить</button>

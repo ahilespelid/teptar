@@ -1,0 +1,52 @@
+.navbar-container {
+    display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.navbar {
+    background: #17212B;
+    height: 100px;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    top: 0;
+}
+.navbar .logotype {
+    height: 100px;
+    align-items: center;
+    display: flex;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0 24px;
+    max-width: 280px;
+    min-width: 280px;
+    box-sizing: border-box;
+}
+.navbar .logotype:hover {
+    background: rgba(255,255,255,0.02);
+}
+.navbar-menu {
+    flex-basis: 100%;
+    display: flex;
+}
+.navbar-menu .item.search {
+    width: 50%;
+}
+.navbar-menu .item {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar-search {
+    width: 60%;
+}
+.navbar-search .input {
+    border: 1px solid #515860;
+    background: unset;
+    color: rgba(255,255,255,0.25);
+    border-radius: 8px;
+    height: 40px;
+    width: 100%;
+    font-size: 12px;
+    padding: 8px 12px;
+}

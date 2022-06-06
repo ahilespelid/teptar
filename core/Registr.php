@@ -30,7 +30,11 @@ class Registr {
             $this->exFileName = $exFileName =  $exception->getFile();
             $this->exLine = $exLine  =  $exception->getLine();              
         } else {
+            $exception = (array) $exception;
             \pa($exception);
+            $this->exMessage = $exMessage     =   (!empty($exception['message'])) ? $exception['message'] : 'Calling the setException method of the Register class with an empty parameter';
+            $this->exFileName = $exFileName    =  (!empty($exception['file'])) ? $exception['file'] : __FILE__;
+            $this->exLine = $exLine                     =  (!empty($exception['line'])) ? $exception['line'] : __LINE__;     
         }
         /*/
         $this->exMessage = $exMessage = ($exception instanceof \Exception) ? $exception->getMessage() : 
@@ -41,7 +45,7 @@ class Registr {
              ((!empty($exception['line'])) ? $exception['line'] : __LINE__);
         $exDate = $this->exDate;
         /*/
-         $this->logPull[] = array('Date'      => $exDate,
+         $this->logPull[] = array('Date'      => $this->exDate,
                                                 'Mess'     => $exMessage,
                                                 'File'        => $exFileName,
                                                 'Line'       => $exLine,

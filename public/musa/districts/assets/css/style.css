@@ -129,7 +129,7 @@ body {
 }
 
 .reports {
-  max-height: 60vh;
+  max-height: 70vh;
 }
 
 .reports-list__title__fourth-element {
@@ -145,6 +145,8 @@ body {
   display: none;
   transition: 0.3s;
 }
+
+.reports-list__more
 
 @media screen and (max-width: 2732px) {
 
@@ -164,6 +166,10 @@ body {
     padding-right: 10%;
   }
 
+  .reports-list__title__element {
+    padding-top: 0.8%;
+  }
+
 }
 
 @media screen and (max-width: 2048px) {
@@ -171,112 +177,6 @@ body {
 }
 
 @media screen and (min-width: 1920px) {
-
-  .menu {
-    height: 100vh;
-    width: 420px;
-  }
-
-  .menu__body div {
-    padding-left: 40px;
-    font-size: 22px;
-  }
-
-  .menu__body img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .active {
-    width: 260px;
-  }
-
-  .menu__header {
-    padding: 40px 10px;
-    height: 118px;
-    justify-content: flex-start;
-  }
-
-  .menu__header__text {
-    font-size: 20px;
-    width: 242px;
-    line-height: 29.4px;
-  }
-
-  .menu__header img{
-    width: 70px;
-    height: 70px;
-  }
-
-  .menu__body__list a {
-    height: 40px;
-    width: 280px;
-  }
-
-  .menu__folded .menu__header {
-    padding: 24px 30px;
-  }
-
-  .menu__folded .active img {
-    padding: 0;
-    margin-left: 10px;
-  }
-
-  .menu__folded .menu__header img {
-    width: 70px;
-    height: 70px;
-  }
-
-  .menu__folded .menu__body__list a {
-    width: 40px;
-    height: 40px;
-  }
-
-  .menu__footer {
-    padding-left: 40px;
-  }
-
-  .menu__footer__text {
-    font-size: 20px;
-  }
-
-  .menu__folded {
-    width: 146px;
-  }
-
-  .menu__folded .menu__body {
-    padding-left: 46px;
-  }
-
-  .menu__folded .active {
-    width: 40px;
-    height: 40px;
-    align-items: center;
-  }
-
-  .menu__folded .menu__footer img {
-    margin-left: 16px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .menu__folded .menu__footer__toggle {
-    padding-top: 50%;
-  }
-
-  .menu__body__list a {
-    margin-bottom: 18px;
-    line-height: 29.96px;
-  }
-
-  .menu__folded .menu__body__list img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .active {
-    height: 40px !important;
-  }
 
   .header__input {
     height: 119px;
@@ -293,6 +193,7 @@ body {
 
   .user__info {
     margin-right: 50px;
+    width: 350px;
   }
 
   .user__info__name {
@@ -333,12 +234,17 @@ body {
     height: 80px;
   }
 
-  .reports-list__body__element {
-    height: 80px
+  .reports-list__title__element {
+    padding-top: 1.5%;
   }
 
-  .reports__decrease-height {
-    height: 58vh;
+  .reports__body__line {
+    height: 80px;
+    font-size: 16px;
+  }
+
+  .menu__folded .menu__body__list a:not(.active) .menu-icon {
+    margin-left: 2px
   }
 
   .reports-title__my-reports__text {
@@ -357,30 +263,35 @@ body {
     padding-top: 10px;
   }
 
+  .reports__body__avatar, .reports__body__second__avatar {
+    height: 40px;
+    width: 40px;
+  }
+
 }
 
-@media screen and (max-width: 1920px) {
+.reports__body__element {
+  height: 70px;
+  max-width: 100px;
+  display: table-cell;
+  vertical-align: middle;
+  margin-right: 31px;
+  padding-left: 50px;
+}
 
-  .reports-list__body__element {
-    height: 70px;
-    max-width: 100px;
-    display: table-cell;
-    vertical-align: middle;
-    margin-right: 31px;
-    padding-left: 50px;
-  }
+.reports-list__title__second-element {
+  margin-left: 8%;
+}
 
-  .reports-list__title__second-element {
-    margin-left: 8%;
-  }
+.reports-list__title__third-element {
+  margin-left: 10%;
+}
 
-  .reports-list__title__third-element {
-    margin-left: 10%;
-  }
+.reports-list__title__fourth-element {
+  padding-right: 5%;
+}
 
-  .reports-list__title__fourth-element {
-    padding-right: 5%;
-  }
+@media screen and (max-width: 2560px) {
 
 }
 
@@ -417,104 +328,6 @@ body {
 }
 
 @media screen and (max-width: 1024px){
-  .menu {
-    width: 256px;
-  }
-
-  .menu__body div {
-    padding-left: 28px;
-    font-size: 14px;
-  }
-
-  .menu__body img {
-    width: 24px;
-    height: 16px;
-  }
-
-  .active {
-    width: 180px;
-  }
-
-  .menu__folded .active {
-    margin-right: 0;
-    margin-left: 10px;
-  }
-
-  .menu__header {
-    padding: 9px 12px;
-    height: 70px;
-    justify-content: flex-start;
-  }
-
-  .menu__header__text {
-    font-size: 12px;
-    width: 242px;
-    line-height: 17.64px;
-  }
-
-  .menu__header img{
-    width: 50px;
-    height: 50px;
-  }
-
-  .menu__folded .menu__header {
-    padding: 24px 28px;
-  }
-
-  .menu__folded .menu__header img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .menu__footer {
-    padding-left: 30px;
-  }
-
-  .menu__footer__text {
-    font-size: 12px;
-  }
-
-  .menu__folded {
-    width: 120px;
-  }
-
-  .menu__folded .menu__body {
-    margin-left: 0;
-    padding-left: 0;
-  }
-
-  .menu__folded .menu__body__list img {
-    margin-right: 6px;
-  }
-
-  .menu__folded .menu__body__list {
-    padding-left: 25px !important;
-  }
-
-  .menu__folded .active {
-    width: 37px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-  }
-
-  .menu__folded .active img {
-    width: 24px;
-  }
-
-  .menu__folded .menu__body__list a {
-    margin-left: 10px;
-  }
-
-  .menu__footer__toggle a {
-    padding-top: 0;
-  }
-
-  .menu__folded .menu__footer img {
-    margin-left: 15px;
-    width: 16px;
-    height: 16px;
-  }
 
   .header__input {
     height: 60px;
@@ -581,12 +394,17 @@ body {
     font-size: 18px;
   }
 
+  .menu__folded .toggle-icon {
+    margin-right: 0;
+    margin-left: 12px;
+  }
+
   .reports-list__title {
     font-size: 12px;
     height: 46.58px;
   }
 
-  .reports-list__body__avatar {
+  .reports__body__avatar, .reports__body__second__avatar {
     min-width: 24px;
     height: 24px;
   }
@@ -604,10 +422,6 @@ body {
 
 
 @media screen and (max-height: 800px) {
-  .menu__footer {
-    max-height: 200px;
-  }
-
   .menu {
     min-height: 100vh;
   }
@@ -619,7 +433,7 @@ body {
   }
 
   .reports {
-    height: 55vh;
+    height: 70vh;
   }
 
   .menu__footer__toggle a {
@@ -653,7 +467,7 @@ body {
 }
 
 /*@media screen and (max-width: 1350px) {*/
-/*  .reports-list__body__element {*/
+/*  .reports__body__element {*/
 /*    padding-left: 150px;*/
 /*  }*/
 
@@ -669,7 +483,7 @@ body {
 /*}*/
 
 /*@media screen and (max-width: 1280px) {*/
-/*  .reports-list__body__element {*/
+/*  .reports__body__element {*/
 /*    padding-left: 100px;*/
 /*  }*/
 /*  .reports-list__title__third-element {*/

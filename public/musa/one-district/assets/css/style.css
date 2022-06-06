@@ -119,112 +119,6 @@ body {
 
 @media screen and (min-width: 1920px) {
 
-  .menu {
-    height: 100vh;
-    width: 420px;
-  }
-
-  .menu__body div {
-    padding-left: 40px;
-    font-size: 22px;
-  }
-
-  .menu__body img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .active {
-    width: 260px;
-  }
-
-  .menu__header {
-    padding: 40px 10px;
-    height: 118px;
-    justify-content: flex-start;
-  }
-
-  .menu__header__text {
-    font-size: 20px;
-    width: 242px;
-    line-height: 29.4px;
-  }
-
-  .menu__header img{
-    width: 70px;
-    height: 70px;
-  }
-
-  .menu__body__list a {
-    height: 40px;
-    width: 280px;
-  }
-
-  .menu__folded .menu__header {
-    padding: 24px 30px;
-  }
-
-  .menu__folded .active img {
-    padding: 0;
-    margin-left: 10px;
-  }
-
-  .menu__folded .menu__header img {
-    width: 70px;
-    height: 70px;
-  }
-
-  .menu__folded .menu__body__list a {
-    width: 40px;
-    height: 40px;
-  }
-
-  .menu__footer {
-    padding-left: 40px;
-  }
-
-  .menu__footer__text {
-    font-size: 20px;
-  }
-
-  .menu__folded {
-    width: 146px;
-  }
-
-  .menu__folded .menu__body {
-    padding-left: 46px;
-  }
-
-  .menu__folded .active {
-    width: 40px;
-    height: 40px;
-    align-items: center;
-  }
-
-  .menu__folded .menu__footer img {
-    margin-left: 16px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .menu__folded .menu__footer__toggle {
-    padding-top: 50%;
-  }
-
-  .menu__body__list a {
-    margin-bottom: 18px;
-    line-height: 29.96px;
-  }
-
-  .menu__folded .menu__body__list img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .active {
-    height: 40px !important;
-  }
-
   .header__input {
     height: 119px;
   }
@@ -240,6 +134,7 @@ body {
 
   .user__info {
     margin-right: 50px;
+    width: 350px;
   }
 
   .user__info__name {
@@ -272,9 +167,8 @@ body {
     font-size: 16px;
   }
 
-  .reports-list__body__avatar {
+  .reports__body__avatar {
     min-width: 24px;
-    height: 24px;
   }
 
   .reports-footer {
@@ -283,14 +177,16 @@ body {
 
   .body__back-button {
     height: 80px;
+    line-height: 60px;
   }
 
-  .reports-list__body__element {
-    height: 80px
+  .reports__body__line {
+    height: 80px;
+    font-size: 16px;
   }
 
   .reports__decrease-height {
-    max-height: 58vh;
+    max-height: 56vh;
   }
 
   .reports-title__my-reports__text {
@@ -318,105 +214,6 @@ body {
 }
 
 @media screen and (max-width: 1024px){
-  .menu {
-    width: 256px;
-  }
-
-  .menu__body div {
-    padding-left: 28px;
-    font-size: 14px;
-  }
-
-  .menu__body img {
-    width: 24px;
-    height: 16px;
-  }
-
-  .active {
-    width: 180px;
-  }
-
-  .menu__folded .active {
-    margin-right: 0;
-    margin-left: 10px;
-  }
-
-  .menu__header {
-    padding: 9px 12px;
-    height: 70px;
-    justify-content: flex-start;
-  }
-
-  .menu__header__text {
-    font-size: 12px;
-    width: 242px;
-    line-height: 17.64px;
-  }
-
-  .menu__header img{
-    width: 50px;
-    height: 50px;
-  }
-
-  menu__folded .menu__header {
-    padding: 24px 28px;
-  }
-
-  .menu__folded .menu__header img {
-    width: 50px;
-    height: 50px;
-  }
-
-  .menu__footer {
-    padding-left: 30px;
-  }
-
-  .menu__footer__text {
-    font-size: 12px;
-  }
-
-  .menu__folded {
-    width: 120px;
-  }
-
-  .menu__folded .menu__body {
-    margin-left: 0;
-    padding-left: 0;
-  }
-
-  .menu__folded .menu__body__list img {
-    margin-right: 6px;
-  }
-
-  .menu__folded .menu__body__list {
-    padding-left: 25px !important;
-  }
-
-  .menu__folded .active {
-    width: 37px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-  }
-
-  .menu__folded .active img {
-    width: 24px;
-  }
-
-  .menu__folded .menu__body__list a {
-    margin-left: 10px;
-  }
-
-  .menu__footer__toggle a {
-    padding-top: 0;
-  }
-
-  .menu__folded .menu__footer img {
-    margin-left: 15px;
-    width: 16px;
-    height: 16px;
-  }
-
   .header__input {
     height: 60px;
   }
@@ -474,7 +271,7 @@ body {
     height: 60px;
   }
 
-  .reports-list__body__element {
+  .reports__body__element {
     height: 80px
   }
 
@@ -490,51 +287,5 @@ body {
     width: 220px;
     height: 50px;
     font-size: 18px;
-  }
-}
-
-
-@media screen and (max-height: 800px) {
-  .menu__footer {
-    max-height: 200px;
-  }
-
-  .menu {
-    min-height: 100vh;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .menu__footer {
-    max-height: 200px;
-  }
-
-  .menu__footer__toggle a {
-    padding-top: 0;
-    bottom: 25px;
-  }
-
-}
-
-@media screen and (max-height: 600px) {
-  .menu__footer {
-    max-height: 200px;
-  }
-
-  .menu__footer__toggle a {
-    padding-top: 0;
-    bottom: 25px;
-  }
-
-}
-
-@media screen and (max-height: 500px) {
-  .menu__footer {
-    max-height: 200px;
-  }
-
-  .menu__footer__toggle a {
-    padding-top: 0;
-    bottom: 25px;
   }
 }

@@ -8,7 +8,7 @@
 }
 
 .reports__decrease-height {
-  height: 60vh;
+  height: 65vh;
 }
 
 .reports::-webkit-scrollbar {
@@ -33,6 +33,7 @@
 .reports-list input[type = "checkbox"] {
   width: 16px;
   height: 16px;
+  cursor: pointer;
 }
 
 .reports-list__title {
@@ -56,58 +57,60 @@
   padding: 20px 0 0 16px;
 }
 
-.reports-list__body {
+.reports__body {
   display: table-row-group;
   vertical-align: middle;
   border-color: inherit;
 }
 
-.reports-list__body__line {
+.reports__body__line {
   display: table-row;
   margin-top: 16px;
   transition: 0.3s;
   border-bottom: 1px solid #f1f1f1;
 }
 
-.reports-list__body__line:hover {
+.reports__body__line:hover {
   background-color: #F6F8F9;
   transition: 0.1s;
 }
 
-.reports-list__body__element {
+.reports__body__line__name, .reports__body__line__activity, .reports__body__line__term,
+.reports__body__line__assistant, .reports__body__line__responsible
+{
   height: 70px;
   display: table-cell;
   vertical-align: middle;
   margin-right: 30px;
 }
 
-.reports-list__body__element .name {
+.reports__body__line__responsible .name-block , .reports__body__line__assistant .name-block {
   display: flex;
   align-items: center;
 }
 
-.reports-list__body__element:first-child  {
+.reports__body__line__name  {
   padding-left: 16px;
   display: flex;
   align-items: center;
-  margin-right: 0px;
+  margin-right: 0;
 }
 
-.reports-list__body__img {
+.reports__body__i {
+  font-size: 11px;
   margin-right: 6px;
   margin-left: 3px;
+  cursor: pointer;
 }
 
-.reports-list__body__avatar {
-  height: 30px;
+.reports__body__avatar {
+  height: 40px;
+  object-fit: cover;
   min-width: 30px;
+  max-width: 40px;
   margin-right: 6px;
   border-radius: 100%;
   border: 2px solid #E0E0E0;
-  background-image: url("../../../assets/img/avatar.jpg");
-  background-position: center;
-  background-size: 70px;
-  background-repeat: no-repeat;
 }
 
 .warning {

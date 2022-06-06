@@ -1,148 +1,189 @@
-document.addEventListener("DOMContentLoaded", (e) => {
-  let reportsBlock = document.querySelector(".reports")
-  let reportsBody = document.querySelector(".reports-list__body")
-  let reportsFooter = document.querySelector(".reports-footer")
-  let reportsActions = document.querySelector(".reports-footer__action")
-  let sortToggle = document.querySelector(".sort__toggle")
-  let sortBlock = document.querySelector(".sort__block")
-  let sortBlockElement = document.querySelectorAll(".sort__block__element")
-  let reportsFooterCount = document.querySelector(".reports-footer__count")
+$(document).ready(function(){
 
-  let date = String(new Date())
+/*/
+    взять дату с сервера
+    var date = String(new Date());
 
-  console.log()
+/*/
 
-  reports.map(item => {
-    let tr = document.createElement("div")
-    let name = document.createElement("div")
-    let activity = document.createElement("div")
-    let term = document.createElement("div")
-    let assistant = document.createElement("div")
-    let responsible = document.createElement("div")
-    let footer = document.createElement("div")
-    name.classList.add("reports-list__body__element")
-    activity.classList.add("reports-list__body__element")
-    term.classList.add("reports-list__body__element")
-    assistant.classList.add("reports-list__body__element")
-    responsible.classList.add("reports-list__body__element")
-    name.innerHTML = `<input type="checkbox" class="reports-list__body__checkbox"><img class="reports-list__body__img" width="20" height="20" src="./assets/img/svg/menu.svg">${item.name}`
-    activity.textContent = item.activity
-    term.textContent = item.term
-    assistant.innerHTML = `<span class="name"><span class="reports-list__body__avatar"></span>${item.assistant.name}</span>`
-    responsible.innerHTML = `<span class="name"><span class="reports-list__body__avatar"></span>${item.responsible.name}</span>`
 
-    let condition = Number(item.term.substring(7, 11)) == Number(date.substring(11, 16))
+ /*/ Перебераем массив с отчетами /*/
 
-    let secondCondition = Number(item.term.substring(0, 3)) - Number(date.substring(8, 10))
+  var raportLine = $('.reports__body__line').css('display','table-row');
 
-    if(condition && item.term.substring(3, 6) == fixDate(date.substring(4, 7)) && secondCondition < 7 && secondCondition > 0) {
-      tr.classList.add("warning")
-    } else if(condition && secondCondition < 0) {
-      tr.classList.add("expired")
-    }
 
-    tr.classList.add("reports-list__body__line")
-    tr.prepend(name, activity, term, assistant, responsible)
 
-    tr.append()
+  $(reports).each(function(i, item){
 
-    reportsBody.append(tr)
-  })
+      var raport = raportLine.clone(true);
+      
+      raport.find('.reports__body__line__name span').text(item.name);
+      raport.find('.reports__body__line__activity').text(item.activity);
+      raport.find('.reports__body__line__term').text(item.term);
+      raport.find('.reports__body__line__assistant span').text(item.assistant.name)
+      raport.find('.reports__body__line__assistant img').attr("src", item.assistant.avatar)
+      raport.find('.reports__body__line__responsible span').text(item.responsible.name)
+      raport.find('.reports__body__line__responsible img').attr("src", item.responsible.avatar)
 
-  let checkbox = document.querySelectorAll(".reports-list__body__checkbox")
+      //console.log(raport);
 
-  let firstCheckbox = document.querySelector(".reports-list__title__checkbox")
+      $('.reports__body').append(raport)
+    });
 
-  let checkboxArray = Array.from(checkbox)
+  $(".reports__body__line").eq(0).css('display', 'none')
 
-  firstCheckbox.addEventListener("click", (e) => {
-      if(firstCheckbox.checked) {
-        checkboxArray.map(item => {
-          item.checked = true
-          reportsFooter.classList.remove("none")
-          item.parentNode.parentNode.classList.add("checked")
-          reportsBlock.classList.add("reports__decrease-height")
-        })
-      } else {
-        checkboxArray.map(item => {
-          item.checked = false
-          reportsFooter.classList.add("none")
-          item.parentNode.parentNode.classList.remove("checked")
-          reportsBlock.classList.remove("reports__decrease-height")
-        })
-      }
-    }
-  )
-
-  sortToggle.addEventListener("click", e => {
-    e.stopPropagation()
-    sortBlock.classList.toggle("none")
-  })
-
-  let reportsElements = document.querySelectorAll(".reports-list__body__line")
-
-  let variables = Array.from(sortBlockElement)
-  let reportElements = Array.from(reportsElements)
-
-  checkboxArray.map(item => {
-    item.addEventListener("click", (e) => {
-      if(checkboxArray.every(item => item.checked === true)) {
-        firstCheckbox.checked = true
-      } else {
-        firstCheckbox.checked = false
-        reportsBlock.classList.remove("reports__decrease-height")
-      }
-      if(checkboxArray.some(item => item.checked === true)) {
-        reportsBlock.classList.add("reports__decrease-height")
-        reportsFooter.classList.remove("none")
-      } else {
-        reportsBlock.classList.remove("reports__decrease-height")
-        reportsFooter.classList.add("none")
-      }
-      console.log(e)
-      reportElements.map(item => {
-        console.log(item.children[0].children[0].checked)
-        if(item.children[0].children[0].checked) {
-          item.classList.add("checked")
-        } else {
-          item.classList.remove("checked")
-        }
+  $(".reports__body__line").each(function (i, item){
+      item.children[0].childNodes[1].addEventListener("click", function () {
+          if($.makeArray($(".reports__body__checkbox")).some(function(item){ return item.checked === true})) {
+                $(".reports").addClass("reports__decrease-height")
+                $(".reports-footer").removeClass("none")
+          } else {
+                $(".reports").removeClass("reports__decrease-height")
+                $(".reports-footer").addClass("none")
+          }
+          if(item.children[0].childNodes[1].checked) {
+            $(item).addClass("checked")
+          } else if(!item.children[0].childNodes[1].checked){
+            $(item).removeClass("checked")
+          }
       })
-    })
   })
 
-  reportsFooterCount.textContent = `Отмечено 2/${reports.length}`
+  $(".reports-list__title__checkbox").on("click", function (e) {
+    
+      if(e.target.checked) {
+        $(".reports__body__line").each(function(i, item) {
+          item.children[0].childNodes[1].checked = true
+          $(this).addClass("checked")
+          $(".reports").addClass("reports__decrease-height")
+          $(".reports-footer").removeClass("none")
+        })
+      } else {
+          $(".reports__body__line").each(function (i, item) {
+              item.children[0].childNodes[1].checked = false
+              $(this).removeClass("checked")
+              $(".reports").removeClass("reports__decrease-height")
+              $(".reports-footer").addClass("none")
+          })
+      }
+  })
 
-  reportsActions.addEventListener("click", (e) => {
+  $(".sort").on("click", function(e) {
     e.stopPropagation()
-    reportsActions.children[0].classList.toggle("none")
+    $(".sort__block").toggleClass("none")
   })
 
-  function fixDate (date) {
-    if(date === "May") {
-      return "мая"
-    } else if(date === "Jun"){
-      return "июня"
-    } else if(date === "Jul"){
-      return "июля"
-    } else if(date === "Aug"){
-      return "августа"
-    } else if(date === "Sep"){
-      return "сентября"
-    } else if(date === "Oct"){
-      return "октября"
-    } else if(date === "Nov"){
-      return "ноября"
-    } else if(date === "Dec"){
-      return "декабря"
-    } else if(date === "Jan"){
-      return "января"
-    } else if(date === "Feb"){
-      return "февраля"
-    } else if(date === "Mar"){
-      return "марта"
-    } else if(date === "Apr"){
-      return "апреля"
-    }
-  }
+  $(".reports-footer__action").on("click", function(e) {
+    e.stopPropagation()
+    $(".reports-footer__action__sort").toggleClass("none")
+  })
+
 })
+
+
+  // document.addEventListener("DOMContentLoaded", (e) => {
+  //   var reportsBlock = document.querySelector(".reports")
+  //   var reportsBody = document.querySelector(".reports__body")
+  //   var reportsFooter = document.querySelector(".reports-footer")
+  //   var reportsActions = document.querySelector(".reports-footer__action")
+  //   var sortToggle = document.querySelector(".sort__toggle")
+  //   var sortBlock = document.querySelector(".sort__block")
+  //   var sortBlockElement = document.querySelectorAll(".sort__block__element")
+  //   var reportsFooterCount = document.querySelector(".reports-footer__count")
+  //
+
+//   var checkbox = document.querySelectorAll(".reports__body__checkbox")
+//
+//   var firstCheckbox = document.querySelector(".reports-list__title__checkbox")
+//
+//   var checkboxArray = Array.from(checkbox)
+//
+//   firstCheckbox.addEventListener("click", (e) => {
+//       if(firstCheckbox.checked) {
+//         checkboxArray.map(item => {
+//           item.checked = true
+//           reportsFooter.classList.remove("none")
+//           item.parentNode.parentNode.classList.add("checked")
+//           reportsBlock.classList.add("reports__decrease-height")
+//         })
+//       } else {
+//         checkboxArray.map(item => {
+//           item.checked = false
+//           reportsFooter.classList.add("none")
+//           item.parentNode.parentNode.classList.remove("checked")
+//           reportsBlock.classList.remove("reports__decrease-height")
+//         })
+//       }
+//     }
+//   )
+//
+//   sortToggle.addEventListener("click", e => {
+//     e.stopPropagation()
+//     sortBlock.classList.toggle("none")
+//   })
+//
+//   var reportsElements = document.querySelectorAll(".reports__body__line")
+//
+//   var variables = Array.from(sortBlockElement)
+//   var reportElements = Array.from(reportsElements)
+//
+//   checkboxArray.map(item => {
+//     item.addEventListener("click", (e) => {
+//       if(checkboxArray.every(item => item.checked === true)) {
+//         firstCheckbox.checked = true
+//       } else {
+//         firstCheckbox.checked = false
+//         reportsBlock.classList.remove("reports__decrease-height")
+//       }
+//       if(checkboxArray.some(item => item.checked === true)) {
+//         reportsBlock.classList.add("reports__decrease-height")
+//         reportsFooter.classList.remove("none")
+//       } else {
+//         reportsBlock.classList.remove("reports__decrease-height")
+//         reportsFooter.classList.add("none")
+//       }
+//       reportElements.map(item => {
+//         if(item.children[0].children[0].checked) {
+//           item.classList.add("checked")
+//         } else {
+//           item.classList.remove("checked")
+//         }
+//       })
+//     })
+//   })
+//
+//   reportsFooterCount.textContent = `Отмечено 2/${reports.length}`
+//
+//   reportsActions.addEventListener("click", (e) => {
+//     e.stopPropagation()
+//     reportsActions.children[0].classList.toggle("none")
+//   })
+//
+//   function fixDate (date) {
+//     if(date === "May") {
+//       return "май"
+//     } else if(date === "Jun"){
+//       return "июнь"
+//     } else if(date === "Jul"){
+//       return "июль"
+//     } else if(date === "Aug"){
+//       return "август"
+//     } else if(date === "Sep"){
+//       return "сентябрь"
+//     } else if(date === "Oct"){
+//       return "октябрь"
+//     } else if(date === "Nov"){
+//       return "ноябрь"
+//     } else if(date === "Dec"){
+//       return "декабрь"
+//     } else if(date === "Jan"){
+//       return "январь"
+//     } else if(date === "Feb"){
+//       return "февраль"
+//     } else if(date === "Mar"){
+//       return "март"
+//     } else if(date === "Apr"){
+//       return "апрель"
+//     }
+//   }
+// })

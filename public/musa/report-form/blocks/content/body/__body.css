@@ -20,8 +20,8 @@
   align-items: center;
   padding-left: 10px;
   border: 1px solid #535C6940;
-  cursor: default;
   margin-left: 15px;
+  cursor: pointer;
 }
 
 .sort__toggle__month {
@@ -39,8 +39,8 @@
   align-items: center;
   padding-left: 10px;
   border: 1px solid #535C6940;
-  cursor: default;
   margin-left: 12px;
+  cursor: pointer;
 }
 
 .sort__toggle__year {
@@ -101,5 +101,15 @@
 }
 .reports-form__body__icon:not(:first-child) {
   margin-left: 24px;
+}
+
+.sort__block__year, .sort__block__month, .sort__block {
+  -webkit-box-shadow: -1px 3px 29px -5px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: -1px 3px 29px -5px rgba(34, 60, 80, 0.2);
+  box-shadow: -1px 3px 29px -5px rgba(34, 60, 80, 0.2);
+}
+
+.sort {
+  cursor: pointer;
 }
 

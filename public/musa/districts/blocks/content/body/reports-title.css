@@ -51,7 +51,7 @@
   align-items: center;
   padding-left: 10px;
   border: 1px solid #535C6940;
-  cursor: default;
+  cursor: pointer;
 }
 
 .sort__toggle {
@@ -80,6 +80,7 @@
   top: 40px;
   padding: 14px 15px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .sort__block__element {
@@ -101,4 +102,8 @@
 .sort__block__element:hover {
   transition: 0.3s;
   color: #929aa4;
+}
+
+.sort-element {
+  margin-right: 6px;
 }

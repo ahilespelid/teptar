@@ -21,6 +21,7 @@
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  cursor: pointer;
 }
 
 .reports-footer__action img {

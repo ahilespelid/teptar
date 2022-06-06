@@ -2,7 +2,11 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Список отчетов">
+  <meta name="description" content="Форма создания отчета">
+  <script src="../jquery-3.6.0.min.js"></script>
+  <!--[if lte IE 11]>
+        <link rel="stylesheet" href="./assets/css/style-for-ie9.css">
+  <![endif]-->
   <meta name="keywords" content="Список отчетов, Тептар, тептар">
   <link type="text/css" rel="stylesheet" href="./assets/css/style.css">
   <script src="../reusable-blocks/menu/menu.js"></script>
@@ -22,25 +26,28 @@
 </head>
 <body>
 
-      <?php include '../reusable-blocks/menu/menu.php';?>
+    <?php include "../reusable-blocks/districts-menu/menu.php";?>
+
       <div class="content">
+        
           <?php include '../reusable-blocks/header/header.php';?>
+
         <div class="body">
           <div class="body__back-button">
             <a href="#">
-              <img width="16" height="16" src="../assets/img/svg/expand_left_right.svg" alt="&#8249">
+              <span class="icon-expand_left_right body__back__arrow"></span>
               Вернуться
             </a>
             <div class="body__back-button__icons">
               <a href="#">
               <span class="body__back-button__icon">
-                <img width="16" height="16" src="../assets/img/svg/trophy.svg">
+                <span class="icon-trophy"></span>
                 Рейтинг
               </span>
               </a>
               <a href="#">
               <span class="body__back-button__icon">
-                <img width="16" height="16" src="../assets/img/svg/save_light.svg">
+                <span class="icon-save_light"></span>
                 Диск
               </span>
               </a>
@@ -57,7 +64,7 @@
             <div class="sort">
               <span class="sort__toggle">
                 Шаблоны отчетов
-                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down.svg">
+                <span class="icon-arrow_drop_down dropdown-arrow"></span>
               </span>
               <div class="sort__block none">
                 <div class="sort__block__element">Отчет</div>
@@ -69,7 +76,7 @@
               <div class="sort-month">
               <span class="sort__toggle__month">
                 Месяц отчета
-                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down.svg">
+                <span class="icon-arrow_drop_down dropdown-arrow"></span>
               </span>
                 <div class="sort__block__month none">
                   <div class="sort__block__element">Отчет</div>
@@ -78,7 +85,7 @@
               <div class="sort-year">
               <span class="sort__toggle__year">
                 Год отчета
-                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down.svg">
+                <span class="icon-arrow_drop_down dropdown-arrow"></span>
               </span>
                 <div class="sort__block__year none">
                   <div class="sort__block__element">Отчет</div>

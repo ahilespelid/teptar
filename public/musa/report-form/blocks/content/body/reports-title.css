@@ -45,7 +45,6 @@
 
 .sort {
   position: relative;
-  width: 233px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -103,4 +102,10 @@
 .sort__block__element:hover {
   transition: 0.3s;
   color: #929aa4;
+}
+
+.dropdown-arrow {
+  font-size: 8px;
+  margin-right: 10px;
+  color: #535C69;
 }

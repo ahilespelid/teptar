@@ -9,8 +9,7 @@
                 <img src="./assets/img/svg/notifications.svg" alt="vector">
             </div>
             <div class="user__info">
-                <span class="user__info__avatar">
-                </span>
+                <img class="user__info__avatar" src="../../assets/img/avatar.jpg" alt="">
                 <span class="user__info__name">
                   <span>Ибрагим Грозный</span>
                   <span class="user__info__post">Районный сотрудник</span>

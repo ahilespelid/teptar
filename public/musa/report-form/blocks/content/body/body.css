@@ -1,7 +1,6 @@
 .body {
   width: 94%;
   margin: 20px auto;
-  height: 100%;
   color: #535C69;
   border-radius: 3px;
   font-family: "Open Sans Medium";
@@ -25,9 +24,13 @@
   color: #535c69;
 }
 
-.body__back-button img {
-  margin-left: 16px;
+.body__back-button span {
   margin-right: 4px;
+}
+
+.body__back__arrow {
+  margin-right: 12px !important;
+  margin-left: 12px;
 }
 
 .body__back-button__icons {
@@ -35,6 +38,11 @@
   align-items: center;
   margin-right: 25px;
 }
+
+.body__back-button__icons a {
+  margin-right: 10px;
+}
+
 .sort__toggle img{
   fill: #000000;
 }

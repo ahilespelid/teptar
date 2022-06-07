@@ -3,7 +3,8 @@
     "version":"1.0.1",
     "require":{
         "php":">=7.4.0",
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+        "phpoffice/phpspreadsheet": "^1.23"
     },
     "autoload": {
         "files": [

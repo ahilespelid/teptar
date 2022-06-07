@@ -70,15 +70,16 @@ class Route {
         $pathController     = $this->controllerPath;
         $fileController        = $this->controller.'.php';
         $actionController   = $this->action;
-        $queryController    = $this->query;
+        parse_str($this->query, $queryController);
+        //$queryController    = json_encode($this->query);
         $appNameSpace    = __NAMESPACE__;
         
         $file = $pathController.$fileController;
         $class = $appNameSpace.'\\'.$this->conPath.'\\'.$this->controller; 
         /*/ echo $actionController; /*/          
-        if(file_exists($file)){(new $class)->$actionController();}else{die('Файл '.$file.' не найти!');}
+        if(file_exists($file)){(new $class)->$actionController($queryController);}else{die('Файл '.$file.' не найти!');}
         return false;
-        
+/*/        
     echo $fileController;
     echo '<br>';
     echo $actionController;
@@ -95,6 +96,6 @@ class Route {
     \pa(PDO::getAvailableDrivers()); \pa(get_defined_functions()); \pn(); \pn(false);
     if(array_key_exists($this->conPath,\pn()[$appPathController])){include_once($file); echo $this->conPath;}
     if(in_array($class, array_slice(pn(false),0))){}
-    
+/*/    
     }
 }

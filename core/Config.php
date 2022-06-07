@@ -1,4 +1,5 @@
 <?php
+//ini_set('memory_limit', '-1');
 /*/ Режим вывода ошибок /*/
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -43,6 +44,7 @@ $GLOBALS['path']['pub'] = $_SERVER['DOCUMENT_ROOT']._DS_;
 $GLOBALS['path']['app']         = 'app';
 $GLOBALS['path']['cor']          = 'core';
 $GLOBALS['path']['log']          = 'log';
+$GLOBALS['path']['tmp']         = 'tmp';
 $GLOBALS['path']['con']         = 'Controllers';
 $GLOBALS['path']['mod']        = 'Models';
 $GLOBALS['path']['vie']          = 'Views';

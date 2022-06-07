@@ -17,7 +17,7 @@
 
 .header__input input{
   width: 25%;
-  min-width: 25%;
+  min-width: 40%;
   height: 100%;
   max-height: 50px;
   margin-left: 12px;
@@ -71,6 +71,7 @@
 
 .user__info {
   width: 300px;
+  min-width: 190px;
   display: flex;
   align-items: center;
   margin-left: 30px;
@@ -96,12 +97,8 @@
 
 .user__info__avatar {
   border-radius: 100%;
-  image-rendering: crisp-edges;
   border: 2px solid #fff;
-  background-image: url("../../assets/img/avatar.jpg");
-  background-position: center;
-  background-size: 100px;
-  background-repeat: no-repeat;
+  object-fit: cover;
 }
 
 @-moz-document url-prefix() {
@@ -119,3 +116,112 @@
 @media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0) {
   img {image-rendering: -o-crisp-edges;}
 }
+
+@media screen and (max-width: 2732px) {
+
+}
+
+@media screen and (max-width: 2560px) {
+
+}
+
+@media screen and (max-width: 2048px) {
+
+}
+
+@media screen and (min-width: 1920px) {
+
+  header {
+    height: 120px;
+  }
+
+  .header__input {
+    height: 119px;
+  }
+
+  .header__main {
+    padding: 0 0 0 36px;
+  }
+
+  .user__notification img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .user__info {
+    margin-right: 50px;
+    min-width: 280px;
+  }
+
+  .user__info__name {
+    font-size: 18px;
+    width: 170px;
+    line-height: 24.51px;
+  }
+
+  .user__info__post {
+    font-size: 14px;
+    line-height: 19.07px;
+  }
+
+  .user__info__avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+}
+
+@media screen and (max-width: 1600px) {
+
+}
+
+@media screen and (max-width: 1440px) {
+
+}
+
+@media screen and (max-width: 1280px){
+
+}
+
+@media screen and (max-width: 1024px){
+
+  .header__input {
+    height: 60px;
+  }
+
+  .header__main {
+    padding: 0 0 0 36px;
+  }
+
+  .user__notification img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .user__info {
+    margin-right: 50px;
+  }
+
+  .user__info__name {
+    font-size: 14px;
+    width: 140px;
+    line-height: 19.07px;
+  }
+
+  .user__info__post {
+    font-size: 10px;
+    line-height: 13.62px;
+  }
+
+  .user__info__avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .user__info__arrow img {
+    width: 20px;
+    height: 20px;
+  }
+
+}
+

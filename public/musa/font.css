@@ -25,6 +25,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
 .icon-archive_alt:before {
     content: "\e90e";
 }
@@ -78,6 +79,9 @@
 }
 .icon-user:before {
     content: "\e91f";
+}
+.icon-toggle:before {
+    content: "\e920";
 }
 .icon-desk:before {
     content: "\e909";

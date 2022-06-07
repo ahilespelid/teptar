@@ -5,6 +5,7 @@
   <meta name="description" content="Список отчетов">
   <meta name="keywords" content="Список отчетов, Тептар, тептар">
   <link type="text/css" rel="stylesheet" href="./assets/css/style.css">
+  <script src="../jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="./assets/js/script.js"></script>
   <script src="../reusable-blocks/menu/menu.js"></script>
   <script src="../reusable-blocks/menu/__main.js"></script>
@@ -14,18 +15,21 @@
   <script src="../reusable-blocks/header/header.js"></script>
   <script src="../reusable-blocks/header/__main.js"></script>
   <script src="blocks/content/body/reports.js"></script>
+    <script src="blocks/content/content.js"></script>
   <script src="blocks/content/body/reports-title.js"></script>
   <script src="blocks/content/body/reports-list.js"></script>
   <script src="blocks/content/body/body.js"></script>
   <script src="blocks/content/body/__footer.js"></script>
-  <script src="assets/js/script.js"></script>
   <title>Список районов</title>
 </head>
 <body>
 
-      <?php include "../reusable-blocks/menu/menu.php";?>
+      <?php include "../reusable-blocks/districts-menu/menu.php";?>
+
       <div class="content">
+
         <?php include "../reusable-blocks/header/header.php";?>
+
         <div class="body">
           <div class="reports-title">
             <div class="reports-title__my-reports">
@@ -41,12 +45,12 @@
                 <span class="sort__toggle__time">Году</span>
                 <img src="../assets/img/svg/sort.svg">
               </span>
-              <div class="sort__block none">
-                <div class="sort__block__element"><img src="../assets/img/svg/folder_alt.svg">По годам</div>
-                <div class="sort__block__element"><img src="../assets/img/svg/save.svg">По месяцам</div>
-                <div class="sort__block__element"><img src="../assets/img/svg/save.svg">По важности</div>
-                <div class="sort__block__element"><img src="../assets/img/svg/save.svg">По просмотрам</div>
-              </div>
+                <div class="sort__block none">
+                    <div class="sort__block__element"><span class="icon-folder_alt sort-element"></span>По годам</div>
+                    <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По месяцам</div>
+                    <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По важности</div>
+                    <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По просмотрам</div>
+                </div>
             </div>
           </div>
 
@@ -66,23 +70,27 @@
                         Участники
                     </div>
                 </div>
-                <div class="reports-list__body">
+                <div class="reports__body">
+
+                <div class="reports__body__line" style="display: none;">
+                        <div class="reports__body__line__name">
+                            <span>Отчет 2021<span>
+                        </div>
+                        <div class="reports__body__line__activity"></div>
+                        <div class="reports__body__line__term">
+                          <span></span>
+                        </div>
+                        <div class="reports__body__line__assistant">
+                            <div class="name-block">
+                                <img class="reports__body__avatar">
+                                <img class="reports__body__second__avatar">
+                                <span class="reports__body__number"></span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-          </div>
-          <div class="reports-footer none">
-              <div class="reports-footer__action">
-                Выгрузить
-                <div class="reports-footer__action__sort none">
-                  <div class="variables" value="pdf">Выгрузить в PDF</div>
-                  <div class="variables" value="pdf">Выгрузить в Excel</div>
-                </div>
-                <img width="24" height="24" src="../assets/img/svg/arrow_drop_down_black.svg" alt="&#x2193">
-              </div>
-              <div class="reports-footer__submit__button">
-                <button>Применить</button>
-              </div>
-            <div class="reports-footer__count"></div>
           </div>
         </div>
       </div>

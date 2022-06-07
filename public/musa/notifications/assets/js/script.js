@@ -1,136 +1,68 @@
-let menu = document.querySelector(".menu")
-let toggle = document.querySelector(".menu__footer__toggle")
+var menu = document.querySelector(".menu")
+var toggle = document.querySelector(".menu__footer__toggle")
 
-let reports = [
+var districts = [
   {
-    "name": "Грозный",
-    "activity": "2021-12-21",
-    "term": "Дорабатывается",
-    "assistant": [{
-      "name": "Ибрагим Грозный",
-      "avatar": "../assets/img/avatar.jpg"
+    name: "Курчалоевский район",
+    notifications: [
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
       },
       {
-        "name": "Ибрагим Грозный",
-        "avatar": "../assets/img/avatar.jpg"
-      }
-    ],
-    "responsible": {
-      "name": "Грозный Ибрагим",
-      "avatar": "../assets/img/avatar.jpg"
-    }
-  },
-  {
-    "name": "Грозный",
-    "activity": "30 мая 2022, 15:00",
-    "term": "В работе",
-    "assistant": {
-      "name": "Ибрагим Грозный",
-      "avatar": "../assets/img/avatar.jpg"
-    },
-    "responsible": {
-      "name": "Грозный Ибрагим",
-      "avatar": "../assets/img/avatar.jpg"
-    }
-  },
-  {
-    "name": "Грозный",
-    "activity": "2021-12-21",
-    "term": "Успешно",
-    "assistant": {
-      "name": "Ибрагим Грозный",
-      "avatar": "../assets/img/avatar.jpg"
-    },
-    "responsible": {
-      "name": "Грозный Ибрагим",
-      "avatar": "../assets/img/avatar.jpg"
-    }
-  },
-  {
-    "name": "Грозный",
-    "activity": "2021-12-21",
-    "term": "В работе",
-    "assistant": [{
-      "name": "Ибрагим Грозный",
-      "avatar": "../assets/img/avatar.jpg"
-    },
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
       {
-        "name": "Ибрагим Грозный",
-        "avatar": "../assets/img/avatar.jpg"
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
       }
     ],
-    "responsible": {
-      "name": "Грозный Ибрагим",
-      "avatar": "../assets/img/avatar.jpg"
-    }
+    notificationCount:  3
   },
   {
-    "name": "Грозный",
-    "activity": "2021-12-21",
-    "term": "В работе",
-    "assistant": {
-      "name": "Ибрагим Грозный",
-      "avatar": "../assets/img/avatar.jpg"
-    },
-    "responsible": {
-      "name": "Грозный Ибрагим",
-      "avatar": "../assets/img/avatar.jpg"
-    }
+    name: "Гудермесский район",
+    notifications: [
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+    ],
+    notificationCount:  2
   },
   {
-    "name": "Грозный",
-    "activity": "2021-12-21",
-    "term": "В работе",
-    "assistant": {
-      "name": "Ибрагим Грозный",
-      "avatar": "../assets/img/avatar.jpg"
-    },
-    "responsible": {
-      "name": "Грозный Ибрагим",
-      "avatar": "../assets/img/avatar.jpg"
-    }
+    name: "Грозненский район",
+    notifications: [
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      }
+    ],
+    notificationCount:  5
   },
-  {
-    "name": "Грозный",
-    "activity": "2021-12-21",
-    "term": "В работе",
-    "assistant": {
-      "name": "Ибрагим Грозный",
-      "avatar": "../assets/img/avatar.jpg"
-    },
-    "responsible": {
-      "name": "Грозный Ибрагим",
-      "avatar": "../assets/img/avatar.jpg"
-    }
-  },
-  {
-    "name": "Грозный",
-    "activity": "2021-12-21",
-    "term": "В работе",
-    "assistant": {
-      "name": "Ибрагим Грозный",
-      "avatar": "../assets/img/avatar.jpg"
-    },
-    "responsible": {
-      "name": "Грозный Ибрагим",
-      "avatar": "../assets/img/avatar.jpg"
-    }
-  },
-  {
-    "name": "Грозный",
-    "activity": "2021-12-21",
-    "term": "В работе",
-    "assistant": {
-      "name": "Ибрагим Грозный",
-      "avatar": "../assets/img/avatar.jpg"
-    },
-    "responsible": {
-      "name": "Грозный Ибрагим",
-      "avatar": "../assets/img/avatar.jpg"
-    }
-  },
+
 ]
 
-let date = String(new Date())
+var date = String(new Date())
 
 toggle.children[0].addEventListener("click", e => menu.classList.toggle("menu__folded"))

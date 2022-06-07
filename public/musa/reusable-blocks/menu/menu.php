@@ -1,4 +1,4 @@
-<div class="menu">
+<div class="menu" id="menu">
     <div class="menu__main">
         <div class="menu__header">
             <img width="60" height="60" src="./assets/img/svg/logo.svg">
@@ -21,7 +21,7 @@
     <div class="menu__footer">
           <span class="menu__footer__toggle">
             <a href="#">
-              <img src="./assets/img/svg/toggle.svg">
+              <span class="icon-toggle toggle-icon"></span>
               <span class="menu__footer__text">
                 Свернуть панель
               </span>

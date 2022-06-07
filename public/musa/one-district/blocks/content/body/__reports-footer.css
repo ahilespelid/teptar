@@ -21,6 +21,7 @@
   -khtml-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+  cursor: pointer;
 }
 
 .reports-footer__action img {
@@ -77,4 +78,9 @@
   opacity: 0;
   display: none;
   transition: 0.3s;
+}
+
+.dropdown-arrow {
+  font-size: 8px;
+  margin-right: 10px;
 }

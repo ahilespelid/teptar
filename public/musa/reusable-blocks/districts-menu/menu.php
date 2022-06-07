@@ -1,4 +1,4 @@
-<div class="menu">
+<div class="menu" id="menu">
     <div class="menu__main">
         <div class="menu__header">
             <img width="60" height="60" src="./assets/img/svg/logo.svg">
@@ -6,7 +6,7 @@
         </div>
         <nav class="menu__body">
             <div class="menu__body__list">
-                <a href="#" class="active"><span class="icon-archive menu-icon"></span><span>Мои отчеты</span></a>
+                <a href="#" class="active"><span class="icon-archive menu-icon"></span><span>Районы</span></a>
                 <a href="#"><span class="icon-save_light menu-icon"></span><span>Диск</span></a>
                 <a href="#"><span class="icon-archive_alt menu-icon"></span><span>Отчеты</span></a>
             </div>
@@ -21,7 +21,7 @@
     <div class="menu__footer">
           <span class="menu__footer__toggle">
             <a href="#">
-              <img src="./assets/img/svg/toggle.svg">
+              <span class="icon-toggle toggle-icon"></span>
               <span class="menu__footer__text">
                 Свернуть панель
               </span>

@@ -15,6 +15,7 @@ class ExelController{
     }
 /*/ -------------------------------------------------------------- Работа с файлом exel  -------------------------------------------------------------- /*/   
     public function work($q){
+        echo '<style>body{white-space: nowrap;}</style>';
         $inputFileName = $GLOBALS['path']['dev'].$GLOBALS['path']['tmp']._DS_.'itog.xlsx';
         $inputFileType = 'Xlsx';
         
@@ -23,45 +24,37 @@ class ExelController{
 
         $reader->setReadDataOnly(true);
         $worksheetData = $reader->listWorksheetInfo($inputFileName);
-        $i=0; $j = 0;
-        foreach ($worksheetData as $worksheet) {++$i;
-            $sheetName = $worksheet['worksheetName'];
-            if(false !== strpos($sheetName, 'СВ') || 69 == $i || 68 == $i || 67 == $i ){continue;}
+        
+        foreach ($worksheetData as $worksheet) {
+            $sheetName = (string) trim($worksheet['worksheetName']);
+            /*/ if(false !== strpos($sheetName, 'СВ') || 69 == $i || 68 == $i || 67 == $i ){continue;} /*/
+            /*/ echo $sheetName.'<br>';  //array_splice($ar,19);  /*/ 
             
-             
-            //echo $sheetName.'<br>';
             $reader->setLoadSheetsOnly($sheetName); $spreadsheet = $reader->load($inputFileName); $worksheet = $spreadsheet->getActiveSheet();
-
-            $sheetName = (55 == $i ) ? '39.1' : $sheetName;
-            $sheetName = (56 == $i ) ? '39.2' : $sheetName;
-            $sheetName = (57 == $i ) ? '39.3' : $sheetName;
-            $sheetName = (58 == $i ) ? '39.4' : $sheetName;
-            $sheetName = (59 == $i ) ? '39.5' : $sheetName;
-
-            $sheetName = (61 == $i ) ? '40.1' : $sheetName;
-            $sheetName = (62 == $i ) ? '40.2' : $sheetName;
-            $sheetName = (63 == $i ) ? '40.3' : $sheetName;
-            $sheetName = (64 == $i ) ? '40.4' : $sheetName;
-            $sheetName = (65 == $i ) ? '40.5' : $sheetName;
             
-            $data[$sheetName] = array_slice($worksheet->toArray(), 4,19);
+            $ar = $worksheet->toArray();
+            $ar = array_slice($ar,2,17);
             
-            //\pa($worksheet->toArray());
-
-           $j++;
+            $data[$sheetName] = $ar;
         } 
- $sql = " ";       
+        
+/*/     \pa($data);   /*/ 
+ 
+ 
+        
+ $sql = " "; $l = 1;      
  foreach($data as $k => $v){
-     for($l=0; $l < 16; $i++) {
-         $sql .= "INSERT INTO `indexes` (`mark`, `district`, `2017`, `2018`, `2019`, `2020`, `o_sop`, `max_sop`, `min_sop`, `iso_o`, `t_str`, `max_str`, `min_str`, `istr_t`, `index`) ".
- "VALUES ('".$k."', '".$v[$l][0]."', '".$v[$l][1]."',  '".$v[$l][2]."',  '".$v[$l][3]."',   '".$v[$l][4]."',   '".$v[$l][5]."',  '".$v[$l][6]."',  '".$v[$l][7]."',  '".$v[$l][8]."',   '".$v[$l][9]."',   '".$v[$l][10]."',   '".$v[$l][11]."', '".$v[$l][12]."',  '".$v[$l][13]."'); ";
-         }
+     for($i=0, $c = count($v); $i < $c; $i++) {
+         $sql .= $l." INSERT INTO `indexes` (`mark`, `district`, `2017`, `2018`, `2019`, `2020`, `o_sop`, `max_sop`, `min_sop`, `iso_o`, `t_str`, `max_str`, `min_str`, `istr_t`, `index`) ".
+ "VALUES ('".$k."', '".$v[$i][0]."', '".$v[$i][1]."',  '".$v[$i][2]."',  '".$v[$i][3]."',   '".$v[$i][4]."',   '".$v[$i][5]."',  '".$v[$i][6]."',  '".$v[$i][7]."',  '".$v[$i][8]."',   '".$v[$i][9]."',   '".$v[$i][10]."',   '".$v[$i][11]."', '".$v[$i][12]."',  '".$v[$i][13]."');  <br>";
+         $l++;}                     
      }
+     
      echo  $sql;    
-       //\pa($data);
+       //
        
        
-       /*/
+/*/        
         if(!empty($_FILES)){          
             $uploadfile = $uploaddir.basename($_FILES['file']['name']); 
             move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile);

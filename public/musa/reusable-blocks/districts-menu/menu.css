@@ -15,15 +15,17 @@
   min-width: 250px;
   color: #535c69;
   transition: 0.5s;
+  background: none !important;
 }
 
 .menu__main {
  position: fixed;
  height: 100vh;
+ width: 250px;
  min-height: 700px;
  display: flex;
  flex-direction: column;
- width: 250px;
+ transition: 0.5s;
  background-color: #fff;
 }
 
@@ -42,10 +44,14 @@
   min-width: 68px;
 }
 
+.menu__folded .menu__main {
+  width: 68px;
+}
+
 .menu__folded .menu__header img, .user__info__avatar {
   width: 40px;
   height: 40px;
-  margin-left: 4px;
+  /* margin-left: 4px; */
 }
 
 .menu__folded .menu__body__list span, .menu__folded .menu__footer__text {
@@ -121,6 +127,9 @@
   margin-right: 0;
 }
 
+.menu__folded .menu__header {
+  margin-left: 0px;
+}
 
 @media screen and (max-width: 2732px) {
 
@@ -138,7 +147,11 @@
 
   body .menu {
     height: 100vh;
-    width: 420px;
+    width: 400px;
+  }
+
+  body .menu__main {
+    min-width: 350px;
   }
 
   body .menu__body div {
@@ -192,6 +205,7 @@
   body .menu__folded .menu__header img {
     width: 70px;
     height: 70px;
+    margin-left: 8px;
   }
 
   body .menu__folded .menu__body__list a {
@@ -211,8 +225,12 @@
     width: 146px;
   }
 
+  body .menu__folded .menu__main {
+    min-width: 146px;
+  }
+
   body .menu__folded .menu__body__list {
-    padding-left: 46px;
+    padding-left: 48px;
   }
 
   body .menu__folded .active {
@@ -285,10 +303,6 @@
     margin-left: 10px;
   }
 
-  body .menu__folded .menu__header img {
-    margin-left: 0;
-  }
-
   body .menu__header {
     padding: 9px 12px;
     height: 70px;
@@ -313,10 +327,15 @@
   body .menu__folded .menu__header img {
     width: 50px;
     height: 50px;
+    margin-left: -16px;
   }
 
   body .menu__footer {
     padding-left: 30px;
+  }
+
+  body .menu__folded .menu__footer {
+    padding-left: 10px;
   }
 
   body .menu__footer__text {
@@ -324,7 +343,16 @@
   }
 
   body .menu__folded {
-    width: 120px;
+    width: 68px;
+    min-width: 68px;
+  }
+
+  body .menu__folded .menu__main {
+    width: 68px;
+  }
+
+  body .menu__folded .active .menu-icon {
+    margin-left: 8.5px;
   }
 
   body .menu__folded .menu__body {
@@ -332,12 +360,16 @@
     padding-left: 0;
   }
 
+  body .menu__folded .menu__body__list .active {
+    margin-left: 11px !important;
+  }
+
   body .menu__folded .menu__body__list img {
     margin-right: 6px;
   }
 
   body .menu__folded .menu__body__list {
-    padding-left: 25px !important;
+    padding-left: 3px !important;
   }
 
   body .menu__folded .active {
@@ -392,9 +424,9 @@
 
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 630px) {
   body .menu__footer {
-    max-height: 300px;
+    padding-bottom: 200px;
   }
 
   body .menu__footer__toggle a {

@@ -1,8 +1,11 @@
 .menu__footer {
+  display: flex;
+  align-items: flex-end;
   padding-left: 25px;
   vertical-align: bottom;
   flex-grow: 1;
   position: relative;
+  padding-bottom: 100px;
 }
 
 .menu__footer__text {

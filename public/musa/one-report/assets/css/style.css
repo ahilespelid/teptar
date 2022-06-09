@@ -8,7 +8,6 @@
 @import "../../blocks/content/content.css";
 @import "../../blocks/content/body/body.css";
 @import "../../blocks/content/body/reports-title.css";
-@import "../../blocks/content/body/reports-form.css";
 @import "../../blocks/content/body/__body.css";
 @import "../../blocks/content/body/__footer.css";
 @import "../../blocks/content/body/__side-block.css";
@@ -106,6 +105,10 @@ body {
 .user__notification, .user__info__arrow, .sort__block__element, .menu__body__list a,
 .menu__footer__toggle a, .reports-title__my-reports__btn button, .variables, .reports-footer__submit__button button{
   cursor: pointer;
+}
+
+.side-block__body__term-date, .side-block__body__create-date, .side-block__body__final-date {
+  border-bottom: 1px solid;
 }
 
 .none {

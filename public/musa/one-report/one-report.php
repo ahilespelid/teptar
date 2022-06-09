@@ -18,7 +18,6 @@
   <script src="../reusable-blocks/header/__main.js"></script>
   <script src="./blocks/content/body/body.js"></script>
   <script src="./blocks/content/body/reports-title.js"></script>
-  <script src="./blocks/content/body/reports-form.js"></script>
   <script src="./blocks/content/body/__body.js"></script>
   <script src="./blocks/content/body/__footer.js"></script>
   <script src="./blocks/content/body/__side-block.js"></script>

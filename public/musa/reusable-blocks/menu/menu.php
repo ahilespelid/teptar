@@ -6,15 +6,14 @@
         </div>
         <nav class="menu__body">
             <div class="menu__body__list">
-                <a href="#" class="active"><span class="icon-archive menu-icon"></span><span>Мои отчеты</span></a>
-                <a href="#"><span class="icon-save_light menu-icon"></span><span>Диск</span></a>
-                <a href="#"><span class="icon-archive_alt menu-icon"></span><span>Отчеты</span></a>
+                <a href="#" id="my-reports"class="active"><span class="icon-archive menu-icon"></span><span>Мои отчеты</span></a>
+                <a href="#" id="disc"><span class="icon-save_light menu-icon"></span><span>Диск</span></a>
+                <a href="#" id="reports"><span class="icon-notifications menu-icon"></span><span>Уведомления</span></a>
             </div>
             <div class="menu__body__list">
-                <a href="#"><span class="icon-user menu-icon"></span><span>Служба поддержки</span></a>
-                <a href="#"><span class="icon-darhboard_alt menu-icon"></span><span>Контакт-центр</span></a>
-                <a href="#"><span class="icon-setting menu-icon"></span><span>Настройки</span></a>
-                <a href="#"><span class="icon-user menu-icon"></span><span>Профиль</span></a>
+                <a href="#" id=""><span class="icon-setting menu-icon"></span><span>Служба поддержки</span></a>
+                <a href="#" id=""><span class="icon-darhboard_alt menu-icon"></span><span>Контакт-центр</span></a>
+                <a href="#" id=""><span class="icon-user menu-icon"></span><span>Профиль</span></a>
             </div>
         </nav>
         <div class="menu__footer">

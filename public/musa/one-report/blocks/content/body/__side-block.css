@@ -98,11 +98,6 @@
 
 .side-block__body__values {
     margin-left: 10px;
-    text-decoration: underline;
-}
-
-.side-block__body__values:last-child {
-    text-decoration: none;
 }
 
 .side-block__star:not(:last-child) {

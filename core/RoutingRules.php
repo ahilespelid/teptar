@@ -1,6 +1,8 @@
 <?php return   
-[                                                                       /*/ -> /*/
-'index'     => ['controller' => 'MainController', 'action' => 'index'],           /*/ mainController.php Главный контроллер -> экшен index /*/        
-'404'       => ['controller' => 'MainController', 'action' => 'notfound'],        /*/ mainController.php Главный контроллер -> экшен 404 /*/        
-'auth'      => ['controller' => 'UserController', 'action' => 'auth'],            /*/ userController.php Контраллер пользователя -> экшен авторизации /*/      
+[   /*/ -> /*/
+'index'              => ['controller' => 'MainController', 'action' => 'index'],     /*/ mainController.php Главный контроллер -> экшен index /*/        
+'404'                 => ['controller' => 'MainController', 'action' => 'notfound'],     /*/ mainController.php Главный контроллер -> экшен 404 /*/        
+'auth'                => ['controller' => 'UserController', 'action' => 'auth'],    /*/ userController.php Контраллер пользователя -> экшен авторизации /*/      
+'exel'                => ['controller' => 'ExelController', 'action' => 'work'],    /*/  /*/      
+'getMarkData'  => ['controller' => 'AjaxController', 'action' => 'getMarkData'],    /*/  /*/      
 ];

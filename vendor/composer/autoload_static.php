@@ -7,6 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit0d268e49ff493fd42c9369a70b081786
 {
     public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '091bb482e31030af96936a1127ccdf46' => __DIR__ . '/../..' . '/core/Functions/pa.php',
         '632f4deffadac08b8ceb28a5a5e426e1' => __DIR__ . '/../..' . '/core/Functions/pn.php',
         'ad1daf2aa123e565e53965b3bc86a542' => __DIR__ . '/../..' . '/core/Config.php',
@@ -16,6 +18,30 @@ class ComposerStaticInit0d268e49ff493fd42c9369a70b081786
     );
 
     public static $prefixLengthsPsr4 = array (
+        'Z' => 
+        array (
+            'ZipStream\\' => 10,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+        ),
+        'P' => 
+        array (
+            'Psr\\SimpleCache\\' => 16,
+            'Psr\\Http\\Message\\' => 17,
+            'Psr\\Http\\Client\\' => 16,
+            'PhpOffice\\PhpSpreadsheet\\' => 25,
+        ),
+        'M' => 
+        array (
+            'MyCLabs\\Enum\\' => 13,
+            'Matrix\\' => 7,
+        ),
+        'C' => 
+        array (
+            'Complex\\' => 8,
+        ),
         'A' => 
         array (
             'App\\Views\\' => 10,
@@ -25,6 +51,43 @@ class ComposerStaticInit0d268e49ff493fd42c9369a70b081786
     );
 
     public static $prefixDirsPsr4 = array (
+        'ZipStream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+        ),
+        'Psr\\Http\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-client/src',
+        ),
+        'PhpOffice\\PhpSpreadsheet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'MyCLabs\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
+        ),
+        'Matrix\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
+        ),
+        'Complex\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
+        ),
         'App\\Views\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/Views',
@@ -43,6 +106,16 @@ class ComposerStaticInit0d268e49ff493fd42c9369a70b081786
         0 => __DIR__ . '/../..' . '/core',
     );
 
+    public static $prefixesPsr0 = array (
+        'H' => 
+        array (
+            'HTMLPurifier' => 
+            array (
+                0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -53,6 +126,7 @@ class ComposerStaticInit0d268e49ff493fd42c9369a70b081786
             $loader->prefixLengthsPsr4 = ComposerStaticInit0d268e49ff493fd42c9369a70b081786::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit0d268e49ff493fd42c9369a70b081786::$prefixDirsPsr4;
             $loader->fallbackDirsPsr4 = ComposerStaticInit0d268e49ff493fd42c9369a70b081786::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0d268e49ff493fd42c9369a70b081786::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit0d268e49ff493fd42c9369a70b081786::$classMap;
 
         }, null, ClassLoader::class);

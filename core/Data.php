@@ -33,6 +33,16 @@ abstract class Data{
         if(!empty($table)){return $this->pdo->query("SELECT * FROM $table;")->fetchAll();}
         return false;
     }
+
+    public function getWhere($table = '', array $where){/*/ Берёт все значения из таблицы /*/ 
+        $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
+        $where = (is_array($where) && !empty($where)) ? $where : ['id'=>'1'];
+        $k = array_keys($where)[0]; $v = trim($where[$k]);
+        $sql =  "SELECT * FROM `".$table."` WHERE `".$k."`='".$v."';";
+        //echo $sql;
+        if(!empty($table)){return $this->pdo->query($sql)->fetchAll();}
+        return false;
+    }
     
     public function getRandTable($oneOrMony = true){/*/ Берёт случайную таблиц(У|Ы) из схемы  /*/ 
         if($oneOrMony){

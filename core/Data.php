@@ -37,8 +37,14 @@ abstract class Data{
     public function getWhere($table = '', array $where){/*/ Берёт все значения из таблицы /*/ 
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
         $where = (is_array($where) && !empty($where)) ? $where : ['id'=>'1'];
-        $k = array_keys($where)[0]; $v = trim($where[$k]);
-        $sql =  "SELECT * FROM `".$table."` WHERE `".$k."`='".$v."';";
+
+        $whereString = ''; $i = 1;
+        if(!is_array(current($where)) && 1 <= $c = count($where)){
+            foreach($where as $k => $v){
+                $whereString .= "`".$k."`='".$v."'".(($i < $c ) ? ' AND ' : ''); $i++;
+        }}
+        $whereString = ' WHERE '.$whereString;
+        $sql =  "SELECT * FROM `".$table."`".((!empty($whereString)) ? $whereString : '').';';
         //echo $sql;
         if(!empty($table)){return $this->pdo->query($sql)->fetchAll();}
         return false;

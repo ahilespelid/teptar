@@ -12,7 +12,7 @@ class AjaxController{
     public function getMarkData($q){
         header("Content-type: application/json; charset=utf-8");
         $db =  $this->model;
-        $return = $db->getWhere('indexes',$q);
+        $return = $db->getWhere('indexes', $q);
         $json = json_encode($return, JSON_FORCE_OBJECT);
         
         echo $json; exit();

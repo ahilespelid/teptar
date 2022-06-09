@@ -22,6 +22,7 @@
   display: flex;
   align-items: center;
   color: #535c69;
+  margin-left: 12px;
 }
 
 .body__back-button span {
@@ -31,6 +32,7 @@
 .body__back__arrow {
   margin-right: 12px !important;
   margin-left: 12px;
+  font-size: 8px;
 }
 
 .body__back-button__icons {

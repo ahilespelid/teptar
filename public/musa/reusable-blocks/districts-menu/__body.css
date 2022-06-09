@@ -52,8 +52,6 @@
   min-width: 40px;
 }
 
-
-
 .menu__body__list img {
   margin-right: 6px;
 }
@@ -61,7 +59,7 @@
 .menu__body__list a:hover {
   color: #fff;
   background: #535c69;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .menu__folded .menu__body__list a:hover {

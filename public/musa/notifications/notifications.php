@@ -54,16 +54,16 @@
               </div>
             </div>
             <div class="notifications__notices">
-              <div class="notifications__notices__element">
+              <div class="notifications__notices__element" style="display: none;">
                   <img class="notifications__notices__body__img" src="../assets/img/avatar.jpg" alt="">
                   <div class="notifications__notices__text">
-                      <span class="notifications__notices__text__name">Курчалоевский Район</span>
+                      <span class="notifications__notices__text__name">Курчалоевский район</span>
                       <span class="notifications__notices__text__status">Добавлена задача</span>
                   </div>
                   <div class="notifications__notices__element__date">
                       Сегодня 19:04
                       <span class="notifications__notices__delete">
-                          <img src="../assets/img/svg/xmark.svg" alt="x">
+                          <!-- <img src="../assets/img/svg/xmark.svg" alt="x"> -->
                       </span>
                   </div>
               </div>

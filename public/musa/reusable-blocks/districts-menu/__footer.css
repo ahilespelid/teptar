@@ -11,17 +11,11 @@
 }
 
 .menu__footer a {
-  position: absolute;
-  bottom: 50px;
-}
-
-.menu__footer a {
   display: flex;
   align-items: center;
   text-decoration: none;
   color: #535c69;
   transition: 0.1s;
-  padding-top: 50%;
 }
 
 .menu__footer a:hover {
@@ -31,8 +25,4 @@
 .menu__footer img{
   margin-right: 14px;
   margin-left: 1px;
-}
-
-.menu__footer__toggle a {
-  padding-top: 0 !important;
 }

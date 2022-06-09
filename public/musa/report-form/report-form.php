@@ -101,12 +101,6 @@
                   Файл
                 </div>
                 </a>
-                <a href="#">
-                <div class="reports-form__body__icon">
-                  <img src="../assets/img/svg/rename.svg">
-                  Чеклист
-                </div>
-                </a>
               </div>
             </div>
             <div class="reports-form__footer">

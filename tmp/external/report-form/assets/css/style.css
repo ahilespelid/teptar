@@ -1,0 +1,344 @@
+@import "../../../reusable-blocks/menu/menu.css";
+@import "../../../reusable-blocks/menu/__main.css";
+@import "../../../reusable-blocks/menu/__header.css";
+@import "../../../reusable-blocks/menu/__body.css";
+@import "../../../reusable-blocks/menu/__footer.css";
+@import "../../../reusable-blocks/header/header.css";
+@import "../../../reusable-blocks/header/__main.css";
+@import "../../blocks/content/content.css";
+@import "../../blocks/content/body/body.css";
+@import "../../blocks/content/body/reports-title.css";
+@import "../../blocks/content/body/reports-form.css";
+@import "../../blocks/content/body/__body.css";
+@import "../../blocks/content/body/__footer.css";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+Обнуляющие теги
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Open Sans Medium";
+  src: url(../fonts/OpenSans-Medium.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans Regular";
+  src: url(../fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans SemiBold";
+  src: url(../fonts/OpenSans-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans Light";
+  src: url(../fonts/OpenSans-Light.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans Bold";
+  src: url(../fonts/OpenSans-Bold.ttf);
+}
+
+body {
+  background-color: #eef2f4;
+  margin: 0;
+  font-family: "Open Sans Regular";
+  display: flex;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+}
+
+.user__notification, .user__info__arrow, .sort__block__element, .menu__body__list a,
+.menu__footer__toggle a, .reports-title__my-reports__btn button, .variables, .reports-footer__submit__button button{
+  cursor: pointer;
+}
+
+.none {
+  display: none;
+}
+
+.reports-form__footer__first-block__element:first-child {
+  min-width: 415px;
+}
+
+@media screen and (max-width: 2732px) {
+
+}
+
+@media screen and (max-width: 2560px) {
+
+}
+
+@media screen and (max-width: 2048px) {
+
+}
+
+@media screen and (min-width: 1920px) {
+
+  .header__input {
+    height: 119px;
+  }
+
+  .header__main {
+    padding: 0 0 0 36px;
+  }
+
+  .user__notification img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .user__info {
+    margin-right: 50px;
+    width: 350px;
+  }
+
+  .user__info__name {
+    font-size: 18px;
+    width: 170px;
+    line-height: 24.51px;
+  }
+
+  .user__info__post {
+    font-size: 14px;
+    line-height: 19.07px;
+  }
+
+  .user__info__avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .body__back-button {
+    height: 80px;
+    font-size: 18px;
+  }
+
+  .reports-title {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .reports-title__my-reports__text {
+    font-size: 32px;
+  }
+
+  .sort {
+    max-width: 300px;
+    height: 50px;
+  }
+
+  .reports-form {
+    height: 80px;
+  }
+
+  .reports-form__body {
+    font-size: 16px;
+  }
+
+  .reports-form__footer__assistant {
+    font-size: 18px;
+  }
+
+  .first-block__element__worker {
+    height: 60px;
+    width: 338px;
+  }
+
+  .blue-button {
+    height: 50px;
+    width: 165px;
+    font-size: 16px;
+    padding: 14px 6.5px;
+  }
+
+  .reports-form__footer__first-block__element {
+    font-size: 18px;
+  }
+
+  .add-button {
+    height: 50px;
+    width: 200px;
+    font-size: 16px;
+  }
+
+  .reports-form__footer__submit {
+    height: 80px;
+    font-size: 18px;
+  }
+
+  .add-report-btn {
+    width: 190px;
+    height: 50px;
+  }
+
+  .add-report-btn img {
+    margin-right: 2px;
+  }
+
+  .reports-form__footer__save__buttons {
+    font-size: 14px;
+  }
+
+}
+
+@media screen and (max-width: 1600px) {
+
+}
+
+@media screen and (max-width: 1440px) {
+
+}
+
+@media screen and (max-width: 1280px){
+
+}
+
+@media screen and (max-width: 1024px) {
+
+  .header__input {
+    height: 60px;
+  }
+
+  .header__main {
+    padding: 0 0 0 36px;
+  }
+
+  .user__notification img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .user__info {
+    margin-right: 50px;
+  }
+
+  .user__info__name {
+    font-size: 14px;
+    width: 140px;
+    line-height: 19.07px;
+  }
+
+  .user__info__post {
+    font-size: 10px;
+    line-height: 13.62px;
+  }
+
+  .user__info__avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .user__info__arrow img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .reports-form__footer__first-block {
+    font-size: 14px;
+  }
+
+  .sort {
+    width: 191px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .blue-button {
+    font-size: 12px;
+  }
+
+  .sort__block {
+    width: 191px;
+  }
+
+  .add-button {
+    height: 30px;
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+
+  .body__back-button {
+    font-size: 14px;
+  }
+
+  .add-report-btn {
+    width: 129px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .add-report-btn img {
+    margin: 0;
+  }
+
+  .reports-title__my-reports__text {
+    font-size: 18px;
+  }
+
+  .reports-form__footer__first-block__element {
+    height: 60px;
+  }
+
+  .menu__folded .menu__body__list img:not(:first-child) {
+    margin-left: 0;
+  }
+
+  .reports-form__body__textarea {
+    height: 120px;
+  }
+
+}

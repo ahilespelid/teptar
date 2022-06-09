@@ -1,0 +1,134 @@
+.reports {
+  width: 100%;
+  max-height: 70vh;
+  border-radius: 4px;
+  justify-content: space-between;
+  font-size: 14px;
+  overflow-y: scroll;
+}
+
+.reports__decrease-height {
+  height: 65vh;
+}
+
+.reports::-webkit-scrollbar {
+  width: 5px;               /* ширина scrollbar */
+}
+.reports::-webkit-scrollbar-track {
+  background: #eceded;      /* цвет дорожки */
+}
+.reports::-webkit-scrollbar-thumb {
+  background-color: #a4aab0;  /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+}
+
+.reports-list {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 2px;
+  border-color: grey;
+}
+
+.reports-list input[type = "checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.reports-list__title {
+  display: table-row;
+  height: 70px;
+  vertical-align: middle;
+}
+
+.reports-list__title__element {
+  display: table-cell;
+  border: none;
+  vertical-align: middle;
+  padding: 20px 10px 0 0;
+}
+
+.reports-list__title__element:first-child {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 20px 0 0 16px;
+}
+
+.reports__body {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.reports__body__line {
+  display: table-row;
+  margin-top: 16px;
+  transition: 0.3s;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.reports__body__line:hover {
+  background-color: #F6F8F9;
+  transition: 0.1s;
+}
+
+.reports__body__line__name, .reports__body__line__activity, .reports__body__line__term,
+.reports__body__line__assistant, .reports__body__line__responsible
+{
+  height: 70px;
+  display: table-cell;
+  vertical-align: middle;
+  margin-right: 30px;
+}
+
+.reports__body__line__responsible .name-block , .reports__body__line__assistant .name-block {
+  display: flex;
+  align-items: center;
+}
+
+.reports__body__line__name  {
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
+  margin-right: 0;
+}
+
+.reports__body__i {
+  font-size: 11px;
+  margin-right: 6px;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.reports__body__avatar {
+  height: 40px;
+  object-fit: cover;
+  min-width: 30px;
+  max-width: 40px;
+  margin-right: 6px;
+  border-radius: 100%;
+  border: 2px solid #E0E0E0;
+}
+
+.warning {
+  background-color: #FEF0CB;
+  transition: 0.3s;
+}
+
+.expired {
+  background-color: #FECBCB;
+  transition: 0.3s;
+}
+
+.checked {
+  background-color: #EAF9C4;
+  transition: 0.3s;
+}
+
+.finished {
+  background-color: #D8FECB;
+  transition: 0.3s;
+}

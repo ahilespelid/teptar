@@ -1,0 +1,86 @@
+.reports-footer {
+  width: 99.5%;
+  height: 65px;
+  margin-top: 6px;
+  padding: 15px 13px;
+  display: flex;
+  align-items: center;
+}
+
+.reports-footer__action {
+  position: relative;
+  width: 395px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  border: 1px solid #535C6940;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.reports-footer__action img {
+  padding-right: 6.5px;
+}
+
+.variables {
+  font-size: 14px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.variables:hover {
+  transition: 0.3s;
+  background-color: rgb(236, 235, 235);
+}
+
+.reports-footer__action__sort {
+  position: absolute;
+  opacity: 1;
+  z-index: 2;
+  width: 233px;
+  text-align: center;
+  line-height: 30px;
+  right: 5px;
+  left: 0px;
+  top: -160px;
+  transition: 0.3s;
+}
+
+.reports-footer__submit__button button{
+  width: 120px;
+  height: 40px;
+  border: none;
+  background-color: #157DCD;
+  border-radius: 2px;
+  font-size: 17px;
+  color: #fff;
+  font-weight: 400;
+  margin-left: 16px;
+  transition: 0.3s;
+}
+
+.reports-footer__count {
+  width: 100%;
+  text-align: right;
+  font-size: 12px;
+  margin-right: 36px;
+}
+
+.none {
+  opacity: 0;
+  display: none;
+  transition: 0.3s;
+}
+
+.dropdown-arrow {
+  font-size: 8px;
+  margin-right: 10px;
+}

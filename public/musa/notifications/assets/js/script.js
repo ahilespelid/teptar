@@ -1,6 +1,3 @@
-var menu = document.querySelector(".menu")
-var toggle = document.querySelector(".menu__footer__toggle")
-
 var districts = [
   {
     name: "Курчалоевский район",
@@ -10,11 +7,11 @@ var districts = [
         date: "Сегодня, 20:22"
       },
       {
-        status: "Добавлена задача",
+        status: "Удалена задача",
         date: "Сегодня, 20:22"
       },
       {
-        status: "Добавлена задача",
+        status: "Все сделано",
         date: "Сегодня, 20:22"
       }
     ],
@@ -24,7 +21,7 @@ var districts = [
     name: "Гудермесский район",
     notifications: [
       {
-        status: "Добавлена задача",
+        status: "Пример статуса",
         date: "Сегодня, 20:22"
       },
       {
@@ -38,7 +35,7 @@ var districts = [
     name: "Грозненский район",
     notifications: [
       {
-        status: "Добавлена задача",
+        status: "Тестовый статус",
         date: "Сегодня, 20:22"
       },
       {
@@ -56,13 +53,48 @@ var districts = [
       {
         status: "Добавлена задача",
         date: "Сегодня, 20:22"
-      }
+      },
+      {
+        status: "Тестовый статус",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Тестовый статус",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
+      {
+        status: "Добавлена задача",
+        date: "Сегодня, 20:22"
+      },
     ],
     notificationCount:  5
   },
-
 ]
-
-var date = String(new Date())
-
-toggle.children[0].addEventListener("click", e => menu.classList.toggle("menu__folded"))

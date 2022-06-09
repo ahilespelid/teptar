@@ -211,7 +211,71 @@ body {
 
 }
 
-@media screen and (max-width: 1920px) and (min-width: 1280px) {
+@media screen and (min-width: 1920px) {
+
+  .notifications__districts__body__element {
+    height: 80px;
+    font-size: 18px;
+  }
+
+  .notifications__districts__body__img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .notifications__districts__body__district-count {
+    font-size: 12px;
+  }
+
+  .notifications__districts {
+    width: 402px;
+  }
+
+  .notifications__notices__element {
+    height: 90px;
+  }
+
+  .notifications__notices__text {
+    width: 198px;
+    height: 48px;
+  }
+
+  .notifications__notices__text__name {
+    font-size: 18px;
+  }
+
+  .notifications__notices__body__img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .notifications__notices__text__status {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .notifications__notices__element__date {
+    font-size: 14px;
+  }
+
+  .notifications__districts__header {
+    height: 70px;
+    font-size: 24px;
+  }
+
+  .notifications {
+    height: 74vh;
+  }
+
+  .reports-title {
+    margin-top: 36px;
+    margin-bottom: 36px;
+  }
+
+  .reports-title__my-reports__text {
+    font-size: 32px;
+  }
+
   .reports-list__title__body {
     width: 82%;
   }
@@ -243,43 +307,74 @@ body {
   }
 }
 
-/*@media screen and (max-width: 1350px) {*/
-/*  .reports__body__element {*/
-/*    padding-left: 150px;*/
-/*  }*/
+@media screen and (max-width: 1024px) {
 
-/*  .reports-list__title__third-element {*/
-/*    padding-left: 5%;*/
-/*    min-width: 110px;*/
-/*  }*/
+  .content img {
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+  }
+  
+  .notifications__districts__body__element {
+    height: 55px;
+    font-size: 12px;
+  }
 
-/*  .reports-list__title__second-element {*/
-/*    padding-left: 10%;*/
-/*    min-width: 100px;*/
-/*  }*/
-/*}*/
+  .notifications__districts__body__img {
+    width: 40px;
+    height: 40px;
+  }
 
-/*@media screen and (max-width: 1280px) {*/
-/*  .reports__body__element {*/
-/*    padding-left: 100px;*/
-/*  }*/
-/*  .reports-list__title__third-element {*/
-/*    padding-right: 8%;*/
-/*    min-width: 110px;*/
-/*  }*/
+  .notifications__districts__body__district-count {
+    font-size: 10px;
+  }
 
-/*  .reports-list__title__second-element {*/
-/*    padding-left: 0;*/
-/*    min-width: 100px;*/
-/*  }*/
-/*}*/
+  .notifications__districts {
+    width: 250px;
+  }
 
-/*@media screen and (max-width: 1050px) {*/
-/*  .reports-list__title__third-element {*/
-/*    min-width: 110px;*/
-/*  }*/
-/*  .reports-list__title__second-element {*/
-/*    padding-left: 0;*/
-/*    min-width: 100px;*/
-/*  }*/
-/*}*/
+  .notifications__notices__element {
+    height: 60px;
+  }
+
+  .notifications__notices__text {
+    width: 132px;
+    height: 34px;
+  }
+
+  .notifications__notices__text__name {
+    font-size: 12px;
+  }
+
+  .notifications__notices__body__img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .notifications__notices__text__status {
+    font-size: 10px;
+  }
+
+  .notifications__notices__element__date {
+    font-size: 10px;
+  }
+
+  .notifications__districts__header {
+    height: 50px;
+    font-size: 14px;
+  }
+
+  .notifications {
+    height: 74vh;
+  }
+
+  .reports-title {
+    margin-top: 19px;
+    margin-bottom: 15px;
+  }
+
+  .reports-title__my-reports__text {
+    font-size: 18px;
+  }
+
+
+}

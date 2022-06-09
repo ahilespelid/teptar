@@ -1,4 +1,5 @@
 .menu__footer {
+
   padding-left: 25px;
   height: 15%;
   vertical-align: bottom;
@@ -16,7 +17,6 @@
   text-decoration: none;
   color: #535c69;
   transition: 0.1s;
-  padding-top: 50%;
 }
 
 .menu__footer__toggle a:hover {

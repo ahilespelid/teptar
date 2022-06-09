@@ -1,8 +1,8 @@
 .notifications__notices {
     width: 85%;
     margin-left: 6px;
-    margin-top: 52px;
-    height: 87.5%;
+    height: 95.2%;
+    overflow-y: auto;
     border-right: 4px;
     /*background-color: #fff;*/
 }

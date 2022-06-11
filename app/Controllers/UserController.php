@@ -1,4 +1,6 @@
-<?php namespace App\Controllers;
+<?php 
+namespace App\Controllers;
+
 class UserController{
     public      $view, $model;
     protected   $pageData = [];
@@ -8,6 +10,10 @@ class UserController{
         //$this->model = new App\Model;
     }
     public function auth(){
+        
+        
+        
+        
         echo 'Пользователя страница';        
     }    
 }

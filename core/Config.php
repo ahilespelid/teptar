@@ -1,4 +1,4 @@
-<?php
+<?php 
 //ini_set('memory_limit', '-1');
 /*/ Режим вывода ошибок /*/
 ini_set('display_errors', 1);
@@ -16,7 +16,7 @@ function handleUncaughtException($e){
     </h4>
 </center>';  
     
-    $bug = (is_object($GLOBALS['bug']) && $GLOBALS['bug'] instanceof \App\Registr) ? $GLOBALS['bug'] : false;  
+    $bug = (is_object($GLOBALS['bug']) && $GLOBALS['bug'] instanceof \App\Registr) ? $GLOBALS['bug'] : false;
     $bugClassCheck =  (is_object($bug)) ? true : false;
      
     $extMessage = ($bugClassCheck) ? $e->getMessage() : 'Failed to identify the Register object'; 
@@ -28,7 +28,7 @@ function handleUncaughtException($e){
          $bug->setException($e);
      }else{        
         $o = (object)['message' => $extMessage, 'file' => $exFile, 'line' => $exLine];
-        (new \App\Registr)->setException($o)->writeLog(); 
+        (new \App\Registr)->setException($o)->writeLog();
      } 
      echo '<span style="color: #ce4040">' .$exDate. '</span> '.$extMessage.' <b>'.'$exFile'.'</b> <small>(line ' .'$exLine'. ')</small><br>';   
     return false;
@@ -45,6 +45,10 @@ $GLOBALS['path']['app']         = 'app';
 $GLOBALS['path']['cor']          = 'core';
 $GLOBALS['path']['log']          = 'log';
 $GLOBALS['path']['tmp']         = 'tmp';
+$GLOBALS['path']['use']['ex']  = '/tmp/external';
+$GLOBALS['path']['use']['in']  = '/tmp/internal';
+$GLOBALS['path']['out']['ex']  = 'public'._DS_.'tmp'._DS_.'external';
+$GLOBALS['path']['out']['in']  = 'public'._DS_.'tmp'._DS_.'internal';
 $GLOBALS['path']['con']         = 'Controllers';
 $GLOBALS['path']['mod']        = 'Models';
 $GLOBALS['path']['vie']          = 'Views';

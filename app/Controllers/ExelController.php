@@ -15,8 +15,9 @@ class ExelController{
     }
 /*/ -------------------------------------------------------------- Работа с файлом exel  -------------------------------------------------------------- /*/   
     public function work($q){
+        //$get = $this->model->getRandTable();
         echo '<style>body{white-space: nowrap;}</style>';
-        $inputFileName = $GLOBALS['path']['dev'].$GLOBALS['path']['tmp']._DS_.'itog.xlsx';
+        $inputFileName = $GLOBALS['path']['pub'].$GLOBALS['path']['tmp']._DS_.'itog.xlsx';
         $inputFileType = 'Xlsx';
         
         $spreadsheet = new Spreadsheet();

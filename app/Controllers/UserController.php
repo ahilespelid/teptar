@@ -12,10 +12,13 @@ class UserController{
     }
  
       public function login($q){
+          $u = $this->model->getUser();
+
+          pa($u);
           pa($q);
           if(is_array($q) && !empty($q)){extract($q, EXTR_REFS);}
           
-          
+          $this->pageLogin->render($u);
       }
     
      public function isAuth() {

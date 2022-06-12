@@ -13,6 +13,7 @@ class ComposerStaticInit8bfd0a4df6212c197ce741cc27accb6e
         '632f4deffadac08b8ceb28a5a5e426e1' => __DIR__ . '/../..' . '/core/Functions/pn.php',
         'ad1daf2aa123e565e53965b3bc86a542' => __DIR__ . '/../..' . '/core/Config.php',
         '7ee6d0bf90921534438b9231d1be51b7' => __DIR__ . '/../..' . '/core/Data.php',
+        '22153be273936bbc4a3434947ff718d1' => __DIR__ . '/../..' . '/core/View.php',
         '93da09a2cc7688dda67d8076b828bd92' => __DIR__ . '/../..' . '/core/Registr.php',
         'b650c1d675421a0e33cc39d60e6b50cd' => __DIR__ . '/../..' . '/core/Route.php',
     );
@@ -65,8 +66,8 @@ class ComposerStaticInit8bfd0a4df6212c197ce741cc27accb6e
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (

@@ -1,0 +1,16 @@
+.footer {
+    height: 100px;
+    background: #17212B;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.footer-container {
+    display: flex;
+    max-width: 1693px;
+    margin: 0 auto;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+.footer .logotype {
+    width: 240px;
+}

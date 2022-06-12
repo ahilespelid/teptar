@@ -2,20 +2,15 @@
 namespace App\Models;  
 use App;
 
-class PageModel extends \App\Data{
-    public $resID, $resRange;
-
+class UserModel extends \App\Data{
     public function __construct() {
          (object)$this->pdo = $this->connPDO();
     }
     
-    public function getByRange($from, $to){
-        return $this->pdo->query("SELECT * FROM page WHERE id>=$from AND id<=$to");
-  
-  
+    public function getUser($login, $pass){
+        $user = $this->getWhere('users',['login'=>$login, 'pass'=>$pass]);
+        return ((is_array($user) && !empty($user)) ? $user : false);
     }
     
-    public function __destruct() {
-        $this->pdo = null;
-   }
+    public function __destruct() {$this->pdo = null;}
 }

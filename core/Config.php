@@ -35,27 +35,37 @@ function handleUncaughtException($e){
 }
 /*/ Цепляем удочку для ошибок глобально /*/ 
 set_exception_handler("handleUncaughtException");
-
+/*/ База данных /*/
+$GLOBALS['db']['host'] = '194.67.90.250';
+$GLOBALS['db']['base'] = 'teptar';
+$GLOBALS['db']['user'] = 'tepuser';
+$GLOBALS['db']['pass'] = '-Txh9y#j_sJM';
 /*/ Глобальный массив параметров /*/
 define('_DS_',DIRECTORY_SEPARATOR);
-$GLOBALS['path']['dev'] = realpath(dirname(__DIR__)._DS_)._DS_;
-$GLOBALS['path']['pub'] = $_SERVER['DOCUMENT_ROOT']._DS_;
+$path = dirname(__DIR__);
 
-$GLOBALS['path']['app']         = 'app';
-$GLOBALS['path']['cor']          = 'core';
-$GLOBALS['path']['log']          = 'log';
-$GLOBALS['path']['tmp']         = 'tmp';
-$GLOBALS['path']['use']['ex']  = '/tmp/external';
-$GLOBALS['path']['use']['in']  = '/tmp/internal';
-$GLOBALS['path']['out']['ex']  = 'public'._DS_.'tmp'._DS_.'external';
-$GLOBALS['path']['out']['in']  = 'public'._DS_.'tmp'._DS_.'internal';
-$GLOBALS['path']['con']         = 'Controllers';
-$GLOBALS['path']['mod']        = 'Models';
-$GLOBALS['path']['vie']          = 'Views';
+$path =array(
+'dev'       => $path,
+'pub'       =>$_SERVER['DOCUMENT_ROOT'],
 
-$GLOBALS['db']['host']           = '194.67.90.250';
-$GLOBALS['db']['base']          = 'teptar';
-$GLOBALS['db']['user']           = 'tepuser';
-$GLOBALS['db']['pass']          = '-Txh9y#j_sJM';
- 
+'app'       => $path._DS_.'app',
+'core'      => $path._DS_.'core',
+'log'        => $path._DS_.'log',
+'temp'     => $path._DS_.'temp',
+
+'use' => ['ex' => '/tmp/external', 'in' => '/tmp/internal'],
+'out' => ['ex' => 'tmp'._DS_.'external', 'in' => 'tmp'._DS_.'internal'],
+);
+
+$GLOBALS['path'] = $path;
+$GLOBALS['path']['controller'] = $GLOBALS['path']['app']._DS_.'Controllers';
+$GLOBALS['path']['model'] = $GLOBALS['path']['app']._DS_.'Models';
+$GLOBALS['path']['view'] = $GLOBALS['path']['app']._DS_.'Views';
+
+$GLOBALS['path']['layout'] = $GLOBALS['path']['temp']._DS_.'internal'._DS_;
+
+
+
+
+
 ?>

@@ -11,7 +11,7 @@
 
 .notifications__districts__header {
     width: 100%;
-    height: 50px;
+    height: 7%;
     display: flex;
     align-items: center;
     color: white;
@@ -22,7 +22,7 @@
 }
 
 .notifications__districts__body {
-    height: 88%;
+    height: 93%;
     width: 100%;
     overflow-y: scroll;
     background-color: #fff;

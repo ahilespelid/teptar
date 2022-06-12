@@ -12,6 +12,7 @@
             "core/Functions/pn.php",
             "core/Config.php", 
             "core/Data.php",
+            "core/View.php",
             "core/Registr.php",
             "core/Route.php"     
         ],                                         

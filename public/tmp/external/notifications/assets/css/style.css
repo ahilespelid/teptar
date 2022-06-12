@@ -64,27 +64,27 @@ table {
 
 @font-face {
   font-family: "Open Sans Medium";
-  src: url(../fonts/OpenSans-Medium.ttf);
+  src: url(../../../assets/fonts/OpenSans-Medium.ttf);
 }
 
 @font-face {
   font-family: "Open Sans Regular";
-  src: url(../fonts/OpenSans-Regular.ttf);
+  src: url(../../../assets/fonts/OpenSans-Regular.ttf);
 }
 
 @font-face {
   font-family: "Open Sans SemiBold";
-  src: url(../fonts/OpenSans-SemiBold.ttf);
+  src: url(../../../assets/fonts/OpenSans-SemiBold.ttf);
 }
 
 @font-face {
   font-family: "Open Sans Light";
-  src: url(../fonts/OpenSans-Light.ttf);
+  src: url(../../../assets/fonts/OpenSans-Light.ttf);
 }
 
 @font-face {
   font-family: "Open Sans Bold";
-  src: url(../fonts/OpenSans-Bold.ttf);
+  src: url(../../../assets/fonts/OpenSans-Bold.ttf);
 }
 
 body {
@@ -259,12 +259,16 @@ body {
   }
 
   .notifications__districts__header {
-    height: 70px;
+    height: 10%;
     font-size: 24px;
   }
 
+  .notifications__districts__body {
+    height: 90%;
+  }
+
   .notifications {
-    height: 74vh;
+    height: 71h;
   }
 
   .reports-title {
@@ -280,31 +284,6 @@ body {
     width: 82%;
   }
 
-  .reports-list__title__third-element {
-    padding-right: 5%;
-    min-width: 110px;
-  }
-
-  .reports-list__title__second-element {
-    padding-right: 3%;
-    min-width: 100px;
-  }
-}
-
-@media screen and (max-width: 1550px) {
-  .reports__body__element {
-    padding-left: 180px;
-  }
-
-  .reports-list__title__third-element {
-    padding-left: 5%;
-    min-width: 110px;
-  }
-
-  .reports-list__title__second-element {
-    padding-left: 3%;
-    min-width: 100px;
-  }
 }
 
 @media screen and (max-width: 1024px) {

@@ -1,22 +1,33 @@
-<?php
-http_response_code(404);
-?>
-<style type="text/css">
-body{background: #000;}
-h1{color: #fff; width: 100%; text-align:center; font-size: 250px; margin: 0;} 
-.vid{
-    margin: 0 auto; width: 360px;
-}
-/*
-video::-webkit-media-controls {
-  display:none !important;
-}
-*/
-</style>
-<h1>404</h1>
-<div class="vid">
-<!--video controls="controls" width="360" height="640" autoplay="autoplay" loop="loop">
-  <source src="/404.mp4" type='video/mp4' />
-<video-->
-<iframe src="//player.vimple.ru/iframe/682f85cb893d4a88b17c885a12a3846a?autoplay=1&loop=1" width="360" height="640" frameborder="0" style="z-index:2147483647;" allowfullscreen></iframe>
-</div>
+<?php $path = __DIR__._DS_.$GLOBALS['path']['out']['in']._DS_; include $path.'base'._DS_.'head.php'; ?>
+<body>
+
+    <?php include $path.'blocks'._DS_.'navbar'._DS_.'navbar.php' ?>
+
+        <div class="container">
+
+            <div class="main">
+
+                <div class="error-block">
+                    <div class="error-block-content">
+                        <div class="error-block-info">
+                            <h3>Страница не найдена</h3>
+
+                            <span>
+                                Страницу которую вы искали не существует, пожалуйста выберите другую либо вернитесь на главную.
+                            </span>
+
+                            <a class="button button-success-border block-margin-top" href="/"><i class="icon-expand_left_right"></i> Вернуться на главную</a>
+                        </div>
+                        <div class="error-block-background">404</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    <?php include $path.'blocks'._DS_.'footer'._DS_.'footer.html';?>
+
+</body>
+
+<?php include $path.'base'._DS_.'foot.php' ?>

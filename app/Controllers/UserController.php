@@ -1,19 +1,44 @@
 <?php 
 namespace App\Controllers;
+session_start();
 
 class UserController{
-    public      $view, $model;
-    protected   $pageData = [];
+    public $model, $pageLogin;
+    private $login = '', $pass = ''; 
 
     public function __construct() {
-        //$this->view  = new App\View;
-        //$this->model = new App\Model;
+        $this->pageLogin  = new \App\Views\LoginView;      
+        $this->model = new \App\Models\UserModel;
     }
-    public function auth(){
+ 
+      public function login($q){
+          pa($q);
+          if(is_array($q) && !empty($q)){extract($q, EXTR_REFS);}
+          
+          
+      }
+    
+     public function isAuth() {
+        if (isset($_SESSION["is_auth"])) {return $_SESSION["is_auth"];}
+        return false; 
+    }
+   
+    public function auth($login, $passwors){
+        if ($login == $this->login && $passwors == $this->pass){
+            $_SESSION["is_auth"] = true; $_SESSION["login"] = $login; 
+            return true;
+        }else{
+            $_SESSION["is_auth"] = false;
+            return false; 
+        }
+    }
+    
+    public function getLogin() {
+        return (($this->isAuth()) ?  $_SESSION["login"] : false);
+    }
         
-        
-        
-        
-        echo 'Пользователя страница';        
-    }    
+    public function out() {
+        $_SESSION = array(); 
+        session_destroy(); 
+    }
 }

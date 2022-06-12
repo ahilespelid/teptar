@@ -118,7 +118,6 @@
 }
 
 .menu__header img{
-  min-width: 40px !important;
   width: 40px;
   image-rendering: auto;
 }

@@ -45,16 +45,18 @@ abstract class Data{
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
         $where = (is_array($where) && !empty($where) && !is_array(current($where))) ? $where : ['id'=>'1'];
 
-        $whereString = ''; $i = 1;
+        $whereString = ''; $i = 1; $c = count($where);
         foreach($where as $k => $v){
             $k = $this->pdo->quote($k); $k[0] = $k[strlen($k)-1] = '`';
             $whereString .= $k.'='.$this->pdo->quote($v).(($i < $c ) ? ' AND ' : ''); $i++;
         }$whereString = ' WHERE '.$whereString;
         
-        $sql =  'SELECT * FROM '.$table.$whereString .';';
+        $sql =  'SELECT * FROM '.$table.$whereString .';'; //echo $sql;
         $return = $this->pdo->query($sql);
         
-         return $return->fetchAll();}
+        $return = $return->fetchAll(); 
+        
+         return ((is_array($return) && !empty($return)) ? $return : false);}
     
     public function getRange($from = 1, $to = 10, $table = '', $colum = ''){/*/ Берёт от и до из таблиц(У|Ы)  /*/
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
@@ -68,23 +70,25 @@ abstract class Data{
                 
         return $return->fetchAll();}
 
-    public function getRandTable($oneOrMony = false, $orderRand = false){/*/ Берёт случайную таблиц(У|Ы) из схемы  /*/ 
-            
+    public function getRandTable(bool $oneOrMony = false, bool $orderRand = false){/*/ Берёт случайную таблиц(У|Ы) из схемы  /*/ 
             $sql =  'SELECT `TABLE_NAME` FROM `INFORMATION_SCHEMA`.`TABLES` WHERE `TABLE_SCHEMA`'." = '" . $this->base. "' ORDER BY ".
-                        ((!$orderRand) ? "RAND()" : "`TABLE_ROWS` DESC")." ".((!$oneOrMony) ?  " LIMIT 1;" : ";");
+                        ((!$orderRand) ? 'RAND()' : '`TABLE_ROWS` DESC')." ".((!$oneOrMony) ? ' LIMIT 1;' : ';');
+            $return = $this->pdo->query($sql);
             
-            $table = $this->pdo->query(
-                "SELECT TABLE_NAME  FROM `INFORMATION_SCHEMA`.`TABLES` ". 
-                "WHERE `TABLE_SCHEMA` = '" . $this->base. "' ORDER BY ".(($orderRand) ? "RAND()" : "`TABLE_ROWS` DESC")." ".(($oneOrMony) ?  " LIMIT 1;" : ";"))->fetchAll();   
-        $return = []; array_walk_recursive($table, function($a) use (&$return) { $return[] = $a;});
-        return $return; /*/ return [ 0 => TABLE_NAME], 1 => TABLE_NAME, ...] /*/      
+            $table = $return->fetchAll();
+            $return = []; array_walk_recursive($table, function($a) use (&$return) { $return[] = $a;});
+            return $return; /*/ return [ 0 => TABLE_NAME], 1 => TABLE_NAME, ...] /*/      
     }
     
     public function getColumnTable($table = ''){
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
-        $colum = $this->pdo->query(
-            "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` ".
-            "WHERE `TABLE_SCHEMA`='" . $this->base. "' AND `TABLE_NAME`='" . $table. "';")->fetchAll();
+         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
+        
+         $sql =  'SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='.
+                    "'". $this->base."'".'AND `TABLE_NAME`='. $table. ';';
+         $return = $this->pdo->query($sql);           
+         
+        $colum = $return->fetchAll();
         $return = []; array_walk_recursive($colum, function($a) use (&$return) { $return[] = $a;});
         return $return; /*/ $column [ 0 => TABLE_NAME], 1 => TABLE_NAME, ...] /*/ 
     }   

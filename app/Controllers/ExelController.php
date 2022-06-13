@@ -1,6 +1,6 @@
 <?php 
 namespace App\Controllers ;
-use App\Models;
+use App;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -11,13 +11,13 @@ class ExelController{
 
     public function __construct() {
        //$this->view  = new App\View;
-        $this->model = new \App\Models\PageModel;
+        $this->model = new \App\Models\MainModel;
     }
 /*/ -------------------------------------------------------------- Работа с файлом exel  -------------------------------------------------------------- /*/   
     public function work($q){
         //$get = $this->model->getRandTable();
         echo '<style>body{white-space: nowrap;}</style>';
-        $inputFileName = $GLOBALS['path']['pub'].$GLOBALS['path']['tmp']._DS_.'itog.xlsx';
+        $inputFileName = $GLOBALS['path']['tmp']._DS_.'itog.xlsx';
         $inputFileType = 'Xlsx';
         
         $spreadsheet = new Spreadsheet();

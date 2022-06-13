@@ -3,10 +3,11 @@ namespace App\Controllers ;
 use App\Models;
 
 class AjaxController{
-    public          $model;
+    public          $model, $view;
 
     public function __construct() {
         $this->model = new \App\Models\AjaxModel;
+        $this->view = new \App\Views\InView;
     }
 /*/ -------------------------------------------------------------- Аякс для главной временный -------------------------------------------------------------- /*/   
     public function getMarkData($q){
@@ -15,7 +16,7 @@ class AjaxController{
         $return = $db->getWhere('indexes', $q);
         $json = json_encode($return, JSON_FORCE_OBJECT);
         
-        echo $json; exit();
+        $this->view->render($data[[]], f);
         //pa($return);
         }  
 }

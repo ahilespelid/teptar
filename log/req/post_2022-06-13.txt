@@ -617,4 +617,694 @@ POST array (
   'password' => 'root',
 )GET array (
   'q' => 'login/',
+)POST array (
+  '0x' => 
+  array (
+    0 => 'androxgh0st',
+  ),
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  '0x' => 
+  array (
+    0 => 'androxgh0st',
+  ),
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'username' => 'root',
+  'password' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'user' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'user' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'user' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'user' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'user' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  '0x' => 
+  array (
+    0 => 'androxgh0st',
+  ),
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'data' => 
+  array (
+    'uin' => 'CHR_GRR',
+    'login' => 'admin',
+    'pass' => 'admin',
+  ),
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
 )

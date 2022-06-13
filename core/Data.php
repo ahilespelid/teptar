@@ -27,7 +27,7 @@ abstract class Data{
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
         
         $sql = 'SELECT * FROM '.$table.' WHERE `id`='.$id.';';
-        $return = $this->pdo->query($sql);  /*/ $return->queryString; /*/
+        $return = $this->pdo->query($sql);  //*/ return $return->queryString; //*/
         
         return $return->fetch();}
 
@@ -128,7 +128,7 @@ abstract class Data{
         }
         
         $sql = 'UPDATE '.$table.' SET '.$columns.' WHERE `id` = :id;'; /*/ echo $sql; /*/
-        return ($this->pdo->prepare($sql)->execute($data)) ?$data['id'] : false;
+        return ($this->pdo->prepare($sql)->execute($data)) ? $data['id'] : false;
 
     }
     

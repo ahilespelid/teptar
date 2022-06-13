@@ -39,6 +39,7 @@ set_exception_handler("handleUncaughtException");
 $table =array(
 'users'       => 'users',
 'districts'   => 'districts',
+'roles'   => 'roles',
 
 );
 $GLOBALS['db']['table'] =  $table;
@@ -58,6 +59,7 @@ $path =array(
 'core'      => $path._DS_.'core',
 'log'        => $path._DS_.'log',
 'temp'     => $path._DS_.'temp',
+'tmp'     => $path._DS_.'public'._DS_.'tmp',
 
 'use' => ['ex' => '/tmp/external', 'in' => '/tmp/internal'],
 'out' => ['ex' => 'tmp'._DS_.'external', 'in' => 'tmp'._DS_.'internal'],

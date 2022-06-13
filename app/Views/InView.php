@@ -1,7 +1,7 @@
 <?php
  namespace App\Views ;
  
-class LoginView extends \App\View{
+class InView extends \App\View{
     public $args = [
     'img' => ['Logotype' => '/assets/images/logotype-large.png'],
     
@@ -9,7 +9,7 @@ class LoginView extends \App\View{
     public $layout;
     
     public function __construct() {
-        $this->layout =  $GLOBALS['path']['temp']._DS_.'internal'._DS_.'auth.php';
+        $this->layout =  $GLOBALS['path']['temp']._DS_.'internal'._DS_.'index.php';
     }
 
     public function render(array $vars = [], string $temp=''){/*/ extract($vars, EXTR_REFS); /*/       

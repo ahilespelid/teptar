@@ -1,12 +1,13 @@
-<?php namespace App\Models; use App;
-class MainModel extends App\Model{
-    public $resID, $resRange;
+<?php
+namespace App\Models;  
+use App;
 
-    public function getById($id){
-        return $this->PDO->query("SELECT * FROM page WHERE id=$id");
+class MainModel extends \App\Data{
+    public $table;
+    public function __construct() {
+         (object)$this->pdo = $this->connPDO();
     }
 
-    public function getByRange($from, $to){
-        return $this->PDO->query("SELECT * FROM page WHERE id>=$from AND id<=$to");
-    }
+    public function __destruct() {$this->pdo = null;}
 }
+?>

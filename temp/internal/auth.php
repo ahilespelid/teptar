@@ -24,11 +24,11 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="username" id="inputUsername" class="form-control" placeholder=" Пользователь">
+                                <input type="text" name="login" id="inputUsername" class="form-control" placeholder=" Пользователь">
                             </div>
 
                             <div class="form-group">
-                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder=" Пароль">
+                                <input type="password" name="pass" id="inputPassword" class="form-control" placeholder=" Пароль">
                             </div>
 
                             <button class="btn btn-primary mt-1" type="submit">

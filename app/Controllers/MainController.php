@@ -7,18 +7,16 @@ class MainController{
 
     public function __construct() {
          $this->user = new UserController;
-         $this->pageLogin  = $this->user->pageLogin;
     }
 /*/ -------------------------------------------------------------- Главная страница -------------------------------------------------------------- /*/   
     public function index($q){
-        $u =  $this->user; 
-        $pLogin = $this->pageLogin; 
-        
-        if($u->isAuth()){
-            pa($u);
-            $u->view->render();
+        $user =  $this->user; 
+        pa($user->login());
+        if($user->isAuth()){
+            pa($user);
+            $user->pIndex->render();
         }else{
-            $pLogin->render();        
+            $user->pLogin->render();        
         }
         
  

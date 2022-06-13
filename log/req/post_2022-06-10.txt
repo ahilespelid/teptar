@@ -1,0 +1,49 @@
+POST array (
+  'uin' => 'gytk',
+  'username' => 'admin',
+  'password' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'gytk',
+  'username' => 'admin',
+  'password' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'gytk',
+  'username' => 'admin',
+  'password' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'gytk',
+  'username' => 'admin',
+  'password' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'gytk',
+  'username' => 'admin',
+  'password' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'gytk',
+  'username' => 'admin',
+  'password' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'gytk',
+  'username' => 'admin',
+  'password' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'gytk',
+  'username' => 'admin',
+  'password' => 'admin',
+)GET array (
+  'q' => 'login/',
+)

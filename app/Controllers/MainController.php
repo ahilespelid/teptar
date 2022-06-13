@@ -11,21 +11,18 @@ class MainController{
     }
 /*/ -------------------------------------------------------------- Главная страница -------------------------------------------------------------- /*/   
     public function index($q){
-        $u =  $this->user; $pageLogin = $this->pageLogin; 
+        $u =  $this->user; 
+        $pLogin = $this->pageLogin; 
+        
         if($u->isAuth()){
+            pa($u);
             $u->view->render();
         }else{
-            $args = ['img' => ['Logotype' => '/assets/images/logotype-large.png']];
-            $pageLogin->render($args);           
+            $pLogin->render();        
         }
         
  
- 
- 
-        if(!empty($q['login']) && !empty($q['pass'])){
-            $user = $this->userModel->getUser(trim($q['login']), trim($q['pass']));
-            
-        }
+
         
         //pa($user);
 

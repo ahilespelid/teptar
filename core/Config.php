@@ -36,6 +36,12 @@ function handleUncaughtException($e){
 /*/ Цепляем удочку для ошибок глобально /*/ 
 set_exception_handler("handleUncaughtException");
 /*/ База данных /*/
+$table =array(
+'users'       => 'users',
+'districts'   => 'districts',
+
+);
+$GLOBALS['db']['table'] =  $table;
 $GLOBALS['db']['host'] = '194.67.90.250';
 $GLOBALS['db']['base'] = 'teptar';
 $GLOBALS['db']['user'] = 'tepuser';
@@ -63,9 +69,4 @@ $GLOBALS['path']['model'] = $GLOBALS['path']['app']._DS_.'Models';
 $GLOBALS['path']['view'] = $GLOBALS['path']['app']._DS_.'Views';
 
 $GLOBALS['path']['layout'] = $GLOBALS['path']['temp']._DS_.'internal'._DS_;
-
-
-
-
-
 ?>

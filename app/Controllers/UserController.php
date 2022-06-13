@@ -1,10 +1,12 @@
 <?php 
 namespace App\Controllers;
-session_start();
+session_start([
+    'cookie_lifetime' => 3600,
+]);
 
 class UserController{
     public $model, $pageLogin;
-    private $login = '', $pass = ''; 
+    private $token; 
 
     public function __construct() {
         $this->pageLogin  = new \App\Views\LoginView;      
@@ -12,26 +14,58 @@ class UserController{
     }
  
       public function login($q){
-          $u = $this->model->getUser();
-
-          pa($u);
-          pa($q);
-          if(is_array($q) && !empty($q)){extract($q, EXTR_REFS);}
+           $model = $this->model; 
+           $pLogin = $this->pageLogin;
           
-          $this->pageLogin->render($u);
+          if(is_array($q) && !empty($q)){extract($q, EXTR_REFS);}  /*/ Взяли данные из формы авторизации /*/
+          $username = (!empty($username)) ? trim($username) : '';
+          $password = (!empty($password)) ? trim($password) : '';
+          $uin = (!empty($uin)) ? trim($uin) : '';
+         
+          $u = $model->getUser(['login' => $username]); /*/ Взяли пользователя из базы /*/
+
+           
+           
+          if(!empty($u) && md5($password) == $u['pass']){
+             $hash = (!empty($u['pass']) && !empty($u['hash'])) ? $u['pass'].$u['hash'] : false;
+             $token = ($hash) ? hash('sha3-512', $hash) : false;
+             
+             if($token){
+                 echo $token.'<br>';
+                 echo $model->update($model->table,['id' => $u['id'] ,'token'=>$token]);
+                 
+             }
+             
+             
+             
+              //echo $hash;
+                 
+              
+              //pa($u);
+          }else{
+              $pLogin->render();
+          }
+
+
+          
+          
       }
     
      public function isAuth() {
-        if (isset($_SESSION["is_auth"])) {return $_SESSION["is_auth"];}
+        if (isset($_SESSION["token"])) {return $_SESSION["token"];}
         return false; 
     }
    
-    public function auth($login, $passwors){
+    public function auth($token=''){
+        if(empty($token)){return false;}
+        
+        
+        
         if ($login == $this->login && $passwors == $this->pass){
-            $_SESSION["is_auth"] = true; $_SESSION["login"] = $login; 
+            $_SESSION["token"] = true; $_SESSION["login"] = $login; 
             return true;
         }else{
-            $_SESSION["is_auth"] = false;
+            $_SESSION["token"] = false;
             return false; 
         }
     }

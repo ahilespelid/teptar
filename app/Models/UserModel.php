@@ -3,12 +3,13 @@ namespace App\Models;
 use App;
 
 class UserModel extends \App\Data{
-    public $table, $tableRole, $tableDistrict;
+    public $table, $tableRole, $tableDistrict, $tableUsersBlock;
     public function __construct() {
          (object)$this->pdo = $this->connPDO();
           $this->table = $GLOBALS['db']['table']['users'];
           $this->tableRole = $GLOBALS['db']['table']['roles'];
           $this->tableDistrict = $GLOBALS['db']['table']['districts'];
+          $this->tableUsersBlock = $GLOBALS['db']['table']['usersBlock'];
     }
     
     public function getUser(array $arg = []){        

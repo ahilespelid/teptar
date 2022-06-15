@@ -10,18 +10,20 @@ class MainController{
     }
 /*/ -------------------------------------------------------------- Главная страница -------------------------------------------------------------- /*/   
     public function index($q){
-        $user =  $this->user; 
-        pa($user->login());
-        if($user->isAuth()){
-            pa($user);
-            $user->pIndex->render();
-        }else{
-            $user->pLogin->render();        
-        }
+        $user =  $this->user;
+        ($user->isToken())  ? '' : $user->pLogin->render();
+        (empty($_SESSION['user']))  ? '' : $user->login($_SESSION['user']);
+         $user->pIndex->render();
+        pa($user);
+//        pa($user->login());
+//        if($user->isToken()){
+//            pa($user);
+//            $user->pIndex->render();
+ //       }else{
+ //           $user->pLogin->render();        
+ //       }
         
  
-
-        
         //pa($user);
 
         
@@ -47,7 +49,7 @@ if (isset($_GET["is_exit"])) { //Если нажата кнопка выхода
         //\pa($t);
         //pa($this->model->getId('pages',1));
 
-        if(!empty($q) && 'ex' == key($q)){
+        if(!empty($q) && 'ex' == @key($q)){
             switch ($q['ex']) {
                 case 'districts':
                   include $GLOBALS['path']['pub'].$GLOBALS['path']['out']['ex']._DS_.$q['ex']._DS_.$q['ex'].'.php';

@@ -93,7 +93,7 @@ abstract class Data{
     }   
 /*/ -------------------------------------------------------------- Вставки в базу -------------------------------------------------------------- /*/ 
     public function insert($table = '', $data = []){
-        if(!is_string($table) && empty($table) && !is_array($data) && empty($data) && is_array(current($data))){return false;}
+        if(is_string($table) && !empty($table) && is_array($data) && !empty($data) && !is_array(current($data))){
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
         
         $columns = '';
@@ -105,14 +105,13 @@ abstract class Data{
             $columns     .= $columns ? ', ' : ''; $columns     .= $column;
             $values     .= $values     ? ', ' : ''; $values     .= $value;
         }
-        $sql = 'INSERT INTO '.$table.' ('.$columns.') VALUES ('.$values.');';
-        echo $sql;
-         //$return = $this->pdo->query($sql);
-         //return $return; 
-    }
+        $sql = 'INSERT INTO '.$table.' ('.$columns.') VALUES ('.$values.');'; //*/ echo $sql; //*/ 
+        return ($this->pdo->query($sql)) ? $this->pdo->lastInsertId() : false;
+        
+        }return false;}
     
     public function update($table = '', $data = []){
-        if(!is_string($table) && empty($table) && !is_array($data) && empty($data) && is_array(current($data)) && array_key_exists('id', $data)){return false;}
+        if(is_string($table) && !empty($table) && is_array($data) && !empty($data) && !is_array(current($data)) && !empty($data['id'])){
         $table = trim($table); $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
           
         $columns = '';
@@ -127,10 +126,10 @@ abstract class Data{
             $columns     .= $column.'=:'.$place;
         }
         
-        $sql = 'UPDATE '.$table.' SET '.$columns.' WHERE `id` = :id;'; /*/ echo $sql; /*/
+        $sql = 'UPDATE '.$table.' SET '.$columns.' WHERE `id` = :id;'; //*/ echo $sql; //*/ 
         return ($this->pdo->prepare($sql)->execute($data)) ? $data['id'] : false;
-
-    }
+        
+        }return false;}
     
    public function new_($sql = ''){
        

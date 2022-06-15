@@ -9,7 +9,10 @@ class UserController{
                 $pProfile,
                 $pLogin,
                 $pIndex,
+                $id,
                 $login,
+                $pass,
+                $hash,
                 $district,
                 $role,
                 $email,
@@ -25,120 +28,80 @@ class UserController{
         $this->pLogin = new \App\Views\LoginView;
         $this->pProfile = new \App\Views\ProfileView;
         $this->pIndex = new \App\Views\InView;
-    }
+        
+        
+    } 
     
     public function login($data = []){
-    
+        $is_loginUrl = str_starts_with(((!empty($_REQUEST['q']) && is_string($_REQUEST['q'])) ? mb_strtolower(trim($_REQUEST['q'])) : ''),'login');
          if(is_array($data) && !empty($data) && !is_array(current($data))  
-            && !empty($data['pass'])  && !empty($data['login'])
-            && is_string($data['pass'])  && is_string($data['login'])){
+            && !empty($data['pass'])  && !empty($data['login']) && !empty($data['uin'])
+            && is_string($data['pass'])  && is_string($data['login']) && is_string($data['uin'])){
                 
                 extract($data, EXTR_REFS);  /*/ Взяли данные /*/
 
                 $login = (!empty($login)) ? $login : false;
                 $pass = (!empty($pass)) ? $pass : false;
-                
-                $user = $this->model->getUser(['login' => $login, 'pass' => md5($pass)]);
-                pa($user);
-                if(is_array($user) && !empty($user)){/*/ Взяли пользователя из базы /*/
-          
-                      $this->login              = $login;
-                      $this->hash              = $hash             = (empty($user['hash']))              ? ((!empty($hash))              ? $hash : '')             : $user['hash'];
-                      $this->token             = $token            = (empty($user['token']))            ? ((!empty($token))             ? $token : '')            : $user['token'];
+                $user = (!$is_loginUrl) ? $data : $this->model->getUser(['login' => $login, 'pass' => md5($pass)]); /*/ Взяли пользователя из базы /*/
+                $user['uin'] = (!empty($user['uin'])) ? $user['uin'] : $uin;
+                 
+                if(is_array($user) && !empty($user)){$hashNew = date_timestamp_get(date_create());
+                      $this->id                   = $user['id'];
+                      $this->login              = $user['login'];
+                      $this->pass               = $user['pass'];
+                      $this->hash               = (empty($user['hash']))            ? $hashNew : $user['hash'];
+                      $this->token              = $user['token'] = ($token = $this->createToken(['pass' => $this->pass, 'hash' => $this->hash])) ? $token : $user['token'];
                       
-                      $this->email             = $email            = (empty($user['email']))            ? ((!empty($email))             ? $email : '')            : $user['email'];
-                      $this->phone            = $phone           = (empty($user['phone']))           ? ((!empty($phone))            ? $phone : '')           : $user['phone'];
-                      $this->lastname       = $lastname      = (empty($user['lastname']))      ? ((!empty($lastname))       ? $lastname : '')      : $user['lastname'];
-                      $this->firstname      = $firstname      = (empty($user['firstname']))      ? ((!empty($firstname))      ? $firstname : '')      : $user['firstname'];
-                      $this->secondname = $secondname = (empty($user['secondname'])) ? ((!empty($secondname)) ? $secondname : '') : $user['secondname'];
-                      $this->age                = $age               = (empty($user['age']))                ? ((!empty($age))               ? $age : '')                : $user['age'];
+                      $this->email             = (empty($user['email']))            ? '': $user['email'];
+                      $this->phone            = (empty($user['phone']))           ?  '': $user['phone'];
+                      $this->lastname       = (empty($user['lastname']))      ?  '': $user['lastname'];
+                      $this->firstname       = (empty($user['firstname']))     ?  '': $user['firstname'];
+                      $this->secondname = (empty($user['secondname'])) ? '': $user['secondname'];
+                      $this->age                = (empty($user['age']))                ? '': $user['age'];
                       
-                      $this->district           = $district          = (!empty($user['id_district']))     ? $this->model->getDistrict($user['id_district']) : [];
-                      $this->role                = $role               = (!empty($user['id_role']))          ? $this->model->getRole($user['id_role'])           : [];
-
-            
-                
+                      $this->district           = $user['district'] = (!empty($user['id_district'])) ? $this->model->getDistrict($user['id_district']) : [];
+                      $this->role                = $user['role'] = (!empty($user['id_role'])) ? $this->model->getRole($user['id_role']) : [];
+                      
+                      
+                      if($user['uin'] == $this->district['uin']){
+                      if($this->model->update($this->model->table,['id' => $user['id'] ,'hash'=>$hashNew,'token'=>$this->token])
+                        && $this->model->insert($this->model->tableUsersBlock,['id_user' => $user['id'],'hash'=>$this->hash, 'token'=>$this->token])){
+                            $is_auth = $this->auth($user);
+                            if($is_loginUrl && $is_auth){header('Location: /');}
+                            elseif($is_loginUrl && !$is_auth){$this->pLogin->render();}
+                            elseif(!$is_loginUrl && $is_auth){return $user;}
+                            else{return false;}
+                        }}
                 }
-                
-         }else{$this->pLogin->render();}
-          pa($this);
-         
-         return false;
-        
-        //pa($this);
-       // pa($data);
-        
-         /*
-        $hash
-        $token
-
-        $email 
-        $phone
-        $lastname
-        $firstname
-        $secondname
-        $age
-        */
-        $username = (!empty($username)) ? trim($username) : '';
-        $password = (!empty($password)) ? trim($password) : '';
-        $uin = (!empty($uin)) ? trim($uin) : '';
-
-        //$user = $model->getUser(['login' => $username]); /*/ Взяли пользователя из базы /*/
-
-        if(!empty($user) && md5($password) == $user['pass']){
-            $hash = (!empty($user['pass']) && !empty($user['hash'])) ? $user['pass'].$user['hash'] : false;
-            $token = ($hash) ? hash('sha3-512', $hash) : false;
-
-            if($token != $user['token']){
-                $model->update($model->table,['id' => $user['id'] ,'token'=>$token]);
-
-        }
-
-
+         } 
+         if($is_loginUrl){$this->pLogin->render();}else{
+    return 'be';}}
     
-    }}
-    
-     public function getToken($user){
-        $token = $this->model->getId($this->model->table,$user['id'])['token'];        
-        return (($token) ? $token : false); 
-    }
+     public function createToken($user = []){
+        if(is_array($user) && !empty($user) && !is_array(current((array) $user))  
+            && !empty($user['pass']) && !empty($user['hash'])){        
+             $hash = (!empty($user['pass']) && !empty($user['hash'])) ? $user['pass'].$user['hash'] : false;
+             return $token = ($hash) ? hash('sha3-512', $hash) : false;
+         }
+     return false;}
  
-     public function isAuth() {
-        if (isset($_SESSION["token"])) {return $_SESSION["token"];}
+     public function isToken() {
+        if (!empty($_SESSION["user"]) && !empty($_SESSION["token"])) {return true;}
         return false; 
     }
    
-    public function auth($user = [], $password = ''){
-        if(!is_array($user) && empty($user) && is_array(current($user))  
-            && !empty($user['id']) && !empty($user['pass']) && !empty($user['hash'])
-            && is_string($password) && !empty($password)){return false;}
-        
-       if(md5($password) == $user['pass']){
-         $hash = (!empty($user['pass']) && !empty($user['hash'])) ? $user['pass'].$user['hash'] : false;
-         $token = ($hash) ? hash('sha3-512', $hash) : false;
-         
-         if($token != $user['token']){
-             $this->model->update($this->model->table,['id' => $user['id'] ,'hash'=>date_timestamp_get(date_create()),'token'=>$token]);}
-
-        if(empty($token)){return false;}
-        
-        
-        
-        if ($login == $this->login && $passwors == $this->pass){
-            $_SESSION["token"] = true; $_SESSION["login"] = $login; 
+    public function auth($user = []){       
+       if(is_array($user) && !empty($user) && !is_array(current((array) $user))  
+            && !empty($user['id']) && !empty($user['token'])){
+            $_SESSION['user'] = $user; $_SESSION["token"] = $user['token']; 
             return true;
         }else{
-            $_SESSION["token"] = false;
+            $_SESSION["user"] = $_SESSION["token"] = false;
             return false; 
-        }
-    }}
+        }  
+    }
     
-    public function getLogin() {
-        return (($this->isAuth()) ?  $_SESSION["login"] : false);
-    }
+    public function getLoginUser(){return (($this->isToken()) ?  $_SESSION["user"] : false);}
         
-    public function out() {
-        $_SESSION = array(); 
-        session_destroy(); 
-    }
+    public function out(){$_SESSION = array(); session_destroy();}
 }

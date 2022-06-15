@@ -9,45 +9,12 @@ class MainController{
          $this->user = new UserController;
     }
 /*/ -------------------------------------------------------------- Главная страница -------------------------------------------------------------- /*/   
-    public function index($q){
-        $user =  $this->user;
-        ($user->isToken())  ? '' : $user->pLogin->render();
-        (empty($_SESSION['user']))  ? '' : $user->login($_SESSION['user']);
-         $user->pIndex->render();
-        pa($user);
-//        pa($user->login());
-//        if($user->isToken()){
-//            pa($user);
-//            $user->pIndex->render();
- //       }else{
- //           $user->pLogin->render();        
- //       }
-        
- 
+    public function index($q){$user =  $this->user;
+        if (isset($_GET['in']) && 'logout' == $_GET['in']){$user->out(); $user->pLogin->render(); exit();}
+
+        ($user->isToken()) ? $user->login($user->getLoginUser())->pIndex->render() : $user->pLogin->render();
         //pa($user);
 
-        
-        
- /*/ $auth = new AuthClass();
- 
-if (isset($_POST["login"]) && isset($_POST["password"])) { //Если логин и пароль были отправлены
-    if (!$auth->auth($_POST["login"], $_POST["password"])) { //Если логин и пароль введен не правильно
-        echo "Логин и пароль введен не правильно";
-    }
-}
- /*/ 
-
- 
-if (isset($_GET["is_exit"])) { //Если нажата кнопка выхода
-    if ($_GET["is_exit"] == 1) {
-        $auth->out(); //Выходим
-        header("Location: ?is_exit=0"); //Редирект после выхода
-    }
-}
-        
-        //$t = $this->model->getRange(1,3, 'indexes', 'district');
-        //\pa($t);
-        //pa($this->model->getId('pages',1));
 
         if(!empty($q) && 'ex' == @key($q)){
             switch ($q['ex']) {
@@ -94,15 +61,7 @@ if (isset($_GET["is_exit"])) { //Если нажата кнопка выхода
                   break;
               } exit();           
         }
-                                                              
-                       
-      /*/  
-       \pa($this->model->getId('pages',1));
-       \pa($this->model->getId('pages',2));
-       \pa($this->model->getId('pages',3));
-       \pa($this->model->getId('pages',4));
-       \pa($this->model->getAll());
-       /*/       
+    
     }
  /*/ -------------------------------------------------------------- 404 страница -------------------------------------------------------------- /*/     
     public function notfound(){

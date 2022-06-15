@@ -4,7 +4,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-    
+$GLOBALS['lifeToken'] = (60*60)*1;    
 /*/ --------------------------------------------------------------База данных --------------------------------------------------------------/*/
 $table =array(
 'users'       => 'users',
@@ -13,7 +13,7 @@ $table =array(
 'usersBlock'   => 'usersBlock',
 
 );
-$GLOBALS['db']['table'] =  $table;
+$GLOBALS['table'] =  $table;
 $GLOBALS['db']['host'] = '194.67.90.250';
 $GLOBALS['db']['base'] = 'teptar';
 $GLOBALS['db']['user'] = 'tepuser';

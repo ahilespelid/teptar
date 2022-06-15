@@ -7,14 +7,15 @@ define('dbUser',  $GLOBALS['db']['user']);
 define('dbPass',  $GLOBALS['db']['pass']);
 
 abstract class Data{
-    public $host = dbHost, $base = dbBase, $user = dbUser, $pass = dbPass, $pdo;
+    public $pdo;
 
-    function __construct(){
-        
-    }
-
+    public function __construct(){}
     public function connPDO(){
-        $pdo = new \PDO("mysql:dbname=" . $this->base . ";host=" . $this->host . "", $this->user, $this->pass, array(PDO::ATTR_PERSISTENT => true));
+        $pdo = new \PDO("mysql:dbname=" .$GLOBALS['db']['base'] . ";host=".
+                                                                     $GLOBALS['db']['host'], 
+                                                                     $GLOBALS['db']['user'], 
+                                                                     $GLOBALS['db']['pass'], array(PDO::ATTR_PERSISTENT => true));
+                                                                    
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

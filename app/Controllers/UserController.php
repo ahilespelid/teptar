@@ -1,7 +1,7 @@
 <?php 
 namespace App\Controllers;
 session_start([
-    'cookie_lifetime' => 3600,
+    'cookie_lifetime' => ($GLOBALS['lifeToken'] > 60) ? $GLOBALS['lifeToken'] : 60,
 ]);
 
 class UserController{
@@ -28,8 +28,6 @@ class UserController{
         $this->pLogin = new \App\Views\LoginView;
         $this->pProfile = new \App\Views\ProfileView;
         $this->pIndex = new \App\Views\InView;
-        
-        
     } 
     
     public function login($data = []){
@@ -69,13 +67,13 @@ class UserController{
                             $is_auth = $this->auth($user);
                             if($is_loginUrl && $is_auth){header('Location: /');}
                             elseif($is_loginUrl && !$is_auth){$this->pLogin->render();}
-                            elseif(!$is_loginUrl && $is_auth){return $user;}
+                            elseif(!$is_loginUrl && $is_auth){return $this;}
                             else{return false;}
                         }}
                 }
          } 
          if($is_loginUrl){$this->pLogin->render();}else{
-    return 'be';}}
+    return false;}}
     
      public function createToken($user = []){
         if(is_array($user) && !empty($user) && !is_array(current((array) $user))  
@@ -86,22 +84,24 @@ class UserController{
      return false;}
  
      public function isToken() {
-        if (!empty($_SESSION["user"]) && !empty($_SESSION["token"])) {return true;}
+        if (!empty($_SESSION['user']) && !empty($_SESSION['token'])) {return true;}
         return false; 
     }
    
     public function auth($user = []){       
        if(is_array($user) && !empty($user) && !is_array(current((array) $user))  
             && !empty($user['id']) && !empty($user['token'])){
-            $_SESSION['user'] = $user; $_SESSION["token"] = $user['token']; 
+            $_SESSION['user'] = $user; $_SESSION['token'] = $user['token']; 
             return true;
         }else{
-            $_SESSION["user"] = $_SESSION["token"] = false;
+            $_SESSION['user'] = $_SESSION['token'] = false;
             return false; 
         }  
     }
     
-    public function getLoginUser(){return (($this->isToken()) ?  $_SESSION["user"] : false);}
+    public function getToken(){return (($this->isToken()) ?  $_SESSION['token'] : false);}
+    
+    public function getLoginUser(){return (($this->isToken()) ?  $_SESSION['user'] : false);}
         
-    public function out(){$_SESSION = array(); session_destroy();}
+    public function out(){$_SESSION = array(); session_destroy(); header('Location: /');}
 }

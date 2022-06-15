@@ -56,4 +56,64 @@ POST array (
   'pass' => 'admin',
 )GET array (
   'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'root',
+  'pass' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'root',
+  'pass' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRR',
+  'login' => 'root',
+  'pass' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'gytk',
+  'login' => '',
+  'pass' => '',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => '',
+  'login' => 'root',
+  'pass' => 'root',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => '',
+  'login' => '',
+  'pass' => '',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'root',
+  'pass' => 'root',
+)GET array (
+  'q' => 'login/',
 )

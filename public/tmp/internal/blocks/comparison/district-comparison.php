@@ -27,29 +27,41 @@ function includeBlock($filePath, $variables = array(), $print = true)
 
 <?php
 
+$districts = [
+    'Грозный' => 'Grozny',
+    'Гудермесский' => 'Gudermessky',
+    'Надтеречный' => 'Nadterechny',
+    'Итум-Калинский' => 'ItumKalinsky',
+    'Сунженский' => 'Sernovodsky',
+    'Шатойский' => 'Shatoysky',
+    'Урус-Мартановский' => 'UrusMartanovsky',
+    'Грозненский' => 'Groznensky',
+    'Наурский' => 'Naursky',
+    'Ачхой-Мартановский' => 'AchkhoyMartanovsky',
+    'Шалинский' => 'Shalinsky',
+    'Шелковской' => 'Shelkovskoy',
+    'Веденский' => 'Vedensky',
+    'Аргун' => 'Argun',
+    'Ножай-Юртовский' => 'NozhayYurtovsky',
+    'Шаройский' => 'Sharoysky',
+    'Курчалоевский' => 'Kurchaloevsky',
+];
+
 function translate($district) {
 
-    $districts = [
-        'Грозный' => 'Grozny',
-        'Гудермесский' => 'Gudermessky',
-        'Надтеречный' => 'Nadterechny',
-        'Итум-Калинский' => 'ItumKalinsky',
-        'Сунженский' => 'Sernovodsky',
-        'Шатойский' => 'Shatoysky',
-        'Урус-Мартановский' => 'UrusMartanovsky',
-        'Грозненский' => 'Groznensky',
-        'Наурский' => 'Naursky',
-        'Ачхой-Мартановский' => 'AchkhoyMartanovsky',
-        'Шалинский' => 'Shalinsky',
-        'Шелковской' => 'Shelkovskoy',
-        'Веденский' => 'Vedensky',
-        'Аргун' => 'Argun',
-        'Ножай-Юртовский' => 'NozhayYurtovsky',
-        'Шаройский' => 'Sharoysky',
-        'Курчалоевский' => 'Kurchaloevsky',
-    ];
+    return $GLOBALS['districts'][$district];
+}
 
-    return $districts[$district];
+function getCyrillicDistrict($value) {
+    $result = '';
+
+    foreach ($GLOBALS['districts'] as $cyrillic => $latin) {
+        if ($latin === $value) {
+            $result = $cyrillic;
+        }
+    }
+
+    return $result;
 }
 
 ?>
@@ -59,11 +71,11 @@ function translate($district) {
     <div class="block-box block-title-box break-title-dropdown">
         <h3>Сравнение показателей по Региону</h3>
 
-        <div class="dropdown">
-            <div class="current"><span class="title">Сравнение:</span> за предыдущий год</div>
+        <div class="dropdown interactive rounded right dark chevron">
+            <div class="current button button-dropdown rounded"><span class="title">Сравнение:</span> за предыдущий год</div>
 
             <div class="options">
-                <span class="option">за предыдущий год</span>
+                <a class="option">за предыдущий год</a>
             </div>
         </div>
     </div>
@@ -87,21 +99,21 @@ function translate($district) {
         }
         ?>
 
-            <div class="collapsible<?=$type;?>">
+            <div class="collapse-indicator<?=$type;?>">
 
-                <div class="collapsible-button block-background">
+                <div class="collapse-indicator-button block-background">
                     <?=$indicator['num'];?>. <?=$indicator['name'];?>
                     <div class="chevron">
                         <i class="icon-chevron-down"></i>
                     </div>
                 </div>
 
-                <div class="collapsible-content">
+                <div class="collapse-indicator-content">
                     <div class="line-diagram-block">
 
                         <?php includeBlock($base . '/blocks/rating/district-rating.php', [
                                 'title' => 'Показатель ' . $indicator['num'],
-                                'mark_id' => $indicator['id']
+                                'mark_id' => $indicator['id'],
                         ]) ?>
 
                         <div class="block-box block-title-box sub-block-margin-top">
@@ -111,17 +123,18 @@ function translate($district) {
                         <div class="block-box sub-block-margin-top sub-block-margin-bottom block-padding">
                             <canvas id="DistrictLineChart<?=$indicator['id'];?>" style="max-height: 500px"></canvas>
 
+                            <?php
+                                $currentDistrictRating = $Connect->getRow('SELECT `index` FROM `indexes` WHERE mark=' . $indicator['id'] . ' AND district="'. getCyrillicDistrict($_GET['district']) .'"');
+                                $districtRating = number_format((float)$currentDistrictRating['index'], 3, '.', '');
+                            ?>
+
                             <script>
                                 let ctx<?=$indicator['id'];?> = document.getElementById('DistrictLineChart' + <?=$indicator['id'];?>).getContext('2d');
 
                                 const DATA_COUNT<?=$indicator['id'];?> = 9;
-                                const labels<?=$indicator['id'];?> = [];
+                                const labels<?=$indicator['id'];?> = [2019, 2020];
 
-                                for (let i = 0; i < DATA_COUNT<?=$indicator['id'];?>; ++i) {
-                                    labels<?=$indicator['id'];?>.push(2014 + i);
-                                }
-
-                                const dataPoints<?=$indicator['id'];?> = [0.817, 0.854, 0.881, 0.892, 0.879, 0.882, 0.893, 0.899, 0.915];
+                                const dataPoints<?=$indicator['id'];?> = [<?= $districtRating ?>, <?= $districtRating ?>];
 
                                 let gradient<?=$indicator['id'];?> = ctx<?=$indicator['id'];?>.createLinearGradient(0, 0, 0, 800);
                                 gradient<?=$indicator['id'];?>.addColorStop(0, 'rgba(238, 67, 67,0.1)');
@@ -167,7 +180,7 @@ function translate($district) {
                                                     color: '#fff'
                                                 },
                                                 display: true,
-                                                suggestedMin: 0.700,
+                                                suggestedMin: 0.200,
                                                 suggestedMax: 0.900,
                                                 grid: {
                                                     color: 'rgba(255,255,255,0.1)',

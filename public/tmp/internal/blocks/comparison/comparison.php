@@ -1,5 +1,5 @@
 <?php
-require_once dirname(dirname(__DIR__))._DS_.'config/Db.php';
+require_once 'config/Db.php';
 $Connect = new Db;
 ?>
 
@@ -8,11 +8,11 @@ $Connect = new Db;
     <div class="block-box block-title-box break-title-dropdown">
         <h3>Сравнение показателей по Региону</h3>
 
-        <div class="dropdown">
-            <div class="current"><span class="title">Сравнение:</span> за предыдущий год</div>
+        <div class="dropdown interactive rounded right dark chevron">
+            <div class="current button button-dropdown rounded"><span class="title">Сравнение:</span> за предыдущий год</div>
 
             <div class="options">
-                <span class="option">за предыдущий год</span>
+                <a class="option">за предыдущий год</a>
             </div>
         </div>
     </div>
@@ -41,10 +41,10 @@ $Connect = new Db;
 
             ?>
 
-            <div class="collapsible<?=$type;?>">
-                <div class="collapsible-button block-background"><?=$indicator['num'];?>. <?=$indicator['name'];?> <div class="chevron"><i class="icon-chevron-down"></i></div></div>
+            <div class="collapse-indicator<?=$type;?>">
+                <div class="collapse-indicator-button block-background"><?=$indicator['num'];?>. <?=$indicator['name'];?></div>
                 <?php if ($indicator['type'] != 'description') { ?>
-                    <div class="collapsible-content">
+                    <div class="collapse-indicator-content">
 
                         <div class="districts-score">
                             <div class="block-box block-title-box">
@@ -71,7 +71,7 @@ $Connect = new Db;
                                                 <tr>
                                                     <td><?= $index['district'] ?></td>
                                                     <td>
-                                                        <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar3.jpeg')"></div>
+                                                        <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
                                                         Хасан Шали
                                                     </td>
                                                     <td>
@@ -125,7 +125,7 @@ $Connect = new Db;
                     <tr>
                         <td>Надтеречный</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar3.jpeg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
                             Хасан Шали
                         </td>
                         <td>
@@ -138,7 +138,7 @@ $Connect = new Db;
                     <tr>
                         <td>Аргун</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar2.jpeg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar2.jpeg')"></div>
                             Усман Аргун
                         </td>
                         <td>
@@ -151,7 +151,7 @@ $Connect = new Db;
                     <tr>
                         <td>Грозный</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar.jpg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar.jpg')"></div>
                             Ибрагим Грозный
                         </td>
                         <td>
@@ -164,7 +164,7 @@ $Connect = new Db;
                     <tr>
                         <td>Серноводский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar3.jpeg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
                             Хасан Шали
                         </td>
                         <td>
@@ -177,7 +177,7 @@ $Connect = new Db;
                     <tr>
                         <td>Итум-Калинский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar2.jpeg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar2.jpeg')"></div>
                             Усман Аргун
                         </td>
                         <td>
@@ -190,7 +190,7 @@ $Connect = new Db;
                     <tr>
                         <td>Гудермесский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar2.jpeg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar2.jpeg')"></div>
                             Усман Аргун
                         </td>
                         <td>
@@ -203,7 +203,7 @@ $Connect = new Db;
                     <tr>
                         <td>Грозненский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar2.jpeg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar2.jpeg')"></div>
                             Усман Аргун
                         </td>
                         <td>
@@ -216,7 +216,7 @@ $Connect = new Db;
                     <tr>
                         <td>Шалинский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar3.jpeg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
                             Хасан Шали
                         </td>
                         <td>
@@ -229,7 +229,7 @@ $Connect = new Db;
                     <tr>
                         <td>Урус-Мартановский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar5.jpg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar5.jpg')"></div>
                             Керим Гудермес
                         </td>
                         <td>
@@ -242,7 +242,7 @@ $Connect = new Db;
                     <tr>
                         <td>Наурский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar5.jpg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar5.jpg')"></div>
                             Керим Гудермес
                         </td>
                         <td>
@@ -255,7 +255,7 @@ $Connect = new Db;
                     <tr>
                         <td>Шатойский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar.jpg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar.jpg')"></div>
                             Ибрагим Грозный
                         </td>
                         <td>
@@ -268,7 +268,7 @@ $Connect = new Db;
                     <tr>
                         <td>Шаройский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar3.jpeg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
                             Хасан Шали
                         </td>
                         <td>
@@ -281,7 +281,7 @@ $Connect = new Db;
                     <tr>
                         <td>Веденский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar4.jpg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar4.jpg')"></div>
                             Ахмед Шатой
                         </td>
                         <td>
@@ -294,7 +294,7 @@ $Connect = new Db;
                     <tr>
                         <td>Шелковской</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar.jpg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar.jpg')"></div>
                             Ибрагим Грозный
                         </td>
                         <td>
@@ -307,7 +307,7 @@ $Connect = new Db;
                     <tr>
                         <td>Ножай-Юртовский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar5.jpg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar5.jpg')"></div>
                             Керим Гудермес
                         </td>
                         <td>
@@ -320,7 +320,7 @@ $Connect = new Db;
                     <tr>
                         <td>Ачхой-Мартановский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar4.jpg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar4.jpg')"></div>
                             Ахмед Шатой
                         </td>
                         <td>
@@ -333,7 +333,7 @@ $Connect = new Db;
                     <tr>
                         <td>Курчалоевский</td>
                         <td>
-                            <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar4.jpg')"></div>
+                            <div class="table-avatar" style="background-image: url('/assets/images/avatar4.jpg')"></div>
                             Ахмед Шатой
                         </td>
                         <td>

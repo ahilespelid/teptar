@@ -6,7 +6,6 @@
 @import "activity/activity.css";
 @import "districts/districts.css";
 @import "footer/footer.css";
-@import "dropdown/dropdown.css";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&family=Open+Sans:wght@400;500;600;700;800&display=swap');
 
 /* Global */
@@ -74,14 +73,26 @@ h3 {
     }
 }
 
+/* Responsive */
+
+.only-mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 576px) {
+    .only-mobile {
+        display: unset;
+    }
+}
+
 /* Logotype */
 
 .main-logotype {
     box-sizing: border-box;
     align-items: center;
-    max-width: 260px;
-    min-width: 260px;
-    padding: 0 24px;
+    max-width: 280px;
+    min-width: 280px;
+    padding: 0 26px;
     display: flex;
     height: 100px;
 }
@@ -96,9 +107,9 @@ h3 {
 }
 
 .main-logotype img {
-    height: 68px;
-    margin-right: 16px;
-    min-width: 50px;
+    height: 85px;
+    margin-right: 13px;
+    min-width: 68px;
 }
 
 .main-logotype .text {
@@ -418,53 +429,6 @@ h3 {
     font-size: 12px;
 }
 
-/* Collapsable */
-
-.collapsible-button {
-    background-color: unset;
-    user-select: none;
-    cursor: pointer;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    display: flex;
-    justify-content: space-between;
-}
-
-.collapsible-button .chevron {
-    align-items: center;
-    display: flex;
-    margin-left: 5px;
-}
-
-.collapsible.muted .collapsible-button {
-    cursor: unset;
-    user-select: unset;
-}
-
-.collapsible-button .icon-chevron-down {
-    float: right;
-    transition: 0.3s;
-    position: relative;
-    top: 0;
-}
-
-.collapsible.active .icon-chevron-down {
-    transform: rotate(180deg);
-    top: 4px;
-}
-
-.collapsible.muted .collapsible-button .icon-chevron-down {
-    display: none;
-}
-
-.collapsible-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-
 /* Buttons */
 
 .button {
@@ -595,6 +559,8 @@ h3 {
 .login-page .logotype img {
     height: 580px;
     max-width: unset;
+    pointer-events: none;
+    user-select: none;
 }
 .login-page form {
     background: rgba(255,255,255,0.05);

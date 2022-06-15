@@ -10,11 +10,11 @@
     margin-top: 6px;
 }
 
-.comparison__info .sub-collapsible .collapsible-button, .comparison__info .sub-collapsible .collapsible-content {
+.comparison__info .sub-collapsible .collapse-indicator-button, .comparison__info .sub-collapsible .collapse-indicator-content {
     padding-left: 40px;
 }
 
-.comparison__info .sub-collapsible .collapsible-button::before {
+.comparison__info .sub-collapsible .collapse-indicator-button::before {
     color: rgba(255,255,255,0.2);
     position: absolute;
     font-size: 14px;
@@ -23,7 +23,7 @@
     top: 17px;
 }
 
-.comparison__info .collapsible-button {
+.comparison__info .collapse-indicator-button {
     border-bottom: 1px solid #2e3740;
     background: #17212b;
     position: relative;
@@ -33,35 +33,52 @@
     box-sizing: border-box;
 }
 
-.comparison__info .collapsible:last-child .collapsible-button {
+.collapse-indicator-button {
+    justify-content: space-between;
+    position: relative;
+    user-select: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    border: none;
+}
+
+.collapse-indicator .collapse-indicator-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.comparison__info .collapse-indicator:last-child .collapse-indicator-button {
     border: unset;
 }
 
-.comparison__info .collapsible:first-child .collapsible-button {
+.comparison__info .collapse-indicator:first-child .collapse-indicator-button {
     border-radius: 12px 12px 0 0;
 }
 
-.comparison__info .collapsible:last-child .collapsible-button {
+.comparison__info .collapse-indicator:last-child .collapse-indicator-button {
     border-radius: 0 0 12px 12px;
 }
 
-.comparison__info .collapsible.active:first-child .collapsible-button {
+.comparison__info .collapse-indicator.active:first-child .collapse-indicator-button {
     border-radius: 12px;
 
 }
-.comparison__info .collapsible.active:not(:first-child) .collapsible-button {
+.comparison__info .collapse-indicator.active:not(:first-child) .collapse-indicator-button {
     border-radius: 0 0 12px 12px;
 }
 
-.comparison__info .collapsible.active.previous-open:not(:first-child) .collapsible-button {
+.comparison__info .collapse-indicator.active.previous-open:not(:first-child) .collapse-indicator-button {
     border-radius: 12px;
 }
 
-.comparison__info .collapsible.previous-open .collapsible-button {
+.comparison__info .collapse-indicator.previous-open .collapse-indicator-button {
     border-radius: 12px 12px 0 0;
 }
 
-.comparison__info .collapsible.previous-open:last-child .collapsible-button {
+.comparison__info .collapse-indicator.previous-open:last-child .collapse-indicator-button {
     border-radius: 12px;
 }
 

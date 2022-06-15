@@ -54,6 +54,9 @@ $GLOBALS['url'] = $url;
 
 /*/-------------------------------------------------------------- Удочка для ошибок --------------------------------------------------------------/*/
 function handleUncaughtException($e){
+    $registr = new \App\Registr();
+    $registr->writeLog($e);
+
     echo
 '<center>
     <h3>Что-то пошло не так. </h3>

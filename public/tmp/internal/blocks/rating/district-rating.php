@@ -1,7 +1,7 @@
 
 <?php
 
-require_once dirname(dirname(__DIR__))._DS_.'config/Db.php';
+require_once '../config/Db.php';
 $Connect = new Db;
 $base = dirname(getcwd());
 
@@ -54,13 +54,14 @@ $indexes = $Connect->getAll($indexesSql);
 
             <a id="districtsRating" class="custom-anchor"></a>
 
-            <div class="dropdown">
-                <div class="current"><?php if (isset($_GET['ratingYear'])) { ?><?= $_GET['ratingYear'] ?><?php } else { ?>2020<?php } ?></div>
+            <div class="dropdown interactive rounded right dark chevron">
+                <div class="current button button-dropdown rounded"><?php if (isset($_GET['ratingYear'])) { ?><?= $_GET['ratingYear'] ?><?php } else { ?>2020<?php } ?></div>
 
                 <div class="options">
-                    <span class="option"><a href="<?=$GLOBALS['path']['use']['in'];?>?ratingYear=2020#districtsRating">2020</a></span>
+                    <span class="option">2020</span>
                 </div>
             </div>
+
         </div>
 
         <div class="rating__diagram block-box sub-block-margin-top">
@@ -69,7 +70,7 @@ $indexes = $Connect->getAll($indexesSql);
 
                 <style>
                     .regions-list__bars {
-                        height: calc(100% - 29px);
+                        height: calc(100% - 34px);
                     }
                     @media only screen and (max-width: 880px) {
                         .regions-list__bars {

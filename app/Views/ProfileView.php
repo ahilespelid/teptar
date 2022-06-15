@@ -9,7 +9,7 @@ class ProfileView extends \App\View{
     public $layout;
     
     public function __construct() {
-        $this->layout =  $GLOBALS['path']['temp'].'internal'._DS_.'index.php';
+        $this->layout =  $GLOBALS['path']['temp']._DS_.'internal'._DS_. 'profile' ._DS_.'index.php';
     }
 
     public function render(array $vars = [], string $temp=''){/*/ extract($vars, EXTR_REFS); /*/       

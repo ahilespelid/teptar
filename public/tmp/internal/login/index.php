@@ -1,4 +1,4 @@
-<?php include dirname(__DIR__)._DS_.'base/head.php' ?>
+<?php include '../base/head.php' ?>
 
     <body>
 
@@ -7,7 +7,7 @@
             <div class="login-grid">
 
                 <div class="logotype">
-                    <img src="<?=$GLOBALS['path']['use']['in']?>/assets/images/logotype-large.png" alt="Logotype">
+                    <img src="/assets/images/logotype.svg" alt="Logotype">
                 </div>
                 <div class="login-form">
 
@@ -47,4 +47,4 @@
 
     </body>
 
-<?php include dirname(__DIR__)._DS_.'base/foot.php' ?>
+<?php include '../base/foot.php' ?>

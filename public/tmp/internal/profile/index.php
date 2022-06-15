@@ -1,8 +1,8 @@
-<?php include dirname(__DIR__)._DS_.'base/head.php' ?>
+<?php include '../base/head.php' ?>
 
     <body>
 
-    <?php include dirname(__DIR__)._DS_.'blocks/navbar/navbar.php' ?>
+    <?php include '../blocks/navbar/navbar-pages.php' ?>
 
         <div class="container">
 
@@ -76,8 +76,8 @@
 
         </div>
 
-    <?php include dirname(__DIR__)._DS_.'blocks/footer/footer.html';?>
+    <?php include '../blocks/footer/footer.html';?>
 
     </body>
 
-<?php include dirname(__DIR__)._DS_.'base/foot.php' ?>
+<?php include '../base/foot.php' ?>

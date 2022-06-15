@@ -1,5 +1,5 @@
 <?php
-require_once dirname(dirname(__DIR__))._DS_.'config/Db.php';
+require_once 'config/Db.php';
 $connect = new Db;
 $sql = 'SELECT * FROM districts';
 ?>
@@ -65,20 +65,29 @@ $sql = 'SELECT * FROM districts';
 
             <div class="districts-list">
                 <?php foreach ($connect->getAll($sql) as $district) { ?>
-                    <div class="item"><a class="map-link" id="MapLink<?= $district['mapname'] ?>" href="/?in=region&district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a></div>
+                    <div class="item"><a class="map-link" id="MapLink<?= $district['mapname'] ?>" href="/region/index.php?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a></div>
                 <?php } ?>
             </div>
         </div>
 
     </div>
 
-    <div class="collapsible districts-collapsible">
-        <div class="collapsible-button block-background">Выбрать район в ручную <div class="chevron"><i class="icon-chevron-down"></i></div></div>
-        <div class="collapsible-content">
+    <div class="collapse dark fill rounded chevron only-mobile">
+        <div class="collapse-button block-box block-padding sub-block-margin-top">Выбрать район в ручную</div>
+        <div class="collapse-content sub-block-margin-top">
             <?php foreach ($connect->getAll($sql) as $district) { ?>
-                <div class="item"><a class="map-link" id="MapLink<?= $district['mapname'] ?>" href="/?in=region&district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a></div>
+                <a class="item map-link" id="MapLink<?= $district['mapname'] ?>" href="/region/index.php?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a>
             <?php } ?>
         </div>
     </div>
+
+<!--    <div class="collapsible districts-collapsible">-->
+<!--        <div class="collapsible-button block-background">Выбрать район в ручную <div class="chevron"><i class="icon-chevron-down"></i></div></div>-->
+<!--        <div class="collapsible-content">-->
+<!--            --><?php //foreach ($connect->getAll($sql) as $district) { ?>
+<!--                <div class="item"><a class="map-link" id="MapLink--><?//= $district['mapname'] ?><!--" href="/region/index.php?district=--><?//= $district['mapname'] ?><!--">--><?//= $district['name'] ?><!--</a></div>-->
+<!--            --><?php //} ?>
+<!--        </div>-->
+<!--    </div>-->
 
 </div>

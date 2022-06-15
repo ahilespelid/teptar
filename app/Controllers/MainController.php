@@ -14,6 +14,7 @@ class MainController{
 
         ($user->isToken()) ? $user->login($user->getLoginUser())->pIndex->render() : $user->pLogin->render();
         //pa($user);
+        $q = $_REQUEST;
 
 
         if(!empty($q) && 'ex' == @key($q)){
@@ -43,21 +44,21 @@ class MainController{
         if(!empty($q) && 'in' == key($q)){
             switch ($q['in']) {
                 case 'index':
-                  include $GLOBALS['path']['pub'].$GLOBALS['path']['out']['in']._DS_.$q['in'].'.php';
+                  include $GLOBALS['path']['pub']._DS_.$GLOBALS['path']['out']['in']._DS_.$q['in'].'.php';
                   break;
                 case 'region':
                   if(!empty($q['district'])){
                       $GET['district'] = $q['district'];}
-                  include $GLOBALS['path']['pub'].$GLOBALS['path']['out']['in']._DS_.$q['in']._DS_.'index.php';
+                  include $GLOBALS['path']['pub']._DS_.$GLOBALS['path']['out']['in']._DS_.$q['in']._DS_.'index.php';
                   break;
                 case 'profile':
-                  include $GLOBALS['path']['pub'].$GLOBALS['path']['out']['in']._DS_.$q['in']._DS_.'index.php';
+                  include $GLOBALS['path']['pub']._DS_.$GLOBALS['path']['out']['in']._DS_.$q['in']._DS_.'index.php';
                   break;
                 case 'settings':  $q['in'] ='profile';
-                  include $GLOBALS['path']['pub'].$GLOBALS['path']['out']['in']._DS_.$q['in']._DS_.'index.php';
+                  include $GLOBALS['path']['pub']._DS_.$GLOBALS['path']['out']['in']._DS_.$q['in']._DS_.'index.php';
                   break;
                 case 'logout':
-                  include $GLOBALS['path']['pub'].$GLOBALS['path']['out']['in']._DS_.$q['in']._DS_.'index.php';
+                  include $GLOBALS['path']['pub']._DS_.$GLOBALS['path']['out']['in']._DS_.$q['in']._DS_.'index.php';
                   break;
               } exit();           
         }

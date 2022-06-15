@@ -116,4 +116,68 @@ POST array (
   'pass' => 'root',
 )GET array (
   'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  '0x' => 
+  array (
+    0 => 'androxgh0st',
+  ),
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  '0x' => 
+  array (
+    0 => 'androxgh0st',
+  ),
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)GET array (
+  'q' => 'login/',
+)POST array (
+  'uin' => 'CHR_GRC',
+  'login' => 'root',
+  'pass' => 'root',
+)GET array (
+  'q' => 'login/',
 )

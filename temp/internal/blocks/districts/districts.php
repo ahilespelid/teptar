@@ -1,7 +1,8 @@
-<?php
+<?php /*/
 require_once dirname(dirname(__DIR__))._DS_.'config/Db.php';
 $connect = new Db;
 $sql = 'SELECT * FROM districts';
+//*/
 ?>
 
 <div class="districts">
@@ -64,9 +65,9 @@ $sql = 'SELECT * FROM districts';
             <div class="districts-title">Выберите страницу района:</div>
 
             <div class="districts-list">
-                <?php foreach ($connect->getAll($sql) as $district) { ?>
+                <?php //foreach ($connect->getAll($sql) as $district) { ?>
                     <div class="item"><a class="map-link" id="MapLink<?= $district['mapname'] ?>" href="/?in=region&district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a></div>
-                <?php } ?>
+                <?php //} ?>
             </div>
         </div>
 
@@ -75,9 +76,9 @@ $sql = 'SELECT * FROM districts';
     <div class="collapsible districts-collapsible">
         <div class="collapsible-button block-background">Выбрать район в ручную <div class="chevron"><i class="icon-chevron-down"></i></div></div>
         <div class="collapsible-content">
-            <?php foreach ($connect->getAll($sql) as $district) { ?>
+            <?php //foreach ($connect->getAll($sql) as $district) { ?>
                 <div class="item"><a class="map-link" id="MapLink<?= $district['mapname'] ?>" href="/?in=region&district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a></div>
-            <?php } ?>
+            <?php //} ?>
         </div>
     </div>
 

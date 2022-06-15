@@ -1,13 +1,13 @@
 
 <?php
-
+/*/
 require_once dirname(dirname(__DIR__))._DS_.'config/Db.php';
 $Connect = new Db;
 $base = dirname(getcwd());
 
 $indexesSql = 'SELECT `index`, district FROM indexes WHERE mark=' . $mark_id . ' ORDER BY `index` DESC';
 $indexes = $Connect->getAll($indexesSql);
-
+//*/
 ?>
 
 <div class="rating sub-block-margin-top">

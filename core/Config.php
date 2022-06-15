@@ -13,7 +13,7 @@ $table =array(
 'usersBlock'   => 'usersBlock',
 
 );
-$GLOBALS['table'] =  $table;
+$GLOBALS['db']['table'] =  $table;
 $GLOBALS['db']['host'] = '194.67.90.250';
 $GLOBALS['db']['base'] = 'teptar';
 $GLOBALS['db']['user'] = 'tepuser';

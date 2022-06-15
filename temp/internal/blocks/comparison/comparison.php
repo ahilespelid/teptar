@@ -1,6 +1,6 @@
 <?php
-require_once dirname(dirname(__DIR__))._DS_.'config/Db.php';
-$Connect = new Db;
+//require_once dirname(dirname(__DIR__))._DS_.'config/Db.php';
+//$Connect = new Db;
 ?>
 
 <div class="comparison">
@@ -24,7 +24,7 @@ $Connect = new Db;
     <div class="comparison__info">
 
         <?php
-        /*/ Получение ВСЕХ строк из таблицы. ВООБЩЕ ВСЕХ. $Connect->getAll($sql)/*/
+        /*/ Получение ВСЕХ строк из таблицы. ВООБЩЕ ВСЕХ. $Connect->getAll($sql)
         $sql = 'SELECT * FROM marks';
         foreach($Connect->getAll($sql) as $indicator) {
             if ($indicator['type'] == 'description') {
@@ -37,13 +37,13 @@ $Connect = new Db;
 
             $indexesSql = 'SELECT `index`, district FROM indexes WHERE mark=' . $indicator['num'] . ' ORDER BY `index` DESC';
             $indexes = $Connect->getAll($indexesSql);
-
+           /*/
 
             ?>
 
-            <div class="collapsible<?=$type;?>">
-                <div class="collapsible-button block-background"><?=$indicator['num'];?>. <?=$indicator['name'];?> <div class="chevron"><i class="icon-chevron-down"></i></div></div>
-                <?php if ($indicator['type'] != 'description') { ?>
+            <div class="collapsible<?$type;?>">
+                <div class="collapsible-button block-background"><?$indicator['num'];?>. <?$indicator['name'];?> <div class="chevron"><i class="icon-chevron-down"></i></div></div>
+                <?php// if ($indicator['type'] != 'description') { ?>
                     <div class="collapsible-content">
 
                         <div class="districts-score">
@@ -66,22 +66,22 @@ $Connect = new Db;
 
                                         <tbody>
 
-                                            <?php foreach ($indexes as $index) { ?>
+                                            <?php // foreach ($indexes as $index) { ?>
 
                                                 <tr>
-                                                    <td><?= $index['district'] ?></td>
+                                                    <td><? $index['district'] ?></td>
                                                     <td>
                                                         <div class="table-avatar" style="background-image: url('<?=$GLOBALS['path']['use']['in'];?>/assets/images/avatar3.jpeg')"></div>
                                                         Хасан Шали
                                                     </td>
                                                     <td>
-                                                        <div class="table-progress-bar" style="width: <?= round((float)$index['index'] * 100) ?>%">
+                                                        <div class="table-progress-bar" style="width: <? round((float)$index['index'] * 100) ?>%">
                                                             <div class="table-progress-bar-gradient"></div>
                                                         </div>
                                                     </td>
                                                 </tr>
 
-                                            <?php } ?>
+                                            <?php// } ?>
 
                                         </tbody>
                                     </table>
@@ -93,10 +93,10 @@ $Connect = new Db;
                         </div>
 
                     </div>
-                <?php } ?>
+                <?php // } ?>
             </div>
 
-        <?php } ?>
+        <?php // } ?>
 
     </div>
 

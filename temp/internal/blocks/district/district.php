@@ -97,11 +97,12 @@
 
         </div>
 
-        <?php
+        <?php  /*/
         require_once dirname(dirname(__DIR__))._DS_.'/config/Db.php';
         $connect = new Db;
         $sql = 'SELECT * FROM districts WHERE mapname="' . $_GET['district'] . '"';
         $district = $connect->getRow($sql);
+        //*/
         ?>
 
         <style>

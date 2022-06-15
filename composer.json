@@ -2,7 +2,7 @@
     "name":"teptar/stat",
     "version":"1.0.1",
     "require":{
-        "php":">=7.4.0",
+        "php":">=8.1.0",
       "ext-pdo": "*",
         "phpoffice/phpspreadsheet": "^1.23"
     },

@@ -27,7 +27,7 @@ class UserController{
         $this->model = new \App\Models\UserModel;
         $this->pLogin = new \App\Views\LoginView;
         $this->pProfile = new \App\Views\ProfileView;
-        $this->pIndex = new \App\Views\InView;
+        $this->pIndex = new \App\Views\IndexView;
     } 
     
     public function login($data = []){

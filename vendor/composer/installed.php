@@ -92,12 +92,12 @@
             'dev_requirement' => false,
         ),
         'psr/simple-cache' => array(
-            'pretty_version' => '1.0.1',
-            'version' => '1.0.1.0',
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/simple-cache',
             'aliases' => array(),
-            'reference' => '408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
+            'reference' => '8707bf3cea6f710bf6ef05491234e3ab06f6432a',
             'dev_requirement' => false,
         ),
         'symfony/polyfill-mbstring' => array(

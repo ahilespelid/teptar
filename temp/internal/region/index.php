@@ -1,7 +1,5 @@
 <?php
 
-require_once  dirname(__DIR__)._DS_.'config/Db.php';
-$Connect = new Db;
 $base = dirname(getcwd());
 
 

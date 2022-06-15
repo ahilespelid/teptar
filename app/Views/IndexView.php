@@ -1,7 +1,7 @@
 <?php
  namespace App\Views ;
  
-class InView extends \App\View{
+class IndexView extends \App\View{
     public $args = [
     'img' => ['Logotype' => '/assets/images/logotype-large.png'],
     

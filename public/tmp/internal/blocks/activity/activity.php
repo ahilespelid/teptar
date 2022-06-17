@@ -6,8 +6,8 @@
             <h3>Последние отчеты</h3>
 
             <div class="dropdowns-list">
-                <div class="dropdown">
-                    <div class="current"><span class="title">Район:</span> Гудермесский</div>
+                <div class="dropdown interactive rounded right dark chevron">
+                    <div class="current button button-dropdown rounded"><span class="title">Район:</span> Гудермесский</div>
 
                     <div class="options">
                         <span class="option">Аргун</span>
@@ -30,8 +30,8 @@
                     </div>
                 </div>
 
-                <div class="dropdown">
-                    <div class="current">2021</div>
+                <div class="dropdown interactive rounded right dark chevron">
+                    <div class="current button button-dropdown rounded">2021</div>
 
                     <div class="options">
                         <span class="option">2021</span>
@@ -121,8 +121,8 @@
             <h3>Активность</h3>
 
             <div class="dropdowns-list">
-                <div class="dropdown">
-                    <div class="current"><span class="title">Район:</span> Гудермесский</div>
+                <div class="dropdown interactive rounded right dark chevron">
+                    <div class="current button button-dropdown rounded"><span class="title">Район:</span> Гудермесский</div>
 
                     <div class="options">
                         <span class="option">Аргун</span>
@@ -145,8 +145,8 @@
                     </div>
                 </div>
 
-                <div class="dropdown">
-                    <div class="current">2021</div>
+                <div class="dropdown interactive rounded right dark chevron">
+                    <div class="current button button-dropdown rounded">2021</div>
 
                     <div class="options">
                         <span class="option">2021</span>
@@ -166,7 +166,7 @@
                 <div class="actions__activity-info">
                     <div class="actions__activity-user">
                         <div class="avatar">
-                            <img src="<?=$url;?>/assets/images/avatar.jpg" alt="Avatar">
+                            <img src="/assets/images/avatar.jpg" alt="Avatar">
                         </div>
                         <div class="info">
                             <span class="name">Ибрагим Грозный</span>
@@ -202,7 +202,7 @@
                 <div class="actions__activity-info">
                     <div class="actions__activity-user">
                         <div class="avatar">
-                            <img src="<?=$url;?>/assets/images/avatar.jpg" alt="Avatar">
+                            <img src="/assets/images/avatar.jpg" alt="Avatar">
                         </div>
                         <div class="info">
                             <span class="name">Ибрагим Грозный</span>

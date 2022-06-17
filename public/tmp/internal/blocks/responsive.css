@@ -192,7 +192,7 @@
     .login-grid {
         background-image: url('/assets/images/form-gradient-background.png');
         grid-template-columns: repeat(3,1fr);
-        grid-template-rows: 0.1fr auto 1fr 0.1fr;
+        grid-template-rows: 0 0.8fr 0.5fr 0;
     }
     .login-page .logotype {
         grid-area: 2 / 2 / 3 / 2;
@@ -201,7 +201,7 @@
         grid-area: 3 / 2 / 3 / 2;
     }
     .login-grid {
-        grid-gap: 50px 0;
+        grid-gap: 25px 0;
     }
 }
 

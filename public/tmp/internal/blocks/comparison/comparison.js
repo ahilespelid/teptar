@@ -16,3 +16,37 @@ document.querySelectorAll('.districts-score-table').forEach(function (table) {
         row.insertAdjacentHTML('beforeend','<td class="separator"></td>');
     })
 });
+
+var collapseIndicatorElements = document.querySelectorAll('.collapse-indicator');
+
+collapseIndicatorElements.forEach(function (block) {
+    block.querySelector('.collapse-indicator-button').addEventListener('click', function () {
+
+        // Закрыть уже открытый показатель
+        if (document.querySelector('.collapse-indicator.active') && !block.classList.contains('active')) {
+            var activeCollapseIndicator = document.querySelector('.collapse-indicator.active');
+            activeCollapseIndicator.classList.toggle('active');
+            activeCollapseIndicator.querySelector('.collapse-indicator-content').style.maxHeight = null;
+            if (document.querySelector('.collapse-indicator.previous-open')) {
+                document.querySelector('.collapse-indicator.previous-open').classList.toggle('previous-open');
+            }
+        }
+
+        var nextElement = block.nextElementSibling;
+
+        block.classList.toggle("active");
+        var content = block.querySelector('.collapse-indicator-content');
+
+        if (content.style.maxHeight){
+            if (nextElement) {
+                nextElement.classList.remove('previous-open');
+            }
+            content.style.maxHeight = null;
+        } else {
+            if (nextElement) {
+                nextElement.classList.add('previous-open');
+            }
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    })
+})

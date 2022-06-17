@@ -54,92 +54,184 @@
 
             <a id="districtsRating" class="custom-anchor"></a>
 
-            <div class="dropdown">
-                <div class="current"><?php if (isset($_GET['ratingYear'])) { ?><?= $_GET['ratingYear'] ?><?php } else { ?>2020<?php } ?></div>
+            <div class="dropdown interactive rounded right dark chevron">
+                <div class="current button button-dropdown rounded"><?php if (isset($_GET['ratingYear'])) { ?><?= $_GET['ratingYear'] ?><?php } else { ?>2020<?php } ?></div>
 
                 <div class="options">
-                    <span class="option"><a href="<?=$GLOBALS['path']['use']['in'];?>/?ratingYear=2020#districtsRating">2020</a></span>
-                    <span class="option"><a href="<?=$GLOBALS['path']['use']['in'];?>/?ratingYear=2019#districtsRating">2019</a></span>
+                    <a class="option" href="?ratingYear=2020#districtsRating">2020</a>
+                    <a class="option" href="?ratingYear=2019#districtsRating">2019</a>
                 </div>
             </div>
+
         </div>
 
         <div class="rating__diagram block-box sub-block-margin-top">
 
-            <div class="rating__bars-diagram">
+            <canvas id="overallRating" style="max-height: 420px"></canvas>
 
-                <style>
-                    .regions-list__bars {
-                        height: calc(100% - 41px);
-                    }
-                </style>
+            <?php if (isset($_GET['ratingYear']) && $_GET['ratingYear'] == '2019') { ?>
+                <script>
+                    const overallRatingDataPoints = [0.65, 0.62, 0.61, 0.61, 0.58, 0.56, 0.55, 0.55, 0.55, 0.54, 0.54, 0.53, 0.53, 0.52, 0.52, 0.52, 0.49];
+                </script>
+            <?php } else { ?>
+                <script>
+                    const overallRatingDataPoints = [0.68, 0.64, 0.62, 0.62, 0.60, 0.60, 0.59, 0.58, 0.56, 0.56, 0.55, 0.55, 0.55, 0.55, 0.54, 0.54, 0.48];
+                </script>
+            <?php } ?>
 
-                <ul class="rating-list">
-                    <li><span>0.7</span></li>
-                    <li><span>0.6</span></li>
-                    <li><span>0.5</span></li>
-                    <li><span>0.4</span></li>
-                    <li><span>0.3</span></li>
-                    <li><span>0.2</span></li>
-                    <li><span>0.1</span></li>
-                    <li><span>0</span></li>
-                </ul>
+            <script>
+                let overallRatingCtx = document.getElementById('overallRating').getContext('2d');
 
-                <?php if (isset($_GET['ratingYear']) && $_GET['ratingYear'] == '2019') { ?>
+                const OVERALL_RATING_DATA_COUNT = 17;
+                const overallRatingLabels = [];
 
-                    <div class="regions-list">
-                        <div class="regions-list__bars">
+                for (let i = 0; i < OVERALL_RATING_DATA_COUNT; ++i) {
+                    overallRatingLabels.push(1 + i);
+                }
 
-                            <div class="regions-list__bar" style="height: calc(0.65 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.65</div><span>1</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.62 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.62</div><span>2</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.61 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.61</div><span>3</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.61 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.61</div><span>4</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.58 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.58</div><span>5</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.56 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.56</div><span>6</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>7</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>8</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>9</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.54 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.54</div><span>10</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.54 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.54</div><span>11</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.53 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.53</div><span>12</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.53 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.53</div><span>13</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.52 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.52</div><span>14</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.52 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.52</div><span>15</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.52 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.52</div><span>16</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.49 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.49</div><span>17</span></div></div>
+                let overallRatingBackgroundColors = [];
+                let i = 100;
 
-                        </div>
-                    </div>
+                function hslOverallRatingColor(percent, start, end) {
+                    var a = percent / 100,
+                        b = (end - start) * a,
+                        c = b + start;
 
-                <?php } else { ?>
+                    return 'hsl('+c+', 60%, 56%)';
+                }
 
-                    <div class="regions-list">
-                        <div class="regions-list__bars">
+                overallRatingDataPoints.forEach(function () {
+                    overallRatingBackgroundColors.push(hslOverallRatingColor(i,0,120));
+                    i = i - 6;
+                });
 
-                            <div class="regions-list__bar" style="height: calc(0.68 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.68</div><span>1</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.64 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.64</div><span>2</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.62 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.62</div><span>3</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.62 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.62</div><span>4</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.60 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.60</div><span>5</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.60 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.60</div><span>6</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.59 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.59</div><span>7</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.58 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.58</div><span>8</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.56 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.56</div><span>9</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.56 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.56</div><span>10</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>11</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>12</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>13</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>14</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.54 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.54</div><span>15</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.54 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.54</div><span>16</span></div></div>
-                            <div class="regions-list__bar" style="height: calc(0.49 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.49</div><span>17</span></div></div>
+                const overallRatingData = {
+                    labels: overallRatingLabels,
+                    datasets: [
+                        {
+                            label: 'Значение',
+                            data: overallRatingDataPoints,
+                            borderColor: '#60B251',
+                            pointBackgroundColor: '#60B251',
+                            backgroundColor: overallRatingBackgroundColors,
+                            fill: true,
+                            cubicInterpolationMode: 'monotone',
+                            tension: 0.4,
+                            borderRadius: 12,
+                        }
+                    ]
+                }
 
-                        </div>
-                    </div>
+                const overallRatingStackedLine = new Chart(overallRatingCtx, {
+                    type: 'bar',
+                    data: overallRatingData,
+                    options: {
+                        plugins: {
+                            legend: {
+                                display: false,
+                            }
+                        },
+                        responsive: true,
+                        interaction: {
+                            intersect: false,
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: '#fff'
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: '#fff'
+                                },
+                                display: true,
+                                suggestedMin: 0.4,
+                                suggestedMax: 0.8,
+                                grid: {
+                                    color: 'rgba(255,255,255,0.1)',
+                                    borderDash: [8, 6]
+                                }
+                            }
+                        }
+                    },
+                });
+            </script>
 
-                <?php } ?>
-
-            </div>
+<!--            <div class="rating__bars-diagram">-->
+<!---->
+<!--                <style>-->
+<!--                    .regions-list__bars {-->
+<!--                        height: calc(100% - 41px);-->
+<!--                    }-->
+<!--                </style>-->
+<!---->
+<!--                <ul class="rating-list">-->
+<!--                    <li><span>0.7</span></li>-->
+<!--                    <li><span>0.6</span></li>-->
+<!--                    <li><span>0.5</span></li>-->
+<!--                    <li><span>0.4</span></li>-->
+<!--                    <li><span>0.3</span></li>-->
+<!--                    <li><span>0.2</span></li>-->
+<!--                    <li><span>0.1</span></li>-->
+<!--                    <li><span>0</span></li>-->
+<!--                </ul>-->
+<!---->
+<!--                --><?php //if (isset($_GET['ratingYear']) && $_GET['ratingYear'] == '2019') { ?>
+<!---->
+<!--                    <div class="regions-list">-->
+<!--                        <div class="regions-list__bars">-->
+<!---->
+<!--                            <div class="regions-list__bar" style="height: calc(0.65 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.65</div><span>1</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.62 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.62</div><span>2</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.61 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.61</div><span>3</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.61 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.61</div><span>4</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.58 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.58</div><span>5</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.56 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.56</div><span>6</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>7</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>8</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>9</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.54 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.54</div><span>10</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.54 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.54</div><span>11</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.53 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.53</div><span>12</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.53 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.53</div><span>13</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.52 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.52</div><span>14</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.52 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.52</div><span>15</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.52 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.52</div><span>16</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.49 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.49</div><span>17</span></div></div>-->
+<!---->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                --><?php //} else { ?>
+<!---->
+<!--                    <div class="regions-list">-->
+<!--                        <div class="regions-list__bars">-->
+<!---->
+<!--                            <div class="regions-list__bar" style="height: calc(0.68 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.68</div><span>1</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.64 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.64</div><span>2</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.62 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.62</div><span>3</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.62 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.62</div><span>4</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.60 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.60</div><span>5</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.60 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.60</div><span>6</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.59 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.59</div><span>7</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.58 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.58</div><span>8</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.56 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.56</div><span>9</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.56 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.56</div><span>10</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>11</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>12</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>13</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.55 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.55</div><span>14</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.54 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.54</div><span>15</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.54 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.54</div><span>16</span></div></div>-->
+<!--                            <div class="regions-list__bar" style="height: calc(0.49 * 100% / 0.8)"><div class="regions-list__bar-gradient"><div class="regions-list__bar_info">0.49</div><span>17</span></div></div>-->
+<!---->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                --><?php //} ?>
+<!---->
+<!--            </div>-->
 
         </div>
 

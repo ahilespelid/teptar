@@ -2,7 +2,7 @@
 
     <body>
 
-        <?php include 'blocks/navbar/navbar.php' ?>
+        <?php include 'blocks/navbar/navbar-home.php' ?>
 
         <div class="container">
 
@@ -12,7 +12,7 @@
                 <?php include 'blocks/districts/districts.php';?>
                 <?php include 'blocks/rating/rating.php';?>
                 <?php include 'blocks/comparison/comparison.php';?>
-                <?php include 'blocks/activity/activity.html';?>
+                <?php include 'blocks/activity/activity.php';?>
             </div>
 
         </div>
@@ -22,26 +22,3 @@
     </body>
 
 <?php include 'base/foot.php' ?>
-
-<script>
-    // $.ajax({
-    //     type: 'GET',
-    //     url: "194.67.90.250/getMarkData/?mark=3",
-    //     // data: { get_param: 'value' },
-    //     // dataType: "json",
-    //     context: document.body,
-    //     success: function(data) {
-    //         console.log(this)
-    //     }
-    // });
-
-    // $.ajax({
-    //     type:"GET",
-    //     url: "/test/index.json",
-    //     dataType: 'json',
-    //     success: function(data) {
-    //         console.log(data);
-    //     }
-    // });
-
-</script>

@@ -82,10 +82,6 @@
     display: flex;
 }
 
-.navbar-user .dropdown {
-    margin: 0 10px 0 20px;
-}
-
 .navbar-user .avatar img {
     border-radius: 100%;
 }
@@ -101,17 +97,12 @@
 .navbar-user .dropdown .current {
     white-space: nowrap;
     display: flex;
-    border: unset;
     height: 100px;
     align-items: center;
-    padding: unset;
+    padding: 0 10px 0 20px;
 }
 
 .navbar-user .dropdown .options {
     top: 108px;
     right: -11px;
-}
-
-.navbar-user .dropdown .current::after, .navbar-user .dropdown.show .current::after {
-    content: unset;
 }

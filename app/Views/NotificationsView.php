@@ -14,7 +14,7 @@ class NotificationsView extends \App\View{
         ],
 
         'css' => [
-            '/notifications/assets/css/style.css'
+            '/notifications/assets/css/style.css',
             '/reusable-blocks/menu/menu.css',
             '/reusable-blocks/header/header.css',
             '/notifications/blocks/content/body/body.css',

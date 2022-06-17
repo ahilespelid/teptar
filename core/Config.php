@@ -48,6 +48,7 @@ $url =array(
 'login'  => ['controller' => 'UserController', 'action' => 'login'],
 'exel'   => ['controller' => 'ExelController', 'action' => 'work'],
 'ajax'   => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
+'district'   => ['controller' => 'DistrictController', 'action' => 'index'],
 );
 
 $GLOBALS['url'] = $url;

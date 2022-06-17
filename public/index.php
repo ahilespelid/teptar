@@ -14,4 +14,4 @@ try {
     $bug->setException($exception);
 }
 
-pa($bug->getException());  //$bug->writeLog(); /*/
+pa($bug->getException());  //*/$bug->writeLog(); //*/

@@ -71,7 +71,7 @@ abstract class Data{
         return $return->fetchAll();}
 
     public function getRandTable(bool $oneOrMony = false, bool $orderRand = false){/*/ Берёт случайную таблиц(У|Ы) из схемы  /*/ 
-            $sql =  'SELECT `TABLE_NAME` FROM `INFORMATION_SCHEMA`.`TABLES` WHERE `TABLE_SCHEMA`'." = '" . $this->base. "' ORDER BY ".
+            $sql =  'SELECT `TABLE_NAME` FROM `INFORMATION_SCHEMA`.`TABLES` WHERE `TABLE_SCHEMA`'." = '" . $GLOBALS['db']['base'] . "' ORDER BY ".
                         ((!$orderRand) ? 'RAND()' : '`TABLE_ROWS` DESC')." ".((!$oneOrMony) ? ' LIMIT 1;' : ';');
             $return = $this->pdo->query($sql);
             

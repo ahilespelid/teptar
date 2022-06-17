@@ -1,7 +1,7 @@
 <?php
  namespace App\Views ;
  
-class DistrictsView extends \App\View{
+class DistrictView extends \App\View{
     public $args = [
         'scripts' => [
             '/jquery-3.6.0.min.js',
@@ -33,7 +33,7 @@ class DistrictsView extends \App\View{
     public $layout;
     
     public function __construct() {
-        $this->layout =  $GLOBALS['path']['layout'].'auth.php';
+        $this->layout =  $GLOBALS['path']['layout'].'/blocks/districts/districts.php';
     }
 
     public function render(array $vars = [], string $temp=''){/*/ extract($vars, EXTR_REFS); /*/       

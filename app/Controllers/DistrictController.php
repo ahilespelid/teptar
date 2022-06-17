@@ -2,35 +2,26 @@
 namespace App\Controllers;
 
 class DistrictController{
-    public $model, 
-                $pProfile,
-                $pLogin,
+    public $model,
                 $pIndex,
-                $id,
-                $token; 
+                $districts; 
 
     public function __construct(){
         $this->model = new \App\Models\DistrictModel;
-        $this->pLogin = new \App\Views\LoginView;
-        $this->pIndex = new \App\Views\IndexView;
+        $this->pIndex = new \App\Views\DistrictView;
+        $this->districts = $this->model->getDistricts();
     } 
     
-    public function index($data){
+    public function index($q){;
         $is_districtUrl = str_starts_with(((!empty($_REQUEST['q']) && is_string($_REQUEST['q'])) ? mb_strtolower(trim($_REQUEST['q'])) : ''),'district');
+        
+        $this->pIndex->render();
+        
+        pa($this->districts);
  
 
     
     
     }
-    
-     public function createToken($user = []){
-        if(is_array($user) && !empty($user) && !is_array(current((array) $user))  
-            && !empty($user['pass']) && !empty($user['hash'])){        
-             $hash = (!empty($user['pass']) && !empty($user['hash'])) ? $user['pass'].$user['hash'] : false;
-             return $token = ($hash) ? hash('sha3-512', $hash) : false;
-         }
-     return false;}
- 
-    public function getToken(){return (!empty($this->token()) ?  $this->token() : false);}
     
 }

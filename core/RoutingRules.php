@@ -5,4 +5,5 @@
 'login'               => $GLOBALS['url']['login'],    /*/ userController.php Контраллер пользователя -> экшен авторизации /*/      
 'exel'                => $GLOBALS['url']['exel'],    /*/ json для Внутренней вёрстки /*/      
 'ajax'                => $GLOBALS['url']['ajax'],    /*/  /*/      
+'district'            => $GLOBALS['url']['district'],    /*/  /*/      
 ];

@@ -14,7 +14,7 @@ class Registr {
     public function __construct() {
         $this->logPull = array();
         /*/ Путь к файлу лога (php.txt) /*/
-        $this->logFile = $GLOBALS['path']['dev'] . $GLOBALS['path']['log'] . _DS_ . 'php.txt';
+        $this->logFile = $GLOBALS['path']['log'] . _DS_ . 'php.txt';
 
         /*/ Форматирование текущей даты /*/
         $this->exDate = (new \DateTime('now'))->format('[H:i | d M Y]');

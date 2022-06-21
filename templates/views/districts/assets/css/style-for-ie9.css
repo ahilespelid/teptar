@@ -1,0 +1,227 @@
+body {
+  display: table;
+}
+
+.menu {
+  display: table-cell;
+}
+
+.content {
+  display: table-cell;
+}
+
+.header {
+  display: table;
+  height: 70px;
+}
+
+.header__main {
+  width: 100%;
+  padding: 15px 0 15px 36px;
+  display: table-row;
+  display: -webkit-flex;
+  align-items: center;
+  background-color: #535c69;
+}
+
+.header__input {
+  width: 90%;
+  min-width: 30%;
+  height: 100%;
+  display: table-cell;
+  display: -webkit-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.header__input input{
+  width: 25%;
+  min-width: 40%;
+  height: 100%;
+  max-height: 50px;
+  margin-left: 12px;
+  background: none;
+  border: none;
+  color: #fff;
+  outline: none;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.header__input input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #fff;
+  letter-spacing: 0.1em;
+  font-family: "Open Sans Regular";
+}
+.header__input input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #fff;
+  opacity:  1;
+  letter-spacing: 0.1em;
+  font-family: "Open Sans Regular";
+}
+.header__input input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #fff;
+  opacity:  1;
+  letter-spacing: 0.1em;
+  font-family: "Open Sans Regular";
+}
+.header__input input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    #fff;
+  letter-spacing: 0.01em;
+  font-family: "Open Sans Regular";
+}
+.header__input input::-ms-input-placeholder { /* Microsoft Edge */
+  color:    #fff;
+  letter-spacing: 0.01em;
+  font-family: "Open Sans Regular";
+}
+
+.header__input input::placeholder { /* Most modern browsers support this now. */
+  color:    #fff;
+  letter-spacing: 0.01em;
+  font-size: 18px;
+  font-family: "Open Sans Regular";
+}
+
+.user {
+  display: table-cell;
+  display: -webkit-flex;
+  align-items: center;
+  min-width: 300px;
+  margin-bottom: 20px;
+  vertical-align: middle;
+}
+
+.user__info {
+  width: 260px;
+  min-width: 150px;
+  display: table;
+  display: -webkit-flex;
+  align-items: center;
+  margin-left: 30px;
+  font-family: "Open Sans Medium";
+  vertical-align: middle;
+}
+
+.user__notification {
+  display: none;
+  vertical-align: middle;
+}
+
+.user__info__name {
+  color: #fff;
+  width: 140px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+  text-align: start;
+  margin-left: 11px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.user__info__post {
+  font-size: 10px;
+  display: table-cell;
+  vertical-align: middle;
+  line-height: 10px;
+  opacity: 0.85;
+  font-family: "Open Sans Bold";
+}
+
+.user__info__avatar {
+  border-radius: 100%;
+  image-rendering: crisp-edges;
+  border: 2px solid #fff;
+  background-image: url("../img/avatar.jpg");
+  background-position: center;
+  background-size: 100px;
+  background-repeat: no-repeat;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.menu__body__list a {
+  display: block;
+}
+
+.menu__header {
+  display: table;
+}
+
+.menu__header img {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.menu__header__text {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.menu__footer {
+  position: static !important;
+}
+
+.reports-title {
+  display: table;
+  width: 100%;
+}
+
+.reports-title__my-reports {
+  display: table;
+}
+
+.reports-title__my-reports__text {
+  display: table-cell
+}
+
+.reports-title__my-reports__btn {
+  display: table-cell;
+}
+
+.sort {
+  display: table-cell;
+}
+
+.reports__footer {
+  display: table-row;
+}
+
+.reports-footer__action {
+  display: table-cell;
+  width: 230px;
+}
+
+.reports-footer__action__sort {
+  top: -180px;
+}
+
+.reports-footer__action span {
+  padding-right: 45%;
+}
+
+.reports-footer__submit__button {
+  display: table-cell;
+}
+
+.reports-footer__count {
+  display: table-cell;
+  width: 74%;
+}
+
+@media screen and (min-width: 1920px) {
+  .header {
+    height: 120px;
+  }
+
+  .reports-footer__count {
+    width: 74%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .reports-footer__count {
+    width: 74%;
+  }
+}

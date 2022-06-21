@@ -1,0 +1,106 @@
+*::-webkit-scrollbar {
+  width: 5px;               /* ширина scrollbar */
+}
+*::-webkit-scrollbar-track {
+  background: #eceded;      /* цвет дорожки */
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #a4aab0;  /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+}
+
+.disc {
+  width: 100%;
+  height: 66vh;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  padding: 19px 18px;
+  border-radius: 4px;
+  overflow-y: auto;
+  scrollbar-color: #a4aab0 #eceded;
+  scrollbar-width: thin;
+}
+
+.disc__element {
+  width: 200px;
+  height: 200px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #EEEFF0;
+  transition: 0.2s;
+}
+
+.disc__element input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.disc__element__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.disc__element__header__checkbox {
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.disc__element:hover .disc__element__header__checkbox {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition: 0.1s;
+}
+
+.disc__element__img {
+  height: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.disc__element__name {
+  display: flex;
+  word-break: break-word;
+  align-items: flex-end;
+  justify-content: start;
+  margin-left: 8px;
+}
+
+.disc__element span {
+  font-size: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.disc__element img {
+  width: 120px;
+  height: 120px;
+}
+
+.disc__decrease-height {
+  height: 56vh;
+}
+
+.warning {
+  background-color: #FEF0CB;
+  transition: 0.3s;
+}
+
+.expired {
+  background-color: #FECBCB;
+  transition: 0.3s;
+}
+
+.checked {
+  background-color: #EAF9C4;
+  transition: 0.3s;
+}
+
+.finished {
+  background-color: #D8FECB;
+  transition: 0.3s;
+}

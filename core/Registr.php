@@ -13,11 +13,7 @@ class Registr {
     public function __construct() {
         $this->logPull = array();
         /*/ Путь к файлу лога (php.txt) /*/
-<<<<<<< HEAD
         $this->logFile = $GLOBALS['path']['log'] . _DS_ . 'php.txt';
-=======
-        $this->logFile = $GLOBALS['path']['log'] . _DS_;
->>>>>>> 410cf77586f76e052f16710f91d8f49edb877946
 
         /*/ Форматирование текущей даты /*/
         $this->exDate = (new \DateTime('now'))->format('[H:i | d M Y]');

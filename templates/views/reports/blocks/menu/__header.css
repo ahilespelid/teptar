@@ -1,0 +1,18 @@
+.menu__header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  justify-content: space-evenly;
+  border-bottom: 1px solid #EBEFF2;
+  font-family: "Open Sans Medium";
+}
+
+.menu__header__text {
+  font-size: 14px;
+  width: 170px;
+  line-height: 20.58px;
+  padding: 6px;
+  opacity: 0.85;
+}

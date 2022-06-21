@@ -1,0 +1,348 @@
+@import "../../../../layouts/menu/menu.css";
+@import "../../../../layouts/header/header.css";
+@import "../../blocks/content/content.css";
+@import "../../blocks/content/body/body.css";
+@import "../../blocks/content/body/disc.css";
+@import "../../blocks/content/body/__footer.css";
+@import "../../blocks/content/body/__reports-title.css";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+Обнуляющие теги
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+.none {
+  display: none;
+}
+
+@font-face {
+  font-family: "Open Sans Medium";
+  src: url(../../../../assets/fonts/OpenSans-Medium.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans Regular";
+  src: url(../../../../assets/fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans SemiBold";
+  src: url(../../../../assets/fonts/OpenSans-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans Light";
+  src: url(../../../../assets/fonts/OpenSans-Light.ttf);
+}
+
+@font-face {
+  font-family: "Open Sans Bold";
+  src: url(../../../../assets/fonts/OpenSans-Bold.ttf);
+}
+
+  body {
+    background-color: #eef2f4;
+    margin: 0;
+    font-family: "Open Sans Regular";
+    display: flex;
+  }
+
+  .main {
+    width: 100%;
+    height: 100%;
+  }
+
+  .sort {
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .user__notification, .user__info__arrow, .sort__block__element, .menu__body__list a,
+  .menu__footer__toggle a, .reports-title__my-reports__btn button, .variables, .reports-footer__submit__button button {
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 2732px) {
+
+  }
+
+  @media screen and (max-width: 2560px) {
+
+  }
+
+  @media screen and (max-width: 2048px) {
+
+  }
+
+  @media screen and (min-width: 1920px) {
+
+    .sort {
+      max-width: 350px;
+      height: 50px;
+      font-size: 18px;
+    }
+
+    .sort__block {
+      width: 250px;
+      line-height: 30px;
+    }
+
+
+    .reports-footer {
+      height: 80px;
+    }
+
+    .reports__body__line {
+      height: 80px;
+      font-size: 16px;
+    }
+
+    .reports__decrease-height {
+      height: 62vh;
+    }
+
+    .reports-title__my-reports__text {
+      font-size: 32px;
+    }
+
+    .reports-title__my-reports__btn button {
+      width: 220px;
+      height: 50px;
+      font-size: 18px;
+    }
+
+    .disc__element {
+      font-size: 16px;
+      width: 250px;
+      height: 250px;
+    }
+
+    .disc__element img {
+      width: 150px;
+      height: 150px;
+    }
+
+    .disc__element input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+    }
+
+    .disc__element span {
+      font-size: 16px;
+    }
+
+    .body__back-button {
+      height: 80px;
+    }
+
+    .reports-title {
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+
+    .disc {
+      height: 62vh;
+    }
+
+    .disc__decrease-height {
+      height: 50vh;
+    }
+
+    .disc-footer {
+      height: 80px;
+    }
+
+    .fileload-modal__footer__files, .fileload-modal__footer__submit {
+      height: 70px;
+    }
+
+    .fileload-modal__body {
+      height: 300px;
+    }
+
+    .fileload-modal__input__middle {
+      font-size: 16px;
+    }
+
+    .fileload-modal__input__middle img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .fileload-modal__header {
+      height: 80px;
+      font-size: 20px;
+    }
+
+    .folderload .fileload-modal__footer__files {
+      height: 100px;
+    }
+
+  }
+
+  @media screen and (max-width: 1600px) {
+
+  }
+
+  @media screen and (max-width: 1440px) {
+
+  }
+
+  @media screen and (max-width: 1280px) {
+
+  }
+
+  @media screen and (max-width: 1024px) {
+
+    .sort {
+      width: 191px;
+      height: 30px;
+      font-size: 12px;
+    }
+
+    .sort__block {
+      width: 191px;
+    }
+
+    .reports {
+      max-height: 70vh;
+      font-size: 12px;
+    }
+
+    .reports input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+    }
+
+    .reports-footer {
+      height: 50px;
+    }
+
+    .reports__body__element {
+      height: 60px
+    }
+
+    .reports__decrease-height {
+      height: 62vh;
+    }
+
+    .reports-title__my-reports__text {
+      font-size: 18px;
+    }
+
+    .reports-title__my-reports__btn button {
+      width: 140px;
+      height: 30px;
+      font-size: 12px;
+    }
+
+    .disc__element input[type="checkbox"] {
+      width: 12px;
+      height: 12px;
+    }
+
+    .disc__element span {
+      font-size: 8px;
+    }
+
+    .disc {
+      height: 58vh;
+    }
+
+    .disc__element {
+      width: 130px;
+      height: 130px;
+      margin-right: 12px;
+      font-size: 10px;
+    }
+
+    .disc__element img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .disc__decrease-height {
+      height: 50vh;
+    }
+
+    .disc-footer {
+      height: 60px;
+      font-size: 14px;
+    }
+
+    .fileload-modal__footer__files, .fileload-modal__footer__submit {
+      height: 70px;
+    }
+
+    .fileload-modal__body {
+      height: 300px;
+    }
+
+    .fileload-modal__input__middle {
+      font-size: 16px;
+    }
+
+    .fileload-modal__input__middle img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .fileload-modal__header {
+      height: 80px;
+      font-size: 20px;
+    }
+
+    .folderload .fileload-modal__footer__files {
+      height: 100px;
+    }
+  }

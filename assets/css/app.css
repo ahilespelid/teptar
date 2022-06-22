@@ -1,0 +1,14 @@
+@import "/assets/components/components.css";
+@import "/templates/layouts/navbar/navbar.css";
+@import "/templates/layouts/welcome/welcome.css";
+@import "/templates/layouts/rating/rating.css";
+@import "/templates/layouts/statistics/statistics.css";
+@import "/templates/layouts/comparison/comparison.css";
+@import "/templates/layouts/activity/activity.css";
+@import "/templates/layouts/districts/districts.css";
+@import "/templates/layouts/footer/footer.css";
+@import "/assets/css/styles.css";
+@import "/assets/css/browsers.css";
+@import "/assets/css/fonts.css";
+@import "/assets/css/responsive.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&family=Open+Sans:wght@400;500;600;700;800&display=swap');

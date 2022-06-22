@@ -1,7 +1,9 @@
 <?php
 namespace App;
 
-abstract class View{
+use Exception;
+
+abstract class View {
     private $templatePath;
 
     function __construct(){}
@@ -31,5 +33,4 @@ abstract class View{
         }
 
     }
-
 }

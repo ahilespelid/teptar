@@ -9,7 +9,7 @@ $url = $_SERVER['PHP_SELF'];
   <meta name="description" content="Список отчетов">
   <meta name="keywords" content="Список отчетов, Тептар, тептар">
     <link type="text/css" rel="stylesheet" href="<?$url;?>/templates/views/districts/views/districts/assets/css/style.css">
-    <script src="<?$url;?>/templates/assets/jquery-3.6.0.min.js"></script>
+    <script src="<?$url;?>/assets/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="<?$url;?>/templates/views/districts/views/districts/assets/js/script.js"></script>
   <script src="<?$url;?>/templates/views/districts/views/districts/blocks/content/body/reports.js"></script>
     <script src="<?$url;?>/templates/views/districts/views/districts/blocks/content/content.js"></script>

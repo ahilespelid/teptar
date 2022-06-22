@@ -6,4 +6,6 @@
 'exel'                => $GLOBALS['url']['exel'],    /*/ json для Внутренней вёрстки /*/      
 'ajax'                => $GLOBALS['url']['ajax'],    /*/  /*/      
 'district'            => $GLOBALS['url']['district'],    /*/  /*/      
+'report'            => $GLOBALS['url']['report'],    /*/  /*/
+'framework'            => $GLOBALS['url']['framework'],    /*/  /*/
 ];

@@ -1,5 +1,5 @@
 <?php
-define('_DS_', DIRECTORY_SEPARATOR);
+//define('_DS_', DIRECTORY_SEPARATOR);
 $url = $_SERVER['DOCUMENT_ROOT'];
 ?>
 <!DOCTYPE html>
@@ -7,27 +7,27 @@ $url = $_SERVER['DOCUMENT_ROOT'];
 <head>
   <meta charset="utf-8">
   <meta name="description" content="Форма создания отчета">
-    <link rel="stylesheet" href="<?$url;?>/templates/views/reporttes/views/report/assets/css/style.css">
-    <script src="<?$url;?>/templates/assets/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="<?= $url;?>/templates/views/reporttes/views/report/assets/css/style.css">
+    <script src="<?= $url;?>/assets/jquery-3.6.0.min.js"></script>
   <!--[if lte IE 11]>
     <link rel="stylesheet" href="assets/css/style-for-ie9.css">
     <![endif]-->
   <meta name="keywords" content="Список отчетов, Тептар, тептар">
-  <script type="text/javascript" src="<?$url;?>/templates/views/reporttes/views/report/blocks/content/body/body.js"></script>
-  <script type="text/javascript" src="<?$url;?>/templates/views/reporttes/views/report/blocks/content/body/reports-title.js"></script>
-  <script type="text/javascript" src="<?$url;?>/templates/views/reporttes/views/report/blocks/content/body/__body.js"></script>
-  <script type="text/javascript" src="<?$url;?>/templates/views/reporttes/views/report/blocks/content/body/__footer.js"></script>
-  <script type="text/javascript" src="<?$url;?>/templates/views/reporttes/views/report/blocks/content/body/__side-block.js"></script>
-  <script type="text/javascript" src="<?$url;?>/templates/views/reporttes/views/report/blocks/content/content.js"></script>
+  <script type="text/javascript" src="<?= $url;?>/templates/views/reporttes/views/report/blocks/content/body/body.js"></script>
+  <script type="text/javascript" src="<?= $url;?>/templates/views/reporttes/views/report/blocks/content/body/reports-title.js"></script>
+  <script type="text/javascript" src="<?= $url;?>/templates/views/reporttes/views/report/blocks/content/body/__body.js"></script>
+  <script type="text/javascript" src="<?= $url;?>/templates/views/reporttes/views/report/blocks/content/body/__footer.js"></script>
+  <script type="text/javascript" src="<?= $url;?>/templates/views/reporttes/views/report/blocks/content/body/__side-block.js"></script>
+  <script type="text/javascript" src="<?= $url;?>/templates/views/reporttes/views/report/blocks/content/content.js"></script>
   <title>Просмотр отчета</title>
 </head>
 <body>
 
-    <?php  require_once dirname(__DIR__) . _DS_ ._DS_.'menu.php'; ?>
+    <?php require_once $GLOBALS['path']['layouts'] . 'menu' . _DS_ . 'menu.php' ?>
 
       <div class="content">
 
-          <?php  require_once dirname(__DIR__) . _DS_ ._DS_.'header.php'; ?>
+          <?php require_once $GLOBALS['path']['layouts'] . 'header' . _DS_ . 'header.php' ?>
 
         <div class="body">
           <div class="body__back-button">
@@ -73,15 +73,15 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                       <span class="icon-arrow_drop_down arrow_icon"></span>
                       <div class="reports-footer__action__sort none">
                         <div class="variables excel">
-                          <img width="30" height="30" src="<?$url;?>/templates/views/reporttes/views/report/assets/img/svg/xlsx.svg">
+                          <img width="30" height="30" src="<?= $url;?>/templates/views/reporttes/views/report/assets/img/svg/xlsx.svg">
                           Выгрузить в Excel
                         </div>
                         <div class="variables word">
-                          <img width="30" height="30" src="<?$url;?>/templates/views/reporttes/views/report/assets/img/svg/word.svg">
+                          <img width="30" height="30" src="<?= $url;?>/templates/views/reporttes/views/report/assets/img/svg/word.svg">
                           Выгрузить в Word
                         </div>
                         <div class="variables pdf">
-                          <img width="30" height="30" src="<?$url;?>/templates/views/reporttes/views/report/assets/img/svg/pdf.svg">
+                          <img width="30" height="30" src="<?= $url;?>/templates/views/reporttes/views/report/assets/img/svg/pdf.svg">
                           Выгрузить в PDF
                         </div>
                     </div>
@@ -98,7 +98,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                 <div class="reports-form__body__icons">
                   <a href="#">
                     <div class="reports-form__body__icon">
-                      <img src="<?$url;?>/assets/images/svg/import_light.svg" alt="import_light">
+                      <img src="<?= $url;?>/assets/images/svg/import_light.svg" alt="import_light">
                       Файл
                     </div>
                   </a>
@@ -110,7 +110,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                 </div>
                 <div class="reports-body__content__changes">
 
-                    <?php  require_once dirname(__DIR__) . _DS_ ._DS_.'activity.php'; ?>
+                    <?php require_once $GLOBALS['path']['layouts'] . 'activity' . _DS_ . 'activity.php' ?>
 
             </div>
             <div class="reports-body__side-block">
@@ -150,7 +150,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
               <div class="reports-body__side-block__responsible">
                 <div class="side-block__header">Ответственный</div>
                 <div class="side-block__body">
-                  <img src="<?$url;?>/assets/images/avatar.jpg" alt="responsible_avatar">
+                  <img src="<?= $url;?>/assets/images/avatar.jpg" alt="responsible_avatar">
                   <div class="responsible__info">
                     <span class="responsible__name">Ибрагим Грозный</span>
                     <span class="responsible__post">Районный сотрудник</span>
@@ -160,7 +160,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
               <div class="reports-body__side-block__assistant">
                 <div class="side-block__header">Сотрудник</div>
                 <div class="side-block__body">
-                  <img src="<?$url;?>/assets/images/avatar.jpg" alt="assistant_avatar">
+                  <img src="<?= $url;?>/assets/images/avatar.jpg" alt="assistant_avatar">
                   <div class="assistant__info">
                     <span class="assistant__name">Ибрагим Грозный</span>
                     <span class="assistant__post">Районный сотрудник</span>

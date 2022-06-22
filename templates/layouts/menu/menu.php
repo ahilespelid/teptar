@@ -1,20 +1,19 @@
 <?php
-define('_DS_', DIRECTORY_SEPARATOR);
 $url = $_SERVER['DOCUMENT_ROOT'];
 ?>
 
 <link rel="stylesheet" href="menu.css">
-<script src="<?$url;?>/templates/assets/jquery-3.6.0.min.js"></script>
-<script type="text/javascript"  src="<?$url;?>/templates/layouts/menunu/menu.js"></script>
-<script type="text/javascript"  src="<?$url;?>/templates/layouts/menunu/__main.js"></script>
-<script type="text/javascript"  src="<?$url;?>/templates/layouts/menunu/__header.js"></script>
-<script type="text/javascript"  src="<?$url;?>/templates/layouts/menunu/__body.js"></script>
-<script type="text/javascript"  src="<?$url;?>/templates/layouts/menunu/__footer.js"></script>
+<script src="<?= $url;?>/assets/jquery-3.6.0.min.js"></script>
+<script type="text/javascript"  src="<?= $url;?>/templates/layouts/menunu/menu.js"></script>
+<script type="text/javascript"  src="<?= $url;?>/templates/layouts/menunu/__main.js"></script>
+<script type="text/javascript"  src="<?= $url;?>/templates/layouts/menunu/__header.js"></script>
+<script type="text/javascript"  src="<?= $url;?>/templates/layouts/menunu/__body.js"></script>
+<script type="text/javascript"  src="<?= $url;?>/templates/layouts/menunu/__footer.js"></script>
 
 <div class="menu" id="menu">
     <div class="menu__main">
         <div class="menu__header">
-            <img src="<?$url;?>/assets/images/logo.svg" alt="logo">
+            <img src="<?= $url;?>/assets/images/logo.svg" alt="logo">
             <div class="menu__header__text"><b>ОЦЕНКА ЭФФЕКТИВНОСТИ</b> ОРГАНОВ МЕСТНОГО САМОУПРАВЛЕНИЯ</div>
         </div>
         <nav class="menu__body">

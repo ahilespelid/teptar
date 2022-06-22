@@ -59,27 +59,27 @@ table {
 
 @font-face {
   font-family: "Open Sans Medium";
-  src: url(../../../../assets/fonts/OpenSans-Medium.ttf);
+  src: url(../../../../../assets/fonts/OpenSans-Medium.ttf);
 }
 
 @font-face {
   font-family: "Open Sans Regular";
-  src: url(../../../../assets/fonts/OpenSans-Regular.ttf);
+  src: url(../../../../../assets/fonts/OpenSans-Regular.ttf);
 }
 
 @font-face {
   font-family: "Open Sans SemiBold";
-  src: url(../../../../assets/fonts/OpenSans-SemiBold.ttf);
+  src: url(../../../../../assets/fonts/OpenSans-SemiBold.ttf);
 }
 
 @font-face {
   font-family: "Open Sans Light";
-  src: url(../../../../assets/fonts/OpenSans-Light.ttf);
+  src: url(../../../../../assets/fonts/OpenSans-Light.ttf);
 }
 
 @font-face {
   font-family: "Open Sans Bold";
-  src: url(../../../../assets/fonts/OpenSans-Bold.ttf);
+  src: url(../../../../../assets/fonts/OpenSans-Bold.ttf);
 }
 
 body {

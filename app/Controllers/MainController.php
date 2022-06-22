@@ -1,7 +1,9 @@
 <?php 
 namespace App\Controllers ;
 
-class MainController{
+use Exception;
+
+class MainController extends AbstractController {
     public      $pageLogin, $user, $districts;
     protected   $pageData = [];
 
@@ -9,23 +11,34 @@ class MainController{
          $this->user = new UserController;
          $this->districts = new DistrictController;
     }
-/*/ -------------------------------------------------------------- Главная страница -------------------------------------------------------------- /*/   
-    public function index($q){$user =  $this->user;
-        if (isset($_GET['in']) && 'logout' == $_GET['in']){$user->out(); $user->pLogin->render(); exit();}
 
-        
-        
-        
-        ($user->isToken()) ? $user->login($user->getLoginUser())->pIndex->render() : $user->pLogin->render();
-        
-        
-        
-        //pa($user);
+/*/ ------------ Главная страница ------------ /*/
+
+//    public function index($q){$user =  $this->user;
+//        if (isset($_GET['in']) && 'logout' == $_GET['in']){$user->out(); $user->pLogin->render(); exit();}
+//
+//
+//
+//
+//        ($user->isToken()) ? $user->login($user->getLoginUser())->pIndex->render() : $user->pLogin->render();
+//
+//        //pa($user);
+//    }
+
+    /**
+     * @throws Exception
+     */
+    public function index() {
+        $this->render('/login/index.php');
     }
- /*/ -------------------------------------------------------------- 404 страница -------------------------------------------------------------- /*/     
-    public function notfound(){
-        $path = realpath('./').DIRECTORY_SEPARATOR.'404.php';
-       if(file_exists($path)){include($path);}
-        exit();       
-    }    
+
+ /*/ ------------ 404 страница ------------ /*/
+
+    public function notFound(){
+
+        $this->render('/errors/404.php');
+//        $path = realpath('./').DIRECTORY_SEPARATOR.'404.php';
+//        if(file_exists($path)){include($path);}
+//        exit();
+    }
 }

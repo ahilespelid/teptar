@@ -16,4 +16,4 @@ class ReportModel extends \App\Data{
     }
     
     public function __destruct() {$this->pdo = null;}
-}            
+}

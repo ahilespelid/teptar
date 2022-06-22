@@ -60,31 +60,31 @@ table {
 
 @font-face {
   font-family: "Open Sans Medium";
-  src: url(../../../../assets/fonts/OpenSans-Medium.ttf);
+  src: url(../../../../../assets/fonts/OpenSans-Medium.ttf);
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Open Sans Regular";
-  src: url(../../../../assets/fonts/OpenSans-Regular.ttf);
+  src: url(../../../../../assets/fonts/OpenSans-Regular.ttf);
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Open Sans SemiBold";
-  src: url(../../../../assets/fonts/OpenSans-SemiBold.ttf);
+  src: url(../../../../../assets/fonts/OpenSans-SemiBold.ttf);
   font-weight: 600;
 }
 
 @font-face {
   font-family: "Open Sans Light";
-  src: url(../../../../assets/fonts/OpenSans-Light.ttf);
+  src: url(../../../../../assets/fonts/OpenSans-Light.ttf);
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Open Sans Bold";
-  src: url(../../../../assets/fonts/OpenSans-Bold.ttf);
+  src: url(../../../../../assets/fonts/OpenSans-Bold.ttf);
   font-weight: 700;
 }
 

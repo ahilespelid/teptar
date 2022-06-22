@@ -10,6 +10,7 @@
         justify-content: center;
         align-items: center;
         background-color: #0e1621;
+        flex-direction: column;
     }
     .exception-body-block {
         background: #17212b;
@@ -17,7 +18,18 @@
         padding: 30px;
         margin: 20px;
         color: #fff;
-
+        position: relative;
+    }
+    .exception-dev-body-block {
+        background: #403232;
+        padding: 30px 30px 38px;
+    }
+    .exception-dev-body-block .absolute-title {
+        position: absolute;
+        right: 15px;
+        bottom: 12px;
+        font-size: 12px;
+        color: rgba(255,255,255,0.3);
     }
     .exception-body-logotype {
         animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
@@ -28,7 +40,7 @@
         text-align: center;
         margin-bottom: 18px;
     }
-    .exception-body-block h2 {
+    .exception-body-block h2, .exception-body-block h4 {
         margin: 0 0 20px;
     }
     .exception-body-contacts {
@@ -151,4 +163,15 @@
 
         <span class="exception-body-contacts">8 (965) 500 60 70 | support@teptar.com | Telegram: t.me/teptar_rf</span>
     </div>
+
+    <?php if (isset($GLOBALS['env']) && $GLOBALS['env'] == 'dev') { ?>
+
+        <div class="exception-body-block exception-dev-body-block">
+            <span class="absolute-title">Режим разработчика</span>
+            <?= $e->getMessage() . ' <br><br>Строка ошибки: <b>'. $e->getFile() .'</b> <small>(line ' . $e->getLine()  . ')</small><br>'; ?>
+        </div>
+
+    <?php } ?>
 </div>
+
+<?php //var_dump('gfdgd'); ?>

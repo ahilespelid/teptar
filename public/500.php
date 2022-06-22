@@ -1,8 +1,8 @@
-<?php include '../base/head.php' ?>
+<?php include $this->layout('base/head.php') ?>
 
 <body>
 
-    <?php include '../blocks/navbar/navbar.php' ?>
+    <?php include $this->layout('navbar/navbar-home.php') ?>
 
         <div class="container">
 
@@ -29,8 +29,8 @@
 
         </div>
 
-    <?php include '../blocks/footer/footer.html';?>
+    <?php include $this->layout('footer/footer.php') ?>
 
 </body>
 
-<?php include '../base/foot.php' ?>
+<?php include $this->layout('base/foot.php') ?>

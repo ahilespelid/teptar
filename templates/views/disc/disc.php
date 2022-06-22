@@ -9,7 +9,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
   <meta name="description" content="Список отчетов">
   <meta name="keywords" content="Список отчетов, Тептар, тептар">
   <link rel="stylesheet" href="/templates/views/disclates/views/disc/assets/css/style.css">
-    <script src="/templates/assets/jquery-3.6.0.min.js"></script>
+    <script src="/assets/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="<?$url;?>/templates/views/disclates/views/disc/assets/js/reports.js"></script>
     <script type="text/javascript"  src="<?$url;?>/templates/views/disclates/views/disc/blocks/content/body/body.js"></script>
   <script type="text/javascript" src="<?$url;?>/templates/views/disclates/views/disc/blocks/content/body/__reports-title.js"></script>
@@ -77,7 +77,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                       <input class="disc__element__header__checkbox" type="checkbox">
                   </div>
                   <div class="disc__element__img">
-                    <img src="../../assets/images/svg/colored_folder.svg" alt="">
+                    <img src="../../../assets/images/svg/colored_folder.svg" alt="">
                   </div>
                   <div class="disc__element__name">Загруженные файлы</div>
               </div>
@@ -87,7 +87,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                       <input class="disc__element__header__checkbox" type="checkbox">
                   </div>
                   <div class="disc__element__img">
-                      <img src="../../assets/images/svg/pdf.svg" alt="">
+                      <img src="../../../assets/images/svg/pdf.svg" alt="">
                   </div>
                   <div class="disc__element__name">Описание.pdf</div>
               </div>
@@ -97,7 +97,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                       <input class="disc__element__header__checkbox" type="checkbox">
                   </div>
                   <div class="disc__element__img">
-                      <img src="../../assets/images/svg/word.svg" alt="">
+                      <img src="../../../assets/images/svg/word.svg" alt="">
                   </div>
                   <div class="disc__element__name">Описание.word</div>
               </div>
@@ -107,7 +107,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                       <input class="disc__element__header__checkbox" type="checkbox">
                   </div>
                   <div class="disc__element__img">
-                      <img src="../../assets/images/svg/mp3.svg" alt="">
+                      <img src="../../../assets/images/svg/mp3.svg" alt="">
                   </div>
                   <div class="disc__element__name">Описание.mp3</div>
               </div>
@@ -117,7 +117,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                       <input class="disc__element__header__checkbox" type="checkbox">
                   </div>
                   <div class="disc__element__img">
-                      <img src="../../assets/images/svg/ppt.svg" alt="">
+                      <img src="../../../assets/images/svg/ppt.svg" alt="">
                   </div>
                   <div class="disc__element__name">Описание.ppt</div>
               </div>
@@ -127,7 +127,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                       <input class="disc__element__header__checkbox" type="checkbox">
                   </div>
                   <div class="disc__element__img">
-                      <img src="../../assets/images/svg/txt.svg" alt="">
+                      <img src="../../../assets/images/svg/txt.svg" alt="">
                   </div>
                   <div class="disc__element__name">Описание.txt</div>
               </div>
@@ -137,7 +137,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                       <input class="disc__element__header__checkbox" type="checkbox">
                   </div>
                   <div class="disc__element__img">
-                      <img src="../../assets/images/svg/zip.svg" alt="">
+                      <img src="../../../assets/images/svg/zip.svg" alt="">
                   </div>
                   <div class="disc__element__name">Описание.zip</div>
               </div>
@@ -147,7 +147,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
                       <input class="disc__element__header__checkbox" type="checkbox">
                   </div>
                   <div class="disc__element__img">
-                      <img src="../../assets/images/svg/mov.svg" alt="">
+                      <img src="../../../assets/images/svg/mov.svg" alt="">
                   </div>
                   <div class="disc__element__name">Описание.mov</div>
               </div>

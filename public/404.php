@@ -26,7 +26,7 @@
 
         </div>
 
-    <?php include $path.'blocks'._DS_.'footer'._DS_.'footer.html';?>
+    <?php include $path.'blocks'._DS_.'footer'._DS_.'footer.php';?>
 
 </body>
 

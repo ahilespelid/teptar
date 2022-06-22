@@ -4,9 +4,12 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$GLOBALS['lifeToken'] = (60*60)*1;    
+$GLOBALS['lifeToken'] = (60*60)*1;
+$GLOBALS['env'] = 'dev';
+
 /*/ --------------------------------------------------------------База данных --------------------------------------------------------------/*/
-$table =array(
+
+$table = array(
 'users'       => 'users',
 'districts'   => 'districts',
 'roles'   => 'roles',
@@ -18,22 +21,24 @@ $GLOBALS['db']['host'] = '194.67.90.250';
 $GLOBALS['db']['base'] = 'teptar';
 $GLOBALS['db']['user'] = 'tepuser';
 $GLOBALS['db']['pass'] = '-Txh9y#j_sJM';
+
 /*/ --------------------------------------------------------------Глобальный массив параметров --------------------------------------------------------------/*/
+
 define('_DS_',DIRECTORY_SEPARATOR);
 $path = dirname(__DIR__);
 $path =array(
 'dev'       => $path,
 'pub'       =>$_SERVER['DOCUMENT_ROOT'],
-
 'app'       => $path._DS_.'app',
 'core'      => $path._DS_.'core',
 'log'        => $path._DS_.'log',
 'temp'     => $path._DS_.'temp',
-'templates'     => $path._DS_.'templates',
 'tmp'     => $path._DS_.'public'._DS_.'tmp',
-
 'use' => ['ex' => '/tmp/external', 'in' => '/tmp/internal'],
 'out' => ['ex' => 'tmp'._DS_.'external', 'in' => 'tmp'._DS_.'internal'],
+
+'layouts'     => $path._DS_.'templates'. _DS_ . 'layouts' . _DS_,
+'views'     => $path._DS_.'templates'. _DS_ . 'views' . _DS_,
 );
 
 $GLOBALS['path'] = $path;
@@ -43,45 +48,31 @@ $GLOBALS['path']['view'] = $GLOBALS['path']['app']._DS_.'Views';
 
 $GLOBALS['path']['layout'] = $GLOBALS['path']['temp']._DS_.'internal'._DS_;
 
-$url =array(
+$url = array(
 'index' => ['controller' => 'MainController', 'action' => 'index'],
 '404'    => ['controller' => 'MainController', 'action' => 'notfound'],
 'login'  => ['controller' => 'UserController', 'action' => 'login'],
 'exel'   => ['controller' => 'ExelController', 'action' => 'work'],
 'ajax'   => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
 'district'   => ['controller' => 'DistrictController', 'action' => 'index'],
+'report'   => ['controller' => 'ReportController', 'action' => 'index'],
+'framework'   => ['controller' => 'FrameworkController', 'action' => 'index'],
 );
 
 $GLOBALS['url'] = $url;
 
+/*/-------------------------------------------------------------- Удочка для ошибок --------------------------------------------------------------/*/
 
 class Config{
-/*/-------------------------------------------------------------- Удочка для ошибок --------------------------------------------------------------/*/
     public function handleUncaughtException($e){
         $registr = new Registr();
         $registr->writeLog($e);
 
-        /*/ Вывод вьюхи при ошибке /*/
-        include $GLOBALS['path']['templates'] . _DS_ . 'views' . _DS_ . 'errors' . _DS_ . 'exception.php';
-
-        $bug = (is_object($GLOBALS['bug']) && $GLOBALS['bug'] instanceof \App\Registr) ? $GLOBALS['bug'] : false;
-        $bugClassCheck =  (is_object($bug)) ? true : false;
-         
-        $extMessage = ($bugClassCheck) ? $e->getMessage() : 'Failed to identify the Register object'; 
-        $exFile          = ($bugClassCheck) ? $e->getFile()          : __FILE__;
-        $exLine          = ($bugClassCheck) ? $e->getLine()         : __LINE__;
-        $exDate         =  (new \DateTime('now'))->format('[H:i | d M Y]');
-
-         if($bugClassCheck){
-             $bug->setException($e);
-         }else{        
-            $o = (object)['message' => $extMessage, 'file' => $exFile, 'line' => $exLine];
-            (new Registr)->setException($o)->writeLog();
-         } 
-         echo '<span style="color: #ce4040">' .$exDate. '</span> '.$extMessage.' <b>'.'$exFile'.'</b> <small>(line ' .'$exLine'. ')</small><br>';   
-        return false;
+        /*/ Показ вида при выявленных исключениях /*/
+        include $GLOBALS['path']['views'] . 'errors' . _DS_ . 'exception.php';
     }
 }
-/*/-------------------------------------------------------------- Цепляем удочку для ошибок глобально --------------------------------------------------------------/*/ 
+
+/*/-------------------------------------------------------------- Цепляем удочку для ошибок глобально --------------------------------------------------------------/*/
+
 set_exception_handler([(new Config), 'handleUncaughtException']);
-?>

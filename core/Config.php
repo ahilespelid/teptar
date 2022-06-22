@@ -29,6 +29,7 @@ $path =array(
 'core'      => $path._DS_.'core',
 'log'        => $path._DS_.'log',
 'temp'     => $path._DS_.'temp',
+'templates'     => $path._DS_.'templates',
 'tmp'     => $path._DS_.'public'._DS_.'tmp',
 
 'use' => ['ex' => '/tmp/external', 'in' => '/tmp/internal'],
@@ -60,15 +61,9 @@ class Config{
         $registr = new Registr();
         $registr->writeLog($e);
 
-        echo
-    '<center>
-        <h3>Что-то пошло не так. </h3>
-        <h4>Cвяжитесь с нами 
-                <a href="mailto:ahilespelid@yandex.ru">@ahilespelid</a>, 
-                если проблема не исчезнет.
-        </h4>
-    </center>';  
-        
+        /*/ Вывод вьюхи при ошибке /*/
+        include $GLOBALS['path']['templates'] . _DS_ . 'views' . _DS_ . 'errors' . _DS_ . 'exception.php';
+
         $bug = (is_object($GLOBALS['bug']) && $GLOBALS['bug'] instanceof \App\Registr) ? $GLOBALS['bug'] : false;
         $bugClassCheck =  (is_object($bug)) ? true : false;
          
@@ -76,7 +71,7 @@ class Config{
         $exFile          = ($bugClassCheck) ? $e->getFile()          : __FILE__;
         $exLine          = ($bugClassCheck) ? $e->getLine()         : __LINE__;
         $exDate         =  (new \DateTime('now'))->format('[H:i | d M Y]');
-     
+
          if($bugClassCheck){
              $bug->setException($e);
          }else{        

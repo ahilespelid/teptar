@@ -1,4 +1,4 @@
-<?php include $this->layout('base/head.php') ?>
+<?php include $this->layout('base/head.php'); ?>
 
     <body>
 
@@ -11,7 +11,7 @@
                 </div>
                 <div class="login-form">
 
-                    <form method="post" action="/">
+                    <form method="post" action="/login">
 
                         <header class="user-title-block">
                             Вход в систему
@@ -24,11 +24,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="inputUsername"></label><input type="text" name="username" id="inputUsername" class="form-control" placeholder=" Пользователь">
+                                <label for="inputLogin"></label><input type="text" name="login" id="inputLogin" class="form-control" placeholder=" Пользователь">
                             </div>
 
                             <div class="form-group">
-                                <label for="inputPassword"></label><input type="password" name="password" id="inputPassword" class="form-control" placeholder=" Пароль">
+                                <label for="inputPass"></label><input type="password" name="pass" id="inputPass" class="form-control" placeholder=" Пароль">
                             </div>
 
                             <button class="btn btn-primary mt-1" type="submit">
@@ -47,4 +47,4 @@
 
     </body>
 
-<?php include $this->layout('base/foot.php') ?>
+<?php include $this->layout('base/foot.php'); ?>

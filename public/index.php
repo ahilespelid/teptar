@@ -4,8 +4,6 @@ require_once('..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php
 $bug = new App\Registr();
 $route = new App\Route(); $route->run();
 
-
-
 /*/
  pa(array_slice(pn(false),172));
 try {

@@ -28,8 +28,18 @@ class MainController extends AbstractController {
     /**
      * @throws Exception
      */
-    public function index() {
-        $this->render('/login/index.php');
+    public function index(){
+        if(isset($_GET['logout'])){$user->out(); $this->render('/login/index.php'); exit();}
+        
+        
+        if($this->user->isToken()){
+            if($user = $this->user->login($this->user->getLoginUser())){
+                pa($user);
+                
+            }
+        }else{$this->render('/login/index.php');}
+        
+       
     }
 
  /*/ ------------ 404 страница ------------ /*/

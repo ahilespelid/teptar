@@ -12,7 +12,7 @@
                 <div class="login-form">
 
                     <form method="post" action="/login">
-
+                    
                         <header class="user-title-block">
                             Вход в систему
                         </header>
@@ -20,7 +20,7 @@
                         <div class="form">
 
                             <div class="form-group">
-                                <label for="inputUIN"></label><input type="text" name="uin" id="inputUIN" class="form-control" placeholder=" UIN">
+                                <label for="inputUIN"></label><input type="text" name="uin[name]" id="inputUIN" class="form-control" placeholder=" UIN">
                             </div>
 
                             <div class="form-group">

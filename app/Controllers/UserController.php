@@ -4,7 +4,7 @@ session_start([
     'cookie_lifetime' => ($GLOBALS['lifeToken'] > 60) ? $GLOBALS['lifeToken'] : 60,
 ]);
 
-class UserController{
+class UserController extends AbstractController{
     public $model, 
                 $pProfile,
                 $pLogin,
@@ -14,6 +14,7 @@ class UserController{
                 $pass,
                 $hash,
                 $district,
+                $uin,
                 $role,
                 $email,
                 $phone,
@@ -30,19 +31,20 @@ class UserController{
         $this->pIndex = new \App\Views\IndexView;
     } 
     
-    public function login($data = []){
+    public function login($data = []){pa($_SESSION); pa($data);
         $is_loginUrl = str_starts_with(((!empty($_REQUEST['q']) && is_string($_REQUEST['q'])) ? mb_strtolower(trim($_REQUEST['q'])) : ''),'login');
-         if(is_array($data) && !empty($data) && !is_array(current($data))  
-            && !empty($data['pass'])  && !empty($data['login']) && !empty($data['uin'])
-            && is_string($data['pass'])  && is_string($data['login']) && is_string($data['uin'])){
-                
+         
+         if(is_array($data) && !empty($data)  
+            && !empty($data['pass'])  && !empty($data['login']) && !empty($data['uin']['name'])
+            && is_string($data['pass'])  && is_string($data['login']) && is_string($data['uin']['name'])){
+            
                 extract($data, EXTR_REFS);  /*/ Взяли данные /*/
-
+                
                 $login = (!empty($login)) ? $login : false;
                 $pass = (!empty($pass)) ? $pass : false;
+               
                 $user = (!$is_loginUrl) ? $data : $this->model->getUser(['login' => $login, 'pass' => md5($pass)]); /*/ Взяли пользователя из базы /*/
-                $user['uin'] = (!empty($user['uin'])) ? $user['uin'] : $uin;
-                 
+                
                 if(is_array($user) && !empty($user)){$hashNew = date_timestamp_get(date_create());
                       $this->id                   = $user['id'];
                       $this->login              = $user['login'];
@@ -58,21 +60,21 @@ class UserController{
                       $this->age                = (empty($user['age']))                ? '': $user['age'];
                       
                       $this->district           = $user['district'] = (!empty($user['id_district'])) ? $this->model->getDistrict($user['id_district']) : [];
+                      $this->uin                 = $user['uin'] = (!empty($uin['name']) && !empty($user['id_uin'])) ? $this->model->getUIN(['id' => $user['id_uin'], 'name' => $uin['name']]) : [];
                       $this->role                = $user['role'] = (!empty($user['id_role'])) ? $this->model->getRole($user['id_role']) : [];
                       
-                      
-                      if($user['uin'] == $this->district['uin']){
+                      if(!empty($this->uin)){
                       if($this->model->update($this->model->table,['id' => $user['id'] ,'hash'=>$hashNew,'token'=>$this->token])
                         && $this->model->insert($this->model->tableUsersBlock,['id_user' => $user['id'],'hash'=>$this->hash, 'token'=>$this->token])){
                             $is_auth = $this->auth($user);
                             if($is_loginUrl && $is_auth){header('Location: /');}
-                            elseif($is_loginUrl && !$is_auth){$this->pLogin->render();}
+                            elseif($is_loginUrl && !$is_auth){$this->render('/login/index.php');}
                             elseif(!$is_loginUrl && $is_auth){return $this;}
                             else{return false;}
                         }}
                 }
          } 
-         if($is_loginUrl){$this->pLogin->render();}else{
+         if($is_loginUrl){$this->render('/login/index.php');}else{
     return false;}}
     
      public function createToken($user = []){

@@ -14,6 +14,7 @@ $table = array(
 'districts'   => 'districts',
 'roles'   => 'roles',
 'usersBlock'   => 'usersBlock',
+'tableUIN'   => 'uin',   
 
 );
 $GLOBALS['db']['table'] =  $table;
@@ -55,7 +56,7 @@ $url = array(
 'exel'   => ['controller' => 'ExelController', 'action' => 'work'],
 'ajax'   => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
 'district'   => ['controller' => 'DistrictController', 'action' => 'index'],
-'report'   => ['controller' => 'ReportController', 'action' => 'index'],
+'report'   => ['controller' => 'ReportController', 'action' => 'index'], 
 'framework'   => ['controller' => 'FrameworkController', 'action' => 'index'],
 );
 

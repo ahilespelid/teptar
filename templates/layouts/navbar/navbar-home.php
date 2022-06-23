@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="options">
-                    <a class="option" href="/profile/index.php">
+                    <a class="option" href="/profile">
                         <i class="icon-user"></i> Профиль
                     </a>
 
@@ -59,7 +59,7 @@
 
                     <span class="separator"></span>
 
-                    <a class="option danger" href="/logout">
+                    <a class="option danger" href="/?logout">
                         <i class="icon-log-out"></i> Выход
                     </a>
                 </div>

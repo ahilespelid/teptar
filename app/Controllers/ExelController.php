@@ -50,7 +50,7 @@ class ExelController{
  "VALUES ('".$k."', '".$v[$i][0]."', '".$v[$i][1]."',  '".$v[$i][2]."',  '".$v[$i][3]."',   '".$v[$i][4]."',   '".$v[$i][5]."',  '".$v[$i][6]."',  '".$v[$i][7]."',  '".$v[$i][8]."',   '".$v[$i][9]."',   '".$v[$i][10]."',   '".$v[$i][11]."', '".$v[$i][12]."',  '".$v[$i][13]."');  <br>";
          $l++;}                     
      }
-     echo  $sql;  /*/     
+       /*/     
 
  foreach($dataLoad as $k=>$v){
      
@@ -69,7 +69,17 @@ class ExelController{
      } $dataRet[$k] = $stroka; unset($stroka);
  }  
      
-pa($dataRet);         
+//pa($dataRet);
+$sql = '';
+foreach($dataRet as $index => $district){$i=1;foreach($district as $region){for($l=0;$l<=3;$l++){
+    $date = (0 == $l) ? "2017-01-01 00:00:17" : (
+                 (1==$l)   ? "2018-01-01 00:00:18" : (
+                 (2 == $l) ? "2019-01-01 00:00:19" : "2020-01-01 00:00:20"));
+    $sql .= "INSERT INTO `teptar`.`index` (`id_user`, `id_mark`, `id_district`, `index`, `date`) VALUES ('1', '".trim($index)."', '".$i."', '".$region[$l]."', '".$date."');<br>".PHP_EOL;
+    
+}$sql .= '<br>'; $i++;}}
+
+echo  $sql;         
     }
  /*/ -------------------------------------------------------------- Загрузка exel -------------------------------------------------------------- /*/     
     public function load(){

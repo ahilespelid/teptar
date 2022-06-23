@@ -1,4 +1,4 @@
-<?php 
+<?php
 $dirname = dirname(__DIR__).DIRECTORY_SEPARATOR.'log'.DIRECTORY_SEPARATOR.'req';
 
 $date =  new DateTime();

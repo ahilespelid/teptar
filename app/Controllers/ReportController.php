@@ -13,6 +13,6 @@ class ReportController
     }
 
     public function index() {
-        $this->view->render();
+        $htis->view->render();
     }
 }

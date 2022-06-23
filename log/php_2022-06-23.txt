@@ -1,0 +1,2 @@
+
+[12:54 | 23 Jun 2022] Class "App\Views\InView" not found /var/www/app/Controllers/AjaxController.php (line 10)

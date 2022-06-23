@@ -13,3 +13,15 @@ try {
 }
 
 pa($bug->getException());  //*/$bug->writeLog(); //*/
+
+if (isset($GLOBALS['env']) && $GLOBALS['env'] == 'dev') {
+    require_once $GLOBALS['path']['layouts'] . 'base/developer_toolbar.php';
+}
+
+//pa($GLOBALS['url'][$_SERVER['REQUEST_URI']]);
+
+//pa($GLOBALS['url']);
+
+//echo $_SERVER['REQUEST_URI'];
+
+//pa(get_class_methods($this));

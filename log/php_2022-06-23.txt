@@ -1,2 +1,27 @@
 
+<<<<<<< HEAD
 [12:54 | 23 Jun 2022] Class "App\Views\InView" not found /var/www/app/Controllers/AjaxController.php (line 10)
+=======
+[14:11 | 23 Jun 2022] Failed opening required 'templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:11 | 23 Jun 2022] Failed opening required 'templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:11 | 23 Jun 2022] Failed opening required '/templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:11 | 23 Jun 2022] Failed opening required 'templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:12 | 23 Jun 2022] Failed opening required 'templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:12 | 23 Jun 2022] Failed opening required 'templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:12 | 23 Jun 2022] Failed opening required 'templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:12 | 23 Jun 2022] Failed opening required 'templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:12 | 23 Jun 2022] Failed opening required 'templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:12 | 23 Jun 2022] Failed opening required 'templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:12 | 23 Jun 2022] Failed opening required './templates/layouts/base/developer_toolbar.php' (include_path='.:/usr/local/Cellar/php/8.1.7/share/php/pear') /Users/deniev/Server/www/public/index.php (line 19)
+[14:26 | 23 Jun 2022] Class "App\Views\InView" not found /Users/deniev/Server/www/app/Controllers/AjaxController.php (line 10)
+[14:26 | 23 Jun 2022] Class "App\Views\InView" not found /Users/deniev/Server/www/app/Controllers/AjaxController.php (line 10)
+[14:29 | 23 Jun 2022] Illegal offset type /Users/deniev/Server/www/public/index.php (line 21)
+[14:37 | 23 Jun 2022] get_class() without arguments must be called from within a class /Users/deniev/Server/www/public/index.php (line 27)
+[14:37 | 23 Jun 2022] get_class_methods() expects exactly 1 argument, 0 given /Users/deniev/Server/www/public/index.php (line 27)
+[14:37 | 23 Jun 2022] Using $this when not in object context /Users/deniev/Server/www/public/index.php (line 27)
+[14:40 | 23 Jun 2022] Using $this when not in object context /Users/deniev/Server/www/public/index.php (line 27)
+[14:41 | 23 Jun 2022] Using $this when not in object context /Users/deniev/Server/www/templates/layouts/base/developer_toolbar.php (line 25)
+[14:45 | 23 Jun 2022] Using $this when not in object context /Users/deniev/Server/www/templates/layouts/base/developer_toolbar.php (line 25)
+[14:45 | 23 Jun 2022] Using $this when not in object context /Users/deniev/Server/www/templates/layouts/base/developer_toolbar.php (line 25)
+[14:52 | 23 Jun 2022] Using $this when not in object context /Users/deniev/Server/www/templates/layouts/base/developer_toolbar.php (line 25)
+>>>>>>> 0dd0f6f4aadf940cdb8ad505c8017b284c62cb6b

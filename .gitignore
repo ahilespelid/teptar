@@ -1,4 +1,6 @@
 ###> MacOS files ###
-
 .idea
 .DS_Store
+
+###> Other files ###
+yarn.lock

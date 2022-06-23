@@ -1,12 +1,16 @@
 <style>
     .developer-toolbar {
+        font-family: Arial, sans-serif;
         justify-content: center;
         background: #222;
         position: fixed;
         display: flex;
         height: 50px;
+        color: #fff;
         width: 100%;
         bottom: 0;
+        right: 0;
+        left: 0;
     }
 
     .developer-toolbar .developer-title {
@@ -93,7 +97,7 @@
         <?php if ($_SESSION) { ?>
             <span class="developer-button-dropdown">
 
-                <span class="list-item"><b>Имя пользователя:</b> <?php echo $_SESSION['user']['login']; ?> (ID <?php echo $_SESSION['user']['id']; ?>)</span>
+                <span class="list-item"><b>Имя пользователя:</b> <?php echo $_SESSION['user']['login']; ?></span>
 
                 <?php if ($_SESSION['user']['email']) { ?>
                     <span class="list-item"><b>Email:</b> <?php echo $_SESSION['user']['email']; ?></span>

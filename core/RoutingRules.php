@@ -8,4 +8,5 @@
 'district'            => $GLOBALS['url']['district'],    /*/  /*/      
 'report'            => $GLOBALS['url']['report'],    /*/  /*/
 'framework'            => $GLOBALS['url']['framework'],    /*/  /*/
+'profile'            => $GLOBALS['url']['profile'],    /*/  /*/
 ];

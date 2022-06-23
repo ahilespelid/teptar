@@ -1,14 +1,14 @@
-<?php include '../base/head.php' ?>
+<?php include $this->layout('base/head.php'); ?>
 
     <body>
 
-    <?php include '../blocks/navbar/navbar-pages.php' ?>
+    <?php include $this->layout('navbar/navbar-home.php'); ?>
 
         <div class="container">
 
             <div class="main">
 
-                <?php include '../blocks/navbar/responsive-pages.php' ?>
+<!--                --><?php //include $this->layout('navbar/responsive-pages.php'); ?>
 
                 <div class="grid-block">
                     <div class="grid-block-main">
@@ -78,8 +78,8 @@
 
         </div>
 
-    <?php include '../blocks/footer/footer.html';?>
+    <?php include $this->layout('footer/footer.html'); ?>
 
     </body>
 
-<?php include '../base/foot.php' ?>
+<?php include $this->layout('base/foot.php'); ?>

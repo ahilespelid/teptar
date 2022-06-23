@@ -1,9 +1,3 @@
-<?php
-require_once '../config/Db.php';
-$connect = new Db;
-$districts_sql = 'SELECT * FROM districts';
-?>
-
 <div class="navbar-responsive">
     <div class="item">
         <div class="map">

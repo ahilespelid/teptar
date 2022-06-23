@@ -10,14 +10,13 @@ class ReportController extends AbstractController
 
     public function __construct()
     {
-        $this->model = new \App\Models\ReportModel();
+        $this->model = new \App\Models\ReportModel;
     }
 
     /**
      * @throws Exception
      */
     public function index() {
-
         $this->render('/report/report.php');
     }
 }

@@ -52,7 +52,7 @@ abstract class Data{
             $whereString .= $k.'='.$this->pdo->quote($v).(($i < $c ) ? ' AND ' : ''); $i++;
         }$whereString = ' WHERE '.$whereString;
         
-        $sql =  'SELECT * FROM '.$table.$whereString .';'; //echo $sql;
+        $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ echo $sql; //*/
         $return = $this->pdo->query($sql);
         
         $return = $return->fetchAll(); 

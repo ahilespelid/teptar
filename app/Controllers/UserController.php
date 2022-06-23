@@ -31,8 +31,9 @@ class UserController extends AbstractController{
         $this->pIndex = new \App\Views\IndexView;
     } 
     
-    public function login($data = []){pa($_SESSION); pa($data);
-        $is_loginUrl = str_starts_with(((!empty($_REQUEST['q']) && is_string($_REQUEST['q'])) ? mb_strtolower(trim($_REQUEST['q'])) : ''),'login');
+    public function login($data = []){
+        if(str_ends_with($_SERVER['REQUEST_URI'], '/')){$_SERVER['REQUEST_URI'][strlen($_SERVER['REQUEST_URI']) - 1] = ' ';}
+        $is_loginUrl = ('login' ==  trim($_SERVER['REQUEST_URI'])) ? true : false;
          
          if(is_array($data) && !empty($data)  
             && !empty($data['pass'])  && !empty($data['login']) && !empty($data['uin']['name'])

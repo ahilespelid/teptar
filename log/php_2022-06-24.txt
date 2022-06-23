@@ -1,0 +1,3 @@
+
+[00:06 | 24 Jun 2022] Cannot assign an empty string to a string offset /var/www/app/Controllers/UserController.php (line 36)
+[00:06 | 24 Jun 2022] Cannot assign an empty string to a string offset /var/www/app/Controllers/UserController.php (line 36)

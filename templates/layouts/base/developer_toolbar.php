@@ -1,12 +1,16 @@
 <style>
     .developer-toolbar {
+        font-family: Arial, sans-serif;
         justify-content: center;
         background: #222;
         position: fixed;
         display: flex;
         height: 50px;
+        color: #fff;
         width: 100%;
         bottom: 0;
+        right: 0;
+        left: 0;
     }
 
     .developer-toolbar .developer-title {
@@ -81,25 +85,39 @@
     }
 </style>
 
-<div class="developer-toolbar online">
+<div class="developer-toolbar <?php if ($_SESSION) { echo ' online'; } ?>">
     
-        <span class="developer-title"> <i class="icon-darhboard_alt"></i> Режим разработчика</span>
+    <span class="developer-title"> <i class="icon-darhboard_alt"></i> Режим разработчика</span>
 
-        <span class="developer-button">
-            <span class="developer-user-indicator"></span>
-            <i class="icon-user"></i> <span class="username">deniev</span>
+    <span class="developer-button">
+
+        <span class="developer-user-indicator"></span>
+        <i class="icon-user"></i> <span class="username"><?php if ($_SESSION) { echo $_SESSION['user']['login']; } else { ?>гость<?php } ?></span>
+
+        <?php if ($_SESSION) { ?>
             <span class="developer-button-dropdown">
-                <span class="list-item"><b>Имя пользователя:</b> deniev</span>
-                <span class="list-item"><b>Роли:</b> VILLAGE_STAFF, VILLAGE_BOSS</span>
-                <span class="list-item"><b>UIN:</b> CHR_GRR</span>
-                <span class="list-item"><b>Email:</b> magomed@deniev.com</span>
+
+                <span class="list-item"><b>Имя пользователя:</b> <?php echo $_SESSION['user']['login']; ?></span>
+
+                <?php if ($_SESSION['user']['email']) { ?>
+                    <span class="list-item"><b>Email:</b> <?php echo $_SESSION['user']['email']; ?></span>
+                <?php } ?>
+
+                <span class="list-item"><b>Роль:</b> <?php echo $_SESSION['user']['role']['name']; ?></span>
+                <span class="list-item"><b>UIN:</b> <?php echo $_SESSION['user']['uin']['name']; ?></span>
+                <span class="list-item"><b>ID:</b> <?php echo $_SESSION['user']['id']; ?></span>
+
             </span>
-        </span>
-        <span class="developer-button">
-            <i class="icon-setting"></i>
-        </span>
-        <span class="developer-button">
-            <i class="icon-lock"></i>
-        </span>
+        <?php } ?>
+
+    </span>
+
+    <span class="developer-button">
+        <i class="icon-setting"></i>
+    </span>
+
+    <span class="developer-button">
+        <i class="icon-lock"></i>
+    </span>
 
 </div>

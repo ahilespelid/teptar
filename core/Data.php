@@ -32,7 +32,7 @@ abstract class Data{
         
         return $return->fetch();}
 
-    public function getAll($table = ''){/*/ Берёт все значения из таблицы /*/ 
+    public function getAll(string $table){/*/ Берёт все значения из таблицы /*/
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
 

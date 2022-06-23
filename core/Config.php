@@ -58,6 +58,9 @@ $url = array(
 'district'   => ['controller' => 'DistrictController', 'action' => 'index'],
 'report'   => ['controller' => 'ReportController', 'action' => 'index'], 
 'framework'   => ['controller' => 'FrameworkController', 'action' => 'index'],
+
+'profile'   => ['controller' => 'ProfileController', 'action' => 'profile'],
+
 );
 
 $GLOBALS['url'] = $url;

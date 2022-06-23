@@ -4,6 +4,10 @@
 class LoginView extends \App\View{
     public $args = [
     'img' => ['Logotype' => '/assets/images/logotype-large.png'],
+    'js' => [
+        '/www/templates/assets/scripts/component.js',
+        '/www/templates/assets/scripts/collapse.js',
+    ]
     
     ];
     public $layout;
@@ -21,11 +25,15 @@ class LoginView extends \App\View{
                 $vars['img'][$k] = $this->imgBase($v);
         }}
 
+
+
         extract($vars, EXTR_REFS);
         ob_start();
         include $temp;
         $buffer = ob_get_contents();
         ob_end_clean();
+
+//        $this->scriptCompilator($this->args['js']);
 
         echo $buffer;}
         

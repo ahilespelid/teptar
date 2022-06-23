@@ -4,7 +4,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
 ?>
 
 <link rel="stylesheet" href="menu.css">
-<script src="<?$url;?>/templates/assets/jquery-3.6.0.min.js"></script>
+<script src="<?$url;?>/assets/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"  src="<?$url;?>/templates/layouts/menunu/menu.js"></script>
 <script type="text/javascript"  src="<?$url;?>/templates/layouts/menunu/__main.js"></script>
 <script type="text/javascript"  src="<?$url;?>/templates/layouts/menunu/__header.js"></script>

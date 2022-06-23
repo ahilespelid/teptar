@@ -1,0 +1,477 @@
+/* ================================================== Main ================================================== */
+
+a {
+    text-decoration: none;
+}
+
+/* ================================================== Blocks ================================================== */
+
+.block-box {
+    background: #17212b;
+    border-radius: 12px;
+}
+
+.content-box {
+    line-height: 22.5px;
+}
+
+.content-box p:first-child {
+    margin-top: unset;
+}
+
+.content-box p:last-child {
+    margin-bottom: unset;
+}
+
+.block-padding {
+    padding: 16px;
+}
+
+.block-margin-top {
+    margin-top: 24px;
+}
+
+.sub-block-margin-top {
+    margin-top: 6px !important;
+}
+
+.sub-block-margin-bottom {
+    margin-bottom: 6px;
+}
+
+.sub-block-margin-right {
+    margin-right: 6px;
+}
+
+/* ================================================== Buttons ================================================== */
+
+.button {
+    border: 1px solid transparent;
+    display: inline-block;
+    cursor: pointer;
+    line-height: 1.5;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    font-size: 14px;
+    color: #535C69;
+    background-color: transparent;
+}
+
+/* Buttons modifiers */
+
+.button.rounded {
+    border-radius: 8px;
+}
+.button.dark {
+    background-color: rgba(255,255,255,0.1);
+}
+.button.dark:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* Primary button */
+
+.button-primary {
+    background-color: #535C69;
+    color: #fff;
+}
+.button-primary:hover {
+    background-color: #464E59;
+}
+.button-outline-primary {
+    border: 1px solid #535c69;
+    color: #535c69;
+}
+.button-outline-primary:hover {
+    background-color: #535c69;
+    color: #fff;
+}
+.button-outline-primary.dark {
+    color: #788495;
+    border: 1px solid #788495;
+}
+.button-outline-primary.dark:hover {
+    color: #788495;
+}
+
+/* Secondary button */
+
+.button-secondary {
+    background-color: #EEF2F4;
+}
+.button-secondary:hover {
+    background-color: #DDE3E6;
+}
+.button-outline-secondary {
+    border: 1px solid #9ba3a8;
+    color: #9ba3a8;
+}
+.button-outline-secondary:hover {
+    background-color: #9ba3a8;
+    color: #fff;
+}
+.button-outline-secondary.dark:hover {
+    color: #9ba3a8;
+}
+
+/* Success button */
+
+.button-success {
+    background-color: #61b252;
+    color: #fff;
+}
+.button-success:hover {
+    background-color: #55a048;
+}
+.button-outline-success {
+    border: 1px solid #61b252;
+    color: #61b252;
+}
+.button-outline-success:hover {
+    background-color: #61b252;
+    color: #fff;
+}
+.button-outline-success.dark:hover {
+    color: #61b252;
+}
+
+/* Info button */
+
+.button-info {
+    background-color: #157DCD;
+    color: #fff;
+}
+.button-info:hover {
+    background-color: #1671B7;
+}
+.button-outline-info {
+    border: 1px solid #157dcd;
+    color: #157dcd;
+}
+.button-outline-info:hover {
+    background-color: #157dcd;
+    color: #fff;
+}
+.button-outline-info.dark:hover {
+    color: #157dcd;
+}
+
+/* Warning button */
+
+.button-warning {
+    background: #FFA114;
+    color: #fff;
+}
+.button-warning:hover {
+    background-color: #E69011;
+}
+.button-outline-warning {
+    border: 1px solid #ffa114;
+    color: #ffa114;
+}
+.button-outline-warning:hover {
+    background-color: #ffa114;
+    color: #fff;
+}
+.button-outline-warning.dark:hover {
+    color: #ffa114;
+}
+
+/* Danger button */
+
+.button-danger {
+    background-color: #EE4343;
+    color: #fff;
+}
+.button-danger:hover {
+    background-color: #DB3E3E;
+}
+.button-outline-danger {
+    border: 1px solid #ee4343;
+    color: #ee4343;
+}
+.button-outline-danger:hover {
+    background: #ee4343;
+    color: #fff;
+}
+.button-outline-danger.dark:hover {
+    color: #ee4343;
+}
+
+/* Light button */
+
+.button-light:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+.button-light.dark {
+    color: #fff;
+}
+.button-light.dark {
+    background-color: transparent;
+}
+.button-light.dark:hover {
+    background: rgba(255,255,255,0.03) !important;
+}
+
+/* ================================================== Dropdowns ================================================== */
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown .options {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    display: none;
+    z-index: 99;
+    top: 49px;
+}
+
+.dropdown.above .options {
+    top: unset;
+}
+
+.dropdown.show .options {
+    display: flex;
+}
+
+.dropdown .current {
+    cursor: pointer;
+    user-select: none;
+    display: table;
+    position: relative;
+    white-space: nowrap;
+}
+
+.dropdown .option {
+    padding: 12px 21px 12px 21px;
+    user-select: none;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    text-decoration: none;
+    color: #000;
+}
+
+.dropdown .option i {
+    width: 20px;
+    float: left;
+    text-align: center;
+    margin-right: 8px;
+    font-size: 15px;
+    top: 2px;
+    position: relative;
+}
+
+.dropdown .option.danger, .dropdown .option.danger a, .dropdown.dark .option.danger {
+    color: #EE4343;
+}
+
+.dropdown .divider {
+    border-bottom: 1px solid rgba(0,0,0, 0.05);
+}
+
+.dropdown .option:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.button-dropdown {
+    border: 1px solid #bdc3ca;
+}
+
+.dropdown-buttons-block {
+    padding: 16px 16px 10px;
+    box-sizing: border-box;
+    width: 700px;
+}
+
+.dropdown-buttons-block .button {
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+
+/* Dropdowns modifiers */
+
+.dropdown.rounded .options {
+    border-radius: 8px;
+}
+
+.dropdown.rounded .option:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.dropdown.rounded .option:last-child {
+    border-radius: 0 0 8px 8px;
+}
+
+.dropdown.dark .divider {
+    border-bottom: 1px solid rgba(255,255,255, 0.05);
+}
+
+.dropdown.right .options {
+    right: 0;
+}
+
+.dropdown.chevron .current {
+    padding: 8px 28px 8px 12px;
+}
+
+.dropdown.chevron .current:after {
+    position: absolute;
+    content: "";
+    top: 18px;
+    right: 12px;
+    border: 4px solid transparent;
+    border-color: #515860 transparent transparent transparent;
+}
+
+.dropdown.chevron.show .current:after {
+    border-color: transparent transparent #515860 transparent;
+    top: 13px;
+}
+
+.dropdown .title {
+    color: #232426;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.dropdown.dark .option:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.dropdown.dark .button-dropdown {
+    border: 1px solid #515860;
+    color: #fff;
+}
+.dropdown.dark .title {
+    color: #515860;
+}
+.dropdown.dark .options {
+    background: #17212b;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 100;
+}
+.dropdown.dark .option {
+    color: #fff;
+}
+
+/* ================================================== Collapse ================================================== */
+
+.collapse-button {
+    justify-content: space-between;
+    position: relative;
+    user-select: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    border: none;
+}
+
+.collapse-button .chevron {
+    align-items: center;
+    display: flex;
+    margin-left: 5px;
+}
+
+.collapse-button .icon-chevron-down {
+    float: right;
+    transition: 0.3s;
+    position: relative;
+    top: 0;
+}
+
+.collapse.active .icon-chevron-down {
+    transform: rotate(180deg);
+    top: 4px;
+}
+
+.collapse .collapse-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.collapse .collapse-content .item {
+    display: block;
+    padding: 12px;
+    color: #000;
+}
+
+.collapse.dark .collapse-content .item {
+    border-bottom: 1px solid rgb(0,0,0,0.05);
+}
+
+.collapse.dark .collapse-content .item:last-child, .collapse .collapse-content .item:last-child {
+    border-bottom: unset;
+}
+
+/* Collapses modifiers */
+
+.collapse.dark {
+    color: #fff;
+}
+
+.collapse.fill:not(.dark) .collapse-content-list {
+    background-color: #f2f2f2;
+}
+
+.collapse.fill .item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.collapse.chevron .collapse-button {
+    padding-right: 40px;
+}
+
+.collapse.chevron .collapse-button:after {
+    top: calc((100% - 7px) / 2);
+    font-family: 'icomoon', serif;
+    position: absolute;
+    content: "\e90a";
+    transition: 0.3s;
+    font-size: 6px;
+    right: 20px;
+}
+
+.collapse.chevron.active .collapse-button:after {
+    rotate: 180deg;
+}
+
+.collapse.dark .collapse-content .item {
+    color: #fff;
+}
+
+.collapse.dark.fill .collapse-content-list {
+    background-color: #17212b;
+}
+
+.collapse.rounded .collapse-content-list {
+    border-radius: 12px;
+}
+
+.collapse.dark.fill .item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.collapse.dark .collapse-content {
+    background: #17212b;
+    border-radius: 12px;
+}
+
+.collapse.dark .collapse-content .item {
+    border-bottom: 1px solid rgb(46, 55, 64);
+}
+
+@media only screen and (max-width: 1200px) {
+    .dropdown-buttons-block {
+        width: 100%;
+    }
+}

@@ -11,7 +11,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
     <meta name="keywords" content="Список отчетов, Тептар, тептар">
     <link type="text/css" rel="stylesheet" href="<?$url;?>/templates/views/notificationsws/notifications/assets/css/style.css">
     <script type="text/javascript" src="<?$url;?>/templates/views/notificationsws/notifications/assets/js/script.js"></script>
-    <script src="<?$url;?>/templates/assets/jquery-3.6.0.min.js"></script>
+    <script src="<?$url;?>/assets/jquery-3.6.0.min.js"></script>
     <script type="text/javascript"  src="<?$url;?>/templates/views/notificationsws/notifications/blocks/content/content.js"></script>
     <script type="text/javascript"  src="<?$url;?>/templates/views/notificationsws/notifications/blocks/content/body/body.js"></script>
     <script type="text/javascript"  src="<?$url;?>/templates/views/notificationsws/notifications/blocks/content/body/__reports-title.js"></script>

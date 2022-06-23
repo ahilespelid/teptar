@@ -7,7 +7,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
 <head>
   <meta charset="utf-8">
   <meta name="description" content="Форма создания отчета">
-  <script src="<?$url;?>/templates/assets/jquery-3.6.0.min.js"></script>
+  <script src="<?$url;?>/assets/jquery-3.6.0.min.js"></script>
   <!--[if lte IE 11]>
     <link rel="stylesheet" href="assets/css/style-for-ie9.css">
     <![endif]-->

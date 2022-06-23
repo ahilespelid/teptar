@@ -10,7 +10,7 @@ $url = $_SERVER['DOCUMENT_ROOT'];
   <meta name="description" content="Список отчетов">
   <meta name="keywords" content="Список отчетов, Тептар, тептар">
   <link type="text/css" rel="stylesheet" href="<?$url;?>/templates/views/villagees/views/village/assets/css/style.css">
-  <script src="<?$url;?>/templates/assets/jquery-3.6.0.min.js"></script>
+  <script src="<?$url;?>/assets/jquery-3.6.0.min.js"></script>
   <!--[if lte IE 10]>
     <link rel="stylesheet" href=<?$url;?>"/templates/views/villagees/views/village/assets/css/style-for-ie9.css">
     <![endif]-->

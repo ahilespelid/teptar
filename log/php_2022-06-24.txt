@@ -1,3 +1,6 @@
 
 [00:06 | 24 Jun 2022] Cannot assign an empty string to a string offset /var/www/app/Controllers/UserController.php (line 36)
 [00:06 | 24 Jun 2022] Cannot assign an empty string to a string offset /var/www/app/Controllers/UserController.php (line 36)
+[10:20 | 24 Jun 2022] Call to a member function out() on null /Users/deniev/Server/www/app/Controllers/MainController.php (line 32)
+[10:21 | 24 Jun 2022] Call to a member function out() on null /Users/deniev/Server/www/app/Controllers/MainController.php (line 32)
+[10:21 | 24 Jun 2022] Call to a member function out() on null /Users/deniev/Server/www/app/Controllers/MainController.php (line 32)

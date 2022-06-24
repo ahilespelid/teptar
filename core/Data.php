@@ -136,4 +136,22 @@ abstract class Data{
        
    }    
 
+    public function getQuery($sql = '', $return = true){
+         $sql = (is_string($sql) && !empty($sql)) ? trim($sql) : false;
+         
+         if($return){
+             return $this->pdo->query($sql)->fetchAll();           
+         }else{
+             $this->pdo->query($sql); return true;}           
+
+        return false;}
+        
+    public function getTableFromIdString(string $subject){ $f = false;
+        if(str_starts_with($subject,'id_')){$subject = str_replace('id_', '', $subject); $f = true;}
+        if(str_ends_with($subject,'_id')){$subject = str_replace('_id', '', $subject); $f = true;}
+        
+        $n = preg_match( '/[A-Z_-]/', $subject, $matches, PREG_OFFSET_CAPTURE );
+        if($n){$subject = mb_substr($subject, 0, $matches[0][1]);}
+        $subject = (str_ends_with($subject, 's')) ?  $subject :  $subject.'s';
+    return ($f) ? $subject : false;}
 }

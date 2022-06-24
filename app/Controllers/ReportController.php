@@ -6,17 +6,20 @@ use Exception;
 
 class ReportController extends AbstractController
 {
-    public $model, $view;
+    public $model,
+    $reports,
+    $indexes;
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->model = new \App\Models\ReportModel;
+        $this->reports = (object) $this->model->getReports(1); 
+        $this->indexes = (object) $this->model->getIndexes(1); 
     }
 
-    /**
-     * @throws Exception
-     */
     public function index() {
-        $this->render('/report/report.php');
+        
+        pa($this);
+        
+        //$this->render('/report/report.php');
     }
 }

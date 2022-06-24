@@ -4,11 +4,7 @@ namespace App\Controllers;
 
 use Exception;
 
-abstract class AbstractController
-{
-    /**
-     * @throws Exception
-     */
+abstract class AbstractController{
     public function render($view, $parameters = []) {
         // Заменяем слэши из ссылки на вид сепаратором
         $view = implode(DIRECTORY_SEPARATOR, explode('/', $view));
@@ -27,19 +23,16 @@ abstract class AbstractController
         }
     }
 
-    public function layout($view): string
-    {
+    public function layout($view){
         // Заменяем слэши из ссылки на блоки сепаратором
         $view = implode(DIRECTORY_SEPARATOR, explode('/', $view));
 
         // Возвращаем полный путь с корневой папки до файла вида блока
-        return $GLOBALS['path']['layouts'] . $view;
-    }
+        return $GLOBALS['path']['layouts'] . $view;}
 
-    public function image($file): string
-    {
+    public function image($file){
         // Заменяем слэши из ссылки на изображение сепаратором
-        $file = implode(DIRECTORY_SEPARATOR, explode('/', $file));
+        $file = implode(DIRECTORY_SEPARATOR, explode('/', $file));    
 
         // Определяем полный путь с корневой папки до изображения
         $path = $GLOBALS['path']['dev'] . $file;
@@ -57,6 +50,5 @@ abstract class AbstractController
             }
         }
 
-        return $img;
-    }
+        return $img;}
 }

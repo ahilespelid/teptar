@@ -11,7 +11,6 @@ $GLOBALS['env'] = 'dev';
 
 /*/ --------------------------------------------------------------База данных --------------------------------------------------------------/*/
 
-<<<<<<< HEAD
 $table = array(
 'users'       => 'users',
 'districts'   => 'districts',
@@ -19,16 +18,9 @@ $table = array(
 'indexes'   => 'index',
 'roles'   => 'roles',
 'usersBlock'   => 'usersBlock',
-'tableUIN'   => 'uin',   
-=======
-$table = [
-'users'         => 'users',
-'districts'     => 'districts',
-'roles'         => 'roles',
-'usersBlock'    => 'usersBlock',
-'tableUIN'      => 'uin',
-];
->>>>>>> 1f238c67b0fa5dd71ddff19c3c338c3cbc0b3857
+'tableUIN'   => 'uin', 
+);
+
 
 $GLOBALS['db']['table'] =  $table;
 $GLOBALS['db']['host'] = '194.67.90.250';

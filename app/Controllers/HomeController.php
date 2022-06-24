@@ -1,13 +1,11 @@
 <?php
-
 namespace App\Controllers;
 
-use Exception;
-
 class HomeController extends AbstractController {
-    public function __construct(
-        public $user = new UserController,
-    ){}
+    public $user;
+    public function __construct(){
+        $this->user = new UserController;
+    }
 
     /**
      * Главная страница

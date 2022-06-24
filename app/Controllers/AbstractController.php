@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controllers;
-
 use Exception;
 
 abstract class AbstractController{
@@ -28,7 +26,7 @@ abstract class AbstractController{
         $view = implode(DIRECTORY_SEPARATOR, explode('/', $view));
 
         // Возвращаем полный путь с корневой папки до файла вида блока
-        return $GLOBALS['path']['layouts'] . $view;}
+        return $GLOBALS['path']['layouts'] .DIRECTORY_SEPARATOR. $view;}
 
     public function image($file){
         // Заменяем слэши из ссылки на изображение сепаратором
@@ -49,6 +47,5 @@ abstract class AbstractController{
                 $img = 'data:' . getimagesize($path)['mime'] . ';base64,' . base64_encode(file_get_contents($path));
             }
         }
-
         return $img;}
 }

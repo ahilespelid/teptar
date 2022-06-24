@@ -15,7 +15,7 @@ try {
 pa($bug->getException());  //*/$bug->writeLog(); //*/
 
 if (isset($GLOBALS['env']) && $GLOBALS['env'] == 'dev') {
-    require_once $GLOBALS['path']['layouts'] . 'base/developer_toolbar.php';
+    require_once $GLOBALS['path']['layouts'] . 'developer/toolbar.php';
 }
 
 //pa($GLOBALS['url'][$_SERVER['REQUEST_URI']]);

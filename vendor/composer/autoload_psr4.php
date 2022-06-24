@@ -15,7 +15,6 @@ return array(
     'MyCLabs\\Enum\\' => array($vendorDir . '/myclabs/php-enum/src'),
     'Matrix\\' => array($vendorDir . '/markbaker/matrix/classes/src'),
     'Complex\\' => array($vendorDir . '/markbaker/complex/classes/src'),
-    'App\\Views\\' => array($baseDir . '/app/Views'),
     'App\\Models\\' => array($baseDir . '/app/Models'),
     'App\\' => array($baseDir . '/app'),
     '' => array($baseDir . '/core'),

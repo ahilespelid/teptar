@@ -3,6 +3,7 @@
 // HomeController
 'index'         => $GLOBALS['url']['index'],
 'error'         => $GLOBALS['url']['error'],
+'framework'     => $GLOBALS['url']['framework'],
 
 // Пока не готовы
 'login'         => $GLOBALS['url']['login'],        /*/ userController.php Контраллер пользователя -> экшен авторизации /*/
@@ -10,6 +11,5 @@
 'ajax'          => $GLOBALS['url']['ajax'],
 'district'      => $GLOBALS['url']['district'],
 'report'        => $GLOBALS['url']['report'],
-'framework'     => $GLOBALS['url']['framework'],
 'profile'       => $GLOBALS['url']['profile'],
 ];

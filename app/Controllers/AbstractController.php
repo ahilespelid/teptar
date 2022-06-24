@@ -23,12 +23,22 @@ abstract class AbstractController{
         }
     }
 
+<<<<<<< HEAD
     public function layout($view){
+=======
+    public function layout($view, $parameters = []): string
+    {
+>>>>>>> 37ddfff55c77fe3ecd49b62b286106c1b8c764de
         // Заменяем слэши из ссылки на блоки сепаратором
         $view = implode(DIRECTORY_SEPARATOR, explode('/', $view));
 
         // Возвращаем полный путь с корневой папки до файла вида блока
+<<<<<<< HEAD
         return $GLOBALS['path']['layouts'] . $view;}
+=======
+        return $GLOBALS['path']['layouts'] . DIRECTORY_SEPARATOR . $view;
+    }
+>>>>>>> 37ddfff55c77fe3ecd49b62b286106c1b8c764de
 
     public function image($file){
         // Заменяем слэши из ссылки на изображение сепаратором

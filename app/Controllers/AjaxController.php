@@ -7,7 +7,7 @@ class AjaxController{
 
     public function __construct() {
         $this->model = new \App\Models\AjaxModel;
-        $this->view = new \App\Views\InView;
+
     }
 /*/ -------------------------------------------------------------- Аякс для главной временный -------------------------------------------------------------- /*/   
     public function getMarkData($q){

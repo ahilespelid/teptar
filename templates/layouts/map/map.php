@@ -52,7 +52,7 @@
         <div class="districts-title">Выберите страницу района:</div>
 
         <div class="districts-list">
-            <?php foreach ($connect->getAll($sql) as $district) { ?>
+            <?php foreach ($districts as $district) { ?>
                 <?php if(isset($_GET['district']) && $_GET['district'] === $district['mapname']) { ?>
                     <div class="item" style="justify-content: left"><a class="map-link current" id="MapLink<?= $district['mapname'] ?>" href="/region/index.php?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a></div>
                 <?php } else { ?>
@@ -67,7 +67,7 @@
 <div class="collapse dark fill rounded chevron only-mobile">
     <div class="collapse-button block-box block-padding sub-block-margin-top">Выбрать район в ручную</div>
     <div class="collapse-content sub-block-margin-top">
-        <?php foreach ($connect->getAll($sql) as $district) { ?>
+        <?php foreach ($districts as $district) { ?>
             <a class="item map-link" id="MapLink<?= $district['mapname'] ?>" href="/region/index.php?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a>
         <?php } ?>
     </div>

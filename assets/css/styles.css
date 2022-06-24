@@ -491,6 +491,7 @@ h3 {
 .button-link {
     background: unset;
 }
+
 .button-link:hover {
     background: rgba(255,255,255,0.02);
 }
@@ -559,6 +560,7 @@ h3 {
     justify-content: center;
     display: flex;
 }
+
 .login-page .logotype, .login-page .login-form {
     justify-content: center;
     align-items: center;
@@ -566,6 +568,7 @@ h3 {
     display: flex;
     width: 50%;
 }
+
 .login-grid {
     background-image: url('/assets/images/form-background.png');
     background-size: cover;
@@ -581,6 +584,7 @@ h3 {
 .login-page .logotype {
     grid-area: 2 / 2;
 }
+
 .login-page .login-form {
     grid-area: 2 / 3;
 }
@@ -591,16 +595,19 @@ h3 {
     pointer-events: none;
     user-select: none;
 }
+
 .login-page form {
     background: rgba(255,255,255,0.05);
     padding: 100px 55px;
     border-radius: 12px;
 }
+
 .login-page header {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 30px;
 }
+
 .login-page .login-form input {
     background: unset;
     border: 1px solid white;
@@ -612,6 +619,7 @@ h3 {
     padding: 10px 20px;
     color: white;
 }
+
 .login-page .login-form button {
     background: #61B252;
     border: unset;
@@ -645,7 +653,7 @@ h3 {
 }
 
 .error-block-info {
-    z-index: 999;
+    z-index: 10;
     position: relative;
     display: flex;
     flex-direction: column;

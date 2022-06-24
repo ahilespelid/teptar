@@ -91,7 +91,6 @@
 
     .developer-toolbar a {
         color: #2865a2;
-        /*text-decoration: underline;*/
     }
 </style>
 

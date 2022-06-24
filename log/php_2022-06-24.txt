@@ -1,3 +1,6 @@
 
 [00:06 | 24 Jun 2022] Cannot assign an empty string to a string offset /var/www/app/Controllers/UserController.php (line 36)
 [00:06 | 24 Jun 2022] Cannot assign an empty string to a string offset /var/www/app/Controllers/UserController.php (line 36)
+
+[19:32 | 24 Jun 2022] Файл на вид по пути '/Users/deniev/Server/www/templates/views/login/index.php' не найден. /Users/deniev/Server/www/app/Controllers/AbstractController.php (line 22)
+[20:48 | 24 Jun 2022] Файл на вид по пути '/Users/deniev/Server/www/templates/views/login/index.php' не найден. /Users/deniev/Server/www/app/Controllers/AbstractController.php (line 20)

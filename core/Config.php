@@ -4,11 +4,14 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$GLOBALS['lifeToken'] = (60*60)*1;
+$GLOBALS['lifeToken'] = (60*60);
+
+// Режим разработчика (Закомментировать )
 $GLOBALS['env'] = 'dev';
 
 /*/ --------------------------------------------------------------База данных --------------------------------------------------------------/*/
 
+<<<<<<< HEAD
 $table = array(
 'users'       => 'users',
 'districts'   => 'districts',
@@ -17,8 +20,16 @@ $table = array(
 'roles'   => 'roles',
 'usersBlock'   => 'usersBlock',
 'tableUIN'   => 'uin',   
+=======
+$table = [
+'users'         => 'users',
+'districts'     => 'districts',
+'roles'         => 'roles',
+'usersBlock'    => 'usersBlock',
+'tableUIN'      => 'uin',
+];
+>>>>>>> 1f238c67b0fa5dd71ddff19c3c338c3cbc0b3857
 
-);
 $GLOBALS['db']['table'] =  $table;
 $GLOBALS['db']['host'] = '194.67.90.250';
 $GLOBALS['db']['base'] = 'teptar';
@@ -29,41 +40,39 @@ $GLOBALS['db']['pass'] = '-Txh9y#j_sJM';
 
 define('_DS_',DIRECTORY_SEPARATOR);
 $path = dirname(__DIR__);
-$path =array(
+
+$path = [
 'dev'       => $path,
-'pub'       =>$_SERVER['DOCUMENT_ROOT'],
+'pub'       => $_SERVER['DOCUMENT_ROOT'],
 'app'       => $path._DS_.'app',
 'core'      => $path._DS_.'core',
-'log'        => $path._DS_.'log',
-'temp'     => $path._DS_.'temp',
-'tmp'     => $path._DS_.'public'._DS_.'tmp',
-'use' => ['ex' => '/tmp/external', 'in' => '/tmp/internal'],
-'out' => ['ex' => 'tmp'._DS_.'external', 'in' => 'tmp'._DS_.'internal'],
-
-'layouts'     => $path._DS_.'templates'. _DS_ . 'layouts' . _DS_,
+'log'       => $path._DS_.'log',
+'tmp'       => $path._DS_.'public'._DS_.'tmp',
+'use'       => ['ex' => '/tmp/external', 'in' => '/tmp/internal'],
+'out'       => ['ex' => 'tmp'._DS_.'external', 'in' => 'tmp'._DS_.'internal'],
+'layouts'   => $path._DS_.'templates'. _DS_ . 'layouts' . _DS_,
 'views'     => $path._DS_.'templates'. _DS_ . 'views' . _DS_,
-);
+];
 
 $GLOBALS['path'] = $path;
 $GLOBALS['path']['controller'] = $GLOBALS['path']['app']._DS_.'Controllers';
 $GLOBALS['path']['model'] = $GLOBALS['path']['app']._DS_.'Models';
 $GLOBALS['path']['view'] = $GLOBALS['path']['app']._DS_.'Views';
 
-$GLOBALS['path']['layout'] = $GLOBALS['path']['temp']._DS_.'internal'._DS_;
+$url = [
+// HomeController
+'index'         => ['controller' => 'HomeController', 'action' => 'index'],
+'error'         => ['controller' => 'HomeController', 'action' => 'error'],
 
-$url = array(
-'index' => ['controller' => 'MainController', 'action' => 'index'],
-'404'    => ['controller' => 'MainController', 'action' => 'notfound'],
-'login'  => ['controller' => 'UserController', 'action' => 'login'],
-'exel'   => ['controller' => 'ExelController', 'action' => 'work'],
-'ajax'   => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
-'district'   => ['controller' => 'DistrictController', 'action' => 'index'],
-'report'   => ['controller' => 'ReportController', 'action' => 'index'], 
-'framework'   => ['controller' => 'FrameworkController', 'action' => 'index'],
-
-'profile'   => ['controller' => 'ProfileController', 'action' => 'profile'],
-
-);
+// Пока не готовы
+'login'         => ['controller' => 'UserController', 'action' => 'login'],
+'exel'          => ['controller' => 'ExelController', 'action' => 'work'],
+'ajax'          => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
+'district'      => ['controller' => 'DistrictController', 'action' => 'index'],
+'report'        => ['controller' => 'ReportController', 'action' => 'index'],
+'framework'     => ['controller' => 'FrameworkController', 'action' => 'index'],
+'profile'       => ['controller' => 'ProfileController', 'action' => 'profile'],
+];
 
 $GLOBALS['url'] = $url;
 
@@ -75,7 +84,7 @@ class Config{
         $registr->writeLog($e);
 
         /*/ Показ вида при выявленных исключениях /*/
-        include $GLOBALS['path']['views'] . 'errors' . _DS_ . 'exception.php';
+        include $GLOBALS['path']['layouts'] . 'developer' . _DS_ . 'exception.php';
     }
 }
 

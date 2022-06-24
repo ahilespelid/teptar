@@ -12,15 +12,13 @@
             "core/Functions/pn.php",
             "core/Config.php", 
             "core/Data.php",
-            "core/View.php",
             "core/Registr.php",
             "core/Route.php"     
         ],                                         
         "psr-4": {
             "": "core/",
              "App\\": "app/",
-             "App\\Models\\": "app/Models/",  
-             "App\\Views\\": "app/Views/"  
+             "App\\Models\\": "app/Models/"
          }
     } 
 }

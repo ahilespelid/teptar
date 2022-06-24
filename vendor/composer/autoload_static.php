@@ -13,7 +13,6 @@ class ComposerStaticInitc9689e8b9f31b80338283ebb33040043
         '632f4deffadac08b8ceb28a5a5e426e1' => __DIR__ . '/../..' . '/core/Functions/pn.php',
         'ad1daf2aa123e565e53965b3bc86a542' => __DIR__ . '/../..' . '/core/Config.php',
         '7ee6d0bf90921534438b9231d1be51b7' => __DIR__ . '/../..' . '/core/Data.php',
-        '22153be273936bbc4a3434947ff718d1' => __DIR__ . '/../..' . '/core/View.php',
         '93da09a2cc7688dda67d8076b828bd92' => __DIR__ . '/../..' . '/core/Registr.php',
         'b650c1d675421a0e33cc39d60e6b50cd' => __DIR__ . '/../..' . '/core/Route.php',
     );
@@ -45,7 +44,6 @@ class ComposerStaticInitc9689e8b9f31b80338283ebb33040043
         ),
         'A' => 
         array (
-            'App\\Views\\' => 10,
             'App\\Models\\' => 11,
             'App\\' => 4,
         ),
@@ -88,10 +86,6 @@ class ComposerStaticInitc9689e8b9f31b80338283ebb33040043
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
-        ),
-        'App\\Views\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/Views',
         ),
         'App\\Models\\' => 
         array (

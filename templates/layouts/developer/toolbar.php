@@ -61,19 +61,24 @@
     }
 
     .developer-toolbar .developer-button-dropdown {
-        flex-direction: column;
         position: absolute;
-        padding: 16px 18px;
-        border-radius: 8px;
         min-width: 300px;
-        background: #222;
         display: none;
-        bottom: 58px;
+        bottom: 50px;
         cursor: auto;
     }
 
-    .developer-toolbar .developer-button:hover .developer-button-dropdown {
+    .developer-toolbar .developer-button-dropdown-block {
+        padding: 16px 18px;
+        background-color: #222;
         display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        margin-bottom: 8px;
+    }
+
+    .developer-toolbar .developer-button:hover .developer-button-dropdown {
+        display: block;
     }
 
     .developer-toolbar .developer-button-dropdown .list-item {
@@ -82,6 +87,10 @@
 
     .developer-toolbar .developer-button-dropdown .list-item:last-child {
         margin: unset;
+    }
+
+    .developer-toolbar a {
+        color: #2865a2;
     }
 </style>
 
@@ -97,15 +106,18 @@
         <?php if ($_SESSION) { ?>
             <span class="developer-button-dropdown">
 
-                <span class="list-item"><b>Имя пользователя:</b> <?php echo $_SESSION['user']['login']; ?></span>
+                <span class="developer-button-dropdown-block">
+                    <span class="list-item"><b>Имя пользователя:</b> <?php echo $_SESSION['user']['login']; ?></span>
 
-                <?php if ($_SESSION['user']['email']) { ?>
-                    <span class="list-item"><b>Email:</b> <?php echo $_SESSION['user']['email']; ?></span>
-                <?php } ?>
+                    <?php if ($_SESSION['user']['email']) { ?>
+                        <span class="list-item"><b>Email:</b> <?php echo $_SESSION['user']['email']; ?></span>
+                    <?php } ?>
 
-                <span class="list-item"><b>Роль:</b> <?php echo $_SESSION['user']['role']['name']; ?></span>
-                <span class="list-item"><b>UIN:</b> <?php echo $_SESSION['user']['uin']['name']; ?></span>
-                <span class="list-item"><b>ID:</b> <?php echo $_SESSION['user']['id']; ?></span>
+                    <span class="list-item"><b>Роль:</b> <?php echo $_SESSION['user']['role']['name']; ?></span>
+                    <span class="list-item"><b>UIN:</b> <?php echo $_SESSION['user']['uin']['name']; ?></span>
+                    <span class="list-item"><b>ID:</b> <?php echo $_SESSION['user']['id']; ?></span>
+                    <span class="list-item"><a href="/?logout"><i class="icon-log-out"></i> Выйти</a></span>
+                </span>
 
             </span>
         <?php } ?>

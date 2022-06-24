@@ -3,21 +3,31 @@ namespace App\Controllers;
 
 class HomeController extends AbstractController {
     public $user;
+    public $database;
+
     public function __construct(){
         $this->user = new UserController;
+        $this->database = new \App\Models\DistrictModel;
     }
 
     /**
      * Главная страница
-     * @throws Exception
      */
     public function index() {
-        if(isset($_GET['logout'])) {
+        if (isset($_GET['logout'])) {
             $this->user->out(); exit();
         }
 
         if ($this->user->isToken()) {
-            $this->render('/home/login.php');
+            if($user = $this->user->login($this->user->getLoginUser())){
+                $this->render('/home/home-leader.php', [
+                    'districts' => $this->database->getAll('districts'),
+                    'navbar' => 'home',
+                    'user' => [
+                        'post' => $user->uin['comments']
+                    ]
+                ]);
+            }
         } else {
             $this->render('/home/login.php');
         }
@@ -25,17 +35,26 @@ class HomeController extends AbstractController {
 
     /**
      * Страница ошибок
-     * @throws Exception
      */
     public function error() {
         $error = '404';
         $title = 'Страница не найдена';
         $message = 'Страницу которую вы искали не существует, пожалуйста выберите другую либо вернитесь на главную.';
 
-        $this->render('/home/error.php', [
-            'error' => $error,
-            'title' => $title,
-            'message' => $message
-        ]);
+        if($user = $this->user->login($this->user->getLoginUser())){
+            $this->render('/home/error.php', [
+                'error' => $error,
+                'title' => $title,
+                'message' => $message,
+                'districts' => $this->database->getAll('districts'),
+                'user' => [
+                    'post' => $user->uin['comments']
+                ]
+            ]);
+        }
+    }
+
+    public function framework() {
+        $this->render('/home/framework.php');
     }
 }

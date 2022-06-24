@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use Exception;
-
 abstract class AbstractController{
     public function render($view, $parameters = []) {
         // Заменяем слэши из ссылки на вид сепаратором
@@ -19,18 +17,19 @@ abstract class AbstractController{
         if (is_readable($view)) {
             require $view;
         } else {
-            throw new Exception("Файл на вид по пути '$view' не найден.");
+            throw new \Exception("Файл на вид по пути '$view' не найден.");
         }
     }
 
-    public function layout($view){
+    public function layout($view) {
         // Заменяем слэши из ссылки на блоки сепаратором
         $view = implode(DIRECTORY_SEPARATOR, explode('/', $view));
 
         // Возвращаем полный путь с корневой папки до файла вида блока
-        return $GLOBALS['path']['layouts'] . $view;}
+        return $GLOBALS['path']['layouts'] . DIRECTORY_SEPARATOR . $view;
+    }
 
-    public function image($file){
+    public function image($file) {
         // Заменяем слэши из ссылки на изображение сепаратором
         $file = implode(DIRECTORY_SEPARATOR, explode('/', $file));    
 
@@ -50,5 +49,6 @@ abstract class AbstractController{
             }
         }
 
-        return $img;}
+        return $img;
+    }
 }

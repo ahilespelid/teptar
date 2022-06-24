@@ -122,7 +122,7 @@
                         <span class="list-item"><b>Email:</b> <?php echo $_SESSION['user']['email']; ?></span>
                     <?php } ?>
 
-                    <span class="list-item"><b>Роль:</b> <?php echo $_SESSION['user']['role']['name']; ?></span>
+                    <span class="list-item"><b>Роль:</b> <?php echo $_SESSION['user']['role']['name'] . ' ' . $_SESSION['user']['role']['subject']; ?></span>
                     <span class="list-item"><b>UIN:</b> <?php echo $_SESSION['user']['uin']['name']; ?></span>
                     <span class="list-item"><b>ID:</b> <?php echo $_SESSION['user']['id']; ?></span>
                     <span class="list-item"><a href="/?logout"><i class="icon-log-out"></i> Выйти</a></span>

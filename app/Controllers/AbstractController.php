@@ -21,7 +21,7 @@ abstract class AbstractController{
         }
     }
 
-    public function layout($view, $parameters = []): string {
+    public function layout($view) {
         // Заменяем слэши из ссылки на блоки сепаратором
         $view = implode(DIRECTORY_SEPARATOR, explode('/', $view));
 

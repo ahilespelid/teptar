@@ -2,7 +2,7 @@
 
     <body>
 
-    <?php include '../blocks/navbar/navbar-pages.php' ?>
+    <?php include '../blocks/navbar/navbar.php' ?>
 
         <div class="container">
 

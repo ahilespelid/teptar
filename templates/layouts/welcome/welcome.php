@@ -7,7 +7,7 @@
             <div class="start_centered">
 
                 <div class="start__image">
-                    <img src="/assets/images/eagle.png" alt="Welcome Eagle">
+                    <img src="<?= $this->image('/assets/images/eagle.png'); ?>" alt="Welcome Eagle">
                 </div>
 
                 <div class="start__description">
@@ -28,7 +28,7 @@
             <div class="start_centered">
 
                 <div class="start__image start__image_size_s">
-                    <img src="/assets/images/form-pdf.png" alt="Form PDF">
+                    <img src="<?= $this->image('/assets/images/form-pdf.png'); ?>" alt="Form PDF">
                 </div>
 
                 <div class="start__description">

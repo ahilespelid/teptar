@@ -1,8 +1,3 @@
-<?php
-require_once 'config/Db.php';
-$Connect = new Db;
-?>
-
 <div class="comparison">
 
     <div class="block-box block-title-box break-title-dropdown">
@@ -58,17 +53,15 @@ $Connect = new Db;
 
                                     <table class="districts-score-table sortable-table block-background">
                                         <thead>
-                                        <tr>
-                                            <th>Район <i class="sortable-icon"></i></th>
-                                            <th>Глава <i class="sortable-icon"></i></th>
-                                            <th>Эффективность <i class="sortable-icon"></i></th>
-                                        </tr>
+                                            <tr>
+                                                <th>Район <i class="sortable-icon"></i></th>
+                                                <th>Глава <i class="sortable-icon"></i></th>
+                                                <th>Эффективность <i class="sortable-icon"></i></th>
+                                            </tr>
                                         </thead>
 
                                         <tbody>
-
                                             <?php foreach ($indexes as $index) { ?>
-
                                                 <tr>
                                                     <td><?= $index['district'] ?></td>
                                                     <td>
@@ -81,9 +74,7 @@ $Connect = new Db;
                                                         </div>
                                                     </td>
                                                 </tr>
-
                                             <?php } ?>
-
                                         </tbody>
                                     </table>
 

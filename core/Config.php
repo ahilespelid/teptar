@@ -4,7 +4,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$GLOBALS['lifeToken'] = (60*60);
+$GLOBALS['lifeToken'] = (60*60)*24;
 
 // Режим разработчика (Закомментировать )
 $GLOBALS['env'] = 'dev';
@@ -50,8 +50,8 @@ $path = [
 'tmp'       => $path._DS_.'public'._DS_.'tmp',
 'use'       => ['ex' => '/tmp/external', 'in' => '/tmp/internal'],
 'out'       => ['ex' => 'tmp'._DS_.'external', 'in' => 'tmp'._DS_.'internal'],
-'layouts'   => $path._DS_.'templates'. _DS_ . 'layouts' . _DS_,
-'views'     => $path._DS_.'templates'. _DS_ . 'views' . _DS_,
+'layouts'   => $path._DS_.'templates'. _DS_ . 'layouts',
+'views'     => $path._DS_.'templates'. _DS_ . 'views',
 ];
 
 $GLOBALS['path'] = $path;
@@ -63,6 +63,7 @@ $url = [
 // HomeController
 'index'         => ['controller' => 'HomeController', 'action' => 'index'],
 'error'         => ['controller' => 'HomeController', 'action' => 'error'],
+'framework'     => ['controller' => 'HomeController', 'action' => 'framework'],
 
 // Пока не готовы
 'login'         => ['controller' => 'UserController', 'action' => 'login'],
@@ -70,7 +71,6 @@ $url = [
 'ajax'          => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
 'district'      => ['controller' => 'DistrictController', 'action' => 'index'],
 'report'        => ['controller' => 'ReportController', 'action' => 'index'],
-'framework'     => ['controller' => 'FrameworkController', 'action' => 'index'],
 'profile'       => ['controller' => 'ProfileController', 'action' => 'profile'],
 ];
 
@@ -84,7 +84,7 @@ class Config{
         $registr->writeLog($e);
 
         /*/ Показ вида при выявленных исключениях /*/
-        include $GLOBALS['path']['layouts'] . 'developer' . _DS_ . 'exception.php';
+        include $GLOBALS['path']['layouts'] . _DS_ . 'developer' . _DS_ . 'exception.php';
     }
 }
 

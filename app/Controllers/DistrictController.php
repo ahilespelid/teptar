@@ -2,13 +2,12 @@
 namespace App\Controllers;
 
 class DistrictController{
-    public $model,
-                $pIndex,
-                $districts; 
+    public  $model,
+            $pIndex,
+            $districts;
 
     public function __construct(){
         $this->model = new \App\Models\DistrictModel;
-        $this->pIndex = new \App\Views\DistrictView;
         $this->districts = $this->model->getDistricts();
     } 
     
@@ -20,8 +19,8 @@ class DistrictController{
         pa($this->districts);
  
 
-    
-    
+
+
     }
-    
+
 }

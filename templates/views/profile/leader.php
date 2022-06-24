@@ -2,7 +2,7 @@
 
     <body>
 
-    <?php include $this->layout('navbar/navbar-home.php'); ?>
+    <?php include $this->layout('navbar/navbar.php'); ?>
 
         <div class="container">
 
@@ -13,9 +13,9 @@
                 <div class="grid-block">
                     <div class="grid-block-main">
                         <div class="media">
-                            <div class="avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
+                            <div class="avatar" style="background-image: url('<?= $this->image('/assets/images/avatar.jpg'); ?>')"></div>
                         </div>
-                        <span class="title">Кадыров Рамзан Ахматович</span>
+                        <span class="title"><?= $user['full_name']; ?></span>
                         <span class="muted">Глава Чеченской Республики</span>
                         <span class="muted"><i class="icon-pin"></i> Грозный, Российская Федерация</span>
                         <span class="social">
@@ -78,7 +78,7 @@
 
         </div>
 
-    <?php include $this->layout('footer/footer.html'); ?>
+    <?php include $this->layout('footer/footer.php'); ?>
 
     </body>
 

@@ -11,7 +11,7 @@ $base = dirname(getcwd());
 
     <body>
 
-        <?php include '../blocks/navbar/navbar-pages.php' ?>
+        <?php include '../blocks/navbar/navbar.php' ?>
 
         <style>
             .box-input input {

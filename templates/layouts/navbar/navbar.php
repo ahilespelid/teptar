@@ -1,9 +1,3 @@
-<?php
-require_once '../config/Db.php';
-$connect = new Db;
-$sql = 'SELECT * FROM districts';
-?>
-
 <nav class="navbar">
     <div class="navbar-container">
 
@@ -23,15 +17,21 @@ $sql = 'SELECT * FROM districts';
                 </form>
             </div>
 
-            <div class="item dropdown dark rounded">
-                <a class="current button button-success rounded"><i class="icon icon-map"></i> Чеченская республика</a>
+            <?php if (isset($navbar) && $navbar == 'home') { ?>
+                <div class="item">
+                    <a href="#districtsMap" class="button button-success"><i class="icon icon-map"></i> Чеченская республика</a>
+                </div>
+            <?php } else { ?>
+                <div class="item dropdown dark rounded">
+                    <a class="current button button-success rounded"><i class="icon icon-map"></i> Чеченская республика</a>
 
-                <div class="options">
-                    <div class="dropdown-map">
-                        <?php include '../blocks/map/map.php'?>
+                    <div class="options">
+                        <div class="dropdown-map">
+                            <?php include $this->layout('map/map.php'); ?>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
 
             <div class="item dropdown dark rounded">
                 <a class="current button button-light dark upper rounded"><i class="icon icon-map"></i> Документация</a>
@@ -55,25 +55,21 @@ $sql = 'SELECT * FROM districts';
                     <div class="username">
                         Авторизован как:
                         <br>
-                        <span class="post">ГЛАВА РЕГИОНА</span>
+                        <span class="post"><?= $user['post'] ?></span>
                     </div>
-                    <div class="avatar">
-                        <img src="/assets/images/avatar.jpg" alt="Avatar"> <i class="icon-chevron-down"></i>
+                    <div class="avatar" style="background-image: url('<?= $this->image('/assets/images/avatar.jpg'); ?>')">
+                        <i class="icon-chevron-down"></i>
                     </div>
                 </div>
 
                 <div class="options">
-                    <a class="option" href="/profile/index.php">
+                    <a class="option" href="/profile">
                         <i class="icon-user"></i> Профиль
-                    </a>
-
-                    <a class="option" href="/settings">
-                        <i class="icon-setting"></i> Настройки
                     </a>
 
                     <span class="separator"></span>
 
-                    <a class="option danger" href="/logout">
+                    <a class="option danger" href="/?logout">
                         <i class="icon-log-out"></i> Выход
                     </a>
                 </div>

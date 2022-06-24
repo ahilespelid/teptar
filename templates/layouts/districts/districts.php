@@ -1,9 +1,3 @@
-<?php
-require_once 'config/Db.php';
-$connect = new Db;
-$sql = 'SELECT * FROM districts';
-?>
-
 <div class="districts">
 
     <div class="block-box block-title-box">
@@ -64,7 +58,7 @@ $sql = 'SELECT * FROM districts';
             <div class="districts-title">Выберите страницу района:</div>
 
             <div class="districts-list">
-                <?php foreach ($connect->getAll($sql) as $district) { ?>
+                <?php foreach ($districts as $district) { ?>
                     <div class="item"><a class="map-link" id="MapLink<?= $district['mapname'] ?>" href="/region/index.php?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a></div>
                 <?php } ?>
             </div>
@@ -75,7 +69,7 @@ $sql = 'SELECT * FROM districts';
     <div class="collapse dark fill rounded chevron only-mobile">
         <div class="collapse-button block-box block-padding sub-block-margin-top">Выбрать район в ручную</div>
         <div class="collapse-content sub-block-margin-top">
-            <?php foreach ($connect->getAll($sql) as $district) { ?>
+            <?php foreach ($districts as $district) { ?>
                 <a class="item map-link" id="MapLink<?= $district['mapname'] ?>" href="/region/index.php?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a>
             <?php } ?>
         </div>

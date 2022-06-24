@@ -1,3 +1,11 @@
+<?php if ($_SESSION) { ?>
+    <style>
+        body {
+            margin-bottom: 50px;
+        }
+    </style>
+<?php } ?>
+
 <style>
     .developer-toolbar {
         font-family: Arial, sans-serif;
@@ -5,6 +13,7 @@
         background: #222;
         position: fixed;
         display: flex;
+        z-index: 100;
         height: 50px;
         color: #fff;
         width: 100%;

@@ -1,4 +1,63 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&family=Open+Sans:wght@400;500;600;700;800&display=swap);
+.districts {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.districts__info {
+    justify-content: center;
+    display: flex;
+    padding: 20px;
+}
+
+.chechnya-map {
+    flex-basis: 70%;
+    min-height: 360px;
+}
+
+.chechnya-districts {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.districts-title {
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding: 12px;
+}
+
+.districts-list {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    grid-gap: 22px 0;
+}
+
+.districts-list .item {
+    white-space: nowrap;
+}
+
+.districts-list a {
+    border-radius: 10px;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.districts-list a:hover, .districts-list a.current:hover {
+    border: 1px solid #61b252;
+    color: #61b252;
+}
+
+.districts-list a.current {
+    border: 1px solid #f1c40f;
+    color: #f1c40f;
+}
+
 /* ================================================== Main ================================================== */
 
 a {
@@ -1092,12 +1151,12 @@ a {
 .actions__info {
     height: 430px;
     overflow-y: scroll;
-
+    padding: 16px;
     box-sizing: border-box;
 }
 
 .actions__info-item {
-    background-color: #fff;
+    border: 1px solid #3A424B;
     margin-bottom: 6px;
     border-radius: 8px;
     padding: 16px;
@@ -1154,10 +1213,10 @@ a {
 }
 
 .actions__info-item .post {
-    font-family: "Open Sans Bold";
-    color: #535C69;
-    font-size: 10px;
-    line-height: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    font-size: 9px;
+    line-height: 12px;
 }
 
 .actions__activity-info {
@@ -1195,7 +1254,7 @@ a {
 }
 
 .actions__activity-info .status span {
-    color: rgba(0, 0, 0, 0.25);
+    color: rgba(255,255,255,0.25);
     margin-right: 16px;
 }
 
@@ -1204,13 +1263,7 @@ a {
 }
 
 .actions__activity-info .status span.active {
-    padding: 8px 0;
-    text-align: center;
-    height: 35px !important;
-    border-radius: 8px;
-    color: #535C69 !important;
-    background: none;
-    transition: 0.3s;
+    color: #fff;
 }
 
 .actions__activity-content {
@@ -1221,9 +1274,7 @@ a {
 }
 
 .actions__activity-content .item {
-    display: flex;
-    align-items: center;
-    background: #EEF2F4;
+    background: #1B2734;
     border-radius: 4px;
     margin-right: 10px;
     flex-basis: 100%;
@@ -1244,8 +1295,7 @@ a {
 
 .actions__activity-indicators .indicators-list .list .item {
     border: 1px solid transparent;
-    background: #EEF2F4;
-    color: #535C69;
+    background: #1b2734;
     margin-bottom: 5px;
     border-radius: 4px;
     text-align: center;
@@ -1259,10 +1309,6 @@ a {
 
 .actions__activity-indicators .indicators-list .list .item.active {
     border: 1px solid #fff;
-    color: #535C69 !important;
-    height: 38px !important;
-    padding: 0;
-    border: 1px solid #535C69;
 }
 
 .actions__activity-indicators .indicators-list .title {
@@ -1271,12 +1317,11 @@ a {
 }
 
 .actions__activity-indicators .indicators-list .list .item:hover {
-    background: #dfe3e6;
+    background: #233344;
 }
 
 .indicator-description {
-    background: #EEF2F4;
-    color: #535C69;
+    background: #1b2734;
     padding: 10px 14px;
     border-radius: 4px;
     margin-left: 50px;
@@ -1292,8 +1337,7 @@ a {
 
 .indicator-comparison div {
     flex-basis: 100%;
-    background: #EEF2F4;
-    color: #535C69;
+    background: #1b2734;
     margin-right: 6px;
     border-radius: 4px;
     padding: 10px 12px;
@@ -1301,65 +1345,6 @@ a {
 
 .indicator-comparison div:last-child {
     margin: unset;
-}
-
-.districts {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-}
-
-.districts__info {
-    justify-content: center;
-    display: flex;
-    padding: 20px;
-}
-
-.chechnya-map {
-    flex-basis: 70%;
-    min-height: 360px;
-}
-
-.chechnya-districts {
-    flex-basis: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.districts-title {
-    margin-bottom: 10px;
-    font-weight: 600;
-    padding: 12px;
-}
-
-.districts-list {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    align-items: center;
-    grid-gap: 22px 0;
-}
-
-.districts-list .item {
-    white-space: nowrap;
-}
-
-.districts-list a {
-    border-radius: 10px;
-    padding: 6px 12px;
-    border: 1px solid transparent;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.districts-list a:hover, .districts-list a.current:hover {
-    border: 1px solid #61b252;
-    color: #61b252;
-}
-
-.districts-list a.current {
-    border: 1px solid #f1c40f;
-    color: #f1c40f;
 }
 
 .footer {
@@ -1872,6 +1857,7 @@ h3 {
 .button-link {
     background: unset;
 }
+
 .button-link:hover {
     background: rgba(255,255,255,0.02);
 }
@@ -1940,6 +1926,7 @@ h3 {
     justify-content: center;
     display: flex;
 }
+
 .login-page .logotype, .login-page .login-form {
     justify-content: center;
     align-items: center;
@@ -1947,6 +1934,7 @@ h3 {
     display: flex;
     width: 50%;
 }
+
 .login-grid {
     background-image: url(35a7415a8bfaec85d63c.png);
     background-size: cover;
@@ -1962,6 +1950,7 @@ h3 {
 .login-page .logotype {
     grid-area: 2 / 2;
 }
+
 .login-page .login-form {
     grid-area: 2 / 3;
 }
@@ -1972,16 +1961,19 @@ h3 {
     pointer-events: none;
     user-select: none;
 }
+
 .login-page form {
     background: rgba(255,255,255,0.05);
     padding: 100px 55px;
     border-radius: 12px;
 }
+
 .login-page header {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 30px;
 }
+
 .login-page .login-form input {
     background: unset;
     border: 1px solid white;
@@ -1993,6 +1985,7 @@ h3 {
     padding: 10px 20px;
     color: white;
 }
+
 .login-page .login-form button {
     background: #61B252;
     border: unset;
@@ -2026,7 +2019,7 @@ h3 {
 }
 
 .error-block-info {
-    z-index: 999;
+    z-index: 10;
     position: relative;
     display: flex;
     flex-direction: column;

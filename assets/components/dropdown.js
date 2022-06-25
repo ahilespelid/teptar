@@ -11,16 +11,16 @@ if (document.querySelector('.dropdown')) {
 
             dropdown.classList.toggle('show');
 
-            // // Вывести dropdown список снизу вверх если расстояние между dropdown элементом и нижней границей окна меньше чем размер dropdown списка
-            // var bottomDistance = window.innerHeight - dropdown.getBoundingClientRect().bottom;
-            // var dropdownHeight = dropdown.querySelector('.options').offsetHeight;
-            //
-            // if (dropdownHeight > bottomDistance) {
-            //     dropdown.classList.add('above');
-            //     dropdown.querySelector('.options').style.bottom = 'calc(-' + bottomDistance + 'px + 10px)';
-            // } else if (dropdown.classList.contains('above')) {
-            //     dropdown.classList.remove('above')
-            // }
+            // Вывести dropdown список снизу вверх если расстояние между dropdown элементом и нижней границей окна меньше чем размер dropdown списка
+            var bottomDistance = window.innerHeight - dropdown.getBoundingClientRect().bottom;
+            var dropdownHeight = dropdown.querySelector('.options').offsetHeight;
+
+            if (dropdownHeight > bottomDistance) {
+                dropdown.classList.add('above');
+                dropdown.querySelector('.options').style.bottom = 'calc(-' + bottomDistance + 'px + 10px)';
+            } else if (dropdown.classList.contains('above')) {
+                dropdown.classList.remove('above')
+            }
         })
 
         // Присовение значения при нажатии на опцию из dropdown списка

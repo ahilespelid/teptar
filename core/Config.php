@@ -57,11 +57,13 @@ $url = [
 'error'         => ['controller' => 'HomeController', 'action' => 'error'],
 'framework'     => ['controller' => 'HomeController', 'action' => 'framework'],
 
+// DistrictController
+'district'      => ['controller' => 'DistrictController', 'action' => 'district'],
+
 // Пока не готовы
 'login'         => ['controller' => 'UserController', 'action' => 'login'],
 'exel'          => ['controller' => 'ExelController', 'action' => 'work'],
 'ajax'          => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
-'district'      => ['controller' => 'DistrictController', 'action' => 'index'],
 'report'        => ['controller' => 'ReportController', 'action' => 'index'],
 'profile'       => ['controller' => 'ProfileController', 'action' => 'profile'],
 ];

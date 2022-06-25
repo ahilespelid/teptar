@@ -1,12 +1,5 @@
-@import "/templates/layouts/districts/districts.css";
+@import "/assets/css/statistics.css";
 @import "/assets/components/components.css";
-@import "/templates/layouts/navbar/navbar.css";
-@import "/templates/layouts/welcome/welcome.css";
-@import "/templates/layouts/rating/rating.css";
-@import "/templates/layouts/statistics/statistics.css";
-@import "/templates/layouts/comparison/comparison.css";
-@import "/templates/layouts/actions/actions.css";
-@import "/templates/layouts/footer/footer.css";
 @import "/assets/css/styles.css";
 @import "/assets/css/browsers.css";
 @import "/assets/css/fonts.css";

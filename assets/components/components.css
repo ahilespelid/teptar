@@ -60,6 +60,16 @@ a {
     background-color: transparent;
 }
 
+.button i {
+    margin-right: 4px;
+    font-size: 90%;
+}
+
+.button .icon {
+    position: relative;
+    top: 1px;
+}
+
 /* Buttons modifiers */
 
 .button.rounded {

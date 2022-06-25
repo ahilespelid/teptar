@@ -57,8 +57,7 @@ class Registr {
     }
 
     /*/ Метод выдает обработанное исключение /*/
-    public function getExceptions(): bool
-    {
+    public function getExceptions(){
         return pa($this->logPull);
     }
 

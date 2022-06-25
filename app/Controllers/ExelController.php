@@ -34,6 +34,7 @@ class ExelController{
             $reader->setLoadSheetsOnly($sheetName); $spreadsheet = $reader->load($inputFileName); $worksheet = $spreadsheet->getActiveSheet();
             
             $ar = $worksheet->toArray();
+            pa($ar);
             $ar = array_slice($ar,2,17);
             
             $data[$sheetName] = $ar;
@@ -79,8 +80,8 @@ foreach($dataRet as $index => $district){$i=1;foreach($district as $region){for(
     
 }$sql .= '<br>'; $i++;}}
 
-echo  $sql;         
-    }
+//echo  $sql;         
+    }                    
  /*/ -------------------------------------------------------------- Загрузка exel -------------------------------------------------------------- /*/     
     public function load(){
         exit();       

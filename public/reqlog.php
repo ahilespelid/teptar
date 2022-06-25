@@ -8,7 +8,8 @@ $dateFormat = "Y-m-d";
 $fileWhat = (!empty($_POST)) ? 'post_' : ((!empty($_GET)) ? 'get_' : 'request_');
 $fileType = '.txt';
 $file = $dirname.DIRECTORY_SEPARATOR.$fileWhat.$date->format($dateFormat).$fileType;
-$mess = $_SERVER['REMOTE_ADDR'].' : '.$_SERVER['HTTP_USER_AGENT'].PHP_EOL.
+// */ echo $date->format('[H:i | d M Y]');  //*/
+$mess = $date->format('[H:i | d M Y]').' '.$_SERVER['REMOTE_ADDR'].' : '.$_SERVER['HTTP_USER_AGENT'].PHP_EOL.
                'COOKIE : '.$_SERVER['HTTP_COOKIE'].PHP_EOL.
                strtoupper($fileWhat).$_SERVER['SCRIPT_NAME'].PHP_EOL;
 

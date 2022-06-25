@@ -22,7 +22,7 @@ abstract class Data{
         return $pdo;
     }
 /*/ -------------------------------------------------------------- Геты из базы -------------------------------------------------------------- /*/ 
-    public function getId($table = '', $id = 1){/*/ Берёт значения по ИД из таблицы /*/ 
+    public function getId($table = '', $id = 1){//*/ Берёт значения по ИД из таблицы //*/ 
         $id = (int)$id; $id = $this->pdo->quote($id);
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
@@ -32,7 +32,7 @@ abstract class Data{
         
         return $return->fetch();}
 
-    public function getAll(string $table){/*/ Берёт все значения из таблицы /*/
+    public function getAll(string $table){//*/ Берёт все значения из таблицы //*/
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
 
@@ -41,7 +41,7 @@ abstract class Data{
 
           return $return->fetchAll();}
 
-    public function getWhere($table = '', $where =  array(), $sign = ['='], $order = 'ORDER BY `id` ASC'){/*/ Берёт все значения из таблицы: WHERE параметры массива /*/ 
+    public function getWhere($table = '', $where =  array(), $sign = ['='], $order = 'ORDER BY `id` ASC'){//*/ Берёт все значения из таблицы: WHERE параметры массива //*/ 
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
         $where = (is_array($where) && !empty($where) && !is_array(current($where))) ? $where : ['id'=>'1'];
@@ -58,7 +58,7 @@ abstract class Data{
         $return = $return->fetchAll(); 
          return (is_array($return) && !empty($return)) ? $return : false;}
     
-    public function getRange($from = 1, $to = 10, $table = '', $colum = ''){/*/ Берёт от и до из таблиц(У|Ы)  /*/
+    public function getRange($from = 1, $to = 10, $table = '', $colum = ''){//*/ Берёт от и до из таблиц(У|Ы)  //*/
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
         if(is_string($colum) && !empty($colum)){
@@ -70,14 +70,14 @@ abstract class Data{
                 
         return $return->fetchAll();}
 
-    public function getRandTable(bool $oneOrMony = false, bool $orderRand = false){/*/ Берёт случайную таблиц(У|Ы) из схемы  /*/ 
+    public function getRandTable(bool $oneOrMony = false, bool $orderRand = false){//*/ Берёт случайную таблиц(У|Ы) из схемы  //*/ 
             $sql =  'SELECT `TABLE_NAME` FROM `INFORMATION_SCHEMA`.`TABLES` WHERE `TABLE_SCHEMA`'." = '" . $GLOBALS['db']['base'] . "' ORDER BY ".
                         ((!$orderRand) ? 'RAND()' : '`TABLE_ROWS` DESC')." ".((!$oneOrMony) ? ' LIMIT 1;' : ';');
             $return = $this->pdo->query($sql);
             
             $table = $return->fetchAll();
             $return = []; array_walk_recursive($table, function($a) use (&$return) { $return[] = $a;});
-            return $return; /*/ return [ 0 => TABLE_NAME], 1 => TABLE_NAME, ...] /*/      
+            return $return; //*/ return [ 0 => TABLE_NAME], 1 => TABLE_NAME, ...] //*/      
     }
     
     public function getColumnTable($table = ''){
@@ -90,7 +90,7 @@ abstract class Data{
          
         $colum = $return->fetchAll();
         $return = []; array_walk_recursive($colum, function($a) use (&$return) { $return[] = $a;});
-        return $return; /*/ $column [ 0 => TABLE_NAME], 1 => TABLE_NAME, ...] /*/ 
+        return $return; //*/ $column [ 0 => TABLE_NAME], 1 => TABLE_NAME, ...] //*/ 
     }   
 /*/ -------------------------------------------------------------- Вставки в базу -------------------------------------------------------------- /*/ 
     public function insert($table = '', $data = []){
@@ -154,4 +154,35 @@ abstract class Data{
         if($n){$subject = mb_substr($subject, 0, $matches[0][1]);}
         $subject = (str_ends_with($subject, 's')) ?  $subject :  $subject.'s';
     return ($f) ? $subject : false;}
+    
+    // Ищет одну запись по критериям
+    // Пример: ['name' => 'John']
+    public function findOneBy($table = '', $criteria = array('cond' => array('id'=>1), 'sign' => array('=')), $orderBy = ''){
+        if(is_string($table) && !empty($table) && is_array($criteria) && !empty($criteria) && is_array(current($criteria))){
+        $table = trim($table); $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
+        $cond = $criteria['cond'];       
+        $sign = (is_array($criteria['sign']) && !empty($criteria['sign'])) ? $criteria['sign'] : ['='];       
+        return $this->getWhere($table,$cond,$sign,$orderBy)[0]; 
+        }else{
+        return false;}     
+    }
+
+    // Ищет все записи таблицы
+    public function findAll($table = ''){
+        $table = trim($table); $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
+        return (is_string($table) && !empty($table)) ? $this->getAll($table) : false;
+    }
+
+    // Ищет записи по критериям
+    // Пример: ['name' => 'John']
+    public function findBy($table = '', $criteria = array('cond' => array('id'=>1), 'sign' => array('>')), $orderBy){
+        if(is_string($table) && !empty($table) && is_array($criteria) && !empty($criteria) && is_array(current($criteria))){
+        $table = trim($table); $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
+        $cond = $criteria['cond'];       
+        $sign = (is_array($criteria['sign']) && !empty($criteria['sign'])) ? $criteria['sign'] : ['>'];       
+        return $this->getWhere($table,$cond,$sign,$orderBy); 
+        }else{
+        return false;}
+    }
+
 }

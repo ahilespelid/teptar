@@ -41,7 +41,7 @@ abstract class Data{
 
           return $return->fetchAll();}
 
-    public function getWhere($table = '', $where =  array()){/*/ Берёт все значения из таблицы: WHERE параметры массива /*/ 
+    public function getWhere($table = '', $where =  array(), $sign = ['='], $order = 'ORDER BY `id` ASC'){/*/ Берёт все значения из таблицы: WHERE параметры массива /*/ 
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
         $where = (is_array($where) && !empty($where) && !is_array(current($where))) ? $where : ['id'=>'1'];
@@ -49,8 +49,8 @@ abstract class Data{
         $whereString = ''; $i = 1; $c = count($where);
         foreach($where as $k => $v){
             $k = $this->pdo->quote($k); $k[0] = $k[strlen($k)-1] = '`';
-            $whereString .= $k.'='.$this->pdo->quote($v).(($i < $c ) ? ' AND ' : ''); $i++;
-        }$whereString = ' WHERE '.$whereString;
+            $whereString .= $k.((is_array($sign) && $c == count($sign)) ?  $sign[$i-1] : '=').$this->pdo->quote($v).(($i < $c ) ? ' AND ' : ''); $i++;
+        }$whereString = ' WHERE '.$whereString.' '.$order;
         
         $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ echo $sql; //*/
         $return = $this->pdo->query($sql);

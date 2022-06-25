@@ -10,8 +10,8 @@ class ReportModel extends \App\Data{
           $this->tableIndexes = $GLOBALS['db']['table']['indexes'];
     }
     
-    public function getReports($returnFalse = []){        
-        $reports = $this->getQuery("SELECT * FROM `".$this->table."` WHERE creating > CURDATE() - INTERVAL 7 YEAR ORDER BY id ASC;");
+    public function getReports($periodYears = 5){        
+        $reports = $this->getWhere($this->table,['creating' => 'CURDATE() - INTERVAL '.$periodYears.' YEAR'], ['>'], 'ORDER BY `id` ASC');
         if(is_array($reports) && !empty($reports) && is_array(current($reports))){$output = [];
             foreach($reports as $key => $report){foreach($report as $k => $v){$t =$this->getTableFromIdString($k);
                 if(!empty($t)){
@@ -19,11 +19,11 @@ class ReportModel extends \App\Data{
                 else{
                     $output[$key][$k] = $v;}
         }}}else{return false;}
-        return (is_array($output) && !empty($output)) ? $output : $returnFalse;        
+        return (is_array($output) && !empty($output)) ? $output : false;        
     }
 
-    public function getIndexes($returnFalse = []){        
-        $indexes = $this->getQuery("SELECT * FROM `".$this->tableIndexes."` WHERE date > CURDATE() - INTERVAL 7 YEAR ORDER BY id ASC;");
+    public function getIndexes($periodYears = 5, $argv = ['cond' => [''], 'sign' => ['>']]){        
+        $indexes = $this->getWhere($this->tableIndexes, ['date' => 'CURDATE() - INTERVAL '.$periodYears.' YEAR'], ['>'], 'ORDER BY `id` ASC');
         if(is_array($indexes) && !empty($indexes) && is_array(current($indexes))){$output = [];
             foreach($indexes as $key => $index){foreach($index as $k => $v){$t =$this->getTableFromIdString($k);
                 if(!empty($t)){
@@ -31,7 +31,7 @@ class ReportModel extends \App\Data{
                 else{
                     $output[$key][$k] = $v;}
         }}}else{return false;}
-        return (is_array($output) && !empty($output)) ? $output : $returnFalse;        
+        return (is_array($output) && !empty($output)) ? $output : false;        
     }
     
     public function __destruct() {$this->pdo = null;}

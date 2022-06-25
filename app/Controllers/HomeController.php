@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 class HomeController extends AbstractController {
@@ -19,7 +20,7 @@ class HomeController extends AbstractController {
         }
 
         if ($this->user->isToken()) {
-            if($user = $this->user->login($this->user->getLoginUser())){
+            if ($user = $this->user->login($this->user->getLoginUser())) {
                 $this->render('/home/home-leader.php', [
                     'districts' => $this->database->getAll('districts'),
                     'navbar' => 'home',

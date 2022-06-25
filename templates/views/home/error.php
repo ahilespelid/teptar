@@ -2,7 +2,7 @@
 
     <body>
 
-        <?php include $this->layout('navbar/navbar.php') ?>
+        <?php include $this->layout('navbar.php') ?>
 
             <div class="container">
 
@@ -17,7 +17,7 @@
                                     <?= $message ?>
                                 </span>
 
-                                <a class="button button-success-border block-margin-top" href="/"><i class="icon-expand_left_right"></i> Вернуться на главную</a>
+                                <a class="button button-outline-success rounded dark block-margin-top" href="/"><i class="icon-expand_left_right"></i> Вернуться на главную</a>
                             </div>
                             <div class="error-block-background"><?= $error ?></div>
                         </div>
@@ -27,7 +27,7 @@
 
             </div>
 
-        <?php include $this->layout('footer/footer.php') ?>
+        <?php include $this->layout('footer.php') ?>
 
     </body>
 

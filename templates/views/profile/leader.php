@@ -2,13 +2,13 @@
 
     <body>
 
-    <?php include $this->layout('navbar/navbar.php'); ?>
+    <?php include $this->layout('navbar.php'); ?>
 
         <div class="container">
 
             <div class="main">
 
-<!--                --><?php //include $this->layout('navbar/responsive-pages.php'); ?>
+                <?php include $this->layout('navbar-responsive.php'); ?>
 
                 <div class="grid-block">
                     <div class="grid-block-main">
@@ -78,7 +78,7 @@
 
         </div>
 
-    <?php include $this->layout('footer/footer.php'); ?>
+    <?php include $this->layout('footer.php'); ?>
 
     </body>
 

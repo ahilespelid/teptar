@@ -1,9 +1,7 @@
 <?php
 namespace App\Controllers;
-<<<<<<< HEAD
+
 use Exception;
-=======
->>>>>>> 3181ce2aa9e954acea11eee60aa676b5e5249866
 
 abstract class AbstractController{
     public function render($view, $parameters = []) {
@@ -29,12 +27,8 @@ abstract class AbstractController{
         $view = implode(DIRECTORY_SEPARATOR, explode('/', $view));
 
         // Возвращаем полный путь с корневой папки до файла вида блока
-<<<<<<< HEAD
+        
         return $GLOBALS['path']['layouts'] .DIRECTORY_SEPARATOR. $view;}
-=======
-        return $GLOBALS['path']['layouts'] . DIRECTORY_SEPARATOR . $view;
-    }
->>>>>>> 3181ce2aa9e954acea11eee60aa676b5e5249866
 
     public function image($file) {
         // Заменяем слэши из ссылки на изображение сепаратором
@@ -55,11 +49,5 @@ abstract class AbstractController{
                 $img = 'data:' . getimagesize($path)['mime'] . ';base64,' . base64_encode(file_get_contents($path));
             }
         }
-<<<<<<< HEAD
         return $img;}
-=======
-
-        return $img;
-    }
->>>>>>> 3181ce2aa9e954acea11eee60aa676b5e5249866
 }

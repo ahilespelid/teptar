@@ -55,14 +55,9 @@ abstract class Data{
             $k = $this->pdo->quote($k); $k[0] = $k[strlen($k)-1] = '`';
             $whereString .= $k.((is_array($sign) && $c == count($sign)) ?  $sign[$i-1] : '=').$this->pdo->quote($v).(($i < $c ) ? ' AND ' : ''); $i++;
         }$whereString = ' WHERE '.$whereString.' '.$order;
-<<<<<<< HEAD
-        
-        $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ 
-        echo $sql.'<br>'; //*/
-=======
 
         $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ echo $sql; //*/
->>>>>>> 640b94094cbb115fc5de19390cc3977a5ecea053
+
         $return = $this->pdo->query($sql);
         
         $return = $return->fetchAll(); 

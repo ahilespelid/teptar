@@ -16,6 +16,6 @@ return array(
     'Matrix\\' => array($vendorDir . '/markbaker/matrix/classes/src'),
     'Complex\\' => array($vendorDir . '/markbaker/complex/classes/src'),
     'App\\Models\\' => array($baseDir . '/app/Models'),
+    'App\\Controllers\\' => array($baseDir . '/app/Controllers'),
     'App\\' => array($baseDir . '/app'),
-    '' => array($baseDir . '/core'),
 );

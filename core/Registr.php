@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-class Registr {
+class Registr{
     public  $logFile,
         $exDate,
         $exMessage,

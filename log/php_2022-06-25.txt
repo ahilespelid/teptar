@@ -1,4 +1,0 @@
-
-[14:10 | 25 Jun 2022] Файл на вид по пути '/var/www/templates/views/login/index.php' не найден. /var/www/app/Controllers/AbstractController.php (line 21)
-[14:13 | 25 Jun 2022] Файл на вид по пути '/var/www/templates/views/login/index.php' не найден. /var/www/app/Controllers/AbstractController.php (line 21)
-[16:49 | 25 Jun 2022] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'creating' in 'where clause' /var/www/core/Data.php (line 56)

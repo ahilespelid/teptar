@@ -16,10 +16,24 @@ class ReportController extends AbstractController
         $this->indexes = (object) $this->model->getIndexes(); 
     }
 
-    public function index() {
+    public function index(){
         
-        pa($this);
+        $_1_mark = $this->model->getIndexes([
+                                                                        'cond' => array('date' => 'CURDATE() - INTERVAL 1 YEAR'), 
+                                                                        'sign' => array('>')
+                                                                        ]);
+        
+        pa($_1_mark);
+        //pa($this);
         
         //$this->render('/report/report.php');
     }
+    
+    public function sopO($array = []){
+        if(is_array($array) && !empty($array) && !is_array(current($array))){
+            return (array_sum($array) / count($array));
+        }
+    return false;}
+    
+    
 }

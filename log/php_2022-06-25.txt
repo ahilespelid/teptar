@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+=======
+
+[14:10 | 25 Jun 2022] Файл на вид по пути '/var/www/templates/views/login/index.php' не найден. /var/www/app/Controllers/AbstractController.php (line 21)
+[14:13 | 25 Jun 2022] Файл на вид по пути '/var/www/templates/views/login/index.php' не найден. /var/www/app/Controllers/AbstractController.php (line 21)
+>>>>>>> 640b94094cbb115fc5de19390cc3977a5ecea053

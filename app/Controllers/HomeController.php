@@ -4,11 +4,11 @@ namespace App\Controllers;
 
 class HomeController extends AbstractController {
     public $user;
-    public $database;
+    public $uins;
 
     public function __construct(){
         $this->user = new UserController;
-        $this->database = new \App\Models\DistrictModel;
+        $this->uins = new \App\Models\UINModel;
     }
 
     /**
@@ -22,10 +22,10 @@ class HomeController extends AbstractController {
         if ($this->user->isToken()) {
             if ($user = $this->user->login($this->user->getLoginUser())) {
                 $this->render('/home/home-leader.php', [
-                    'districts' => $this->database->getAll('districts'),
+                    'districts' => $this->uins->findBy(['type' => 'district']),
                     'navbar' => 'home',
                     'user' => [
-                        'post' => $user->uin['comments']
+                        'post' => $user->role['post']
                     ]
                 ]);
             }
@@ -47,14 +47,17 @@ class HomeController extends AbstractController {
                 'error' => $error,
                 'title' => $title,
                 'message' => $message,
-                'districts' => $this->database->getAll('districts'),
+                'districts' => $this->uins->findBy(['type' => 'district']),
                 'user' => [
-                    'post' => $user->uin['comments']
+                    'post' => $user->role['post']
                 ]
             ]);
         }
     }
 
+    /**
+     * Страница с документацией стилей
+     */
     public function framework() {
         $this->render('/home/framework.php');
     }

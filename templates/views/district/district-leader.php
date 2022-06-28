@@ -21,6 +21,7 @@
 
             <div class="main">
                 <?php include $this->layout('navbar-responsive.php'); ?>
+
                 <?php include $this->layout('district.php'); ?>
 
                 <div class="block-margin-top">
@@ -34,14 +35,14 @@
 
                     <div class="user-boxes block-box block-padding sub-block-margin-top">
 
-                        <?php for ($i = 1; $i <= 12; $i++) { ?>
+                        <?php foreach ($districtStaffs as $key => $districtStaff) { ?>
 
                             <a class="user-box" href="#">
                                 <div class="user-avatar">
-                                    <div class="avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
+                                    <div class="avatar" style="background-image: url('<?= $districtStaff['avatar']; ?>')"></div>
                                 </div>
                                 <div class="user-info">
-                                    <span class="title">Ибрагим Грозный</span>
+                                    <span class="title"><?= $districtStaff['lastname'] . ' ' . $districtStaff['firstname'] ?></span>
                                     <span class="muted">Районный сотрудник</span>
                                     <span class="muted">Село Шатой</span>
                                 </div>

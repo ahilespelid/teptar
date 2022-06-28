@@ -58,8 +58,8 @@
             <div class="districts-title">Выберите страницу района:</div>
 
             <div class="districts-list">
-                <?php foreach ($districts as $district) { ?>
-                    <div class="item"><a class="map-link" id="MapLink<?= $district['mapname'] ?>" href="/district?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a></div>
+                <?php foreach ($districts as $map_district) { ?>
+                    <div class="item"><a class="map-link" id="MapLink<?= $this->slugify($map_district['owner'], true) ?>" href="/district?district=<?= $this->slugify($map_district['owner'], true) ?>"><?= $map_district['owner'] ?></a></div>
                 <?php } ?>
             </div>
         </div>
@@ -69,8 +69,8 @@
     <div class="collapse dark fill rounded chevron only-mobile">
         <div class="collapse-button block-box block-padding sub-block-margin-top">Выбрать район в ручную</div>
         <div class="collapse-content sub-block-margin-top">
-            <?php foreach ($districts as $district) { ?>
-                <a class="item map-link" id="MapLink<?= $district['mapname'] ?>" href="/district?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a>
+            <?php foreach ($districts as $map_district) { ?>
+                <a class="item map-link" id="MapLink<?= $this->slugify($map_district['owner'], true) ?>" href="/district?district=<?= $this->slugify($map_district['owner'], true) ?>"><?= $map_district['owner'] ?></a>
             <?php } ?>
         </div>
     </div>

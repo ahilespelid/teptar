@@ -52,11 +52,11 @@
         <div class="districts-title">Выберите страницу района:</div>
 
         <div class="districts-list">
-            <?php foreach ($districts as $district) { ?>
-                <?php if(isset($_GET['district']) && $_GET['district'] === $district['mapname']) { ?>
-                    <div class="item" style="justify-content: left"><a class="map-link current" id="MapLink<?= $district['mapname'] ?>" href="/region/index.php?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a></div>
+            <?php foreach ($districts as $map_district) { ?>
+                <?php if(isset($_GET['district']) && $_GET['district'] === $map_district['slug']) { ?>
+                    <div class="item" style="justify-content: left"><a class="map-link current" id="MapLink<?= $map_district['slug'] ?>" href="/district?district=<?= $map_district['slug'] ?>"><?= $map_district['owner'] ?></a></div>
                 <?php } else { ?>
-                    <div class="item" style="justify-content: left"><a class="map-link" id="MapLink<?= $district['mapname'] ?>" href="/region/index.php?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a></div>
+                    <div class="item" style="justify-content: left"><a class="map-link" id="MapLink<?= $map_district['slug'] ?>" href="/district?district=<?= $map_district['slug'] ?>"><?= $map_district['owner'] ?></a></div>
                 <?php } ?>
             <?php } ?>
         </div>
@@ -67,8 +67,8 @@
 <div class="collapse dark fill rounded chevron only-mobile">
     <div class="collapse-button block-box block-padding sub-block-margin-top">Выбрать район в ручную</div>
     <div class="collapse-content sub-block-margin-top">
-        <?php foreach ($districts as $district) { ?>
-            <a class="item map-link" id="MapLink<?= $district['mapname'] ?>" href="/region/index.php?district=<?= $district['mapname'] ?>"><?= $district['name'] ?></a>
+        <?php foreach ($districts as $map_district) { ?>
+            <a class="item map-link" id="MapLink<?= $map_district['slug'] ?>" href="/district?district=<?= $map_district['slug'] ?>"><?= $map_district['owner'] ?></a>
         <?php } ?>
     </div>
 </div>

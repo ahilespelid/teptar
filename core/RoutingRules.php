@@ -1,4 +1,4 @@
-<?php return   
+<?php return
 [
 // HomeController
 'index'         => $GLOBALS['url']['index'],
@@ -8,10 +8,13 @@
 // DistrictController
 'district'      => $GLOBALS['url']['district'],
 
+// ProfileController
+'profile'       => $GLOBALS['url']['profile'],
+'staff'       => $GLOBALS['url']['staff'],
+
 // Пока не готовы
 'login'         => $GLOBALS['url']['login'],        /*/ userController.php Контраллер пользователя -> экшен авторизации /*/
 'exel'          => $GLOBALS['url']['exel'],         /*/ json для Внутренней вёрстки /*/
 'ajax'          => $GLOBALS['url']['ajax'],
 'report'        => $GLOBALS['url']['report'],
-'profile'       => $GLOBALS['url']['profile'],
 ];

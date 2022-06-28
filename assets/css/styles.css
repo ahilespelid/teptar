@@ -403,6 +403,17 @@ h3 {
     margin: unset;
 }
 
+.box-input input {
+    border: 1px solid rgba(255,255,255,0.1);
+    background: unset;
+    color: #fff;
+    border-radius: 8px;
+    height: 40px;
+    width: 300px;
+    font-size: 12px;
+    padding: 8px 12px;
+}
+
 /* Tables */
 
 .sortable-table th {

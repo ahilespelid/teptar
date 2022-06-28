@@ -60,12 +60,15 @@ $url = [
 // DistrictController
 'district'      => ['controller' => 'DistrictController', 'action' => 'district'],
 
+// ProfileController
+'profile'       => ['controller' => 'ProfileController', 'action' => 'profile'],
+'staff'       => ['controller' => 'ProfileController', 'action' => 'staff'],
+
 // Пока не готовы
 'login'         => ['controller' => 'UserController', 'action' => 'login'],
 'exel'          => ['controller' => 'ExelController', 'action' => 'work'],
 'ajax'          => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
 'report'        => ['controller' => 'ReportController', 'action' => 'index'],
-'profile'       => ['controller' => 'ProfileController', 'action' => 'profile'],
 ];
 
 $GLOBALS['url'] = $url;

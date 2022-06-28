@@ -2,17 +2,17 @@
 
 namespace App\Controllers;
 
-use App\Models\DistrictModel;
+use App\Models\UINModel;
 use Exception;
 
 class ProfileController extends AbstractController {
-    public $database;
+    public $uins;
     public $user;
 
     public function __construct()
     {
         $this->user = new UserController;
-        $this->database = new DistrictModel;
+        $this->uins = new UINModel;
     }
 
     /**
@@ -21,9 +21,9 @@ class ProfileController extends AbstractController {
     public function profile() {
         if($user = $this->user->login($this->user->getLoginUser())){
             $this->render('/profile/leader.php', [
-                'districts' => $this->database->getAll('districts'),
+                'districts' => $this->uins->findBy(['type' => 'district']),
                 'user' => [
-                    'post' => $user->uin['comments'],
+                    'post' => $user->role['post'],
                     'full_name' => $user->lastname . ' ' . $user->firstname . ' ' . $user->secondname
                 ]
             ]);

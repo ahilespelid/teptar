@@ -4,7 +4,7 @@
 
             <?php if (isset($navbar) && $navbar == 'home') { ?>
                 <div class="map">
-                    <a href="#districtsMap" class="button button-success"><i class="icon icon-map"></i> Чеченская республика</a>
+                    <a href="#districtsMap" class="current button button-success rounded"><i class="icon icon-map"></i> Чеченская республика</a>
                 </div>
             <?php } else { ?>
                 <div class="item dropdown dark rounded mobile-none responsive-dropdown-map">
@@ -21,8 +21,8 @@
                 <a class="current button button-success rounded"><i class="icon icon-map"></i> Чеченская республика</a>
                 <div class="options" style="width: 340px;">
                     <div class="dropdown-buttons-block">
-                        <?php foreach ($districts as $district) { ?>
-                            <a href="/region/index.php?district=<?= $district['mapname'] ?>" class="button button-outline-success rounded"><?= $district['name'] ?></a>
+                        <?php foreach ($districts as $map_district) { ?>
+                            <a href="/district?district=<?= $map_district['slug'] ?>" class="button button-outline-success rounded"><?= $map_district['owner'] ?></a>
                         <?php } ?>
                     </div>
                 </div>

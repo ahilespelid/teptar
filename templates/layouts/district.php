@@ -120,14 +120,15 @@
             }
         </style>
 
-        <span class="title"><?= $district['name']; ?></span>
-        <span class="muted"><i class="icon-pin"></i> Административный центр - село Шатой</span>
+        <span class="title"><?= $district['owner']; ?></span>
+        <span class="muted"><i class="icon-pin"></i> Административный центр - <?= $district['center'] ?></span>
+
     </div>
     <div class="data">
         <div class="item">
             <div class="content">
                 <span>Глава района</span>
-                <span>Ибрагим Грозный</span>
+                <span><?= $districtBoss['lastname'] . ' ' . $districtBoss['firstname'] . ' ' . $districtBoss['secondname'] ?></span>
             </div>
         </div>
         <div class="item">

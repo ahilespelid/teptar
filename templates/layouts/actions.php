@@ -119,44 +119,6 @@
 
         <div class="block-box block-title-box">
             <h3>Активность</h3>
-
-            <div class="dropdowns-list">
-                <div class="dropdown interactive rounded right dark chevron">
-                    <div class="current button button-dropdown rounded"><span class="title">Район:</span> Гудермесский</div>
-
-                    <div class="options">
-                        <span class="option">Аргун</span>
-                        <span class="option">Ачхой-Мартановский</span>
-                        <span class="option">Веденский</span>
-                        <span class="option">Грозненский</span>
-                        <span class="option">Грозный</span>
-                        <span class="option">Гудермесский</span>
-                        <span class="option">Итум-Калинский</span>
-                        <span class="option">Курчалоевский</span>
-                        <span class="option">Надтеречный</span>
-                        <span class="option">Наурский</span>
-                        <span class="option">Ножай-Юртовский</span>
-                        <span class="option">Серноводский</span>
-                        <span class="option">Урус-Мартановский</span>
-                        <span class="option">Шелковской</span>
-                        <span class="option">Шалинский</span>
-                        <span class="option">Шаройский</span>
-                        <span class="option">Шатойский</span>
-                    </div>
-                </div>
-
-                <div class="dropdown interactive rounded right dark chevron">
-                    <div class="current button button-dropdown rounded">2021</div>
-
-                    <div class="options">
-                        <span class="option">2021</span>
-                        <span class="option">2020</span>
-                        <span class="option">2019</span>
-                        <span class="option">2018</span>
-                        <span class="option">2017</span>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="actions__info scrollable-box block-box sub-block-margin-top">

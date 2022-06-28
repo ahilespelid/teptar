@@ -2,34 +2,30 @@
 namespace App\Controllers;
 
 class DistrictController extends AbstractController {
-    public  $model,
-            $pIndex,
-            $districts,
+    public  $users,
+            $uins,
             $user;
 
 
-    public function __construct(){
+    public function __construct() {
         $this->user = new UserController;
-        $this->model = new \App\Models\DistrictModel;
+        $this->users = new \App\Models\UserModel;
+        $this->uins = new \App\Models\UINModel;
     }
-    
-//    public function index($q){;
-//        $is_districtUrl = str_starts_with(((!empty($_REQUEST['q']) && is_string($_REQUEST['q'])) ? mb_strtolower(trim($_REQUEST['q'])) : ''),'district');
-//        $this->pIndex->render();
-//    }
 
     public function district() {
         if ($user = $this->user->login($this->user->getLoginUser())) {
-            $district = $this->model->getWhere('districts', ['mapname' => $_GET['district']])[0];
-            $isLeader = ('Region' == $user->role['name'] && 'Boss' == $user->role['subject']);
+            $district = $this->uins->findOneBy(['slug' => $_GET['district']]);
+            $districtBoss = $this->users->findOneBy(['id_uin' => $district['id'], 'id_role' => 4]);
+            $userIsLeader = ('Region' == $user->role['name'] && 'Boss' == $user->role['subject']);
 
-            if ($isLeader) {
+            if ($userIsLeader) {
                 $this->render('/district/district-leader.php', [
-                    'user' => [
-                        'post' => $user->uin['comments']
-                    ],
+                    'user' => ['post' => $user->role['post']],
                     'district' => $district,
-                    'districts' => $this->model->getAll('districts')
+                    'districts' => $this->uins->findBy(['type' => 'district']),
+                    'districtBoss' => $districtBoss,
+                    'districtStaffs' => $this->users->findBy(['id_uin' => $district['id'], 'id_role' => 5])
                 ]);
             }
         }

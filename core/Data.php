@@ -8,6 +8,7 @@ define('dbPass',  $GLOBALS['db']['pass']);
 
 abstract class Data{
     public $pdo;
+    public $table;
 
     public function __construct(){}
     public function connPDO(){
@@ -59,10 +60,10 @@ abstract class Data{
         $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ echo $sql; //*/
 
         $return = $this->pdo->query($sql);
-        
+
         $return = $return->fetchAll(); 
          return (is_array($return) && !empty($return)) ? $return : false;}
-    
+
     public function getRange($from = 1, $to = 10, $table = '', $colum = ''){//*/ Берёт от и до из таблиц(У|Ы)  //*/
 
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
@@ -163,34 +164,85 @@ abstract class Data{
         $subject = (str_ends_with($subject, 's')) ?  $subject :  $subject.'s';
 
     return ($f) ? $subject : false;}
-    
+
     // Ищет одну запись по критериям
     // Пример: ['name' => 'John']
-    public function findOneBy($table = '', $criteria = array('cond' => array('id'=>1), 'sign' => array('=')), $orderBy = ''){
-        if(is_string($table) && !empty($table) && is_array($criteria) && !empty($criteria) && is_array(current($criteria))){
-        $table = trim($table); $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
-        $cond = $criteria['cond'];       
-        $sign = (is_array($criteria['sign']) && !empty($criteria['sign'])) ? $criteria['sign'] : ['='];       
-        return $this->getWhere($table,$cond,$sign,$orderBy)[0]; 
-        }else{
-        return false;}     
+    public function findOneBy(array $criteria, array $orderBy = null){
+        $criteriaSQL = '';
+        $orderSQL = '';
+        $iteration = 1;
+
+        // Генерация строки запроса SQL для обязательного параметра критериев $criteria
+        foreach ($criteria as $column => $value) {
+            ($iteration == 1) ? $criteriaSQL .= "" : $criteriaSQL .= " AND ";
+            $criteriaSQL .= $column . " = '" . $value . "'";
+            $iteration += 1;
+        }
+
+        // Генерация строки запроса SQL для необязательного параметра сортировки $orderBy
+        if ($orderBy) {
+            $iteration = 1;
+            foreach ($orderBy as $column => $order) {
+                ($iteration == 1) ? $orderSQL .= ' ORDER BY ' : $orderSQL .= ', ' ;
+                $orderSQL .= $column . ' ' . $order;
+                $iteration += 1;
+            }
+        }
+
+        // Генерация всего запроса из резульатов предыдуще генерированных строков
+        $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . " LIMIT 1";
+        $query = $this->pdo->query($sql);
+
+        return $query->fetchAll()[0];
     }
 
-    // Ищет все записи таблицы
-    public function findAll($table = ''){
-        $table = trim($table); $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
-        return (is_string($table) && !empty($table)) ? $this->getAll($table) : false;
+    // Поиск всех записей таблицы
+    public function findAll() {
+        $sql = 'SELECT * FROM ' . $this->table . ';';
+        $query = $this->pdo->query($sql);
+
+        return $query->fetchAll();
     }
 
     // Ищет записи по критериям
     // Пример: ['name' => 'John']
-    public function findBy($table = '', $criteria = array('cond' => array('id'=>1), 'sign' => array('>')), $orderBy){
-        if(is_string($table) && !empty($table) && is_array($criteria) && !empty($criteria) && is_array(current($criteria))){
-        $table = trim($table); $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
-        $cond = $criteria['cond'];       
-        $sign = (is_array($criteria['sign']) && !empty($criteria['sign'])) ? $criteria['sign'] : ['>'];       
-        return $this->getWhere($table,$cond,$sign,$orderBy); 
-        }else{
-        return false;}
+    public function findBy(array $criteria, array $orderBy = null, int $limit = null, $offset = null){
+        $criteriaSQL = '';
+        $orderSQL = '';
+        $limitSQL = '';
+        $offsetSQL = '';
+        $iteration = 1;
+
+        // Генерация строки запроса SQL для обязательного параметра критериев $criteria
+        foreach ($criteria as $column => $value) {
+            ($iteration == 1) ? $criteriaSQL .= "" : $criteriaSQL .= " AND ";
+            $criteriaSQL .= $column . " = '" . $value . "'";
+            $iteration += 1;
+        }
+
+        // Генерация строки запроса SQL для необязательного параметра сортировки $orderBy
+        if ($orderBy) {
+            $iteration = 1;
+            foreach ($orderBy as $column => $order) {
+                ($iteration == 1) ? $orderSQL .= ' ORDER BY ' : $orderSQL .= ', ' ;
+                $orderSQL .= $column . ' ' . $order;
+                $iteration += 1;
+            }
+        }
+
+        // Генерация строки запроса SQL для необязательных параметров лимита $limit и офсета $offset
+        if ($limit) {
+            $limitSQL = " LIMIT " . $limit;
+            if ($offset) {
+                $offsetSQL = " OFFSET " . $offset;
+            }
+        }
+
+        // Генерация всего запроса из резульатов предыдуще генерированных строков
+        $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . $limitSQL . $offsetSQL;
+
+        $query = $this->pdo->query($sql);
+
+        return $query->fetchAll();
     }
 }

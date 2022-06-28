@@ -28,7 +28,8 @@ abstract class AbstractController{
 
         // Возвращаем полный путь с корневой папки до файла вида блока
         
-        return $GLOBALS['path']['layouts'] .DIRECTORY_SEPARATOR. $view;}
+        return $GLOBALS['path']['layouts'] .DIRECTORY_SEPARATOR. $view;
+    }
 
     public function image($file) {
         // Заменяем слэши из ссылки на изображение сепаратором
@@ -49,5 +50,10 @@ abstract class AbstractController{
                 $img = 'data:' . getimagesize($path)['mime'] . ';base64,' . base64_encode(file_get_contents($path));
             }
         }
-        return $img;}
+        return $img;
+    }
+
+    public function slugify($string, $pascalCase = false) {
+        return (new \App\Service\Slugifier())->slugify($string, $pascalCase);
+    }
 }

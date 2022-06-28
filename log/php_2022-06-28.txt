@@ -11,3 +11,8 @@
 [10:23 | 28 Jun 2022] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'teptar.districts' doesn't exist /Users/deniev/Server/www/core/Data.php (line 43)
 [12:38 | 28 Jun 2022] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'teptar.districts' doesn't exist /Users/deniev/Server/www/core/Data.php (line 43)
 [12:40 | 28 Jun 2022] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'teptar.districts' doesn't exist /Users/deniev/Server/www/core/Data.php (line 43)
+[15:12 | 28 Jun 2022] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'username' in 'where clause' /Users/deniev/Server/www/core/Data.php (line 193)
+[15:47 | 28 Jun 2022] Object of class DateTime could not be converted to string /Users/deniev/Server/www/templates/views/profile/staff.php (line 76)
+[16:41 | 28 Jun 2022] Call to a member function query() on null /Users/deniev/Server/www/core/Data.php (line 193)
+[16:43 | 28 Jun 2022] Call to a member function query() on null /Users/deniev/Server/www/core/Data.php (line 201)
+[16:44 | 28 Jun 2022] Call to a member function query() on null /Users/deniev/Server/www/core/Data.php (line 201)

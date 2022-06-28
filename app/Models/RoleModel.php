@@ -2,11 +2,11 @@
 namespace App\Models;  
 use App;
 
-class UINModel extends \App\Data {
+class RoleModel extends \App\Data{
     public $table, $tableRole;
 
     public function __construct(){
-        $this->table = 'uin';
-         (object)$this->pdo = $this->connPDO();
+        $this->table = 'roles';
+        (object)$this->pdo = $this->connPDO();
     }
 }

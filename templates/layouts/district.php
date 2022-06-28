@@ -122,13 +122,13 @@
 
         <span class="title"><?= $district['owner']; ?></span>
         <span class="muted"><i class="icon-pin"></i> Административный центр - <?= $district['center'] ?></span>
-
     </div>
+
     <div class="data">
         <div class="item">
             <div class="content">
                 <span>Глава района</span>
-                <span><?= $districtBoss['lastname'] . ' ' . $districtBoss['firstname'] . ' ' . $districtBoss['secondname'] ?></span>
+                <span><a href="/staff?id=<?= $districtBoss['id'] ?>"><?= $districtBoss['lastname'] . ' ' . $districtBoss['firstname'] . ' ' . $districtBoss['secondname'] ?></a></span>
             </div>
         </div>
         <div class="item">
@@ -150,4 +150,5 @@
             </div>
         </div>
     </div>
+
 </div>

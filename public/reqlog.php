@@ -22,19 +22,20 @@ if(!empty($fileAll = array_values(array_diff(scandir($dirname),['.','..'])))){
         $date->setTimestamp($timestamp);    
     }
     $fileDel = array_diff($fileAll,$fileDontDel);
-}
-foreach($fileDel as $v){
-    $fileDelThis = $dirname.DIRECTORY_SEPARATOR.$v;
-    if(file_exists($fileDelThis)){unlink($fileDelThis);}
+
+    foreach($fileDel as $v){
+        $fileDelThis = $dirname.DIRECTORY_SEPARATOR.$v;
+        if(file_exists($fileDelThis)){unlink($fileDelThis);}
+    }
 }
 
-if (!empty($_POST) || !empty($_GET) || !empty($_REQUEST)) {$fw = fopen($file, "a");
-    $arr = (!empty($_POST)) ? $_POST : ((!empty($_GET)) ? $_GET : $_REQUEST);
-    
-    $mess .= var_export($arr, true); 
+if(755<=substr(sprintf('%o', fileperms($dirname)), -3)){ 
+// */
+if (!empty($_POST) || !empty($_GET) || !empty($_REQUEST)){
+    $mess .= var_export($arrRequist = (!empty($_POST)) ? $_POST : ((!empty($_GET)) ? $_GET : $_REQUEST), true); 
     $mess .= PHP_EOL; for($i=0;$i<250;$i++){ $mess .= '-';} $mess .= PHP_EOL; 
     
-    fwrite($fw, $mess);
-    fclose($fw);
-}
+    file_put_contents($file, $mess, FILE_APPEND);
+// */
+}} 
 ?>

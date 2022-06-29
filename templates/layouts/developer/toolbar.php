@@ -1,4 +1,4 @@
-<?php if ($_SESSION) { ?>
+<?php if (isset($_SESSION) && !empty( $_SESSION['user']['login'])) { ?>
     <style>
         body {
             margin-bottom: 50px;
@@ -103,16 +103,16 @@
     }
 </style>
 
-<div class="developer-toolbar <?php if ($_SESSION) { echo ' online'; } ?>">
+<div class="developer-toolbar <?php if (isset($_SESSION)) { echo ' online'; } ?>">
     
     <span class="developer-title"> <i class="icon-darhboard_alt"></i> Режим разработчика</span>
 
     <span class="developer-button">
 
         <span class="developer-user-indicator"></span>
-        <i class="icon-user"></i> <span class="username"><?php if ($_SESSION) { echo $_SESSION['user']['login']; } else { ?>гость<?php } ?></span>
+        <i class="icon-user"></i> <span class="username"><?php if (isset($_SESSION) && !empty( $_SESSION['user']['login'])) { echo $_SESSION['user']['login']; } else { ?>гость<?php } ?></span>
 
-        <?php if ($_SESSION) { ?>
+        <?php if (isset($_SESSION) && !empty( $_SESSION['user']['login'])) { ?>
             <span class="developer-button-dropdown">
 
                 <span class="developer-button-dropdown-block">
@@ -133,12 +133,12 @@
 
     </span>
 
-    <span class="developer-button">
+    <!--span class="developer-button">
         <i class="icon-setting"></i>
     </span>
 
     <span class="developer-button">
         <i class="icon-lock"></i>
-    </span>
+    </span-->
 
 </div>

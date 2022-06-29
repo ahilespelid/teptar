@@ -1,4 +1,4 @@
-<?php namespace App; use App\Registr;
+<?php namespace App;
 //ini_set('memory_limit', '-1');
 /*/ Режим вывода ошибок /*/
 ini_set('display_errors', 1);
@@ -73,9 +73,12 @@ $GLOBALS['url'] = $url;
 /*/-------------------------------------------------------------- Удочка для ошибок --------------------------------------------------------------/*/
 
 class Config{
-    public function handleUncaughtException($e){(new \App\Registr)->writeLog($e);
-        /*/ Показ вида при выявленных исключениях /*/
-        include $GLOBALS['path']['layouts'] . _DS_ . 'developer' . _DS_ . 'exception.php';
+    public function handleUncaughtException($e){ 
+        //*/ pa($e); //*/
+        // */ 
+        (new \App\Registr)->writeLog($e); // */
+        //*/ 
+        include $GLOBALS['path']['layouts'] . _DS_ . 'developer' . _DS_ . 'exception.php'; // */
     }
 }
 

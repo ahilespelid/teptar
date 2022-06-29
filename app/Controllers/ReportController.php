@@ -12,16 +12,18 @@ class ReportController extends AbstractController
 
     public function __construct(){
         $this->model = new \App\Models\ReportModel;
-        $this->reports = (object) $this->model->getReports(1); 
-        $this->indexes = (object) $this->model->getIndexes(); 
+        $this->model = new \App\Models\ReportModel;
+        //$this->reports = (object) $this->model->getReports(1); 
+        //$this->indexes = (object) $this->model->getIndexes(); 
     }
 
     public function index(){
         
-        $_1_mark = $this->model->getIndexes([
-                                                                        'cond' => array('date' => 'CURDATE() - INTERVAL 1 YEAR'), 
-                                                                        'sign' => array('>')
-                                                                        ]);
+        $_1_mark = $this->model->getIndexes([1],4,[1,18,35,52]);
+                                                                        
+        //foreach($_1_mark as $k => $v){echo $k.' : '.$v['date'].'<br>';}
+        
+        echo count($_1_mark);
         
         pa($_1_mark);
         //pa($this);

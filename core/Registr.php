@@ -58,7 +58,7 @@ class Registr{
 
     /*/ Метод выдает обработанное исключение /*/
     public function getExceptions(){
-        return pa($this->logPull);
+        return $this->logPull;
     }
 
     /*/ Метод добавляет запись в лог файл (php.txt) /*/

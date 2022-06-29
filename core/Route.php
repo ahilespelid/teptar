@@ -69,8 +69,8 @@ class Route {
 
         $file = $pathController.$fileController;
         $class = $appNameSpace.'\\'.str_replace($GLOBALS['path']['app']._DS_, "", $this->conPath).'\\'.$this->controller; 
-
-        /*/ echo $actionController; pa($queryController); /*/
+         
+        //*/ echo  $class; echo $actionController; pa($queryController); //*/
         if(file_exists($file)){(new $class)->$actionController($queryController);}else{die('Файл '.$file.' не найти!');}
         return false;
     }

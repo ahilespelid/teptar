@@ -27,7 +27,7 @@
 
                             <?php foreach ($districtStaffs as $key => $districtStaff) { ?>
 
-                                <a class="user-box" href="/staff?id=<?= $districtStaff['id'] ?>">
+                                <a class="user-box" href="/staff?district=<?= $district['slug'] ?>&login=<?= $districtStaff['login'] ?>">
                                     <div class="user-avatar">
                                         <div class="avatar" style="background-image: url('<?= $districtStaff['avatar']; ?>')"></div>
                                     </div>

@@ -37,10 +37,18 @@ class HomeController extends AbstractController {
     /**
      * Страница ошибок
      */
-    public function error() {
-        $error = '404';
-        $title = 'Страница не найдена';
-        $message = 'Страницу которую вы искали не существует, пожалуйста выберите другую либо вернитесь на главную.';
+    public function error($error = 404, $title = null, $message = null) {
+        if ($title == null) {
+            if ($error == 404) {
+                $title = 'Страница не найдена';
+            }
+        }
+
+        if ($message == null) {
+            if ($error == 404) {
+                $message = 'Страницу которую вы искали не существует, пожалуйста выберите другую либо вернитесь на главную.';
+            }
+        }
 
         if($user = $this->user->login($this->user->getLoginUser())){
             $this->render('/home/error.php', [

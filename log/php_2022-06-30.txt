@@ -1,0 +1,6 @@
+
+[09:44 | 30 Jun 2022] var_dump() expects at least 1 argument, 0 given /Users/deniev/Server/www/core/Data.php (line 201)
+[10:34 | 30 Jun 2022] Cannot access offset of type string on string /Users/deniev/Server/www/templates/layouts/district.php (line 131)
+[10:34 | 30 Jun 2022] Cannot access offset of type string on string /Users/deniev/Server/www/templates/layouts/district.php (line 131)
+[10:34 | 30 Jun 2022] Cannot access offset of type string on string /Users/deniev/Server/www/templates/layouts/district.php (line 131)
+[10:34 | 30 Jun 2022] Cannot access offset of type string on string /Users/deniev/Server/www/templates/layouts/district.php (line 131)

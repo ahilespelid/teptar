@@ -19,7 +19,7 @@
                             <h3>Зарегистрированные сотрудники</h3>
 
                             <div class="title-box-input">
-                                <input type="search" name="search" placeholder=" Поиск" class="input">
+                                <input type="search" name="search" placeholder=" Поиск" class="input">
                             </div>
                         </div>
 

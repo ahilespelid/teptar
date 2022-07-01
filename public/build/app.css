@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&family=Open+Sans:wght@400;500;600;700;800&display=swap);
 /* Actions */
 
 .actions {
@@ -50,15 +49,15 @@
     padding-right: 2px;
 }
 
-.actions__reports-rating .icon-star {
+.actions__reports-rating i {
     margin-right: 2px;
 }
 
-.actions__reports-rating .icon-star:last-child {
+.actions__reports-rating i:last-child {
     margin-right: -2px;
 }
 
-.actions__reports-rating .icon-star:first-child {
+.actions__reports-rating i:first-child {
     margin-left: 2px;
 }
 
@@ -280,7 +279,7 @@
     top: calc((100% - 20px) / 2);
     font-family: 'icomoon', serif;
     position: absolute;
-    content: "\e90a";
+    content: "\e906";
     transition: 0.3s;
     font-size: 6px;
     right: 20px;
@@ -1284,7 +1283,7 @@ a {
     top: calc((100% - 7px) / 2);
     font-family: 'icomoon', serif;
     position: absolute;
-    content: "\e90a";
+    content: "\e906";
     transition: 0.3s;
     font-size: 6px;
     right: 20px;
@@ -1753,7 +1752,7 @@ h3 {
 }
 
 .sortable-table .sortable-icon:before {
-    content: "\e90d";
+    content: "\e921";
     font-family: 'icomoon' !important;
     font-style: normal;
     font-weight: normal;
@@ -2131,12 +2130,12 @@ template {
 
 @font-face {
     font-family: 'icomoon';
-    src:  url(a6c6999c1bd73df72ab8.eot?1gvaa4);
-    src:  url(a6c6999c1bd73df72ab8.eot?1gvaa4);
-    src:  url(a6c6999c1bd73df72ab8.eot?1gvaa4#iefix) format('embedded-opentype'),
-    url(1ea1b9f52b8dd42dcd54.ttf?1gvaa4) format('truetype'),
-    url(de46bb0a40cead7e3e4b.woff?1gvaa4) format('woff'),
-    url(ff072ca32a24b3423115.svg?1gvaa4#icomoon) format('svg');
+    src:  url(3dde9d62fed4b88faaca.eot?1gvaa4);
+    src:  url(3dde9d62fed4b88faaca.eot?1gvaa4);
+    src:  url(3dde9d62fed4b88faaca.eot?1gvaa4#iefix) format('embedded-opentype'),
+    url(8470683e6367fa17dbd8.ttf?1gvaa4) format('truetype'),
+    url(441b36ea474d47c7a287.woff?1gvaa4) format('woff'),
+    url(0ce24140ef2d463b1a22.svg?1gvaa4#icomoon) format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -2157,55 +2156,77 @@ template {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-refresh:before {
-    content: "\e9c5";
-}
-.icon-vk:before {
-    content: "\e922";
-}
-.icon-telegram:before {
-    content: "\e923";
-}
-.icon-instagram:before {
-    content: "\e924";
-}
-.icon-lock:before {
-    content: "\e925";
-}
-.icon-pin:before {
-    content: "\e926";
-}
 .icon-archive_alt:before {
-    content: "\e90e";
+    content: "\e901";
 }
 .icon-archive:before {
-    content: "\e90f";
+    content: "\e902";
 }
 .icon-arrow_drop_down:before {
-    content: "\e910";
+    content: "\e903";
 }
 .icon-calendar:before {
-    content: "\e911";
+    content: "\e904";
 }
-.icon-darhboard_alt:before {
-    content: "\e912";
+.icon-check:before {
+    content: "\e905";
+}
+.icon-chevron-down:before {
+    content: "\e906";
+    font-size: 6px;
+}
+.icon-dashboard_alt:before {
+    content: "\e907";
+}
+.icon-desk:before {
+    content: "\e908";
+}
+.icon-document-add:before {
+    content: "\e909";
+}
+.icon-document-check:before {
+    content: "\e90a";
+}
+.icon-document-update:before {
+    content: "\e90b";
+}
+.icon-document:before {
+    content: "\e90c";
 }
 .icon-expand_left_right:before {
-    content: "\e913";
+    content: "\e90d";
 }
 .icon-folder_alt:before {
-    content: "\e914";
+    content: "\e90e";
 }
 .icon-import_light:before {
-    content: "\e915";
+    content: "\e90f";
+}
+.icon-info:before {
+    content: "\e910";
+}
+.icon-instagram:before {
+    content: "\e911";
+}
+.icon-lock:before {
+    content: "\e912";
+}
+.icon-log-out:before {
+    content: "\e913";
+}
+.icon-map:before {
+    content: "\e914";
 }
 .icon-menu:before {
-    content: "\e916";
+    content: "\e915";
 }
 .icon-notifications:before {
-    content: "\e917";
+    content: "\e916";
 }
 .icon-order:before {
+    content: "\e917";
+}
+.icon-pin:before {
     content: "\e918";
 }
 .icon-plus-circle:before {
@@ -2217,63 +2238,44 @@ template {
 .icon-save_light:before {
     content: "\e91b";
 }
-.icon-setting:before {
+.icon-search:before {
     content: "\e91c";
 }
-.icon-sort:before {
+.icon-setting:before {
     content: "\e91d";
 }
-.icon-trophy:before {
+.icon-sort:before {
     content: "\e91e";
 }
-.icon-user:before {
+.icon-sortable-down:before {
     content: "\e91f";
 }
-.icon-desk:before {
-    content: "\e909";
-}
-.icon-document-add:before {
-    content: "\e905";
-}
-.icon-document-check:before {
-    content: "\e906";
-}
-.icon-document-update:before {
-    content: "\e907";
-}
-.icon-star:before {
-    content: "\e908";
-}
-.icon-log-out:before {
-    content: "\e921";
-}
-.icon-chevron-down:before {
-    content: "\e90a";
-    font-size: 6px;
-}
-.icon-sortable-down:before {
-    content: "\e90b";
-}
 .icon-sortable-up:before {
-    content: "\e90c";
+    content: "\e920";
 }
 .icon-sortable:before {
-    content: "\e90d";
+    content: "\e921";
 }
-.icon-map:before {
-    content: "\e904";
+.icon-star-fill:before {
+    content: "\e922";
 }
-.icon-search:before {
-    content: "\e903";
+.icon-star:before {
+    content: "\e923";
 }
-.icon-check:before {
+.icon-telegram:before {
+    content: "\e924";
+}
+.icon-trophy:before {
+    content: "\e925";
+}
+.icon-user:before {
+    content: "\e926";
+}
+.icon-vk:before {
+    content: "\e927";
+}
+.icon-refresh:before {
     content: "\e900";
-}
-.icon-info:before {
-    content: "\e901";
-}
-.icon-document:before {
-    content: "\e902";
 }
 
 @media only screen and (max-width: 1740px) {
@@ -2749,5 +2751,5 @@ template {
     }
 }
 
-
+/*@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&family=Open+Sans:wght@400;500;600;700;800&display=swap');*/
 

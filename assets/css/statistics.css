@@ -49,15 +49,15 @@
     padding-right: 2px;
 }
 
-.actions__reports-rating .icon-star {
+.actions__reports-rating i {
     margin-right: 2px;
 }
 
-.actions__reports-rating .icon-star:last-child {
+.actions__reports-rating i:last-child {
     margin-right: -2px;
 }
 
-.actions__reports-rating .icon-star:first-child {
+.actions__reports-rating i:first-child {
     margin-left: 2px;
 }
 
@@ -279,7 +279,7 @@
     top: calc((100% - 20px) / 2);
     font-family: 'icomoon', serif;
     position: absolute;
-    content: "\e90a";
+    content: "\e906";
     transition: 0.3s;
     font-size: 6px;
     right: 20px;

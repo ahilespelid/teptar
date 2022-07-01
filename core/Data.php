@@ -63,8 +63,7 @@ abstract class Data{
                                                                                                     :  '='.$this->pdo->quote($v)
                                                 ).((1+$i < $c ) ? ' AND ' : ''); $i++;
         }$whereString = ' WHERE '.$whereString.' '.$order;
-        $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ 
-        echo $sql.'<br>'; //*/
+        $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ echo $sql.'<br>'; //*/
 
         $return = $this->pdo->query($sql);
         

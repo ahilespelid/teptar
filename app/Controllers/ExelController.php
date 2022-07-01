@@ -11,7 +11,7 @@ class ExelController{
 
     public function __construct() {
        //$this->view  = new App\View;
-        $this->model = new \App\Models\MainModel;
+        $this->model = new \App\Models\AjaxModel;
     }
 /*/ -------------------------------------------------------------- Работа с файлом exel  -------------------------------------------------------------- /*/   
     public function work($q){

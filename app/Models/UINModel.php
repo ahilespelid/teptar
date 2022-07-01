@@ -1,12 +1,11 @@
 <?php  
-namespace App\Models;  
-use App;
+namespace App\Models; 
 
 class UINModel extends \App\Data {
     public $table, $tableRole;
 
     public function __construct(){
-        $this->table = 'uin';
+        $this->table =$GLOBALS['db']['table']['tableUIN'];
          (object)$this->pdo = $this->connPDO();
     }
 }

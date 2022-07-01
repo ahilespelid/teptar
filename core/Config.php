@@ -79,9 +79,9 @@ class Config{
     public function handleUncaughtException($e){
         // */  Запись в лог исключений
         (new \App\Registr)->writeLog($e); // */
-        // */  
-        pa($e); // */
-        // */  Показ вида при выявленных исключениях include $GLOBALS['path']['layouts'] . _DS_ . 'developer' . _DS_ . 'exception.php'; // */
+        // */  pa($e); // */
+        // */  Показ вида при выявленных исключениях 
+        include $GLOBALS['path']['layouts'] . _DS_ . 'developer' . _DS_ . 'exception.php'; // */
     }
 }
 

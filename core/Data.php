@@ -31,7 +31,7 @@ abstract class Data{
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
 
         $sql = 'SELECT * FROM '.$table.' WHERE `id`='.$id.';';
-        $return = $this->pdo->query($sql);  //*/ return $return->queryString; //*/
+        $return = $this->pdo->query($sql);  //*/ return $return->queryString; echo $sql; //*/
 
         return $return->fetch();}
 
@@ -45,25 +45,31 @@ abstract class Data{
         return $return->fetchAll();}
 
 
-    public function getWhere($table = '', $where =  array(), $sign = ['='], $order = 'ORDER BY `id` ASC'){//*/ Берёт все значения из таблицы: WHERE параметры массива //*/ 
+    public function getWhere($table = '', $where =  array('id'=>'1'), $sign = array(['simbol' => '=', 'quote' => true]), $order = 'ORDER BY `id` ASC'){//*/ Берёт все значения из таблицы: WHERE параметры массива //*/ 
 
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
         $where = (is_array($where) && !empty($where) && !is_array(current($where))) ? $where : ['id'=>'1'];
 
-        $whereString = ''; $i = 1; $c = count($where);
-        foreach($where as $k => $v){
-            $k = $this->pdo->quote($k); $k[0] = $k[strlen($k)-1] = '`';
-            $whereString .= $k.((is_array($sign) && $c == count($sign)) ?  $sign[$i-1] : '=').$this->pdo->quote($v).(($i < $c ) ? ' AND ' : ''); $i++;
-        }$whereString = ' WHERE '.$whereString.' '.$order;
+        $whereString = ''; $i = 0; $c = count($where);
 
-        $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ echo $sql; //*/
+        foreach($where as $k => $v){
+
+            if(!empty($sign[$i])){$k = ($sign[$i]['quote'])? $this->pdo->quote($k) : $k;} 
+            if(str_starts_with($k,"'") && str_ends_with($k,"'")){$k[0] = $k[strlen($k)-1] = '`';}          
+            $whereString .= $k.' '.(
+                                                (!empty($sign[$i]['simbol'])) ?  
+                                                                                                    (($sign[$i]['quote']) ? $sign[$i]['simbol'].$this->pdo->quote($v) : $sign[$i]['simbol'].' '.$v) 
+                                                                                                    :  '='.$this->pdo->quote($v)
+                                                ).((1+$i < $c ) ? ' AND ' : ''); $i++;
+        }$whereString = ' WHERE '.$whereString.' '.$order;
+        $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ echo $sql.'<br>'; //*/
 
         $return = $this->pdo->query($sql);
-
+        
         $return = $return->fetchAll(); 
          return (is_array($return) && !empty($return)) ? $return : false;}
-
+    
     public function getRange($from = 1, $to = 10, $table = '', $colum = ''){//*/ Берёт от и до из таблиц(У|Ы)  //*/
 
         $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
@@ -160,8 +166,9 @@ abstract class Data{
         if(str_ends_with($subject,'_id')){$subject = str_replace('_id', '', $subject); $f = true;}
 
         $n = preg_match( '/[A-Z_-]/', $subject, $matches, PREG_OFFSET_CAPTURE );
+
         if($n){$subject = mb_substr($subject, 0, $matches[0][1]);}
-        $subject = (str_ends_with($subject, 's')) ?  $subject :  $subject.'s';
+        $subject .= (str_ends_with($subject, 's') || 'uin' == $subject) ?  '' :  's';
 
     return ($f) ? $subject : false;}
 

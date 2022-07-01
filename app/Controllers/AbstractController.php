@@ -50,10 +50,20 @@ abstract class AbstractController{
                 $img = 'data:' . getimagesize($path)['mime'] . ';base64,' . base64_encode(file_get_contents($path));
             }
         }
-        return $img;
-    }
+        return $img;}
 
     public function slugify($string, $pascalCase = false) {
         return (new \App\Service\Slugifier())->slugify($string, $pascalCase);
     }
+    
+    public function is_date($value) {
+        if (!$value) {return null;}
+
+        try {$d = (new \DateTime($value));
+        return $d;
+        } catch (\Exception $e){
+        return null;}}
+    
+    public function  array_deleteElements(array $array, array $symbols = ['']){
+        return (is_array($array) && !empty($array) && !is_array(current($array))) ? array_diff($array, $symbols) : false;}
 }

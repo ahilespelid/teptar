@@ -1,6 +1,5 @@
 <?php  
-namespace App\Models;  
-use App;
+namespace App\Models;
 
 class UserModel extends \App\Data{
     public $table, $tableRole, $tableDistrict, $tableUsersBlock, $tableUIN;

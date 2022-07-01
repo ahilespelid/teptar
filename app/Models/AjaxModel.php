@@ -1,6 +1,5 @@
 <?php  
-namespace App\Models;  
-use App;
+namespace App\Models;
 
 class AjaxModel extends \App\Data{
     public $resID, $resRange;

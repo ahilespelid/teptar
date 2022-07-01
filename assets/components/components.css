@@ -445,7 +445,7 @@ a {
     top: calc((100% - 7px) / 2);
     font-family: 'icomoon', serif;
     position: absolute;
-    content: "\e90a";
+    content: "\e906";
     transition: 0.3s;
     font-size: 6px;
     right: 20px;

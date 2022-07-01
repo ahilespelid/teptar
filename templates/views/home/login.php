@@ -20,15 +20,15 @@
                         <div class="form">
 
                             <div class="form-group">
-                                <label for="inputUIN"></label><input type="text" name="uin[name]" id="inputUIN" class="form-control" placeholder=" UIN">
+                                <label for="inputUIN"></label><input type="text" name="uin[name]" id="inputUIN" class="form-control" placeholder=" UIN">
                             </div>
 
                             <div class="form-group">
-                                <label for="inputLogin"></label><input type="text" name="login" id="inputLogin" class="form-control" placeholder=" Пользователь">
+                                <label for="inputLogin"></label><input type="text" name="login" id="inputLogin" class="form-control" placeholder=" Пользователь">
                             </div>
 
                             <div class="form-group">
-                                <label for="inputPass"></label><input type="password" name="pass" id="inputPass" class="form-control" placeholder=" Пароль">
+                                <label for="inputPass"></label><input type="password" name="pass" id="inputPass" class="form-control" placeholder=" Пароль">
                             </div>
 
                             <button class="btn btn-primary mt-1" type="submit">

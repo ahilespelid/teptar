@@ -57,16 +57,18 @@
                 <div class="actions__info-item">
                     <div class="actions__info-item-title">
                         <?= $report['name'] ?>
-                        <div class="actions__reports-date"><i class="icon-document-check"></i> Отчет завершен <?= (new DateTime($report['submitting']))->format('d.m.o') ?></div>
+                        <div class="actions__reports-date"><i class="icon-document-check"></i> Отчет завершен: <?= (new DateTime($report['submitting']))->format('d.m.o') ?></div>
                     </div>
                     <div class="actions__reports-text"><?= $report['description'] ?></div>
                     <div class="actions__reports-rating">
                         Оценка:
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
+                        <?php for ($i = 1; $i <= 5; $i++) { ?>
+                            <?php if ($i <= $report['grade']) { ?>
+                                <i class="icon-star-fill"></i>
+                            <?php } else { ?>
+                                <i class="icon-star"></i>
+                            <?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
 

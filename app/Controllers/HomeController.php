@@ -5,10 +5,12 @@ namespace App\Controllers;
 class HomeController extends AbstractController {
     public $user;
     public $uins;
+    public $reports;
 
     public function __construct(){
         $this->user = new UserController;
         $this->uins = new \App\Models\UINModel;
+        $this->reports = new \App\Models\ReportModel;
     }
 
     /**
@@ -24,9 +26,11 @@ class HomeController extends AbstractController {
                 $this->render('/home/home-leader.php', [
                     'districts' => $this->uins->findBy(['type' => 'district']),
                     'navbar' => 'home',
+                    'reportsType' => 'home',
                     'user' => [
                         'post' => $user->role['post']
-                    ]
+                    ],
+                    'reports' => $this->reports->findAll()
                 ]);
             }
         } else {

@@ -2,15 +2,16 @@
 namespace App\Controllers;
 
 class DistrictController extends AbstractController {
-    public  $users,
-            $uins,
-            $user;
-
+    public $users;
+    public $uins;
+    public $user;
+    public $reports;
 
     public function __construct() {
         $this->user = new UserController;
         $this->users = new \App\Models\UserModel;
         $this->uins = new \App\Models\UINModel;
+        $this->reports = new \App\Models\ReportModel;
     }
 
     public function district() {
@@ -26,7 +27,8 @@ class DistrictController extends AbstractController {
                         'district' => $district,
                         'districts' => $this->uins->findBy(['type' => 'district']),
                         'districtBoss' => $districtBoss,
-                        'districtStaffs' => $this->users->findBy(['id_uin' => $district['id'], 'id_role' => 5])
+                        'districtStaffs' => $this->users->findBy(['id_uin' => $district['id'], 'id_role' => 5]),
+                        'reports' => $this->reports->findBy(['id_uin' => $district['id']],['submitting' => 'DESC'])
                     ]);
                 }
             } else {

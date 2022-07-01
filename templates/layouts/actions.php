@@ -6,29 +6,34 @@
             <h3>Последние отчеты</h3>
 
             <div class="dropdowns-list">
-                <div class="dropdown interactive rounded right dark chevron">
-                    <div class="current button button-dropdown rounded"><span class="title">Район:</span> Гудермесский</div>
 
-                    <div class="options">
-                        <span class="option">Аргун</span>
-                        <span class="option">Ачхой-Мартановский</span>
-                        <span class="option">Веденский</span>
-                        <span class="option">Грозненский</span>
-                        <span class="option">Грозный</span>
-                        <span class="option">Гудермесский</span>
-                        <span class="option">Итум-Калинский</span>
-                        <span class="option">Курчалоевский</span>
-                        <span class="option">Надтеречный</span>
-                        <span class="option">Наурский</span>
-                        <span class="option">Ножай-Юртовский</span>
-                        <span class="option">Серноводский</span>
-                        <span class="option">Урус-Мартановский</span>
-                        <span class="option">Шелковской</span>
-                        <span class="option">Шалинский</span>
-                        <span class="option">Шаройский</span>
-                        <span class="option">Шатойский</span>
+                <?php if (isset($reportsType) && $reportsType == 'home') { ?>
+
+                    <div class="dropdown interactive rounded right dark chevron">
+                        <div class="current button button-dropdown rounded"><span class="title">Район:</span> Гудермесский</div>
+
+                        <div class="options">
+                            <span class="option">Аргун</span>
+                            <span class="option">Ачхой-Мартановский</span>
+                            <span class="option">Веденский</span>
+                            <span class="option">Грозненский</span>
+                            <span class="option">Грозный</span>
+                            <span class="option">Гудермесский</span>
+                            <span class="option">Итум-Калинский</span>
+                            <span class="option">Курчалоевский</span>
+                            <span class="option">Надтеречный</span>
+                            <span class="option">Наурский</span>
+                            <span class="option">Ножай-Юртовский</span>
+                            <span class="option">Серноводский</span>
+                            <span class="option">Урус-Мартановский</span>
+                            <span class="option">Шелковской</span>
+                            <span class="option">Шалинский</span>
+                            <span class="option">Шаройский</span>
+                            <span class="option">Шатойский</span>
+                        </div>
                     </div>
-                </div>
+
+                <?php } ?>
 
                 <div class="dropdown interactive rounded right dark chevron">
                     <div class="current button button-dropdown rounded">2021</div>
@@ -47,69 +52,25 @@
 
         <div class="actions__info scrollable-box block-box sub-block-margin-top">
 
-            <div class="actions__info-item">
-                <div class="actions__info-item-title">
-                    Отчет 2022
-                    <div class="actions__reports-date"><i class="icon-document-check"></i> Отчет завершен 21.05.2022</div>
-                </div>
-                <div class="actions__reports-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed id semper risus in hendrerit gravida rutrum. Leo integer malesuada nunc vel risus commodo viverra maecenas accumsan.</div>
-                <div class="actions__reports-rating">
-                    Оценка:
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                </div>
-            </div>
+            <?php foreach ($reports as $report) { ?>
 
-            <div class="actions__info-item">
-                <div class="actions__info-item-title">
-                    Отчет 2022
-                    <div class="actions__reports-date"><i class="icon-document-check"></i> Отчет завершен 21.05.2022</div>
+                <div class="actions__info-item">
+                    <div class="actions__info-item-title">
+                        <?= $report['name'] ?>
+                        <div class="actions__reports-date"><i class="icon-document-check"></i> Отчет завершен <?= (new DateTime($report['submitting']))->format('d.m.o') ?></div>
+                    </div>
+                    <div class="actions__reports-text"><?= $report['description'] ?></div>
+                    <div class="actions__reports-rating">
+                        Оценка:
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                        <i class="icon-star"></i>
+                    </div>
                 </div>
-                <div class="actions__reports-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed id semper risus in hendrerit gravida rutrum. Leo integer malesuada nunc vel risus commodo viverra maecenas accumsan.</div>
-                <div class="actions__reports-rating">
-                    Оценка:
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                </div>
-            </div>
 
-            <div class="actions__info-item">
-                <div class="actions__info-item-title">
-                    Отчет 2022
-                    <div class="actions__reports-date"><i class="icon-document-check"></i> Отчет завершен 21.05.2022</div>
-                </div>
-                <div class="actions__reports-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed id semper risus in hendrerit gravida rutrum. Leo integer malesuada nunc vel risus commodo viverra maecenas accumsan.</div>
-                <div class="actions__reports-rating">
-                    Оценка:
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                </div>
-            </div>
-
-            <div class="actions__info-item">
-                <div class="actions__info-item-title">
-                    Отчет 2022
-                    <div class="actions__reports-date"><i class="icon-document-check"></i> Отчет завершен 21.05.2022</div>
-                </div>
-                <div class="actions__reports-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed id semper risus in hendrerit gravida rutrum. Leo integer malesuada nunc vel risus commodo viverra maecenas accumsan.</div>
-                <div class="actions__reports-rating">
-                    Оценка:
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                    <i class="icon-star"></i>
-                </div>
-            </div>
+            <?php } ?>
 
         </div>
 

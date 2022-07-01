@@ -1,5 +1,8 @@
 <?php namespace App;
 /*/ Определение маршрутизации адресса к экшенам /*/
+
+use App\Controllers\HomeController;
+
 class Route {
     private     $controllerPath,
                 $routingRulesPath,
@@ -71,12 +74,14 @@ class Route {
         $class = $appNameSpace.'\\'.str_replace($GLOBALS['path']['app']._DS_, "", $this->conPath).'\\'.$this->controller; 
 
         /*/ echo $actionController; pa($queryController); /*/
-        if ('error' == $actionController) {
-            if(file_exists($file)){(new $class)->$actionController();}else{die('Файл '.$file.' не найти!');}
+        if(file_exists($file)) {
+            if ('error' == $actionController) {
+                (new $class)->$actionController();
+            } else {
+                (new $class)->$actionController($queryController);
+            }
         } else {
-            if(file_exists($file)){(new $class)->$actionController($queryController);}else{die('Файл '.$file.' не найти!');}
+            (new HomeController())->error();
         }
-
-        return false;
     }
 }

@@ -105,7 +105,7 @@
 
 <div class="developer-toolbar <?php if (isset($_SESSION)) { echo ' online'; } ?>">
     
-    <span class="developer-title"> <i class="icon-darhboard_alt"></i> Режим разработчика</span>
+    <span class="developer-title"> <i class="icon-dashboard_alt"></i> Режим разработчика</span>
 
     <span class="developer-button">
 

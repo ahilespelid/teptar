@@ -5,10 +5,12 @@ namespace App\Controllers;
 class HomeController extends AbstractController {
     public $user;
     public $uins;
+    public $reports;
 
     public function __construct(){
         $this->user = new UserController;
         $this->uins = new \App\Models\UINModel;
+        $this->reports = new \App\Models\ReportModel;
     }
 
     /**
@@ -24,9 +26,11 @@ class HomeController extends AbstractController {
                 $this->render('/home/home-leader.php', [
                     'districts' => $this->uins->findBy(['type' => 'district']),
                     'navbar' => 'home',
+                    'reportsType' => 'home',
                     'user' => [
                         'post' => $user->role['post']
-                    ]
+                    ],
+                    'reports' => $this->reports->findAll()
                 ]);
             }
         } else {
@@ -37,10 +41,18 @@ class HomeController extends AbstractController {
     /**
      * Страница ошибок
      */
-    public function error() {
-        $error = '404';
-        $title = 'Страница не найдена';
-        $message = 'Страницу которую вы искали не существует, пожалуйста выберите другую либо вернитесь на главную.';
+    public function error($error = 404, $title = null, $message = null) {
+        if ($title == null) {
+            if ($error == 404) {
+                $title = 'Страница не найдена';
+            }
+        }
+
+        if ($message == null) {
+            if ($error == 404) {
+                $message = 'Страницу которую вы искали не существует, пожалуйста выберите другую либо вернитесь на главную.';
+            }
+        }
 
         if($user = $this->user->login($this->user->getLoginUser())){
             $this->render('/home/error.php', [

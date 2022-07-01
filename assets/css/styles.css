@@ -426,7 +426,7 @@ h3 {
 }
 
 .sortable-table .sortable-icon:before {
-    content: "\e90d";
+    content: "\e921";
     font-family: 'icomoon' !important;
     font-style: normal;
     font-weight: normal;
@@ -612,7 +612,7 @@ h3 {
     font-size: 280px;
     font-weight: 800;
     position: absolute;
-    top: -25%;
+    top: -28%;
     left: -12%;
 }
 

@@ -48,7 +48,7 @@
     </div>
     <div class="item search">
         <form class="navbar-search" action="" method="post">
-            <input type="search" name="" placeholder=" Поиск" class="input" />
+            <input type="search" name="" placeholder=" Поиск" class="input" />
         </form>
     </div>
 </div>

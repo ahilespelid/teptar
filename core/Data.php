@@ -200,7 +200,7 @@ abstract class Data{
         $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . " LIMIT 1";
         $query = $this->pdo->query($sql);
 
-        return $query->fetchAll()[0];
+        return (!empty($return = $query->fetchAll())) ? $return[0] : false;
     }
 
     // Поиск всех записей таблицы

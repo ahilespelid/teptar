@@ -140,7 +140,7 @@
         <div class="item">
             <div class="content">
                 <span>Численность населения</span>
-                <span>25 579 чел. (2021)</span>
+                <span>N/a</span>
             </div>
         </div>
         <div class="item">

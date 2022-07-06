@@ -23,6 +23,9 @@ class HomeController extends AbstractController {
 
         if ($this->user->isToken()) {
             if ($user = $this->user->login($this->user->getLoginUser())) {
+                $district = $this->uins->findOneBy(['slug' => $_GET['district'] ?? 'Grozny']);
+                $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
+
                 $this->render('/home/home-leader.php', [
                     'districts' => $this->uins->findBy(['type' => 'district']),
                     'navbar' => 'home',
@@ -30,7 +33,8 @@ class HomeController extends AbstractController {
                     'user' => [
                         'post' => $user->role['post']
                     ],
-                    'reports' => $this->reports->findAll()
+                    'reports' => $this->reports->findDistrictReportsByDate($date,$district['id']),
+                    'district' => $district,
                 ]);
             }
         } else {

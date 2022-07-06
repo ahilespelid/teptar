@@ -23,6 +23,19 @@
     overflow-y: scroll;
     padding: 16px;
     box-sizing: border-box;
+    position: relative;
+}
+
+.actions_empty {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: rgba(0,0,0,0.05);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .actions__info-item {

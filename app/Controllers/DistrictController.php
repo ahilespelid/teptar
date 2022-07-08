@@ -38,4 +38,19 @@ class DistrictController extends AbstractController {
             }
         }
     }
+
+    /**
+     * TODO: Не забыть защитить роут в зависимости от авторизованности и ролей
+     */
+    public function districtJsonReportsByDate() {
+        if (isset($_GET['district']) && $this->uins->findOneBy(['slug' => $_GET['district']])) {
+            $district = $this->uins->findOneBy(['slug' => $_GET['district']]);
+            $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
+
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($this->reports->findDistrictReportsByDate($date, $district['id']), JSON_UNESCAPED_UNICODE);
+        } else {
+            (new HomeController())->error();
+        }
+    }
 }

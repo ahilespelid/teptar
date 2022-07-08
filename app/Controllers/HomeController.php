@@ -26,7 +26,7 @@ class HomeController extends AbstractController {
                 $district = $this->uins->findOneBy(['slug' => $_GET['district'] ?? 'Grozny']);
                 $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
 
-                $this->render('/home/home-leader.php', [
+                $this->render('/leader/home/home.php', [
                     'districts' => $this->uins->findBy(['type' => 'district']),
                     'navbar' => 'home',
                     'reportsType' => 'home',
@@ -38,7 +38,7 @@ class HomeController extends AbstractController {
                 ]);
             }
         } else {
-            $this->render('/home/login.php');
+            $this->render('/leader/home/login.php');
         }
     }
 
@@ -59,7 +59,7 @@ class HomeController extends AbstractController {
         }
 
         if($user = $this->user->login($this->user->getLoginUser())){
-            $this->render('/home/error.php', [
+            $this->render('/leader/home/error.php', [
                 'error' => $error,
                 'title' => $title,
                 'message' => $message,
@@ -75,6 +75,6 @@ class HomeController extends AbstractController {
      * Страница с документацией стилей
      */
     public function framework() {
-        $this->render('/home/framework.php');
+        $this->render('/leader/home/framework.php');
     }
 }

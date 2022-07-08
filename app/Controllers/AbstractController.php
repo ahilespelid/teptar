@@ -85,5 +85,4 @@ abstract class AbstractController{
                         ('max' == $return && !empty ($max)) ? $max : (
                             ((('max|min' == $return) || ('min|max' == $return)) && (!empty($min) || !empty($max))) ? array('min' => $min, 'max' => $max) : false));
     }
-
 }

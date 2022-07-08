@@ -69,7 +69,7 @@ class UserController extends AbstractController{
                             if ($is_loginUrl && $is_auth) {
                                 header('Location: /');
                             } elseif($is_loginUrl && !$is_auth) {
-                                $this->render('/home/login.php');
+                                $this->render('/leader/home/login.php');
                             } elseif(!$is_loginUrl && $is_auth) {
                                 return $this;
                             } else {
@@ -81,7 +81,7 @@ class UserController extends AbstractController{
          }
 
          if ($is_loginUrl) {
-             $this->render('/home/login.php');
+             $this->render('/leader/home/login.php');
          } else {
              return false;
          }

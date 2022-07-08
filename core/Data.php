@@ -196,7 +196,7 @@ abstract class Data{
             }
         }
 
-        // Генерация всего запроса из резульатов предыдуще генерированных строков
+        // Генерация всего запроса из результатов предыдуще генерированных строков
         $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . " LIMIT 1";
         $query = $this->pdo->query($sql);
 
@@ -245,11 +245,30 @@ abstract class Data{
             }
         }
 
-        // Генерация всего запроса из резульатов предыдуще генерированных строков
+        // Генерация всего запроса из результатов предыдуще генерированных строков
         $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . $limitSQL . $offsetSQL;
 
         $query = $this->pdo->query($sql);
 
         return $query->fetchAll();
+    }
+
+    // Ищет записи по критериям
+    // Пример: ['name' => 'John']
+    // И возвращает в формате JSON
+    public function jsonBy(array $criteria, array $orderBy = null, int $limit = null, $offset = null) {
+        return json_encode($this->findBy($criteria, $orderBy, $limit, $offset), JSON_UNESCAPED_UNICODE);
+    }
+
+    // Ищет одну запись по критериям
+    // Пример: ['name' => 'John']
+    // И возвращает в формате JSON
+    public function jsonOneBy(array $criteria, array $orderBy = null, int $limit = null, $offset = null) {
+        return json_encode($this->findOneBy($criteria, $orderBy), JSON_UNESCAPED_UNICODE);
+    }
+
+    // Ищет все записи таблиц и возвращает их в формате JSON
+    public function jsonAll() {
+        return json_encode($this->findAll(), JSON_UNESCAPED_UNICODE);
     }
 }

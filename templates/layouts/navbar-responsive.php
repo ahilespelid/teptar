@@ -15,18 +15,18 @@
                         </div>
                     </div>
                 </div>
-            <?php } ?>
 
-            <div class="item dropdown dark rounded only-mobile">
-                <a class="current button button-success rounded"><i class="icon icon-map"></i> Чеченская республика</a>
-                <div class="options" style="width: 340px;">
-                    <div class="dropdown-buttons-block">
-                        <?php foreach ($districts as $map_district) { ?>
-                            <a href="/district?district=<?= $map_district['slug'] ?>" class="button button-outline-success rounded"><?= $map_district['owner'] ?></a>
-                        <?php } ?>
+                <div class="item dropdown dark rounded only-mobile">
+                    <a class="current button button-success rounded"><i class="icon icon-map"></i> Чеченская республика</a>
+                    <div class="options" style="width: 340px;">
+                        <div class="dropdown-buttons-block">
+                            <?php foreach ($districts as $map_district) { ?>
+                                <a href="/district?district=<?= $map_district['slug'] ?>" class="button button-outline-success rounded"><?= $map_district['owner'] ?></a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
 
         </div>
 

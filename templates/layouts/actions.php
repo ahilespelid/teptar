@@ -9,48 +9,139 @@
 
                 <?php if (isset($reportsType) && $reportsType == 'home') { ?>
 
-                    <div class="dropdown interactive rounded right dark chevron">
-                        <div class="current button button-dropdown rounded"><span class="title">Район:</span> Гудермесский</div>
+                    <div class="dropdown interactive rounded right dark chevron district-reports">
+                        <div class="current button button-dropdown rounded"><span class="title">Район:</span> <?= $district['owner'] ?></div>
+
+                        <?php
+                            $districtUrlParameters = $_GET;
+                            unset($districtUrlParameters['district']);
+                            $districtUrl = '';
+
+                            if ($districtUrlParameters) {
+                                foreach ($districtUrlParameters as $name => $value) {
+                                    $districtUrl .= '&' . $name . '=' . $value;
+                                }
+                            } else {
+                                $districtUrl = '&year=' . (new DateTime('now'))->format('Y');
+                            }
+                        ?>
 
                         <div class="options">
-                            <span class="option">Аргун</span>
-                            <span class="option">Ачхой-Мартановский</span>
-                            <span class="option">Веденский</span>
-                            <span class="option">Грозненский</span>
-                            <span class="option">Грозный</span>
-                            <span class="option">Гудермесский</span>
-                            <span class="option">Итум-Калинский</span>
-                            <span class="option">Курчалоевский</span>
-                            <span class="option">Надтеречный</span>
-                            <span class="option">Наурский</span>
-                            <span class="option">Ножай-Юртовский</span>
-                            <span class="option">Серноводский</span>
-                            <span class="option">Урус-Мартановский</span>
-                            <span class="option">Шелковской</span>
-                            <span class="option">Шалинский</span>
-                            <span class="option">Шаройский</span>
-                            <span class="option">Шатойский</span>
+                            <?php foreach ($districts as $value) { ?>
+                                <a href="<?= 'districtReports' . '?district=' . $value['slug'] . $districtUrl ?>" class="option"><?= $value['owner'] ?></a>
+                            <?php } ?>
                         </div>
                     </div>
 
                 <?php } ?>
 
-                <div class="dropdown interactive rounded right dark chevron">
-                    <div class="current button button-dropdown rounded">2021</div>
+                <div class="dropdown interactive rounded right dark chevron district-year-reports">
+                    <div class="current button button-dropdown rounded"><?php echo (isset($_GET['year'])) ? $_GET['year'] : (new DateTime('now'))->format('Y'); ?></div>
+
+                    <?php
+                        $yearUrlParameters = $_GET;
+                        unset($yearUrlParameters['year']);
+                        $yearUrl = 'districtReports' . '?';
+
+                        $i = 1;
+
+                        if ($yearUrlParameters) {
+                            foreach ($yearUrlParameters as $name => $value) {
+                                $yearUrl .= $name . '=' . $value . '&';
+                                $i += 1;
+                            }
+                        } else {
+                            $yearUrl .= 'district=Grozny&';
+                        }
+                    ?>
 
                     <div class="options">
-                        <span class="option">2021</span>
-                        <span class="option">2020</span>
-                        <span class="option">2019</span>
-                        <span class="option">2018</span>
-                        <span class="option">2017</span>
+                        <a href="<?= $yearUrl . 'year=2022' ?>" class="option">2022</a>
+                        <a href="<?= $yearUrl . 'year=2021' ?>" class="option">2021</a>
+                        <a href="<?= $yearUrl . 'year=2020' ?>" class="option">2020</a>
+                        <a href="<?= $yearUrl . 'year=2019' ?>" class="option">2019</a>
+                        <a href="<?= $yearUrl . 'year=2018' ?>" class="option">2018</a>
                     </div>
                 </div>
             </div>
 
         </div>
 
+        <script>
+            let districtReportsLinks = document.querySelectorAll('.district-reports .option');
+            let districtYearReportsLinks = document.querySelectorAll('.district-year-reports .option');
+
+            function updateData(event, link) {
+                event.preventDefault();
+                let contentBlock = document.querySelector('.actions__reports .actions__info');
+                contentBlock.innerHTML = '<div class="actions_empty"><i class="spin icon-refresh"></i></div>';
+
+                $.getJSON(link.href, (reports) => {
+                    if (reports.length > 0) {
+                        contentBlock.innerHTML = '';
+                        reports.forEach((report) => {
+                            let rating = '';
+
+                            for (let i = 1; i <= 5; i++) {
+                                if (i <= report.grade) {
+                                    rating += '<i class="icon-star-fill"></i>';
+                                } else {
+                                    rating += '<i class="icon-star"></i>';
+                                }
+                            }
+
+                            let block = `
+                                    <div class="actions__info-item">
+                                        <div class="actions__info-item-title">
+                                            ${report.name}
+                                            <div class="actions__reports-date"><i class="icon-document-check"></i> Отчет завершен: </div>
+                                        </div>
+                                        <div class="actions__reports-text">${report.description}</div>
+                                        <div class="actions__reports-rating">
+                                            ${rating}
+                                        </div>
+                                    </div>
+                                `;
+
+                            contentBlock.innerHTML += block;
+                        });
+                    } else {
+                        contentBlock.innerHTML = '<div class="actions_empty">Отчетов по указанной дате пока нет</div>';
+                    }
+                });
+            }
+
+            districtReportsLinks.forEach((districtLink) => {
+                districtLink.addEventListener('click', (event) => {
+                    updateData(event, districtLink);
+
+                    let districtURL = new URL(districtLink.href);
+                    let newDistrict = districtURL.searchParams.get("district");
+                    districtYearReportsLinks.forEach((yearLink) => {
+                        let yearURL = new URL(yearLink.href);
+                        let currentDistrict = yearURL.searchParams.get("district");
+                        yearLink.href = yearLink.href.replace('district=' + currentDistrict, 'district=' + newDistrict)
+                    });
+                })
+            });
+
+            districtYearReportsLinks.forEach((yearLink) => {
+                yearLink.addEventListener('click', (event) => {
+                    updateData(event, yearLink);
+
+                    let currentYear = document.querySelector('.district-year-reports .current').innerHTML;
+                    districtReportsLinks.forEach((districtLink) => {
+                        districtLink.href = districtLink.href.replace('year=' + currentYear, 'year=' + yearLink.innerHTML)
+                    });
+                })
+            });
+        </script>
+
         <div class="actions__info scrollable-box block-box sub-block-margin-top">
+
+            <?php if (!$reports) { ?>
+                <div class="actions_empty">Отчетов по указанной дате пока нет</div>
+            <?php } ?>
 
             <?php foreach ($reports as $report) { ?>
 

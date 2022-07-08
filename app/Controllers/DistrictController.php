@@ -21,6 +21,8 @@ class DistrictController extends AbstractController {
                 $districtBoss = $this->users->findOneBy(['id_uin' => $district['id'], 'id_role' => 4]);
                 $userIsLeader = ('Region' == $user->role['name'] && 'Boss' == $user->role['subject']);
 
+                $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
+
                 if ($userIsLeader) {
                     $this->render('/district/district-leader.php', [
                         'user' => ['post' => $user->role['post']],
@@ -28,12 +30,27 @@ class DistrictController extends AbstractController {
                         'districts' => $this->uins->findBy(['type' => 'district']),
                         'districtBoss' => $districtBoss,
                         'districtStaffs' => $this->users->findBy(['id_uin' => $district['id'], 'id_role' => 5]),
-                        'reports' => $this->reports->findBy(['id_uin' => $district['id']],['submitting' => 'DESC'])
+                        'reports' => $this->reports->findDistrictReportsByDate($date, $district['id'])
                     ]);
                 }
             } else {
                 (new HomeController)->error(404,'Регион не существует', 'Район который вы ищите не существует, пожалуйста выберите другой либо вернитесь на главную.');
             }
+        }
+    }
+
+    /**
+     * TODO: Не забыть защитить роут в зависимости от авторизованности и ролей
+     */
+    public function districtJsonReportsByDate() {
+        if (isset($_GET['district']) && $this->uins->findOneBy(['slug' => $_GET['district']])) {
+            $district = $this->uins->findOneBy(['slug' => $_GET['district']]);
+            $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
+
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($this->reports->findDistrictReportsByDate($date, $district['id']), JSON_UNESCAPED_UNICODE);
+        } else {
+            (new HomeController())->error();
         }
     }
 }

@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 $GLOBALS['lifeToken'] = (60*60)*24;
 
 // Режим разработчика (Закомментировать )
-$GLOBALS['env'] = 'dev';
+//$GLOBALS['env'] = 'dev';
 
 /*/ --------------------------------------------------------------База данных --------------------------------------------------------------/*/
 
@@ -59,6 +59,7 @@ $url = [
 
 // DistrictController
 'district'      => ['controller' => 'DistrictController', 'action' => 'district'],
+'districtReports'      => ['controller' => 'DistrictController', 'action' => 'districtJsonReportsByDate'],
 
 // ProfileController
 'profile'       => ['controller' => 'ProfileController', 'action' => 'profile'],

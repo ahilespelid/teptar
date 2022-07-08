@@ -7,6 +7,7 @@
 
 // DistrictController
 'district'      => $GLOBALS['url']['district'],
+'districtReports'      => $GLOBALS['url']['districtReports'],
 
 // ProfileController
 'profile'       => $GLOBALS['url']['profile'],

@@ -41,6 +41,10 @@ class ReportModel extends \App\Data{
         return $query->fetchAll();
     }
 
+    public function jsonDistrictReportsByDate($date, $district = null, array $orderBy = null, int $limit = null) {
+        return json_encode($this->findDistrictReportsByDate($date, $district, $orderBy, $limit), JSON_UNESCAPED_UNICODE);
+    }
+
     public function getReports($periodYears = 5){
         $argv = array('cond' => array('creating'=>'CURDATE() - INTERVAL '.$periodYears.' YEAR'), 'sign' => array(['simbol' => '>', 'quote' => true]));       
         $reports = $this->getWhere($this->table,$argv['cond'], $argv['sign'], 'ORDER BY `id` ASC');

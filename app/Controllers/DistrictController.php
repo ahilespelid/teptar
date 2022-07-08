@@ -24,7 +24,7 @@ class DistrictController extends AbstractController {
                 $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
 
                 if ($userIsLeader) {
-                    $this->render('/district/district-leader.php', [
+                    $this->render('/leader/district/district.php', [
                         'user' => ['post' => $user->role['post']],
                         'district' => $district,
                         'districts' => $this->uins->findBy(['type' => 'district']),

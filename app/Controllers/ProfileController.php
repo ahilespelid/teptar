@@ -18,7 +18,7 @@ class ProfileController extends AbstractController {
 
     public function profile() {
         if($user = $this->user->login($this->user->getLoginUser())) {
-            $this->render('/profile/leader.php', [
+            $this->render('/leader/profile/leader.php', [
                 'districts' => $this->uins->findBy(['type' => 'district']),
                 'user' => [
                     'post' => $user->role['post'],
@@ -54,7 +54,7 @@ class ProfileController extends AbstractController {
                 $uin = $this->uins->findOneBy(['id' => $staff['id_uin']]);
                 $role = $this->roles->findOneBy(['id' => $staff['id_role']]);
 
-                $this->render('/profile/staff.php', [
+                $this->render('/leader/profile/staff.php', [
                     'districts' => $this->uins->findBy(['type' => 'district']),
                     'user' => [
                         'post' => $user->role['post'],

@@ -2,38 +2,61 @@
 
 namespace App\Controllers;
 
-use Exception;
-
 class ReportController extends AbstractController{
-    public $model, $uins,
+    public $model, $uinModel, $markModel, $memcached,
                 $reports,
-                $indexes,
+                $districts,
+                $marks,
+                $sop,
+                $str,
+                $iso,
+
                 $mark_1;
 
     public function __construct(){
-        $this->model = new \App\Models\ReportModel;
-        $this->uins = new \App\Models\UINModel;
-        //$this->reports = (object) $this->model->getReports(1); 
-        //$this->indexes = (object) $this->model->getIndexes(); 
-        
-        $this->mark_1 = $this->sopO($this->model->getIndexes([5],[1],[],4));
+        $this->model                      = new \App\Models\ReportModel;
+        $this->uinModel                 = new \App\Models\UINModel;
+        $this->markModel              = new \App\Models\MarkModel;
+        $this->memcached             = (object) $this->connMCD();
+
+        $this->setCache();
+
     }
 
-    public function index(){      
-        echo $this->mark_1;
+    public function setCache(){
         
-        //pa($this->model->getIndexes([5],[1],[],4));
-        $this->sopOmax();
+        if(!$this->districts = $this->memcached->get('districts')){$this->memcached->set('districts', $this->uinModel->findBy(['type' => 'district']));}
+        if(!$this->reports = $this->memcached->get('reports')){$this->memcached->set('reports', $this->model->getReports());}
+        if(!$this->marks = $this->memcached->get('marks')){$this->memcached->set('marks', $this->markModel->findAll());}
+          
+        if(!$this->sop = $this->memcached->get('sop') && !$this->str = $this->memcached->get('str')){
         
+            foreach($this->marks as $vm){foreach($this->districts as $vd){
+                if(!empty($_4_indexa = $this->model->getIndexes([$vm['num']],[$vd['id']],[],4))){
+                    $this->sop[$vm['num']][$vd['slug']] = $this->sopOstrT($_4_indexa);
+                    $this->str[$vm['num']][$vd['slug']] = $this->sopOstrT($_4_indexa, 'str');
+                }
+
+            }}
+            $this->memcached->set('sop', $this->sop); $this->memcached->set('str', $this->str);
+        }
         
-        //pa($_1_mark);
-        //pa($this);
+        if(!$this->iso = $this->memcached->get('iso')){
+            $this->memcached->set('iso', $this->iso($this->sop, $this->arrayMinMax($this->sop)));}
+        
+        return $this->memcached->quit();}
+
+    public function index(){
+        //$this->memcached->flush(1);
+              
+        pa($this);
+
        //foreach($_1_mark as $k => $v){echo $k.' : '.$v['date'].'<br>';}  
         //$this->render('/report/report.php');
     }
     
-    public function sopO($array = []){   
-        $_4_indexa = (!empty($array) && is_array($array)) ? $array : false;
+    public function sopOstrT(array $_4_indexa, string $type = 'sop'){
+        $_4_indexa = (!empty($_4_indexa) && is_array($_4_indexa)) ? $_4_indexa : false;
         
         if($_4_indexa){for($i=0;$i<4; $i++){
             $dateCreatingReport = $this->is_date($_4_indexa[$i]['id_report']['creating'])?->getTimestamp();
@@ -41,22 +64,35 @@ class ReportController extends AbstractController{
             $dateCreatingIndex = $this->is_date($_4_indexa[$i]['date'])?->getTimestamp();
             
             if((5 == $_4_indexa[$i]['id_status']['id']) && ($dateCreatingReport<$dateCreatingIndex || $dateSubmittingReport > $dateCreatingIndex)){
-                $return[] = (!empty($_4_indexa[$i]['index'])) ? $_4_indexa[$i]['index'] : '';
-            }} // */  pa($return); // */
-            $return = $this->array_deleteElements($return); 
-            if(isset($return[0]) && isset($return[1])){unset($return[3]);}
-             // */ pa($return); // */
-             $count = count($return);
-            return (3 <= $count) ? array_sum($return) / $count : false;
+                $indexes[] = (!empty($_4_indexa[$i]['index'])) ? (float) $_4_indexa[$i]['index'] : (float) 0;
+            }} // */  pa($indexes); // */
+            $indexes = $this->arrayDeleteElement($indexes);
+             if('sop' == $type){
+                if(isset($indexes[0]) && isset($indexes[1])){unset($indexes[3]);}// */ pa($indexes); // */
+                 $count = count($indexes);
+                 
+                return (3 <= $count) ? array_sum($indexes) / $count : (float) 0.00;
+             }else
+             if('str' == $type){$pow = (1/3); // */ echo '-1<br>'; // */
+                 if(empty($indexes[0]) && empty($indexes[1])){return (float) 0;} // */ echo '-2<br>'; // */
+                 if(empty($indexes[3]) && empty($indexes[2])){$return = (empty($indexes[0])) ? $indexes[1] : $indexes[0]; return $return ** $pow;} // */ echo '-3<br>'; // */
+                 if(!empty($indexes[1])){$return[] = (0 < ($_1 = ($indexes[0]/$indexes[1]))) ? $_1 : 0;} // */ echo '-4<br>'; // */
+                 if(!empty($indexes[2])){$return[] = (0 < ($_2 = ($indexes[1]/$indexes[2]))) ? $_2 : 0;} // */ echo '-5<br>'; // */
+                 if(!empty($indexes[3])){$return[] = (0 < ($_3 = ($indexes[2]/$indexes[3]))) ? $_3 : 0;} // */ echo '-6<br>'; // */
+                 $return = $this->arrayDeleteElement($return,[0]);
+                 
+                 return (!empty($return)) ? array_product($return) ** $pow : (float) 0.00;                 
+             }
         }                                                                                                              
     return false;}
     
-    public function sopOmax($array = []){
-        $districts = $this->uins->findBy(['type' => 'district']);
-        pa($districts); 
-         
+    public function iso(array $sop, array $sopminmax){
+        if(!is_array($sop) && empty($sop) && !is_array(current($sop)) && !is_array($sopminmax) && empty($sopminmax) && !is_array(current($sopminmax))){return false;}
+        foreach($sop as $mark => $districts){foreach($districts as $district => $sopO){
+            $delimoe = ($sopO - $sopminmax['min'][$mark]);
+            $delitel = ($sopminmax['max'][$mark]- $sopminmax['min'][$mark]);
+            $return[$mark][$district] = (0 !== $delitel && !empty($delitel)) ? $delimoe/$delitel : 0;    
+        }}
+        return (is_array($return) && !empty($return)) ? $return : false;}
         
-        
-    }    
-    
 }

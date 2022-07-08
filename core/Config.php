@@ -17,6 +17,7 @@ $table = array(
 'reports'   => 'reports',
 'indexes'   => 'index',
 'roles'   => 'roles',
+'marks'   => 'marks',
 'usersBlock'   => 'usersBlock',
 'tableUIN'   => 'uin', 
 );
@@ -77,11 +78,10 @@ $GLOBALS['url'] = $url;
 
 class Config{
     public function handleUncaughtException($e){
-        // */  Запись в лог исключений
-        (new \App\Registr)->writeLog($e); // */
-        // */  pa($e); // */
-        // */  Показ вида при выявленных исключениях 
-        include $GLOBALS['path']['layouts'] . _DS_ . 'developer' . _DS_ . 'exception.php'; // */
+        // */  Запись в лог исключений (new \App\Registr)->writeLog($e); // */
+        // */  
+        pa($e); // */
+        // */  Показ вида при выявленных исключениях include $GLOBALS['path']['layouts'] . _DS_ . 'developer' . _DS_ . 'exception.php'; // */
     }
 }
 

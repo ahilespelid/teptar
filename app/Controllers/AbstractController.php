@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use Exception;
+use Exception; use Memcached;
 
 abstract class AbstractController{
     public function render($view, $parameters = []) {
@@ -52,11 +52,9 @@ abstract class AbstractController{
         }
         return $img;}
 
-    public function slugify($string, $pascalCase = false) {
-        return (new \App\Service\Slugifier())->slugify($string, $pascalCase);
-    }
+    public function slugify($string, $pascalCase = false) {return (new \App\Service\Slugifier())->slugify($string, $pascalCase);}
     
-    public function is_date($value) {
+    public function is_date($value){ // */  проверка строки на дату  // */
         if (!$value) {return null;}
 
         try {$d = (new \DateTime($value));
@@ -64,6 +62,28 @@ abstract class AbstractController{
         } catch (\Exception $e){
         return null;}}
     
-    public function  array_deleteElements(array $array, array $symbols = ['']){
+    public function  arrayDeleteElement(array $array, array $symbols = ['']){ // */ удаляет из одномерного массива елеметы  $symbols // */
         return (is_array($array) && !empty($array) && !is_array(current($array))) ? array_diff($array, $symbols) : false;}
+        
+    public function connMCD(){ // */  подключение к оперативке  // */
+        if(!class_exists("Memcached")){return false;}
+        $m = new \Memcached; $m->addServer('localhost', 11211);
+        return $m;}
+        
+    public function arrayExpand(array $array, string $key){ // */ Разворачивает многомерный массив в одномерный по ключу : [[id => 1],[id => 2],[id => 3]]  => [1, 2, 3] // */
+        if(!is_array($array) && empty($array) && !is_array(current($array)) && !is_string($key) && empty($key)){return false;}
+        array_walk_recursive($array, function($v, $k) use (&$return) {if($key == $k){$return[] = $v;}});
+        return $return;}
+
+    public function arrayMinMax($array, string $return = 'max|min'){ // */ Выбирает минимальное и/или максимальное значение из массива // */
+        if(!is_array($array) && empty($array) && !is_array(current($array)) && !is_string($return)){return false;}
+        foreach($array as $k => $v){
+            $min[$k] = min($v); 
+            $max[$k] = max($v);
+        }
+        return ('min' == $return && !empty($min)) ? $min : (
+                        ('max' == $return && !empty ($max)) ? $max : (
+                            ((('max|min' == $return) || ('min|max' == $return)) && (!empty($min) || !empty($max))) ? array('min' => $min, 'max' => $max) : false));
+    }
+
 }

@@ -46,8 +46,8 @@ abstract class Data{
 
 
     public function getWhere($table = '', $where =  array('id'=>'1'), $sign = array(['simbol' => '=', 'quote' => true]), $order = 'ORDER BY `id` ASC'){//*/ Берёт все значения из таблицы: WHERE параметры массива //*/ 
-
-        $table = (is_string($table) && !empty($table)) ? trim($table) : $this->getRandTable()[0];
+       
+        $table = (is_string($table) && !empty($table)) ? trim($table) : ((is_string($this->table) && !empty($this->table)) ? $this->table : $this->getRandTable()[0]);
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
         $where = (is_array($where) && !empty($where) && !is_array(current($where))) ? $where : ['id'=>'1'];
 

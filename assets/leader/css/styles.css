@@ -1395,12 +1395,12 @@ h3 {
 }
 
 .start__welcome {
-    background: url('/assets/images/grozny.jpg') center;
+    background: url('/assets/images/leader/grozny.jpg') center;
     margin-right: 24px;
 }
 
 .start__info {
-    background: url('/assets/images/kadyrov.jpg') center;
+    background: url('/assets/images/leader/kadyrov.jpg') center;
 }
 
 .start__backdrop {

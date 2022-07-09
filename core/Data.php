@@ -271,4 +271,26 @@ abstract class Data{
     public function jsonAll() {
         return json_encode($this->findAll(), JSON_UNESCAPED_UNICODE);
     }
+
+    // Выдает количество записей по критериям
+    // Пример: ['role' => 'user']
+    // Результат: int (8)
+    public function count(array $criteria) {
+        $criteriaSQL = '';
+        $iteration = 1;
+
+        // Генерация строки запроса SQL для обязательного параметра критериев $criteria
+        foreach ($criteria as $column => $value) {
+            ($iteration == 1) ? $criteriaSQL .= "" : $criteriaSQL .= " AND ";
+            $criteriaSQL .= $column . " = '" . $value . "'";
+            $iteration += 1;
+        }
+
+        // Генерация всего запроса из результатов предыдуще генерированных строков
+        $sql = "SELECT COUNT(*) FROM " . $this->table . " WHERE " . $criteriaSQL;
+
+        $query = $this->pdo->query($sql);
+
+        return $query->fetchColumn();
+    }
 }

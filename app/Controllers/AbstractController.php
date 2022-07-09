@@ -35,22 +35,29 @@ abstract class AbstractController{
         // Заменяем слэши из ссылки на изображение сепаратором
         $file = implode(DIRECTORY_SEPARATOR, explode('/', $file));    
 
-        // Определяем полный путь с корневой папки до изображения
+        // Генерируем полный путь с корневой папки до изображения
         $path = $GLOBALS['path']['dev'] . $file;
 
-        // Выявляем расширение изображения и объявляем переменную изображения
-        $ext = mb_strtolower(pathinfo($path)['extension']);
-        $img = null;
+        // Условие если файл по генерированной пути существует
+        if (file_exists($path)) {
+            // Выявляем расширение изображения и объявляем переменную изображения
+            $ext = mb_strtolower(pathinfo($path)['extension']);
+            $img = null;
 
-        // Кодируем изображение из полученной ссылки в формат base64
-        if (in_array($ext, ['jpeg', 'jpg', 'gif', 'png', 'webp', 'svg'])) {
-            if ($ext == 'svg') {
-                $img = 'data:image/svg+xml;base64,' . base64_encode(file_get_contents($path));
-            } else {
-                $img = 'data:' . getimagesize($path)['mime'] . ';base64,' . base64_encode(file_get_contents($path));
+            // Кодируем изображение из полученной ссылки в формат base64
+            if (in_array($ext, ['jpeg', 'jpg', 'gif', 'png', 'webp', 'svg'])) {
+                if ($ext == 'svg') {
+                    $img = 'data:image/svg+xml;base64,' . base64_encode(file_get_contents($path));
+                } else {
+                    $img = 'data:' . getimagesize($path)['mime'] . ';base64,' . base64_encode(file_get_contents($path));
+                }
             }
+
+            return $img;
+        } else {
+            return null;
         }
-        return $img;}
+    }
 
     public function slugify($string, $pascalCase = false) {return (new \App\Service\Slugifier())->slugify($string, $pascalCase);}
     
@@ -62,7 +69,7 @@ abstract class AbstractController{
         } catch (\Exception $e){
         return null;}}
     
-    public function  arrayDeleteElement(array $array, array $symbols = ['']){ // */ удаляет из одномерного массива елеметы  $symbols // */
+    public function  arrayDeleteElement(array $array, array $symbols = ['']) { // */ удаляет из одномерного массива елеметы  $symbols // */
         return (is_array($array) && !empty($array) && !is_array(current($array))) ? array_diff($array, $symbols) : false;}
         
     public function connMCD(){ // */  подключение к оперативке  // */
@@ -70,19 +77,19 @@ abstract class AbstractController{
         $m = new \Memcached; $m->addServer('localhost', 11211);
         return $m;}
         
-    public function arrayExpand(array $array, string $key){ // */ Разворачивает многомерный массив в одномерный по ключу : [[id => 1],[id => 2],[id => 3]]  => [1, 2, 3] // */
+    public function arrayExpand(array $array, string $key) { // */ Разворачивает многомерный массив в одномерный по ключу : [[id => 1],[id => 2],[id => 3]]  => [1, 2, 3] // */
         if(!is_array($array) && empty($array) && !is_array(current($array)) && !is_string($key) && empty($key)){return false;}
         array_walk_recursive($array, function($v, $k) use (&$return) {if($key == $k){$return[] = $v;}});
         return $return;}
 
-    public function arrayMinMax($array, string $return = 'max|min'){ // */ Выбирает минимальное и/или максимальное значение из массива // */
+    public function arrayMinMax($array, string $return = 'max|min') { // */ Выбирает минимальное и/или максимальное значение из массива // */
         if(!is_array($array) && empty($array) && !is_array(current($array)) && !is_string($return)){return false;}
         foreach($array as $k => $v){
             $min[$k] = min($v); 
             $max[$k] = max($v);
         }
         return ('min' == $return && !empty($min)) ? $min : (
-                        ('max' == $return && !empty ($max)) ? $max : (
-                            ((('max|min' == $return) || ('min|max' == $return)) && (!empty($min) || !empty($max))) ? array('min' => $min, 'max' => $max) : false));
+                    ('max' == $return && !empty ($max)) ? $max : (
+                        ((('max|min' == $return) || ('min|max' == $return)) && (!empty($min) || !empty($max))) ? array('min' => $min, 'max' => $max) : false));
     }
 }

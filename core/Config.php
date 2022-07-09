@@ -53,6 +53,8 @@ $GLOBALS['path']['model'] = $GLOBALS['path']['app']._DS_.'Models';
 $GLOBALS['path']['view'] = $GLOBALS['path']['app']._DS_.'Views';
 
 $url = [
+// LEADER //
+
 // HomeController
 'index'         => ['controller' => 'HomeController', 'action' => 'index'],
 'error'         => ['controller' => 'HomeController', 'action' => 'error'],
@@ -66,7 +68,12 @@ $url = [
 'profile'       => ['controller' => 'ProfileController', 'action' => 'profile'],
 'staff'       => ['controller' => 'ProfileController', 'action' => 'staff'],
 
-// Пока не готовы
+// STAFF //
+
+// DistrictController
+'districts'      => ['controller' => 'DistrictController', 'action' => 'districts'],
+
+// ПОКА НЕ ГОТОВЫ //
 'login'         => ['controller' => 'UserController', 'action' => 'login'],
 'exel'          => ['controller' => 'ExelController', 'action' => 'work'],
 'ajax'          => ['controller' => 'AjaxController', 'action' => 'getMarkData'],

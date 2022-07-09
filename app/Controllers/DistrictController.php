@@ -39,6 +39,23 @@ class DistrictController extends AbstractController {
         }
     }
 
+    public function districts() {
+        $districts = [];
+
+        foreach ($this->uins->findBy(['type' => 'district']) as $key => $district) {
+            $districts[$key] = [
+                'district' => $district,
+                'report' => $this->reports->findOneBy(['id_uin' => $district['id']], ['submitting' => 'DESC']),
+                'staff' => $this->users->findBy(['id_uin' => $district['id'], 'id_role' => 5], null, 2),
+                'staffCount' => $this->users->count(['id_uin' => $district['id'], 'id_role' => 5]),
+            ];
+        }
+
+        $this->render('/staff/district/districts.php', [
+            'districts' => $districts
+        ]);
+    }
+
     /**
      * TODO: Не забыть защитить роут в зависимости от авторизованности и ролей
      */

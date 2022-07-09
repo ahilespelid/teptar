@@ -2139,16 +2139,48 @@ template {
     display:none;
 }
 
-/* Project icons */
+/* Основные шрифты */
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(846a12caf01a940847a7.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(d7d7b8359eeb9cddfba6.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(f0cdede053a22b990af8.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(d7261533b9a545ddc769.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(6e27168fc8a5a200a026.ttf);
+    font-weight: 700;
+}
+
+/* Шрифты иконок */
 
 @font-face {
     font-family: 'icomoon';
-    src:  url(3dde9d62fed4b88faaca.eot?1gvaa4);
-    src:  url(3dde9d62fed4b88faaca.eot?1gvaa4);
-    src:  url(3dde9d62fed4b88faaca.eot?1gvaa4#iefix) format('embedded-opentype'),
-    url(8470683e6367fa17dbd8.ttf?1gvaa4) format('truetype'),
-    url(441b36ea474d47c7a287.woff?1gvaa4) format('woff'),
-    url(0ce24140ef2d463b1a22.svg?1gvaa4#icomoon) format('svg');
+    src:  url(b2a8bac44f0d0d25f7dd.eot?1gvaa4);
+    src:  url(b2a8bac44f0d0d25f7dd.eot?1gvaa4);
+    src:  url(b2a8bac44f0d0d25f7dd.eot?1gvaa4#iefix) format('embedded-opentype'),
+    url(b2c27320e033d25a6c18.ttf?1gvaa4) format('truetype'),
+    url(b953b14787d90d03cbaf.woff?1gvaa4) format('woff'),
+    url(ba47b7b80a313f6370ff.svg?1gvaa4#icomoon) format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -2169,6 +2201,15 @@ template {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-toggle:before {
+    content: "\e92a";
+}
+.icon-bell:before {
+    content: "\e928";
+}
+.icon-chart:before {
+    content: "\e929";
+}
 .icon-archive_alt:before {
     content: "\e901";
 }
@@ -2233,7 +2274,7 @@ template {
 .icon-menu:before {
     content: "\e915";
 }
-.icon-notifications:before {
+.icon-bell-fill:before {
     content: "\e916";
 }
 .icon-order:before {

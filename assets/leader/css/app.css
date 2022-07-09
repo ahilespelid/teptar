@@ -1,5 +1,5 @@
 @import "/assets/leader/components/components.css";
-@import "/assets/leader/css/styles.css";
-@import "/assets/leader/css/browsers.css";
-@import "/assets/leader/css/fonts.css";
-@import "/assets/leader/css/responsive.css";
+@import "styles.css";
+@import "browsers.css";
+@import "fonts.css";
+@import "responsive.css";

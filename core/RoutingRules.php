@@ -1,9 +1,12 @@
 <?php return
 [
+// LEADER //
+
 // HomeController
 'index'         => $GLOBALS['url']['index'],
 'error'         => $GLOBALS['url']['error'],
 'framework'     => $GLOBALS['url']['framework'],
+
 
 // DistrictController
 'district'      => $GLOBALS['url']['district'],
@@ -13,9 +16,15 @@
 'profile'       => $GLOBALS['url']['profile'],
 'staff'       => $GLOBALS['url']['staff'],
 
-// Пока не готовы
-'login'         => $GLOBALS['url']['login'],        /*/ userController.php Контраллер пользователя -> экшен авторизации /*/
-'exel'          => $GLOBALS['url']['exel'],         /*/ json для Внутренней вёрстки /*/
+// STAFF //
+
+// DistrictController
+'districts'      => $GLOBALS['url']['districts'],
+
+
+// ПОКА НЕ ГОТОВЫ //
+'login'         => $GLOBALS['url']['login'],
+'exel'          => $GLOBALS['url']['exel'],
 'ajax'          => $GLOBALS['url']['ajax'],
 'report'        => $GLOBALS['url']['report'],
 ];

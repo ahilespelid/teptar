@@ -3,7 +3,15 @@ namespace App\Controllers;
 
 use Exception; use Memcached;
 
-abstract class AbstractController{
+abstract class AbstractController {
+    public $users;
+    public $user;
+
+    public function __construct() {
+        $this->users = new \App\Models\UserModel;
+        $this->user = new UserController();
+    }
+
     public function render($view, $parameters = []) {
         // Заменяем слэши из ссылки на вид сепаратором
         $view = implode(DIRECTORY_SEPARATOR, explode('/', $view));
@@ -29,6 +37,12 @@ abstract class AbstractController{
         // Возвращаем полный путь с корневой папки до файла вида блока
         
         return $GLOBALS['path']['layouts'] .DIRECTORY_SEPARATOR. $view;
+    }
+
+    public function user() {
+        $user = new UserController();
+
+        return $user->login($user->getLoginUser());
     }
 
     public function image($file) {

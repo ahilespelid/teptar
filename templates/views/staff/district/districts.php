@@ -42,9 +42,11 @@
                                 <?php foreach ($districts as $district) { ?>
                                     <div class="reports__body__line">
 
-                                        <div class="reports__body__line__name">
-                                            <span><?= $district['district']['owner'] ?><span>
-                                        </div>
+                                        <a href="/reports?district=<?= $district['district']['slug'] ?>">
+                                            <div class="reports__body__line__name">
+                                                <span><?= $district['district']['owner'] ?><span>
+                                            </div>
+                                        </a>
 
                                         <div class="reports__body__line__activity">
                                             <?= $district['report']['submitting'] ?>
@@ -59,6 +61,8 @@
                                                     $class = '<span class="warning">В работе</span>';
                                                 } elseif ($district['report']['status'] == 4) {
                                                     $class = '<span class="expired">Дорабатывается</span>';
+                                                } elseif ($district['report']['status'] == 9) {
+                                                    $class = '<span class="completed">Завершен</span>';
                                                 }
                                             ?>
 

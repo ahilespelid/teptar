@@ -9,13 +9,13 @@
                 <span class="indicator"></span>
             </div>
             <div class="user__info">
-                <img class="user__info__avatar" src="<?= $this->image('/assets/images/avatar.jpg'); ?>" alt="avatar">
+                <img class="user__info__avatar" src="<?= $this->user()->avatar ?>" alt="avatar">
                 <span class="user__info__name">
-                  <span>Ибрагим Грозный</span>
-                  <span class="user__info__post">Районный сотрудник</span>
+                  <span><?= $this->user()->firstname . ' ' . $this->user()->lastname ?></span>
+                  <span class="user__info__post"><?= $this->user()->role['post'] ?></span>
                 </span>
                 <span class="user__info__arrow">
-                  <img width="32" height="32" src="/assets/img/svg/arrow_drop_down.svg" alt="&#x2193">
+                    <i class="icon-arrow_drop_down"></i>
                 </span>
                 <div class="user__dropdown-menu none">
                     <div class="user__dropdown-menu__block">

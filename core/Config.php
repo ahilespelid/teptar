@@ -17,6 +17,7 @@ $table = array(
 'reports'   => 'reports',
 'indexes'   => 'index',
 'roles'   => 'roles',
+'status' => 'status',
 'marks'   => 'marks',
 'usersBlock'   => 'usersBlock',
 'tableUIN'   => 'uin', 
@@ -72,6 +73,9 @@ $url = [
 
 // DistrictController
 'districts'      => ['controller' => 'DistrictController', 'action' => 'districts'],
+
+// ReportController
+'reports' => ['controller' => 'ReportController', 'action' => 'reports'],
 
 // ПОКА НЕ ГОТОВЫ //
 'login'         => ['controller' => 'UserController', 'action' => 'login'],

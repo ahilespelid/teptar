@@ -117,7 +117,10 @@
   margin-top: 16px;
   transition: 0.3s;
   border-bottom: 1px solid #f1f1f1;
-  cursor: pointer;
+}
+
+.reports__body__line a {
+  color: #535C69;
 }
 
 .reports__body__line:hover {

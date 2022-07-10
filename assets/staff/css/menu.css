@@ -234,8 +234,8 @@
   background-color: #ededee;
 }
 
-.menu__folded .menu__body__list a:hover {
-  border-radius: 8px
+.menu__header__text b {
+  white-space: nowrap;
 }
 
 .menu__footer a {

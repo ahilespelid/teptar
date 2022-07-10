@@ -29,6 +29,10 @@ body {
     font-family: 'Open Sans', serif;
 }
 
+a {
+  text-decoration: unset;
+}
+
 ol, ul {
 	list-style: none;
 }
@@ -66,20 +70,20 @@ body {
   display: flex;
 }
 
-.content {
-  width: 100%;
-  height: 100%;
-}
-
 .user__notification, .user__info__arrow, .sort__block__element, .menu__body__list a,
 .menu__footer__toggle a, .reports-title__my-reports__btn button, .variables, .reports-footer__submit__button button{
   cursor: pointer;
 }
 
-.warning, .expired, .checked, .finished {
-  border-radius: 4px;
-  padding: 3px 25px;
+.reports__body__line__term span {
+  width: 200px;
+  text-align: center;
+  line-height: 18px;
+  height: 40px;
+  display: inline-block;
+  padding: 10px;
   transition: 0.3s;
+  border-radius: 5px;
 }
 
 .warning {
@@ -88,6 +92,10 @@ body {
 
 .expired {
   background-color: #fecbcb;
+}
+
+.completed {
+  background-color: #eeeeee;
 }
 
 .checked {
@@ -207,10 +215,6 @@ body {
     font-size: 16px;
   }
 
-  .menu__folded .menu__body__list a:not(.active) .menu-icon {
-    margin-left: 2px
-  }
-
   .reports-title__my-reports__text {
     font-size: 32px;
   }
@@ -219,12 +223,6 @@ body {
     width: 220px;
     height: 50px;
     font-size: 18px;
-  }
-
-  .warning, .expired, .checked, .finished {
-    height: 40px;
-    display: inline-block;
-    padding-top: 10px;
   }
 
   .reports__body__avatar, .reports__body__second__avatar {
@@ -433,44 +431,3 @@ body {
     bottom: 25px;
   }
 }
-
-/*@media screen and (max-width: 1350px) {*/
-/*  .reports__body__element {*/
-/*    padding-left: 150px;*/
-/*  }*/
-
-/*  .reports-list__title__third-element {*/
-/*    padding-left: 5%;*/
-/*    min-width: 110px;*/
-/*  }*/
-
-/*  .reports-list__title__second-element {*/
-/*    padding-left: 10%;*/
-/*    min-width: 100px;*/
-/*  }*/
-/*}*/
-
-/*@media screen and (max-width: 1280px) {*/
-/*  .reports__body__element {*/
-/*    padding-left: 100px;*/
-/*  }*/
-/*  .reports-list__title__third-element {*/
-/*    padding-right: 8%;*/
-/*    min-width: 110px;*/
-/*  }*/
-
-/*  .reports-list__title__second-element {*/
-/*    padding-left: 0;*/
-/*    min-width: 100px;*/
-/*  }*/
-/*}*/
-
-/*@media screen and (max-width: 1050px) {*/
-/*  .reports-list__title__third-element {*/
-/*    min-width: 110px;*/
-/*  }*/
-/*  .reports-list__title__second-element {*/
-/*    padding-left: 0;*/
-/*    min-width: 100px;*/
-/*  }*/
-/*}*/

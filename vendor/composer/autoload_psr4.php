@@ -18,4 +18,5 @@ return array(
     'App\\Models\\' => array($baseDir . '/app/Models'),
     'App\\Controllers\\' => array($baseDir . '/app/Controllers'),
     'App\\' => array($baseDir . '/app'),
+    '' => array($baseDir . '/core'),
 );

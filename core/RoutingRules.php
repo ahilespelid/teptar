@@ -23,10 +23,10 @@
 
 // ReportController
 'reports'           => $GLOBALS['url']['reports'],
+'report'           => $GLOBALS['url']['report'],
 
 // ПОКА НЕ ГОТОВЫ //
 'login'             => $GLOBALS['url']['login'],
 'exel'              => $GLOBALS['url']['exel'],
 'ajax'              => $GLOBALS['url']['ajax'],
-'report'            => $GLOBALS['url']['report'],
 ];

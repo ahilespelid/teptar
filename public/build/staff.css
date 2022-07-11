@@ -814,10 +814,6 @@ header {
     height: 20px;
   }
 
-  body .active {
-    width: 260px;
-  }
-
   body .menu__folded .toggle-icon {
     margin-left: 18px;
   }
@@ -873,10 +869,6 @@ header {
     padding-left: 42px;
   }
 
-  body .active {
-    max-height: unset;
-  }
-
   body .menu__footer__text {
     font-size: 20px;
   }
@@ -920,10 +912,6 @@ header {
     height: 20px;
   }
 
-  body .active {
-    height: 50px;
-  }
-
   body .menu__folded .active {
     height: 40px;
   }
@@ -961,10 +949,6 @@ header {
   body .menu__body img {
     width: 24px;
     height: 16px;
-  }
-
-  body .active {
-    /*width: 180px;*/
   }
 
   body .menu__folded .active {

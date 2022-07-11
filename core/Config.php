@@ -64,16 +64,18 @@ $url = [
 
 // ProfileController
 'profile'       => ['controller' => 'ProfileController', 'action' => 'profile'],
-'staff'       => ['controller' => 'ProfileController', 'action' => 'staff'],
+'staff'         => ['controller' => 'ProfileController', 'action' => 'staff'],
 
 // Пока не готовы
 'login'         => ['controller' => 'UserController', 'action' => 'login'],
 'exel'          => ['controller' => 'ExelController', 'action' => 'work'],
 'ajax'          => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
 'report'        => ['controller' => 'ReportController', 'action' => 'index'],
+'calculate'     => ['controller' => 'CalculateController', 'action' => 'index'],
 ];
 
 $GLOBALS['url'] = $url;
+$GLOBALS['mantisa'] = 16;
 
 /*/-------------------------------------------------------------- Удочка для ошибок --------------------------------------------------------------/*/
 

@@ -41,7 +41,7 @@
                     <?php
                         $yearUrlParameters = $_GET;
                         unset($yearUrlParameters['year']);
-                        $yearUrl = 'districtReports' . '?';
+                        $yearUrl = '/districtReports' . '?';
 
                         $i = 1;
 

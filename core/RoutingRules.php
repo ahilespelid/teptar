@@ -18,4 +18,5 @@
 'exel'          => $GLOBALS['url']['exel'],         /*/ json для Внутренней вёрстки /*/
 'ajax'          => $GLOBALS['url']['ajax'],
 'report'        => $GLOBALS['url']['report'],
+'calculate'     => $GLOBALS['url']['calculate'],
 ];

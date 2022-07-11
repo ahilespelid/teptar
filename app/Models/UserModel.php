@@ -24,6 +24,13 @@ class UserModel extends \App\Data{
         
     }
     
+    public function getRule(string $role, int $uin){if(empty($role) && empty($uin)){return false;}
+        $rule = $this->getQuery("SELECT * FROM `rules` WHERE FIND_IN_SET($uin, uin)<>0 AND subject_role LIKE '%$role%';");
+        if(!is_array($rule) && empty($rule) && !is_array(current($rule))){return false;}
+        array_walk_recursive($rule, function($v, $k) use (&$return) {if('right' == $k){$return[] = $v;}});
+        return (is_array($return) && !empty($return)) ? $return : [];   
+    }
+    
     public function getDistrict($id = ''){if(empty($id)){return false;}        
         $district = $this->getId($this->tableDistrict,$id);
         return ((is_array($district) && !empty($district) && !is_array(current($district))) ? $district : []);

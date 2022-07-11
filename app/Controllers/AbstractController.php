@@ -70,11 +70,6 @@ abstract class AbstractController{
         $m = new \Memcached; $m->addServer('localhost', 11211);
         return $m;}
         
-    public function arrayExpand(array $array, string $key){ // */ Разворачивает многомерный массив в одномерный по ключу : [[id => 1],[id => 2],[id => 3]]  => [1, 2, 3] // */
-        if(!is_array($array) && empty($array) && !is_array(current($array)) && !is_string($key) && empty($key)){return false;}
-        array_walk_recursive($array, function($v, $k) use (&$return) {if($key == $k){$return[] = $v;}});
-        return $return;}
-
     public function arrayMinMax($array, string $return = 'max|min'){ // */ Выбирает минимальное и/или максимальное значение из массива // */
         if(!is_array($array) && empty($array) && !is_array(current($array)) && !is_string($return)){return false;}
         foreach($array as $k => $v){

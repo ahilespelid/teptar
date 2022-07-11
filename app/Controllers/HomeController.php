@@ -16,7 +16,7 @@ class HomeController extends AbstractController {
     /**
      * Главная страница
      */
-    public function index() {
+    public function index(){
         if (isset($_GET['logout'])) {
             $this->user->out(); exit();
         }
@@ -25,7 +25,7 @@ class HomeController extends AbstractController {
             if ($user = $this->user->login($this->user->getLoginUser())) {
                 $district = $this->uins->findOneBy(['slug' => $_GET['district'] ?? 'Grozny']);
                 $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
-
+                
                 $this->render('/home/home-leader.php', [
                     'districts' => $this->uins->findBy(['type' => 'district']),
                     'navbar' => 'home',
@@ -41,7 +41,7 @@ class HomeController extends AbstractController {
             $this->render('/home/login.php');
         }
     }
-
+    
     /**
      * Страница ошибок
      */

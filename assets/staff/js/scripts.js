@@ -123,7 +123,7 @@ $(document).ready(function() {
 
     var count = 0
 
-    $(".reports-count").text( reports.length)
+    $(".reports-count").text($('.reports__body__line').length)
 
     $(".reports__body__checkbox").each(function (i, item) {
         item.addEventListener("click", function (e) {
@@ -145,7 +145,7 @@ $(document).ready(function() {
                 $(this).addClass("checked")
                 $(".reports").addClass("reports__decrease-height")
                 $(".reports-footer").removeClass("none")
-                count = reports.length
+                count = $('.reports__body__line').length
             })
         } else {
             $(".reports__body__line").each(function (i, item) {

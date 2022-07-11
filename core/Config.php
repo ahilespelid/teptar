@@ -11,18 +11,18 @@ $GLOBALS['lifeToken'] = (60*60)*24;
 
 /*/ --------------------------------------------------------------База данных --------------------------------------------------------------/*/
 
-$table = array(
+$table = [
 'users'       => 'users',
 'districts'   => 'districts',
 'reports'   => 'reports',
 'indexes'   => 'index',
 'roles'   => 'roles',
 'status' => 'status',
+'index' => 'index',
 'marks'   => 'marks',
 'usersBlock'   => 'usersBlock',
 'tableUIN'   => 'uin', 
-);
-
+];
 
 $GLOBALS['db']['table'] =  $table;
 $GLOBALS['db']['host'] = '194.67.90.250';
@@ -76,12 +76,12 @@ $url = [
 
 // ReportController
 'reports' => ['controller' => 'ReportController', 'action' => 'reports'],
+'report' => ['controller' => 'ReportController', 'action' => 'report'],
 
 // ПОКА НЕ ГОТОВЫ //
 'login'         => ['controller' => 'UserController', 'action' => 'login'],
 'exel'          => ['controller' => 'ExelController', 'action' => 'work'],
 'ajax'          => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
-'report'        => ['controller' => 'ReportController', 'action' => 'index'],
 ];
 
 $GLOBALS['url'] = $url;

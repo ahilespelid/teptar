@@ -72,8 +72,6 @@
                                         'Завершен' => '',
                                 ];
 
-//                                echo $statuses[$name];
-
                                 echo ' ' . $statuses[$name];
                             }
 
@@ -85,7 +83,9 @@
                                 <div class="reports__body__line__name">
                                     <input type="checkbox" id="checkbox-0" class="reports__body__checkbox">
                                     <i class="icon-menu reports__body__i"></i>
-                                    <span><?= $report['report']['name'] ?><span>
+                                    <a href="/report?id=<?= $report['report']['id'] ?>">
+                                        <span><?= $report['report']['name'] ?><span>
+                                    </a>
                                 </div>
                                 <div class="reports__body__line__activity">
                                     <?= $report['status']['name'] ?>
@@ -120,15 +120,15 @@
                     <span>Выгрузить</span>
                     <div class="reports-footer__action__sort none">
                         <div class="variables excel">
-                            <img width="30" height="30" src="/assets/img/svg/xlsx.svg">
+                            <img width="30" height="30" src="<?php $this->image('/assets/images/staff/xlsx.svg'); ?>">
                             Выгрузить в Excel
                         </div>
                         <div class="variables word">
-                            <img width="30" height="30" src="/assets/img/svg/word.svg">
+                            <img width="30" height="30" src="<?php $this->image('/assets/images/staff/word.svg'); ?>">
                             Выгрузить в Word
                         </div>
                         <div class="variables pdf">
-                            <img width="30" height="30" src="/assets/img/svg/pdf.svg">
+                            <img width="30" height="30" src="<?php $this->image('/assets/images/staff/pdf.svg'); ?>">
                             Выгрузить в PDF
                         </div>
                     </div>

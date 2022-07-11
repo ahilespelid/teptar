@@ -47,6 +47,22 @@ class ReportController extends AbstractController{
         ]);
     }
 
+    public function report() {
+        $report = $this->model->findOneBy(['id' => $_GET['id']]);
+
+        $data = [
+            'report' => $report,
+            'district' => $this->uinModel->findOneBy(['id' => $report['id_uin']]),
+            'boss' => $this->users->findOneBy(['id' => $report['id_userBoss']]),
+            'staff' => $this->users->findOneBy(['id' => $report['id_userStaff']]),
+            'status' => $this->statuses->findOneBy(['id' => $report['status']])
+        ];
+
+        $this->render('/staff/report/report.php', [
+            'data' => $data
+        ]);
+    }
+
     public function setCache(){
 
         if(!$this->districts = $this->memcached->get('districts')){$this->memcached->set('districts', $this->uinModel->findBy(['type' => 'district']));}

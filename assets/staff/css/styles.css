@@ -230,6 +230,133 @@ body {
     width: 40px;
   }
 
+  .actions__activity-info .status span.active {
+    width: 180px;
+  }
+
+  .actions__info-item .post {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .actions__activity-info .status, .actions__activity-indicators .indicators-list .title, .actions__activity-info .name {
+    font-size: 16px;
+  }
+
+  .actions__activity-indicators .indicators-list .title {
+    margin-right: 10px;
+    min-width: 184px;
+  }
+
+  .indicator-description {
+    font-size: 16px;
+    line-height: 27.2px;
+  }
+
+  .indicator-comparison {
+    font-size: 16px;
+    height: 50px;
+  }
+
+  .reports-body__side-block {
+    min-width: 336px;
+  }
+
+  .reports-body__side-block__button {
+    font-size: 17px;
+    height: 50px;
+  }
+
+  .side-block__body {
+    font-size: 16px;
+  }
+
+  .side-block__body img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .side-block__header {
+    height: 70px;
+    font-size: 18px;
+  }
+
+  .actions__activity-content .item {
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .actions__activity-indicators .indicators-list .list .item.active {
+    height: 50px !important;
+    max-height: 50px !important;
+  }
+
+  .actions__activity-indicators .indicators-list .list .item {
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .reports-body__info p {
+    font-size: 16px;
+    line-height: 200%;
+  }
+
+  .reports-body__content__main {
+    margin-bottom: 32px;
+  }
+
+  .actions__activity-info .avatar img {
+    object-fit: cover;
+    width: 60px;
+    height: 60px;
+  }
+
+  .reports-footer__action {
+    width: 177px;
+    height: 50px;
+  }
+
+  .reports-footer__action__sort {
+    position: absolute;
+    opacity: 1;
+    z-index: 2;
+    width: 233px;
+    text-align: center;
+    line-height: 30px;
+    left: -56px;
+    top: 40px;
+    transition: 0.3s;
+  }
+
+  .reports-body__header, .reports-body__content__last-activity span {
+    height: 80px;
+    font-size: 18px;
+  }
+
+  .reports-body__comment {
+    min-height: 100px;
+    width: 100%;
+    margin: 6px 0;
+    background: #fff;
+    border-radius: 4px;
+    padding: 16px 14px 7px 14px;
+    font-size: 16px;
+    word-break: break-word;
+    line-height: 25.6px;
+  }
+
+  .reports-body__comment p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .reports-title__my-reports__text .district {
+    margin-right: 8px;
+  }
 }
 
 .reports__body__element {

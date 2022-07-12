@@ -2175,12 +2175,12 @@ template {
 
 @font-face {
     font-family: 'icomoon';
-    src:  url(b2a8bac44f0d0d25f7dd.eot?1gvaa4);
-    src:  url(b2a8bac44f0d0d25f7dd.eot?1gvaa4);
-    src:  url(b2a8bac44f0d0d25f7dd.eot?1gvaa4#iefix) format('embedded-opentype'),
-    url(b2c27320e033d25a6c18.ttf?1gvaa4) format('truetype'),
-    url(b953b14787d90d03cbaf.woff?1gvaa4) format('woff'),
-    url(ba47b7b80a313f6370ff.svg?1gvaa4#icomoon) format('svg');
+    src:  url(3ce8a643cb3dd6663c4e.eot?1gvaa4);
+    src:  url(3ce8a643cb3dd6663c4e.eot?1gvaa4);
+    src:  url(3ce8a643cb3dd6663c4e.eot?1gvaa4#iefix) format('embedded-opentype'),
+    url(af5a54833e8a2e15135c.ttf?1gvaa4) format('truetype'),
+    url(a7d2f95966d5185b8c39.woff?1gvaa4) format('woff'),
+    url(2864bd5aa103d4d165e5.svg?1gvaa4#icomoon) format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -2201,6 +2201,12 @@ template {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-cross-circle:before {
+    content: "\e92c";
+}
+.icon-cross:before {
+    content: "\e92b";
+}
 .icon-toggle:before {
     content: "\e92a";
 }

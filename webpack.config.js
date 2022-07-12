@@ -5,6 +5,7 @@ module.exports = {
     entry: {
         leader: path.resolve(__dirname, './assets/leader/js/app.js'),
         staff: path.resolve(__dirname, './assets/staff/js/app.js'),
+        chosen: path.resolve(__dirname, '/assets/chosen/chosen.jquery.js')
     },
     output: {
         path: path.resolve(__dirname, './public/build'),

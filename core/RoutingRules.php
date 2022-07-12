@@ -24,6 +24,7 @@
 // ReportController
 'reports'           => $GLOBALS['url']['reports'],
 'report'           => $GLOBALS['url']['report'],
+'report/new'           => $GLOBALS['url']['report/new'],
 
 // ПОКА НЕ ГОТОВЫ //
 'login'             => $GLOBALS['url']['login'],

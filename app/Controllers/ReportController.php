@@ -12,7 +12,7 @@ class ReportController extends AbstractController{
                 $iso,
                 $user,
                 $statuses,
-
+                $indexes,
                 $mark_1;
 
     public function __construct() {
@@ -20,6 +20,7 @@ class ReportController extends AbstractController{
         $this->uinModel         = new \App\Models\UINModel;
         $this->markModel        = new \App\Models\MarkModel;
         $this->statuses         = new \App\Models\StatusModel;
+        $this->indexes         = new \App\Models\IndexModel;
         $this->users = new \App\Models\UserModel;
         $this->memcached        = (object) $this->connMCD();
         $this->user = new UserController();
@@ -60,6 +61,12 @@ class ReportController extends AbstractController{
 
         $this->render('/staff/report/report.php', [
             'data' => $data
+        ]);
+    }
+
+    public function new() {
+        $this->render('/staff/report/form.php', [
+            'staffs' => $this->users->findBy(['id_uin' => $this->user()->uin['id'], 'id_role' => 5])
         ]);
     }
 

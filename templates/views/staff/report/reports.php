@@ -120,15 +120,15 @@
                     <span>Выгрузить</span>
                     <div class="reports-footer__action__sort none">
                         <div class="variables excel">
-                            <img width="30" height="30" src="<?php $this->image('/assets/images/staff/xlsx.svg'); ?>">
+                            <img width="30" height="30" src="<?= $this->image('/assets/images/staff/xlsx.svg'); ?>">
                             Выгрузить в Excel
                         </div>
                         <div class="variables word">
-                            <img width="30" height="30" src="<?php $this->image('/assets/images/staff/word.svg'); ?>">
+                            <img width="30" height="30" src="<?= $this->image('/assets/images/staff/word.svg'); ?>">
                             Выгрузить в Word
                         </div>
                         <div class="variables pdf">
-                            <img width="30" height="30" src="<?php $this->image('/assets/images/staff/pdf.svg'); ?>">
+                            <img width="30" height="30" src="<?= $this->image('/assets/images/staff/pdf.svg'); ?>">
                             Выгрузить в PDF
                         </div>
                     </div>

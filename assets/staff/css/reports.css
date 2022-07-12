@@ -1,6 +1,6 @@
 .body {
-  width: 94%;
-  margin: 20px auto;
+  width: 100%;
+  padding: 40px;
   color: #535C69;
   border-radius: 3px;
   font-weight: 500;
@@ -316,7 +316,7 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin: 22px 0 28px;
 }
 
 .reports-title__my-reports {

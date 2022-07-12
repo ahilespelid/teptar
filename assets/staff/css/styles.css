@@ -24,6 +24,11 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
+input, textarea {
+  color: #535C69;
+  font-size: 15px;
+}
+
 body {
 	line-height: 1;
     font-family: 'Open Sans', serif;
@@ -62,6 +67,9 @@ table {
 
 * {
   box-sizing: border-box;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {

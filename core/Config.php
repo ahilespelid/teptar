@@ -77,6 +77,7 @@ $url = [
 // ReportController
 'reports' => ['controller' => 'ReportController', 'action' => 'reports'],
 'report' => ['controller' => 'ReportController', 'action' => 'report'],
+'report/new' => ['controller' => 'ReportController', 'action' => 'new'],
 
 // ПОКА НЕ ГОТОВЫ //
 'login'         => ['controller' => 'UserController', 'action' => 'login'],

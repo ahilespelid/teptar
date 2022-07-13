@@ -293,4 +293,35 @@ abstract class Data{
 
         return $query->fetchColumn();
     }
+
+    // Создает новую запись в базе данных
+    // Пример ввода данных: ['firstname' => 'John', 'lastname' => 'Doe']
+    public function add(array $entries) {
+        $columns = '';
+        $values = '';
+        $i = 1;
+
+        // Генерация строки запроса SQL для добавления новой записи в базу данных
+        foreach ($entries as $column => $value) {
+            $columns .= $column;
+
+            if ($value instanceof \DateTime) {
+                $values .= "'" . $value->format('Y-m-d H:i:s') . "'";
+            } else {
+                $values .= "'" . $value . "'";
+            }
+
+            if ($i !== count($entries)) {
+                $columns .= ', ';
+                $values .= ', ';
+            }
+
+            $i += 1;
+        }
+
+        // Генерация всего запроса из результатов предыдуще генерированных строков
+        $sql = "INSERT INTO " . $this->table . " (" . $columns . ") VALUES (" . $values . ")";
+
+        $this->pdo->query($sql);
+    }
 }

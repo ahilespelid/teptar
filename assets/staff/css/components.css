@@ -62,3 +62,44 @@
 .button-link:hover {
     background-color: #f7f7f7;
 }
+
+/* Report form */
+
+.report-form-title input {
+    border: 1px solid #dde2e8;
+    background: unset;
+    height: 40px;
+    width: 300px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+.report-form-textarea textarea {
+    width: 100%;
+    border: unset;
+    padding: 11px 14px;
+    resize: none;
+    background: unset;
+    font-family: 'Open Sans', serif;
+}
+.report-form form div {
+    margin-bottom: 12px;
+}
+.report-form form div:last-child {
+    margin: unset;
+}
+.report-form-staff, .report-form-actions {
+    padding: 10px;
+}
+.report-form-title {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.report-form-title h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #989faa;
+}
+.report-form-title .report-deadline {
+    color: #989faa;
+}

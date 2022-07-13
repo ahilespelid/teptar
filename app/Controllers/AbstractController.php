@@ -73,6 +73,23 @@ abstract class AbstractController {
         }
     }
 
+    public function redirectToRoute(string $route, array $parameters = null) {
+        $params = '';
+        $i = 1;
+
+        foreach ($parameters as $parameter => $value) {
+            if ($i == 1) {
+                $params .= '?' . $parameter . '=' . $value;
+            } else {
+                $params .= '&' . $parameter . '=' . $value;
+            }
+            $i += 1;
+        }
+
+        header('Location: ' . $route . $params);
+        exit;
+    }
+
     public function slugify($string, $pascalCase = false) {return (new \App\Service\Slugifier())->slugify($string, $pascalCase);}
     
     public function is_date($value){ // */  проверка строки на дату  // */

@@ -65,8 +65,30 @@ class ReportController extends AbstractController{
     }
 
     public function new() {
+        $district = $this->uinModel->findOneBy(['id' => $this->user()->uin['id']]);
+
+        if ($_POST) {
+            $entries = [
+                'name' => 'Отчет ' . (new \DateTime('now'))->format('d.m.o') . ' (Район: ' . $district['owner'] . ')'
+            ];
+
+            if (isset($_POST['report_description'])) {
+                $entries['description'] = $_POST['report_description'];
+            }
+
+            if (isset($_POST['report_staff'])) {
+                $staffs = implode(', ', $_POST['report_staff']);
+                $entries['id_userStaff'] = $staffs;
+            }
+
+            $this->model->add($entries);
+
+            $this->redirectToRoute('/reports');
+        }
+
         $this->render('/staff/report/form.php', [
-            'staffs' => $this->users->findBy(['id_uin' => $this->user()->uin['id'], 'id_role' => 5])
+            'staffs' => $this->users->findBy(['id_uin' => $this->user()->uin['id'], 'id_role' => 5]),
+            'district' => $district
         ]);
     }
 
@@ -92,15 +114,6 @@ class ReportController extends AbstractController{
             $this->memcached->set('iso', $this->iso($this->sop, $this->arrayMinMax($this->sop)));}
 
         return $this->memcached->quit();}
-
-    public function index(){
-        //$this->memcached->flush(1);
-
-        pa($this);
-
-       //foreach($_1_mark as $k => $v){echo $k.' : '.$v['date'].'<br>';}
-        //$this->render('/report/report.php');
-    }
 
     public function sopOstrT(array $_4_indexa, string $type = 'sop'){
         $_4_indexa = (!empty($_4_indexa) && is_array($_4_indexa)) ? $_4_indexa : false;

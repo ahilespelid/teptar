@@ -77,7 +77,9 @@ class Route {
         $queryController    = $this->query;
         $appNameSpace       = __NAMESPACE__;
         $class = $appNameSpace.'\\'.str_replace($GLOBALS['path']['app']._DS_, "", $this->conPath).'\\'.$this->controller;
-        $security = new Security();
+        $security = new Security(); 
+        
+///*/ pa($security->route, 10); pa($security->roles()); pa($security->allowedRoutes()); ///*/
 
         if ($security->rightToAccess()) {
             (new $class)->$actionController($queryController);

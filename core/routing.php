@@ -29,6 +29,7 @@
     'login'             =>  ['controller' => 'UserController', 'action' => 'login'],
     'exel'              =>  ['controller' => 'ExelController', 'action' => 'work'],
     'ajax'              =>  ['controller' => 'AjaxController', 'action' => 'getMarkData'],
+    'calculate'         =>  ['controller' => 'CalculateController', 'action' => 'index'],
     ];
 
     return $GLOBALS['url'];

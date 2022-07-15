@@ -9,5 +9,7 @@
 
     'district_staff' => ['reports', 'report'],
 
-    'guest' => ['index', 'login']
+    'guest' => ['index', 'login'],
+
+    'admin_admin' => ['calculate','district', 'districtReports', 'leader', 'staff', 'framework'] 
 ];

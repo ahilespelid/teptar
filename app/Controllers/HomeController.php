@@ -24,11 +24,11 @@ class HomeController extends AbstractController {
         }
 
         if ($this->security->userHasRole(['authorized'])) {
-            if ($this->security->userHasRole(['region_boss'])) {
+            if ($this->security->userHasRole(['region_boss', 'admin_admin'])) {
                 $this->leaderHome();
-            } elseif ($this->security->userHasRole(['ministry_boss']) || $this->security->userHasRole(['ministry_staff'])) {
+            } elseif ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) {
                 $this->redirectToRoute('/districts');
-            } elseif ($this->security->userHasRole(['district_boss']) || $this->security->userHasRole(['district_staff'])) {
+            } elseif ($this->security->userHasRole(['district_boss', 'district_staff'])) {
                 $this->redirectToRoute('/reports');
             }
         } else {

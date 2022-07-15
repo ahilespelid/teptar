@@ -1,34 +1,34 @@
-<?php namespace App; use App\Registr;
+<?php namespace App;
 //ini_set('memory_limit', '-1');
+
 /*/ Режим вывода ошибок /*/
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 $GLOBALS['lifeToken'] = (60*60)*24;
 
-// Режим разработчика (Закомментировать )
+// Режим разработчика
 //$GLOBALS['env'] = 'dev';
 
-/*/ --------------------------------------------------------------База данных --------------------------------------------------------------/*/
-
+// База данных
 $table = [
-'users'       => 'users',
-'districts'   => 'districts',
-'reports'   => 'reports',
-'indexes'   => 'index',
-'roles'   => 'roles',
-'status' => 'status',
-'index' => 'index',
-'marks'   => 'marks',
-'usersBlock'   => 'usersBlock',
-'tableUIN'   => 'uin', 
+'users'         => 'users',
+'districts'     => 'districts',
+'reports'       => 'reports',
+'indexes'       => 'index',
+'roles'         => 'roles',
+'status'        => 'status',
+'index'         => 'index',
+'marks'         => 'marks',
+'usersBlock'    => 'usersBlock',
+'tableUIN'      => 'uin',
 ];
 
 $GLOBALS['db']['table'] =  $table;
-$GLOBALS['db']['host'] = '194.67.90.250';
-$GLOBALS['db']['base'] = 'teptar';
-$GLOBALS['db']['user'] = 'tepuser';
-$GLOBALS['db']['pass'] = '-Txh9y#j_sJM';
+$GLOBALS['db']['host']  = '194.67.90.250';
+$GLOBALS['db']['base']  = 'teptar';
+$GLOBALS['db']['user']  = 'tepuser';
+$GLOBALS['db']['pass']  = '-Txh9y#j_sJM';
 
 /*/ --------------------------------------------------------------Глобальный массив параметров --------------------------------------------------------------/*/
 
@@ -48,44 +48,10 @@ $path = [
 'views'     => $path._DS_.'templates'. _DS_ . 'views',
 ];
 
-$GLOBALS['path'] = $path;
-$GLOBALS['path']['controller'] = $GLOBALS['path']['app']._DS_.'Controllers';
-$GLOBALS['path']['model'] = $GLOBALS['path']['app']._DS_.'Models';
-$GLOBALS['path']['view'] = $GLOBALS['path']['app']._DS_.'Views';
-
-$url = [
-// LEADER //
-
-// HomeController
-'index'         => ['controller' => 'HomeController', 'action' => 'index'],
-'error'         => ['controller' => 'HomeController', 'action' => 'error'],
-'framework'     => ['controller' => 'HomeController', 'action' => 'framework'],
-
-// DistrictController
-'district'      => ['controller' => 'DistrictController', 'action' => 'district'],
-'districtReports'      => ['controller' => 'DistrictController', 'action' => 'districtJsonReportsByDate'],
-
-// ProfileController
-'profile'       => ['controller' => 'ProfileController', 'action' => 'profile'],
-'staff'       => ['controller' => 'ProfileController', 'action' => 'staff'],
-
-// STAFF //
-
-// DistrictController
-'districts'      => ['controller' => 'DistrictController', 'action' => 'districts'],
-
-// ReportController
-'reports' => ['controller' => 'ReportController', 'action' => 'reports'],
-'report' => ['controller' => 'ReportController', 'action' => 'report'],
-'report/new' => ['controller' => 'ReportController', 'action' => 'new'],
-
-// ПОКА НЕ ГОТОВЫ //
-'login'         => ['controller' => 'UserController', 'action' => 'login'],
-'exel'          => ['controller' => 'ExelController', 'action' => 'work'],
-'ajax'          => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
-];
-
-$GLOBALS['url'] = $url;
+$GLOBALS['path']                = $path;
+$GLOBALS['path']['controller']  = $GLOBALS['path']['app']._DS_.'Controllers';
+$GLOBALS['path']['model']       = $GLOBALS['path']['app']._DS_.'Models';
+$GLOBALS['path']['view']        = $GLOBALS['path']['app']._DS_.'Views';
 
 /*/-------------------------------------------------------------- Удочка для ошибок --------------------------------------------------------------/*/
 

@@ -1,9 +1,10 @@
 <?php
 namespace App\Controllers;
 
+use App\Service\Security;
 use Exception; use Memcached;
 
-abstract class AbstractController {
+class AbstractController {
     public $users;
     public $user;
 
@@ -41,8 +42,7 @@ abstract class AbstractController {
 
     public function user() {
         $user = new UserController();
-
-        return $user->login($user->getLoginUser());
+        return $user->getLoginUser();
     }
 
     public function image($file) {
@@ -90,8 +90,6 @@ abstract class AbstractController {
         exit;
     }
 
-    public function slugify($string, $pascalCase = false) {return (new \App\Service\Slugifier())->slugify($string, $pascalCase);}
-    
     public function is_date($value){ // */  проверка строки на дату  // */
         if (!$value) {return null;}
 

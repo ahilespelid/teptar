@@ -78,6 +78,7 @@
     height: 40px;
     width: 40px;
     border-radius: 100%;
+    border: 2px solid #E0E0E0;
 }
 
 .actions__info-item .post {
@@ -104,11 +105,14 @@
 .actions__activity-info .name {
     font-size: 14px;
     margin-top: -2px;
+    white-space: nowrap;
+    padding-top: 7px;
 }
 
 .actions__activity-info .avatar {
     margin-right: 10px;
-    min-width: 40px;
+    min-width: 60px;
+    max-height: 60px;
 }
 
 .actions__activity-info .status {
@@ -198,7 +202,7 @@
 
 .actions__activity-indicators .indicators-list .title {
     min-width: 150px;
-    margin-left: 50px;
+    margin-left: 70px;
 }
 
 .actions__activity-indicators .indicators-list .list .item:hover {
@@ -210,14 +214,14 @@
     color: #535C69;
     padding: 10px 14px;
     border-radius: 4px;
-    margin-left: 50px;
+    margin-left: 70px;
     margin-top: 12px;
 }
 
 .indicator-comparison {
     display: flex;
     justify-content: space-around;
-    margin-left: 50px;
+    margin-left: 70px;
     margin-top: 6px;
 }
 

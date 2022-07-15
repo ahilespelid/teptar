@@ -11,33 +11,33 @@
             <div class="menu__body__list">
                 <?php $role = 2; ?>
 
-                <?php if($role === 1) { ?>
-                    <a href="/?ex=reports#" id="my-reports">
-                        <span class="if_active">
-                            <span class="icon-archive menu-icon"></span><span>Мои отчеты</span>
-                        </span>
-                    </a>
-                <?php } else { ?>
-                    <a href="/?ex=districts#" id="districts">
+                <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+                    <a href="/districts" <?php if ($this->security->route == 'districts') { echo 'class="active"'; } ?>>
                         <span class="if_active">
                             <span class="icon-archive menu-icon"></span><span>Районы</span>
                         </span>
                     </a>
+                <?php } else { ?>
+                    <a href="/reports" <?php if ($this->security->route == 'reports') { echo 'class="active"'; } ?>>
+                        <span class="if_active">
+                            <span class="icon-archive menu-icon"></span><span>Отчеты</span>
+                        </span>
+                    </a>
                 <?php } ?>
 
-                <a href="#" id="disc">
+                <a href="#">
                     <span class="if_active">
                         <span class="icon-save_light menu-icon"></span><span>Диск</span>
                     </span>
                 </a>
-                <a href="/?ex=notifications#" id="notifications">
+                <a href="/?ex=notifications#">
                      <span class="if_active">
                         <span class="icon-bell menu-icon notif-icon"></span><span>Уведомления</span>
                      </span>
                 </a>
 
                 <?php if ($role === 2) { ?>
-                    <a href="/?ex=registration#" id="registration">
+                    <a href="/?ex=registration#">
                          <span class="if_active">
                             <span class="icon-user menu-icon notif-icon"></span><span>Добавить сотрудника</span>
                          </span>
@@ -46,17 +46,17 @@
             </div>
 
             <div class="menu__body__list">
-                <a href="#" id="support">
+                <a href="#">
                     <span class="if_active">
                         <span class="icon-setting menu-icon"></span><span>Служба поддержки</span>
                     </span>
                 </a>
-                <a href="#" id="contact">
+                <a href="#">
                     <span class="if_active">
                         <span class="icon-dashboard_alt menu-icon"></span><span>Контакт-центр</span>
                     </span>
                 </a>
-                <a href="#" id="profile">
+                <a href="#">
                     <span class="if_active">
                         <span class="icon-user menu-icon"></span><span>Профиль</span>
                     </span>

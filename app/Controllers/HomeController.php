@@ -2,15 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Service\Security;
+
 class HomeController extends AbstractController {
-    public $user;
     public $uins;
     public $reports;
+    public $security;
 
     public function __construct(){
-        $this->user = new UserController;
         $this->uins = new \App\Models\UINModel;
         $this->reports = new \App\Models\ReportModel;
+        $this->security = new Security();
     }
 
     /**
@@ -18,57 +20,33 @@ class HomeController extends AbstractController {
      */
     public function index() {
         if (isset($_GET['logout'])) {
-            $this->user->out(); exit();
+            (new UserController())->out(); exit();
         }
 
-        if ($this->user->isToken()) {
-            if ($user = $this->user->login($this->user->getLoginUser())) {
-                $district = $this->uins->findOneBy(['slug' => $_GET['district'] ?? 'Grozny']);
-                $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
-
-                $this->render('/leader/home/home.php', [
-                    'districts' => $this->uins->findBy(['type' => 'district']),
-                    'navbar' => 'home',
-                    'reportsType' => 'home',
-                    'user' => [
-                        'post' => $user->role['post']
-                    ],
-                    'reports' => $this->reports->findDistrictReportsByDate($date,$district['id']),
-                    'district' => $district,
-                ]);
+        if ($this->security->userHasRole(['authorized'])) {
+            if ($this->security->userHasRole(['region_boss'])) {
+                $this->leaderHome();
+            } elseif ($this->security->userHasRole(['ministry_boss']) || $this->security->userHasRole(['ministry_staff'])) {
+                $this->redirectToRoute('/districts');
+            } elseif ($this->security->userHasRole(['district_boss']) || $this->security->userHasRole(['district_staff'])) {
+                $this->redirectToRoute('/reports');
             }
         } else {
-            $this->render('/leader/home/login.php');
+            $this->redirectToRoute('/login');
         }
     }
 
-    /**
-     * Страница ошибок
-     */
-    public function error($error = 404, $title = null, $message = null) {
-        if ($title == null) {
-            if ($error == 404) {
-                $title = 'Страница не найдена';
-            }
-        }
+    public function leaderHome() {
+        $district = $this->uins->findOneBy(['slug' => $_GET['district'] ?? 'Grozny']);
+        $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
 
-        if ($message == null) {
-            if ($error == 404) {
-                $message = 'Страницу которую вы искали не существует, пожалуйста выберите другую либо вернитесь на главную.';
-            }
-        }
-
-        if($user = $this->user->login($this->user->getLoginUser())){
-            $this->render('/leader/home/error.php', [
-                'error' => $error,
-                'title' => $title,
-                'message' => $message,
-                'districts' => $this->uins->findBy(['type' => 'district']),
-                'user' => [
-                    'post' => $user->role['post']
-                ]
-            ]);
-        }
+        $this->render('/leader/home.php', [
+            'districts' => $this->uins->findBy(['type' => 'district']),
+            'reports' => $this->reports->findDistrictReportsByDate($date,$district['id']),
+            'navbar' => 'home',
+            'reportsType' => 'home',
+            'district' => $district,
+        ]);
     }
 
     /**

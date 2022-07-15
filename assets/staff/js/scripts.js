@@ -4,24 +4,6 @@ $(document).ready(function () {
     $(".menu__footer__toggle a")["0"].addEventListener("click", function () {
         $(".menu").toggleClass("menu__folded")
     })
-
-    var path = document.location.href
-
-    if(path.includes("notifications")) {
-        $("#notifications").addClass("active")
-    } else if(path.includes("disc")) {
-        $("#disc").addClass("active")
-    } else if(path.includes("village") || path.includes("districts")) {
-        $("#districts").addClass("active")
-    } else if(path.includes("reports")) {
-        $("#my-reports").addClass("active")
-    } else if(path.includes("registration")) {
-        $("#registration").addClass("active")
-    } else if(path.includes("call_center")) {
-        $("#contact").addClass("active")
-    } else if(path.includes("support")) {
-        $("#support").addClass("active")
-    }
 })
 
 // Шапка

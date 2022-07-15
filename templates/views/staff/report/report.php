@@ -11,10 +11,17 @@
             <div class="body">
 
                 <div class="body__back-button">
-                    <a href="/reports?district=<?= $data['district']['slug'] ?>">
-                        <span class="icon-expand_left_right body__back__arrow"></span>
-                        Вернуться
-                    </a>
+                    <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+                        <a href="/reports?district=<?= $data['district']['slug'] ?>">
+                            <span class="icon-expand_left_right body__back__arrow"></span>
+                            Вернуться
+                        </a>
+                    <?php } else { ?>
+                        <a href="/reports">
+                            <span class="icon-expand_left_right body__back__arrow"></span>
+                            Вернуться
+                        </a>
+                    <?php } ?>
 
                     <div class="body__back-button__icons">
                         <a href="#">
@@ -34,8 +41,8 @@
                 <div class="reports-title">
                     <div class="reports-title__my-reports">
                         <div class="reports-title__my-reports__text">
-                            <h1 class="district"><?= $data['district']['owner'] ?>: </h1>
-                            <h1><?= $data['report']['name'] ?></h1>
+                            <h1 class="district"><?= $data['report']['name'] ?></h1>
+                            <span class="title">(Район: <?= $data['district']['owner'] ?>)</span>
                         </div>
 
                         <div class="reports-title__my-reports__btn">
@@ -181,7 +188,7 @@
                                 Ответственный
                             </div>
                             <div class="side-block__body">
-                                <img src="<?= $data['boss']['avatar'] ?>" alt="responsible_avatar">
+                                <img src="<?php if ($data['boss']['avatar']) { echo $data['boss']['avatar']; } else { echo $this->security->setEmptyAvatar(); } ?>" alt="responsible_avatar">
                                 <div class="responsible__info">
                                     <span class="responsible__name"><?= $data['boss']['firstname'] . ' ' . $data['boss']['lastname'] ?></span>
                                     <span class="responsible__post">Глава района</span>
@@ -193,7 +200,7 @@
                             <div class="side-block__header">Сотрудник</div>
 
                             <div class="side-block__body">
-                                <img src="<?= $data['staff']['avatar'] ?>">
+                                <img src="<?php if ($data['staff']['avatar']) { echo $data['staff']['avatar']; } else { echo $this->security->setEmptyAvatar(); } ?>">
                                 <div class="assistant__info">
                                     <span class="assistant__name"><?= $data['staff']['firstname'] . ' ' . $data['staff']['lastname'] ?></span>
                                     <span class="assistant__post">Районный сотрудник</span>

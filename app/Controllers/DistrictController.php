@@ -24,7 +24,7 @@ class DistrictController extends AbstractController {
                 $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
 
                 if ($userIsLeader) {
-                    $this->render('/district/district-leader.php', [
+                    $this->render('/leader/district/district.php', [
                         'user' => ['post' => $user->role['post']],
                         'district' => $district,
                         'districts' => $this->uins->findBy(['type' => 'district']),
@@ -37,6 +37,23 @@ class DistrictController extends AbstractController {
                 (new HomeController)->error(404,'Регион не существует', 'Район который вы ищите не существует, пожалуйста выберите другой либо вернитесь на главную.');
             }
         }
+    }
+
+    public function districts() {
+        $districts = [];
+
+        foreach ($this->uins->findBy(['type' => 'district']) as $key => $district) {
+            $districts[$key] = [
+                'district' => $district,
+                'report' => $this->reports->findOneBy(['id_uin' => $district['id']], ['submitting' => 'DESC']),
+                'staff' => $this->users->findBy(['id_uin' => $district['id'], 'id_role' => 5], null, 2),
+                'staffCount' => $this->users->count(['id_uin' => $district['id'], 'id_role' => 5]),
+            ];
+        }
+
+        $this->render('/staff/district/districts.php', [
+            'districts' => $districts
+        ]);
     }
 
     /**

@@ -16,6 +16,7 @@ class UserController extends AbstractController{
             $uin,
             $role,
             $rule,
+            $avatar,
             $email,
             $phone,
             $lastname,
@@ -56,6 +57,7 @@ class UserController extends AbstractController{
                 $this->lastname         = (empty($user['lastname'])) ? '': $user['lastname'];
                 $this->firstname        = (empty($user['firstname'])) ? '': $user['firstname'];
                 $this->secondname       = (empty($user['secondname'])) ? '': $user['secondname'];
+                $this->avatar           = (empty($user['avatar'])) ? '': $user['avatar'];
                 $this->age              = (empty($user['age'])) ? '': $user['age'];
 
                 $this->district         = $user['district'] = (!empty($user['id_district'])) ? $this->model->getDistrict($user['id_district']) : [];
@@ -71,7 +73,7 @@ class UserController extends AbstractController{
                         if ($is_loginUrl && $is_auth) {
                             header('Location: /');
                         } elseif($is_loginUrl && !$is_auth) {
-                            $this->render('/home/login.php');
+                            $this->render('/leader/home/login.php');
                         } elseif(!$is_loginUrl && $is_auth) {
                             return $this;
                         } else {
@@ -81,21 +83,21 @@ class UserController extends AbstractController{
                 }
             }
         }
+
         if ($is_loginUrl) {
-         $this->render('/home/login.php');
+         $this->render('/leader/home/login.php');
         } else {
          return false;
         }
     }
 
-     public function createToken($user = []) {
-        if (is_array($user) && !empty($user) && !is_array(current((array) $user))
-            && !empty($user['pass']) && !empty($user['hash'])) {
-             $hash = $user['pass'] . $user['hash'];
-             return $token = ($hash) ? hash('sha3-512', $hash) : false;
-         }
-        return false;
+    public function createToken($user = []) {
+    if (is_array($user) && !empty($user) && !is_array(current((array) $user))
+        && !empty($user['pass']) && !empty($user['hash'])) {
+         $hash = $user['pass'] . $user['hash'];
+         return $token = ($hash) ? hash('sha3-512', $hash) : false;
     }
+    return false;}
  
      public function isToken() {
         if (!empty($_SESSION['user']) && !empty($_SESSION['token'])) {

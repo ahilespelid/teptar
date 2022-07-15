@@ -4,24 +4,26 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$GLOBALS['lifeToken'] = (60*60)*24;
+$GLOBALS['lifeToken'] = (3600)*24;
+$GLOBALS['lifeMemcache'] = (3600*24*30)/3600*24;
 
 // Режим разработчика (Закомментировать )
-//$GLOBALS['env'] = 'dev';
+// */ $GLOBALS['env'] = 'dev'; // */
 
 /*/ --------------------------------------------------------------База данных --------------------------------------------------------------/*/
 
-$table = array(
+$table = [
 'users'       => 'users',
 'districts'   => 'districts',
 'reports'   => 'reports',
 'indexes'   => 'index',
 'roles'   => 'roles',
+'status' => 'status',
+'index' => 'index',
 'marks'   => 'marks',
 'usersBlock'   => 'usersBlock',
 'tableUIN'   => 'uin', 
-);
-
+];
 
 $GLOBALS['db']['table'] =  $table;
 $GLOBALS['db']['host'] = '194.67.90.250';
@@ -53,6 +55,8 @@ $GLOBALS['path']['model'] = $GLOBALS['path']['app']._DS_.'Models';
 $GLOBALS['path']['view'] = $GLOBALS['path']['app']._DS_.'Views';
 
 $url = [
+// LEADER //
+
 // HomeController
 'index'         => ['controller' => 'HomeController', 'action' => 'index'],
 'error'         => ['controller' => 'HomeController', 'action' => 'error'],
@@ -66,11 +70,20 @@ $url = [
 'profile'       => ['controller' => 'ProfileController', 'action' => 'profile'],
 'staff'         => ['controller' => 'ProfileController', 'action' => 'staff'],
 
-// Пока не готовы
+// STAFF //
+
+// DistrictController
+'districts'      => ['controller' => 'DistrictController', 'action' => 'districts'],
+
+// ReportController
+'reports' => ['controller' => 'ReportController', 'action' => 'reports'],
+'report' => ['controller' => 'ReportController', 'action' => 'report'],
+
+// ПОКА НЕ ГОТОВЫ //
 'login'         => ['controller' => 'UserController', 'action' => 'login'],
 'exel'          => ['controller' => 'ExelController', 'action' => 'work'],
 'ajax'          => ['controller' => 'AjaxController', 'action' => 'getMarkData'],
-'report'        => ['controller' => 'ReportController', 'action' => 'index'],
+
 'calculate'     => ['controller' => 'CalculateController', 'action' => 'index'],
 ];
 

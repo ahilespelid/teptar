@@ -1,22 +1,33 @@
 <?php return
 [
+// LEADER //
+
 // HomeController
-'index'         => $GLOBALS['url']['index'],
-'error'         => $GLOBALS['url']['error'],
-'framework'     => $GLOBALS['url']['framework'],
+'index'             => $GLOBALS['url']['index'],
+'error'             => $GLOBALS['url']['error'],
+'framework'         => $GLOBALS['url']['framework'],
+
 
 // DistrictController
-'district'      => $GLOBALS['url']['district'],
-'districtReports'      => $GLOBALS['url']['districtReports'],
+'district'          => $GLOBALS['url']['district'],
+'districtReports'   => $GLOBALS['url']['districtReports'],
 
 // ProfileController
-'profile'       => $GLOBALS['url']['profile'],
-'staff'       => $GLOBALS['url']['staff'],
+'profile'           => $GLOBALS['url']['profile'],
+'staff'             => $GLOBALS['url']['staff'],
 
-// Пока не готовы
-'login'         => $GLOBALS['url']['login'],        /*/ userController.php Контраллер пользователя -> экшен авторизации /*/
-'exel'          => $GLOBALS['url']['exel'],         /*/ json для Внутренней вёрстки /*/
-'ajax'          => $GLOBALS['url']['ajax'],
-'report'        => $GLOBALS['url']['report'],
-'calculate'     => $GLOBALS['url']['calculate'],
+// STAFF //
+
+// DistrictController
+'districts'         => $GLOBALS['url']['districts'],
+
+// ReportController
+'reports'           => $GLOBALS['url']['reports'],
+'report'            => $GLOBALS['url']['report'],
+
+// ПОКА НЕ ГОТОВЫ //
+'login'             => $GLOBALS['url']['login'],
+'exel'              => $GLOBALS['url']['exel'],
+'ajax'              => $GLOBALS['url']['ajax'],
+'calculate'         => $GLOBALS['url']['calculate']
 ];

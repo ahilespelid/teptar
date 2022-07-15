@@ -9,9 +9,11 @@ define('dbPass',  $GLOBALS['db']['pass']);
 abstract class Data{
     public $pdo;
     public $table;
+    public $logFile;
 
     public function __construct(){}
     public function connPDO(){
+        $this->logFile = $GLOBALS['path']['log'] . _DS_;
         $pdo = new \PDO("mysql:dbname=" .$GLOBALS['db']['base'] . ";host=".
             $GLOBALS['db']['host'],
             $GLOBALS['db']['user'],
@@ -32,7 +34,8 @@ abstract class Data{
 
         $sql = 'SELECT * FROM '.$table.' WHERE `id`='.$id.';';
         $return = $this->pdo->query($sql);  //*/ return $return->queryString; echo $sql; //*/
-
+        if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
+        
         return $return->fetch();}
 
     public function getAll(string $table){//*/ Берёт все значения из таблицы //*/
@@ -41,7 +44,8 @@ abstract class Data{
 
         $sql = 'SELECT * FROM '.$table.';';
         $return = $this->pdo->query($sql);
-
+        if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
+        
         return $return->fetchAll();}
 
 
@@ -65,10 +69,10 @@ abstract class Data{
         }$whereString = ' WHERE '.$whereString.' '.$order;
         $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ echo $sql.'<br>'; //*/
 
-        $return = $this->pdo->query($sql);
-        
-        $return = $return->fetchAll(); 
-         return (is_array($return) && !empty($return)) ? $return : false;}
+        $return = $this->pdo->query($sql)->fetchAll();
+        if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
+         
+        return (is_array($return) && !empty($return)) ? $return : false;}
     
     public function getRange($from = 1, $to = 10, $table = '', $colum = ''){//*/ Берёт от и до из таблиц(У|Ы)  //*/
 
@@ -79,9 +83,10 @@ abstract class Data{
         }else{$colum = '*';}
 
         $sql =  'SELECT '.$colum.' FROM '.$table.' WHERE `id`>='.$from.' AND `id`<='.$to.';';
-        $return = $this->pdo->query($sql);
-
-        return $return->fetchAll();}
+        $return = $this->pdo->query($sql)->fetchAll();
+        if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
+        
+        return $return;}
 
     public function getRandTable(bool $oneOrMony = false, bool $orderRand = false){//*/ Берёт случайную таблиц(У|Ы) из схемы  //*/ 
             $sql =  'SELECT `TABLE_NAME` FROM `INFORMATION_SCHEMA`.`TABLES` WHERE `TABLE_SCHEMA`'." = '" . $GLOBALS['db']['base'] . "' ORDER BY ".
@@ -103,7 +108,8 @@ abstract class Data{
 
         $colum = $return->fetchAll();
         $return = []; array_walk_recursive($colum, function($a) use (&$return) { $return[] = $a;});
-
+        if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
+        
         return $return; //*/ $column [ 0 => TABLE_NAME], 1 => TABLE_NAME, ...] //*/ 
     }   
 /*/ -------------------------------------------------------------- Вставки в базу -------------------------------------------------------------- /*/ 
@@ -122,7 +128,10 @@ abstract class Data{
                 $values     .= $values     ? ', ' : ''; $values     .= $value;
             }
             $sql = 'INSERT INTO '.$table.' ('.$columns.') VALUES ('.$values.');'; //*/ echo $sql; //*/
-            return ($this->pdo->query($sql)) ? $this->pdo->lastInsertId() : false;
+            $return = $this->pdo->query($sql); 
+            if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
+            
+            return ($return) ? $this->pdo->lastInsertId() : false;
 
         }return false;}
 
@@ -143,22 +152,21 @@ abstract class Data{
             }
 
             $sql = 'UPDATE '.$table.' SET '.$columns.' WHERE `id` = :id;'; //*/ echo $sql; //*/
-            return ($this->pdo->prepare($sql)->execute($data)) ? $data['id'] : false;
+            $return = $this->pdo->prepare($sql)->execute($data); 
+            if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
+
+            return ($return) ? $data['id'] : false;
 
         }return false;}
 
-    public function new_($sql = ''){
-
-    }
-
-    public function getQuery($sql = '', $return = true){
+    public function getQuery($sql = '', $arrayReturn = true){
         $sql = (is_string($sql) && !empty($sql)) ? trim($sql) : false;
+        
+        $return = ($arrayReturn) ? $this->pdo->query($sql)->fetchAll() : $this->pdo->query($sql);
 
-        if($return){
-            return $this->pdo->query($sql)->fetchAll();
-        }else{
-            $this->pdo->query($sql); return true;}
-
+        if(!empty($return)){$this->writeLog($sql, __FUNCTION__);
+        return $return;}
+        
         return false;}
 
     public function getTableFromIdString(string $subject){ $f = false;
@@ -198,17 +206,21 @@ abstract class Data{
 
         // Генерация всего запроса из результатов предыдуще генерированных строков
         $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . " LIMIT 1";
-        $query = $this->pdo->query($sql);
+        
+        $return = $this->pdo->query($sql)->fetchAll();
+        if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
 
-        return (!empty($return = $query->fetchAll())) ? $return[0] : false;
+        return (!empty($return)) ? $return[0] : false;
     }
 
     // Поиск всех записей таблицы
     public function findAll() {
         $sql = 'SELECT * FROM ' . $this->table . ';';
-        $query = $this->pdo->query($sql);
-
-        return $query->fetchAll();
+        
+        $return = $this->pdo->query($sql)->fetchAll();
+        if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
+        
+        return $return;
     }
 
     // Ищет записи по критериям
@@ -248,9 +260,10 @@ abstract class Data{
         // Генерация всего запроса из результатов предыдуще генерированных строков
         $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . $limitSQL . $offsetSQL;
 
-        $query = $this->pdo->query($sql);
-
-        return $query->fetchAll();
+        $return = $this->pdo->query($sql)->fetchAll();
+        if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
+        
+        return $return;
     }
 
     // Ищет записи по критериям
@@ -270,5 +283,49 @@ abstract class Data{
     // Ищет все записи таблиц и возвращает их в формате JSON
     public function jsonAll() {
         return json_encode($this->findAll(), JSON_UNESCAPED_UNICODE);
+    }
+
+    // Выдает количество записей по критериям
+    // Пример: ['role' => 'user']
+    // Результат: int (8)
+    public function count(array $criteria) {
+        $criteriaSQL = '';
+        $iteration = 1;
+
+        // Генерация строки запроса SQL для обязательного параметра критериев $criteria
+        foreach ($criteria as $column => $value) {
+            ($iteration == 1) ? $criteriaSQL .= "" : $criteriaSQL .= " AND ";
+            $criteriaSQL .= $column . " = '" . $value . "'";
+            $iteration += 1;
+        }
+
+        // Генерация всего запроса из результатов предыдуще генерированных строков
+        $sql = "SELECT COUNT(*) FROM " . $this->table . " WHERE " . $criteriaSQL;
+
+        $return = $this->pdo->query($sql)->fetchColumn();
+        if(!empty($return)){$this->writeLog($sql, __FUNCTION__);}
+        
+        return $return;
+    }
+
+    public function writeLog($sql = null, $method = 'sql'){
+        /*/ Создание имени файла с текущей датой в назвинии файла /*/
+        $date = new \DateTime('now');
+        $nameClass = get_called_class();
+        $filename = 'sql' . _DS_ . $method . '_' . $date->format('Y-m-d') . '.txt';
+
+        /*/ Создание файла $filename если он не существует 
+        if (!file_exists($this->logFile . $filename)) {
+            fopen($this->logFile . $filename, "w");
+        } /*/
+
+        if($sql){
+            /*/ Создание новой записи текущего исключения /*/
+            $entry = PHP_EOL . $date->format('[H:i:s]') .((!empty($_SESSION['user']['login'])) ? ' '.$_SESSION['user']['login'] : ''). PHP_EOL . $sql .'';
+            /*/ Добавление новой записи в php.txt /*/
+            file_put_contents($this->logFile . $filename, $entry, FILE_APPEND | LOCK_EX);
+            return true;
+        }
+        return false;
     }
 }

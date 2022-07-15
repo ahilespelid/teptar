@@ -4,7 +4,7 @@ require_once('..'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php
 //*/ 
 $bug = new App\Registr(); //*/ 
 //*/ 
-$route = (new App\Route)->run(); //*/
+(new App\Route)->run(); //*/
  //*/ 
 $bug->writeLog(); //*/
  //*/ 

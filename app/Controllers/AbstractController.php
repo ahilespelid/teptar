@@ -1,9 +1,16 @@
 <?php
+
 namespace App\Controllers;
 
-use Exception; use Memcached;
+class AbstractController {
+    public $users;
+    public $user;
 
-abstract class AbstractController{
+    public function __construct() {
+        $this->users = new \App\Models\UserModel;
+        $this->user = new UserController();
+    }
+
     public function render($view, $parameters = []) {
         // Заменяем слэши из ссылки на вид сепаратором
         $view = implode(DIRECTORY_SEPARATOR, explode('/', $view));
@@ -31,29 +38,56 @@ abstract class AbstractController{
         return $GLOBALS['path']['layouts'] .DIRECTORY_SEPARATOR. $view;
     }
 
+    public function user() {
+        $user = new UserController();
+        return $user->getLoginUser();
+    }
+
     public function image($file) {
         // Заменяем слэши из ссылки на изображение сепаратором
         $file = implode(DIRECTORY_SEPARATOR, explode('/', $file));    
 
-        // Определяем полный путь с корневой папки до изображения
+        // Генерируем полный путь с корневой папки до изображения
         $path = $GLOBALS['path']['dev'] . $file;
 
-        // Выявляем расширение изображения и объявляем переменную изображения
-        $ext = mb_strtolower(pathinfo($path)['extension']);
-        $img = null;
+        // Условие если файл по генерированной пути существует
+        if (file_exists($path)) {
+            // Выявляем расширение изображения и объявляем переменную изображения
+            $ext = mb_strtolower(pathinfo($path)['extension']);
+            $img = null;
 
-        // Кодируем изображение из полученной ссылки в формат base64
-        if (in_array($ext, ['jpeg', 'jpg', 'gif', 'png', 'webp', 'svg'])) {
-            if ($ext == 'svg') {
-                $img = 'data:image/svg+xml;base64,' . base64_encode(file_get_contents($path));
-            } else {
-                $img = 'data:' . getimagesize($path)['mime'] . ';base64,' . base64_encode(file_get_contents($path));
+            // Кодируем изображение из полученной ссылки в формат base64
+            if (in_array($ext, ['jpeg', 'jpg', 'gif', 'png', 'webp', 'svg'])) {
+                if ($ext == 'svg') {
+                    $img = 'data:image/svg+xml;base64,' . base64_encode(file_get_contents($path));
+                } else {
+                    $img = 'data:' . getimagesize($path)['mime'] . ';base64,' . base64_encode(file_get_contents($path));
+                }
             }
-        }
-        return $img;}
 
-    public function slugify($string, $pascalCase = false) {return (new \App\Service\Slugifier())->slugify($string, $pascalCase);}
-    
+            return $img;
+        } else {
+            return null;
+        }
+    }
+
+    public function redirectToRoute(string $route, array $parameters = null) {
+        $params = '';
+        $i = 1;
+
+        foreach ($parameters as $parameter => $value) {
+            if ($i == 1) {
+                $params .= '?' . $parameter . '=' . $value;
+            } else {
+                $params .= '&' . $parameter . '=' . $value;
+            }
+            $i += 1;
+        }
+
+        header('Location: ' . $route . $params);
+        exit;
+    }
+
     public function is_date($value){ // */  проверка строки на дату  // */
         if (!$value) {return null;}
 
@@ -61,15 +95,15 @@ abstract class AbstractController{
         return $d;
         } catch (\Exception $e){
         return null;}}
-    
-    public function  arrayDeleteElement(array $array, array $symbols = ['']){ // */ удаляет из одномерного массива елеметы  $symbols // */
+
+    public function  arrayDeleteElement(array $array, array $symbols = ['']) { // */ удаляет из одномерного массива елеметы  $symbols // */
         return (is_array($array) && !empty($array) && !is_array(current($array))) ? array_diff($array, $symbols) : false;}
-        
+
     public function connMCD(){ // */  подключение к оперативке  // */
         if(!class_exists("Memcached")){return false;}
         $m = new \Memcached; $m->addServer('localhost', 11211);
         return $m;}
-        
+
     public function arrayMinMax($array, string $return = 'max|min'){ // */ Выбирает минимальное и/или максимальное значение из массива // */
         if(!is_array($array) && empty($array) && !is_array(current($array)) && !is_string($return)){return false;}
         foreach($array as $k => $v){
@@ -77,8 +111,7 @@ abstract class AbstractController{
             $max[$k] = max($v);
         }
         return ('min' == $return && !empty($min)) ? $min : (
-                        ('max' == $return && !empty ($max)) ? $max : (
-                            ((('max|min' == $return) || ('min|max' == $return)) && (!empty($min) || !empty($max))) ? array('min' => $min, 'max' => $max) : false));
+                    ('max' == $return && !empty ($max)) ? $max : (
+                        ((('max|min' == $return) || ('min|max' == $return)) && (!empty($min) || !empty($max))) ? array('min' => $min, 'max' => $max) : false));
     }
-
 }

@@ -1,0 +1,239 @@
+.actions {
+    display: flex;
+    margin-top: 24px;
+}
+
+.actions__reports, .actions__activity {
+    flex-basis: 100%;
+    width: 50%;
+}
+
+.actions__reports {
+    margin-right: 24px;
+}
+
+.actions__reports .actions__info-item {
+    padding: 8px 12px;
+}
+
+.actions__info {
+    height: 430px;
+    overflow-y: scroll;
+
+    box-sizing: border-box;
+}
+
+.actions__info-item {
+    background-color: #fff;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    padding: 16px;
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.actions__info-item:last-child {
+    margin-bottom: 0;
+}
+
+.actions__reports-rating {
+    text-align: right;
+    padding-top: 8px;
+    padding-right: 2px;
+}
+
+.actions__reports-rating .icon-star {
+    margin-right: 2px;
+}
+
+.actions__reports-rating .icon-star:last-child {
+    margin-right: -2px;
+}
+
+.actions__reports-rating .icon-star:first-child {
+    margin-left: 2px;
+}
+
+.actions__info-item-title {
+    font-size: 14px;
+    height: 30px;
+}
+
+.actions__reports-text {
+    margin-top: 6px;
+    line-height: 20px;
+}
+
+.actions__reports-date {
+    float: right;
+    color: rgba(255,255,255,0.25);
+    font-size: 12px;
+}
+
+.actions__reports-date .icon-document {
+    margin-right: 2px;
+}
+
+.actions__info-item .avatar img {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    border: 2px solid #E0E0E0;
+}
+
+.actions__info-item .post {
+    font-weight: 700;
+    color: #535C69;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+.actions__activity-info {
+    display: flex;
+}
+
+.actions__activity-user {
+    display: flex;
+}
+
+.actions__activity-info .info {
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.actions__activity-info .name {
+    font-size: 14px;
+    margin-top: -2px;
+    white-space: nowrap;
+    padding-top: 7px;
+}
+
+.actions__activity-info .avatar {
+    margin-right: 10px;
+    min-width: 60px;
+    max-height: 60px;
+}
+
+.actions__activity-info .status {
+    flex-basis: 100%;
+}
+
+.actions__activity-info .status {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.actions__activity-info .status span {
+    color: rgba(0, 0, 0, 0.25);
+    margin-right: 16px;
+}
+
+.actions__activity-info .status span:last-child {
+    margin-right: 3px;
+}
+
+.actions__activity-info .status span.active {
+    padding: 0;
+    text-align: center;
+    max-height: unset !important;
+    border-radius: 8px;
+    color: #535C69 !important;
+    background: none;
+    transition: 0.3s;
+}
+
+.actions__activity-content {
+    display: flex;
+    justify-content: right;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.actions__activity-content .item {
+    display: flex;
+    align-items: center;
+    background: #EEF2F4;
+    border-radius: 4px;
+    margin-right: 10px;
+    flex-basis: 100%;
+    padding: 10px 12px;
+}
+
+.actions__activity-content .item:last-child {
+    margin: unset;
+}
+
+.actions__activity-indicators {
+    margin-top: 20px;
+}
+
+.indicators-list {
+    display: flex;
+}
+
+.actions__activity-indicators .indicators-list .list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.actions__activity-indicators .indicators-list .list .item {
+    border: 1px solid transparent;
+    background: #EEF2F4;
+    color: #535C69;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 37px;
+    margin-right: 5px;
+    cursor: pointer;
+    height: 38px;
+    width: 38px;
+}
+
+.actions__activity-indicators .indicators-list .list .item.active {
+    border: 1px solid #fff;
+    color: #535C69 !important;
+    height: 38px !important;
+    padding: 0;
+    border: 1px solid #535C69;
+}
+
+.actions__activity-indicators .indicators-list .title {
+    min-width: 150px;
+    margin-left: 70px;
+}
+
+.actions__activity-indicators .indicators-list .list .item:hover {
+    background: #dfe3e6;
+}
+
+.indicator-description {
+    background: #EEF2F4;
+    color: #535C69;
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-left: 70px;
+    margin-top: 12px;
+}
+
+.indicator-comparison {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 70px;
+    margin-top: 6px;
+}
+
+.indicator-comparison div {
+    flex-basis: 100%;
+    background: #EEF2F4;
+    color: #535C69;
+    margin-right: 6px;
+    border-radius: 4px;
+    padding: 10px 12px;
+}
+
+.indicator-comparison div:last-child {
+    margin: unset;
+}

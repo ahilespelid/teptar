@@ -1,0 +1,105 @@
+.md-box {
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #eef1f5;
+}
+
+/* Buttons */
+
+.button {
+    border: 1px solid transparent;
+    display: inline-block;
+    cursor: pointer;
+    line-height: 38px;
+    padding: 0 12px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    font-size: 14px;
+    color: #535C69;
+    border-radius: 4px;
+    background-color: transparent;
+    height: 40px;
+}
+
+.button i {
+    margin-right: 4px;
+    font-size: 90%;
+}
+
+.button .icon {
+    position: relative;
+    top: 1px;
+}
+
+/* Success button */
+
+.button-success {
+    background-color: #00B894;
+    color: #fff;
+}
+.button-success:hover {
+    background-color: #08c7a2;
+}
+
+/* Info button */
+
+.button-info {
+    background-color: #157DCD;
+    color: #fff;
+}
+.button-info:hover {
+    background-color: #2089da;
+}
+
+/* Link button */
+
+.button-link {
+    background-color: #f1f1f1;
+}
+
+.button-link:hover {
+    background-color: #f7f7f7;
+}
+
+/* Report form */
+
+.report-form-title input {
+    border: 1px solid #dde2e8;
+    background: unset;
+    height: 40px;
+    width: 300px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+.report-form-textarea textarea {
+    width: 100%;
+    border: unset;
+    padding: 11px 14px;
+    resize: none;
+    background: unset;
+    font-family: 'Open Sans', serif;
+}
+.report-form form div {
+    margin-bottom: 12px;
+}
+.report-form form div:last-child {
+    margin: unset;
+}
+.report-form-staff, .report-form-actions {
+    padding: 10px;
+}
+.report-form-title {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.report-form-title h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #989faa;
+}
+.report-form-title .report-deadline {
+    color: #989faa;
+}

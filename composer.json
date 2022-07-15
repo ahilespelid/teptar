@@ -18,9 +18,10 @@
         ],                                         
         "psr-4": {
             "App\\": "core/",
-             "App\\": "app/",
-             "App\\Models\\": "app/Models/",
-             "App\\Controllers\\": "app/Controllers/"
+            "App\\": "app/",
+            "App\\Models\\": "app/Models/",
+            "App\\Controllers\\": "app/Controllers/",
+            "App\\Service\\": "app/Service/"
          }
     } 
 }

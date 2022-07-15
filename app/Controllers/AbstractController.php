@@ -1,8 +1,6 @@
 <?php
-namespace App\Controllers;
 
-use App\Service\Security;
-use Exception; use Memcached;
+namespace App\Controllers;
 
 class AbstractController {
     public $users;
@@ -97,21 +95,16 @@ class AbstractController {
         return $d;
         } catch (\Exception $e){
         return null;}}
-    
+
     public function  arrayDeleteElement(array $array, array $symbols = ['']) { // */ удаляет из одномерного массива елеметы  $symbols // */
         return (is_array($array) && !empty($array) && !is_array(current($array))) ? array_diff($array, $symbols) : false;}
-        
+
     public function connMCD(){ // */  подключение к оперативке  // */
         if(!class_exists("Memcached")){return false;}
         $m = new \Memcached; $m->addServer('localhost', 11211);
         return $m;}
-        
-    public function arrayExpand(array $array, string $key) { // */ Разворачивает многомерный массив в одномерный по ключу : [[id => 1],[id => 2],[id => 3]]  => [1, 2, 3] // */
-        if(!is_array($array) && empty($array) && !is_array(current($array)) && !is_string($key) && empty($key)){return false;}
-        array_walk_recursive($array, function($v, $k) use (&$return) {if($key == $k){$return[] = $v;}});
-        return $return;}
 
-    public function arrayMinMax($array, string $return = 'max|min') { // */ Выбирает минимальное и/или максимальное значение из массива // */
+    public function arrayMinMax($array, string $return = 'max|min'){ // */ Выбирает минимальное и/или максимальное значение из массива // */
         if(!is_array($array) && empty($array) && !is_array(current($array)) && !is_string($return)){return false;}
         foreach($array as $k => $v){
             $min[$k] = min($v); 

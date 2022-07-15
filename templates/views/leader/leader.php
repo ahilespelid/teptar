@@ -15,7 +15,7 @@
                             <div class="media">
                                 <div class="avatar" style="background-image: url('<?= $this->image('/assets/images/avatar.jpg'); ?>')"></div>
                             </div>
-                            <span class="title"><?= $user['full_name']; ?></span>
+                            <span class="title"><?= $this->user()['lastname'] . ' ' . $this->user()['firstname'] . ' ' . $this->user()['secondname'] ?></span>
                             <span class="muted">Глава Чеченской Республики</span>
                             <span class="muted"><i class="icon-pin"></i> Грозный, Российская Федерация</span>
                             <span class="social">

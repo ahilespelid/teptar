@@ -59,7 +59,7 @@
 
             <div class="districts-list">
                 <?php foreach ($districts as $map_district) { ?>
-                    <div class="item"><a class="map-link" id="MapLink<?= $this->slugify($map_district['owner'], true) ?>" href="/district?district=<?= $this->slugify($map_district['owner'], true) ?>"><?= $map_district['owner'] ?></a></div>
+                    <div class="item"><a class="map-link" id="MapLink<?= $map_district['slug'] ?>" href="/district?district=<?= $map_district['slug'] ?>"><?= $map_district['owner'] ?></a></div>
                 <?php } ?>
             </div>
         </div>
@@ -70,7 +70,7 @@
         <div class="collapse-button block-box block-padding sub-block-margin-top">Выбрать район в ручную</div>
         <div class="collapse-content sub-block-margin-top">
             <?php foreach ($districts as $map_district) { ?>
-                <a class="item map-link" id="MapLink<?= $this->slugify($map_district['owner'], true) ?>" href="/district?district=<?= $this->slugify($map_district['owner'], true) ?>"><?= $map_district['owner'] ?></a>
+                <a class="item map-link" id="MapLink<?= $map_district['slug'] ?>" href="/district?district=<?= $map_district['slug'] ?>"><?= $map_district['owner'] ?></a>
             <?php } ?>
         </div>
     </div>

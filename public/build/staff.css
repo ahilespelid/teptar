@@ -1655,7 +1655,7 @@ header {
   width: 100%;
   height: 61px;
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 22px;
   font-size: 17px;
   display: flex;
   align-items: center;
@@ -1696,6 +1696,15 @@ header {
   -webkit-user-select: none;
   user-select: none;
 }
+
+.reports-title__my-reports__text .title {
+  margin-left: 10px;
+  font-size: 20px;
+  color: #9fa9b7;
+  top: 2px;
+  position: relative;
+}
+
 .reports-footer__action img {
   padding-right: 6.5px;
 }
@@ -1715,7 +1724,7 @@ header {
 .reports-footer__action__sort {
   position: absolute;
   opacity: 1;
-  z-index: 2;
+  z-index: 1000;
   width: 233px;
   text-align: center;
   line-height: 30px;
@@ -1961,7 +1970,7 @@ header {
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 22px 0 28px;
+  margin: 0 0 28px;
 }
 
 .reports-title__my-reports {
@@ -2181,6 +2190,7 @@ header {
     height: 40px;
     width: 40px;
     border-radius: 100%;
+    border: 2px solid #E0E0E0;
 }
 
 .actions__info-item .post {
@@ -2207,11 +2217,14 @@ header {
 .actions__activity-info .name {
     font-size: 14px;
     margin-top: -2px;
+    white-space: nowrap;
+    padding-top: 7px;
 }
 
 .actions__activity-info .avatar {
     margin-right: 10px;
-    min-width: 40px;
+    min-width: 60px;
+    max-height: 60px;
 }
 
 .actions__activity-info .status {
@@ -2301,7 +2314,7 @@ header {
 
 .actions__activity-indicators .indicators-list .title {
     min-width: 150px;
-    margin-left: 50px;
+    margin-left: 70px;
 }
 
 .actions__activity-indicators .indicators-list .list .item:hover {
@@ -2313,14 +2326,14 @@ header {
     color: #535C69;
     padding: 10px 14px;
     border-radius: 4px;
-    margin-left: 50px;
+    margin-left: 70px;
     margin-top: 12px;
 }
 
 .indicator-comparison {
     display: flex;
     justify-content: space-around;
-    margin-left: 50px;
+    margin-left: 70px;
     margin-top: 6px;
 }
 
@@ -2442,7 +2455,6 @@ header {
 .reports-footer__action__sort {
   position: absolute;
   opacity: 1;
-  z-index: 2;
   width: 233px;
   text-align: center;
   line-height: 30px;
@@ -3163,7 +3175,6 @@ body {
   .reports-footer__action__sort {
     position: absolute;
     opacity: 1;
-    z-index: 2;
     width: 233px;
     text-align: center;
     line-height: 30px;
@@ -3351,8 +3362,13 @@ body {
   .reports-list__more {
     width: 100px;
   }
-}
 
+  .reports-title__my-reports__text .title {
+    margin-left: 6px;
+    font-size: 16px;
+    top: 1px;
+  }
+}
 
 @media screen and (max-height: 800px) {
   .menu {

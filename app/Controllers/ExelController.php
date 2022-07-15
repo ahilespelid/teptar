@@ -1,17 +1,19 @@
 <?php 
 namespace App\Controllers ;
 use App;
+use App\Service\Security;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ExelController{
-    public      $view, $model;
+    public      $view, $model, $security;
     protected   $pageData = [];
 
     public function __construct() {
        //$this->view  = new App\View;
         $this->model = new \App\Models\AjaxModel;
+        $this->security = new Security();
     }
 /*/ -------------------------------------------------------------- Работа с файлом exel  -------------------------------------------------------------- /*/   
     public function work($q){

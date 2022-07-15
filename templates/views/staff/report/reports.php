@@ -9,34 +9,38 @@
         <?php include $this->layout('staff/header.php'); ?>
 
         <div class="body">
-            <div class="body__back-button">
-                <a href="/districts">
-                    <img width="16" height="16" src="/assets/img/svg/expand_left_right.svg" alt="&#8249">
-                    Вернуться к списку районов
-                </a>
-            </div>
+
+            <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+                <div class="body__back-button">
+                    <a href="/districts">
+                        <img width="16" height="16" src="/assets/img/svg/expand_left_right.svg" alt="&#8249">
+                        Вернуться к списку районов
+                    </a>
+                </div>
+            <?php } ?>
 
             <div class="reports-title">
                 <div class="reports-title__my-reports">
                     <div class="reports-title__my-reports__text">
-                        <h1><?= $district['owner'] ?></h1>
+                        <h1>Отчеты</h1>
+                        <span class="title">(Район: <?= $district['owner'] ?>)</span>
                     </div>
                     <div class="reports-title__my-reports__btn">
                     </div>
                 </div>
-                <div class="sort">
-                    <span class="sort__toggle">
-                        Сортировать по:
-                        <span class="sort__toggle__time">Году</span>
-                        <img src="/assets/img/svg/sort.svg">
-                    </span>
-                    <div class="sort__block none">
-                        <div class="sort__block__element"><span class="icon-folder_alt sort-element"></span>По годам</div>
-                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По месяцам</div>
-                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По важности</div>
-                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По просмотрам</div>
-                    </div>
-                </div>
+<!--                <div class="sort">-->
+<!--                    <span class="sort__toggle">-->
+<!--                        Сортировать по:-->
+<!--                        <span class="sort__toggle__time">Году</span>-->
+<!--                        <img src="/assets/img/svg/sort.svg">-->
+<!--                    </span>-->
+<!--                    <div class="sort__block none">-->
+<!--                        <div class="sort__block__element"><span class="icon-folder_alt sort-element"></span>По годам</div>-->
+<!--                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По месяцам</div>-->
+<!--                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По важности</div>-->
+<!--                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По просмотрам</div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
 
             <div class="reports">
@@ -146,6 +150,18 @@
         </div>
 
     </div>
+
+    <script type="text/javascript" src="/build/chosen.js"></script>
+    <script>
+        $('#reportsYear').chosen(
+            {
+                width: '100%',
+                allow_single_deselect: true,
+                max_selected_options: 3,
+                no_results_text: 'Нет сотрудников по запросу:',
+            }
+        );
+    </script>
 
 </body>
 

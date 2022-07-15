@@ -1,12 +1,14 @@
 <?php 
 namespace App\Controllers ;
 use App\Models;
+use App\Service\Security;
 
 class AjaxController{
-    public          $model, $view;
+    public          $model, $view, $security;
 
     public function __construct() {
         $this->model = new \App\Models\AjaxModel;
+        $this->security = new Security();
 
     }
 /*/ -------------------------------------------------------------- Аякс для главной временный -------------------------------------------------------------- /*/   

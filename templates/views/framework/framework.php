@@ -73,9 +73,9 @@
 
             <div class="main">
 
-                <?php include 'framework/collapse.php' ?>
-                <?php include 'framework/dropdowns.php' ?>
-                <?php include 'framework/buttons.php' ?>
+                <?php include 'collapse.php' ?>
+                <?php include 'dropdowns.php' ?>
+                <?php include 'buttons.php' ?>
 
             </div>
 

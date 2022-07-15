@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Service\Security;
+
 class ReportController extends AbstractController{
     public $model, $uinModel, $markModel, $memcached,
                 $reports,
@@ -13,6 +15,7 @@ class ReportController extends AbstractController{
                 $user,
                 $statuses,
                 $indexes,
+                $security,
                 $mark_1;
 
     public function __construct() {
@@ -24,48 +27,64 @@ class ReportController extends AbstractController{
         $this->users = new \App\Models\UserModel;
         $this->memcached        = (object) $this->connMCD();
         $this->user = new UserController();
-
+        $this->security = new Security();
 //        $this->setCache();
-
     }
 
     public function reports() {
-        $reports = [];
-        $district = $this->uinModel->findOneBy(['slug' => $_GET['district']]);
+        if ($this->security->userHasRole(['ministry_boss']) && isset($_GET['district'])) {
+            $districtSlug = $_GET['district'];
+        } elseif ($this->security->userHasRole(['district_boss', 'district_staff'])) {
+            $districtSlug = $this->user()['uin']['slug'];
+        } else {
+            $districtSlug = false;
+        }
 
-        foreach ($this->model->findBy(['id_uin' => $district['id']]) as $key => $report) {
-            $reports[$key] = [
+        $district = $this->uinModel->findOneBy(['slug' => $districtSlug]);
+
+        if ($district) {
+            $reports = [];
+
+            foreach ($this->model->findBy(['id_uin' => $district['id']]) as $key => $report) {
+                $reports[$key] = [
+                    'report' => $report,
+                    'boss' => $this->users->findOneBy(['id' => $report['id_userBoss']]),
+                    'staff' => $this->users->findOneBy(['id' => $report['id_userStaff']]),
+                    'status' => $this->statuses->findOneBy(['id' => $report['status']])
+                ];
+            }
+
+            $this->render('/staff/report/reports.php', [
+                'reports' => $reports,
+                'district' => $district
+            ]);
+        } else {
+            $this->security->error('404', 'Такого района не существует');
+        }
+    }
+
+    public function report() {
+        if (isset($_GET['id'])) {
+            $report = $this->model->findOneBy(['id' => $_GET['id']]);
+
+            $data = [
                 'report' => $report,
+                'district' => $this->uinModel->findOneBy(['id' => $report['id_uin']]),
                 'boss' => $this->users->findOneBy(['id' => $report['id_userBoss']]),
                 'staff' => $this->users->findOneBy(['id' => $report['id_userStaff']]),
                 'status' => $this->statuses->findOneBy(['id' => $report['status']])
             ];
+
+            $this->render('/staff/report/report.php', [
+                'data' => $data
+            ]);
+        } else {
+            $this->security->error('404', 'Такой отчет не существует');
         }
-
-        $this->render('/staff/report/reports.php', [
-            'reports' => $reports,
-            'district' => $district
-        ]);
-    }
-
-    public function report() {
-        $report = $this->model->findOneBy(['id' => $_GET['id']]);
-
-        $data = [
-            'report' => $report,
-            'district' => $this->uinModel->findOneBy(['id' => $report['id_uin']]),
-            'boss' => $this->users->findOneBy(['id' => $report['id_userBoss']]),
-            'staff' => $this->users->findOneBy(['id' => $report['id_userStaff']]),
-            'status' => $this->statuses->findOneBy(['id' => $report['status']])
-        ];
-
-        $this->render('/staff/report/report.php', [
-            'data' => $data
-        ]);
     }
 
     public function new() {
-        $district = $this->uinModel->findOneBy(['id' => $this->user()->uin['id']]);
+        $district = $this->uinModel->findOneBy(['id' => $this->user()['uin']['id']]);
 
         if ($_POST) {
             $entries = [
@@ -87,7 +106,7 @@ class ReportController extends AbstractController{
         }
 
         $this->render('/staff/report/form.php', [
-            'staffs' => $this->users->findBy(['id_uin' => $this->user()->uin['id'], 'id_role' => 5]),
+            'staffs' => $this->users->findBy(['id_uin' => $this->user()['uin']['id'], 'id_role' => 5]),
             'district' => $district
         ]);
     }

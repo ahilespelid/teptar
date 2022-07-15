@@ -5,10 +5,10 @@
         <div class="actions__activity-info">
             <div class="actions__activity-user">
                 <div class="avatar">
-                    <img src="/assets/img/avatar.jpg" alt="Avatar">
+                    <img src="<?php if ($data['staff']['avatar']) { echo $data['staff']['avatar']; } else { echo $this->security->setEmptyAvatar(); } ?>" alt="Avatar">
                 </div>
                 <div class="info">
-                    <span class="name">Ибрагим Грозный</span>
+                    <span class="name"><?= $data['staff']['firstname'] . ' ' . $data['staff']['lastname'] ?></span>
                     <span class="post">
                         Районный сотрудник
                         <br>

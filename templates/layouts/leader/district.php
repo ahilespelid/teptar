@@ -128,7 +128,7 @@
         <div class="item">
             <div class="content">
                 <span>Глава района</span>
-                <span><a href="/staff?id=<?= $districtBoss['id'] ?>"><?= $districtBoss['lastname'] . ' ' . $districtBoss['firstname'] . ' ' . $districtBoss['secondname'] ?></a></span>
+                <span><a href="/staff?district=<?= $district['slug'] ?>&login=<?= $districtBoss['login'] ?>"><?= $districtBoss['lastname'] . ' ' . $districtBoss['firstname'] . ' ' . $districtBoss['secondname'] ?></a></span>
             </div>
         </div>
         <div class="item">

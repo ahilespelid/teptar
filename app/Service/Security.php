@@ -38,6 +38,10 @@ class Security
             $route = 'index';
         }
 
+        if(str_ends_with($route, '/')) {
+            $route = substr($route, 0, -1);
+        }
+
         return $route;
     }
 

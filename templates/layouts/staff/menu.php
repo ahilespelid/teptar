@@ -30,7 +30,7 @@
                         <span class="icon-save_light menu-icon"></span><span>Диск</span>
                     </span>
                 </a>
-                <a href="/?ex=notifications#">
+                <a href="/notifications" <?php if ($this->security->route == 'notifications') { echo 'class="active"'; } ?>>
                      <span class="if_active">
                         <span class="icon-bell menu-icon notif-icon"></span><span>Уведомления</span>
                      </span>

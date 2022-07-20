@@ -149,11 +149,6 @@ body {
   .reports-list__title__fourth-element {
     padding-right: 10%;
   }
-
-  .reports-list__title__element {
-    padding-top: 0.8%;
-  }
-
 }
 
 @media screen and (max-width: 2048px) {

@@ -74,7 +74,7 @@
             function updateData(event, link) {
                 event.preventDefault();
                 let contentBlock = document.querySelector('.actions__reports .actions__info');
-                contentBlock.innerHTML = '<div class="actions_empty"><i class="spin icon-refresh"></i></div>';
+                contentBlock.innerHTML = '<div class="empty-block"><i class="spin icon-refresh"></i></div>';
 
                 $.getJSON(link.href, (reports) => {
                     if (reports.length > 0) {
@@ -140,7 +140,7 @@
         <div class="actions__info scrollable-box block-box sub-block-margin-top">
 
             <?php if (!$reports) { ?>
-                <div class="actions_empty">Отчетов по указанной дате пока нет</div>
+                <div class="empty-block">Отчетов по указанной дате пока нет</div>
             <?php } ?>
 
             <?php foreach ($reports as $report) { ?>

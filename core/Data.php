@@ -324,4 +324,11 @@ abstract class Data{
 
         $this->pdo->query($sql);
     }
+
+    // Позволяет сделать чистый SQL запрос в БД
+    public function customSQL(string $sql) {
+        $query = $this->pdo->query($sql);
+
+        return $query->fetchAll();
+    }
 }

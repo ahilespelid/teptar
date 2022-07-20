@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 class AbstractController {
+    public $notifications;
     public $users;
     public $user;
 

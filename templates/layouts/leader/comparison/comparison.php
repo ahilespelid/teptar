@@ -18,28 +18,9 @@
 
     <div class="comparison__info">
 
-        <?php
-        /*/ Получение ВСЕХ строк из таблицы. ВООБЩЕ ВСЕХ. $Connect->getAll($sql)/*/
-        $sql = 'SELECT * FROM marks';
-        foreach($Connect->getAll($sql) as $indicator) {
+            <div class="collapse-indicator sub-collapsible chevron">
+                <div class="collapse-indicator-button block-background">dfsgdg . dfgfsdgd</div>
 
-            $type = ' chevron';
-
-            if ($indicator['type'] == 'description') {
-                $type = ' muted';
-            } elseif ($indicator['type'] == 'subparagraph') {
-                $type = ' sub-collapsible chevron';
-            }
-
-            $indexesSql = 'SELECT `index`, district FROM indexes WHERE mark=' . $indicator['num'] . ' ORDER BY `index` DESC';
-            $indexes = $Connect->getAll($indexesSql);
-
-
-            ?>
-
-            <div class="collapse-indicator<?=$type;?>">
-                <div class="collapse-indicator-button block-background"><?=$indicator['num'];?>. <?=$indicator['name'];?></div>
-                <?php if ($indicator['type'] != 'description') { ?>
                     <div class="collapse-indicator-content">
 
                         <div class="districts-score">
@@ -61,20 +42,18 @@
                                         </thead>
 
                                         <tbody>
-                                            <?php foreach ($indexes as $index) { ?>
                                                 <tr>
-                                                    <td><?= $index['district'] ?></td>
+                                                    <td>dfsgf</td>
                                                     <td>
                                                         <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
                                                         Хасан Шали
                                                     </td>
                                                     <td>
-                                                        <div class="table-progress-bar" style="width: <?= round((float)$index['index'] * 100) ?>%">
+                                                        <div class="table-progress-bar" style="width: '100'%">
                                                             <div class="table-progress-bar-gradient"></div>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                            <?php } ?>
                                         </tbody>
                                     </table>
 
@@ -85,10 +64,8 @@
                         </div>
 
                     </div>
-                <?php } ?>
-            </div>
 
-        <?php } ?>
+            </div>
 
     </div>
 

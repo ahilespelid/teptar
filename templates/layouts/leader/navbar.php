@@ -30,7 +30,7 @@
 
                         <div class="options">
                             <div class="dropdown-map">
-                                <?php include $this->layout('leader/map/map.php'); ?>
+                                <?php include $this->layout('leader/map.php'); ?>
                             </div>
                         </div>
                     </div>

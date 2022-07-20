@@ -31,6 +31,11 @@
                                             <span class="district"><?= $district['owner'] ?></span>
                                             <span class="count">Уведомлений: <?= $district['count'] ?></span>
                                         </div>
+                                        <?php if ($district['unseen']) { ?>
+                                            <div class="notifications-sidebar-districts-unseen">
+                                                <span class="unseen"><?= $district['unseen'] ?></span>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                     <?php $i++; ?>
                                 <?php } ?>
@@ -101,9 +106,10 @@
                                                 </span>
                                             </div>
                                         </div>
-                                    `
+                                    `;
 
                                     contentBlock.innerHTML += block;
+                                    item.querySelector('.notifications-sidebar-districts-unseen').remove();
                                 });
                             }
                         })

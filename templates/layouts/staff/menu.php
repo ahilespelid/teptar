@@ -30,13 +30,22 @@
                         <span class="icon-save_light menu-icon"></span><span>Диск</span>
                     </span>
                 </a>
+
+                <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+                    <a href="#">
+                        <span class="if_active">
+                            <span class="icon-chart menu-icon"></span><span>Рейтинг</span>
+                        </span>
+                    </a>
+                <?php } ?>
+
                 <a href="/notifications" <?php if ($this->security->route == 'notifications') { echo 'class="active"'; } ?>>
                      <span class="if_active">
                         <span class="icon-bell menu-icon notif-icon"></span><span>Уведомления</span>
                      </span>
                 </a>
 
-                <?php if ($role === 2) { ?>
+                <?php if ($this->security->userHasRole(['ministry_boss', 'district_boss'])) { ?>
                     <a href="/?ex=registration#">
                          <span class="if_active">
                             <span class="icon-user menu-icon notif-icon"></span><span>Добавить сотрудника</span>

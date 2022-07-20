@@ -10,7 +10,7 @@ class NotificationModel extends \App\Data {
     }
 
     public function districtsNotificationsList($receiver) {
-        $sql = 'SELECT count(notifications.id) AS count, seen, receiver, flag, datetime, owner, slug, uin.id AS districtId
+        $sql = 'SELECT count(notifications.id) AS count, count(CASE WHEN seen = 0 THEN 0 END) AS unseen, receiver, flag, datetime, owner, slug, uin.id AS districtId
                 FROM notifications
                 LEFT JOIN uin ON notifications.sender = uin.id
                 LEFT JOIN users ON notifications.receiver = users.id

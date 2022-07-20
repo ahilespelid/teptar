@@ -76,11 +76,17 @@ class ProfileController extends AbstractController {
      */
     public function notifications() {
         if ($this->security->userHasRole(['ministry_boss', 'ministry_boss'])) {
+            $this->notifications->update(['seen' => true], ['receiver' => $this->user()['id'], 'sender' => $this->notifications->lastDistrictId($this->user()['id'])]);
+
             $this->render('/staff/notifications.php', [
                 'districts' => $this->notifications->districtsNotificationsList($this->user()['id']),
                 'notifications' => $this->notifications->districtNotifications($this->user()['id'], $this->notifications->lastDistrictId($this->user()['id']))
             ]);
         } elseif ($this->security->userHasRole(['district_boss', 'district_staff'])) {
+            if ($this->security->userHasNotification()) {
+                $this->notifications->update(['seen' => true], ['receiver' => $this->user()['id']]);
+            }
+
             $this->render('/staff/notifications.php', [
                 'notifications' => $this->notifications->districtNotifications($this->user()['id'])
             ]);
@@ -89,6 +95,7 @@ class ProfileController extends AbstractController {
 
     public function districtNotificationsJSON() {
         if (isset($_GET['id']) && $this->notifications->findOneBy(['sender' => $_GET['id']])) {
+            $this->notifications->update(['seen' => true], ['receiver' => $this->user()['id'], 'sender' => $_GET['id']]);
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode($this->notifications->districtNotifications($this->user()['id'], $_GET['id']), JSON_UNESCAPED_UNICODE);
         } else {

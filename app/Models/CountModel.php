@@ -1,11 +1,11 @@
 <?php  
 namespace App\Models; 
 
-class UINModel extends \App\Data {
+class CountModel extends \App\Data {
     public $table;
 
     public function __construct(){
-        $this->table =$GLOBALS['db']['table']['tableUIN'];
+        $this->table =$GLOBALS['db']['table']['count'];
          (object)$this->pdo = $this->connPDO();
     }
 }

@@ -53,6 +53,6 @@ class HomeController extends AbstractController {
      * Страница с документацией стилей
      */
     public function framework() {
-        $this->render('/leader/home/framework.php');
+        $this->render('/framework/framework.php');
     }
 }

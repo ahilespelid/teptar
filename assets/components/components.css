@@ -6,11 +6,6 @@ a {
 
 /* ================================================== Blocks ================================================== */
 
-.block-box {
-    background: #17212b;
-    border-radius: 12px;
-}
-
 .content-box {
     line-height: 22.5px;
 }
@@ -380,6 +375,7 @@ a {
     user-select: none;
     text-align: left;
     cursor: pointer;
+    color: #535C69;
     display: flex;
     outline: none;
     border: none;
@@ -404,9 +400,10 @@ a {
 }
 
 .collapse .collapse-content {
-    max-height: 0;
-    overflow: hidden;
     transition: max-height 0.2s ease-out;
+    overflow: hidden;
+    color: #535C69;
+    max-height: 0;
 }
 
 .collapse .collapse-content .item {
@@ -484,4 +481,35 @@ a {
     .dropdown-buttons-block {
         width: 100%;
     }
+}
+
+/* ================================================== Spin ================================================== */
+
+.spin {
+    display: inline-block;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.empty-block {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: rgba(0,0,0,0.05);
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    white-space: nowrap;
 }

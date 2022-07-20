@@ -1,9 +1,9 @@
 <?php return [
-    'authorized' => ['index'],
+    'authorized' => ['index', 'framework', 'notifications'],
 
-    'region_boss' => [ 'district', 'districtReports', 'leader', 'staff', 'framework'],
+    'region_boss' => ['district', 'districtReports', 'leader', 'staff', 'ratingByMark'],
 
-    'ministry_boss' => ['reports', 'report', 'districts'],
+    'ministry_boss' => ['reports', 'report', 'districts', 'districtNotifications'],
 
     'district_boss' => ['districts', 'reports', 'report', 'report/new'],
 
@@ -11,5 +11,5 @@
 
     'guest' => ['index', 'login'],
 
-    'admin_admin' => ['calculate','district', 'districtReports', 'leader', 'staff', 'framework'] 
+    'admin_admin' => ['calculate','district', 'districtReports', 'leader', 'staff']
 ];

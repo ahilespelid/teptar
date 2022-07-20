@@ -4,10 +4,14 @@
 <!--            <input type="text" placeholder="Поиск">-->
 <!--        </div>-->
         <div class="user">
-            <div class="user__notification">
-                <i class="icon-bell"></i>
-                <span class="indicator"></span>
-            </div>
+            <a href="/notifications">
+                <div class="user__notification">
+                    <i class="icon-bell"></i>
+                    <?php if ($this->security->userHasNotification()) { ?>
+                        <span class="indicator"></span>
+                    <?php } ?>
+                </div>
+            </a>
             <div class="user__info">
                 <img class="user__info__avatar" src="<?= $this->user()['avatar'] ?>" alt="avatar">
                 <span class="user__info__name">

@@ -11,7 +11,7 @@
                 <?php include $this->layout('leader/welcome.php'); ?>
                 <?php include $this->layout('leader/districts.php'); ?>
                 <?php include $this->layout('leader/rating/rating.php'); ?>
-<!--                --><?php //include $this->layout('leader/comparison/comparison.php'); ?>
+                <?php include $this->layout('leader/comparison/comparison.php'); ?>
                 <?php include $this->layout('leader/actions.php'); ?>
             </div>
 

@@ -65,7 +65,7 @@ class UserController extends AbstractController{
                 $this->rule             = $user['rule'] = (!empty($user['role']['subject']) && !empty($user['id_uin'])) ? $this->model->getRule($user['role']['subject'], $user['id_uin']) : [];
                 
                 if (!empty($this->uin)) {
-                    if($this->model->update($this->model->table,['id' => $user['id'] ,'hash'=>$hashNew,'token'=>$this->token])
+                    if($this->model->updateTable($this->model->table,['id' => $user['id'] ,'hash'=>$hashNew,'token'=>$this->token])
                     && $this->model->insert($this->model->tableUsersBlock,['id_user' => $user['id'],'hash'=>$this->hash, 'token'=>$this->token])){
                         $is_auth = $this->auth($user);
 

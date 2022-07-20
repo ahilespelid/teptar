@@ -83,7 +83,7 @@ class Security
         $user = new UserController();
         $notification = $this->notifications->findOneBy([
             'receiver' => $user->getLoginUser()['id'],
-            'seen' => true
+            'seen' => false
         ]);
 
         return (bool)$notification;

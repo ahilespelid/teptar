@@ -23,7 +23,7 @@
                 </span>
                 <div class="user__dropdown-menu none">
                     <div class="user__dropdown-menu__block">
-                        <div class="user__dropdown-menu__block__variables"><a href="#">Мой профиль</a></div>
+                        <div class="user__dropdown-menu__block__variables"><a href="/profile?user=<?= $this->user()['login'] ?>">Мой профиль</a></div>
                     </div>
                     <div class="user__dropdown-menu__block">
                         <a href="/?logout">

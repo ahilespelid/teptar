@@ -65,7 +65,7 @@
                         <span class="icon-dashboard_alt menu-icon"></span><span>Контакт-центр</span>
                     </span>
                 </a>
-                <a href="#">
+                <a href="/profile?user=<?= $this->user()['login'] ?>" <?php if ($this->security->route == 'profile') { echo 'class="active"'; } ?>>
                     <span class="if_active">
                         <span class="icon-user menu-icon"></span><span>Профиль</span>
                     </span>

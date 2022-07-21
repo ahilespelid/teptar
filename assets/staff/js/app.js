@@ -1,5 +1,6 @@
 import './scripts';
 import './report';
+import './profile';
 import '/assets/components/collapse'
 import '/assets/components/dropdown'
 

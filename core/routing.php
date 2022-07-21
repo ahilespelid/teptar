@@ -14,6 +14,7 @@
     // ProfileController
     'leader'                    =>  ['controller' => 'ProfileController', 'action' => 'leader'],
     'staff'                     =>  ['controller' => 'ProfileController', 'action' => 'staff'],
+    'profile'                   =>  ['controller' => 'ProfileController', 'action' => 'profile'],
     'notifications'             =>  ['controller' => 'ProfileController', 'action' => 'notifications'],
     'districtNotifications'     =>  ['controller' => 'ProfileController', 'action' => 'districtNotificationsJSON'],
 

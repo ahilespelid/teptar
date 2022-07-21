@@ -71,6 +71,25 @@ class ProfileController extends AbstractController {
         }
     }
 
+    public function profile() {
+        if (isset($_GET['user']) && $this->users->findOneBy(['login' => $_GET['user']])) {
+            $user = $this->users->findOneBy(['login' => $_GET['user']]);
+            $currentUser = false;
+
+            if ($this->users->findOneBy(['login' => $_GET['user']])['id'] == $this->user()['id']) {
+                $currentUser = true;
+            }
+
+            $this->render('/staff/profile/profile.php', [
+                'user' => $user,
+                'currentUser' => $currentUser,
+                'uin' => $this->uins->findOneBy(['id' => $user['id_uin']])
+            ]);
+        } else {
+            $this->security->error('404', 'Такой пользователь не существует');
+        }
+    }
+
     /**
      * @throws Exception
      */
@@ -78,7 +97,7 @@ class ProfileController extends AbstractController {
         if ($this->security->userHasRole(['ministry_boss', 'ministry_boss'])) {
             $this->notifications->update(['seen' => true], ['receiver' => $this->user()['id'], 'sender' => $this->notifications->lastDistrictId($this->user()['id'])]);
 
-            $this->render('/staff/notifications.php', [
+            $this->render('/staff/profile/notifications.php', [
                 'districts' => $this->notifications->districtsNotificationsList($this->user()['id']),
                 'notifications' => $this->notifications->districtNotifications($this->user()['id'], $this->notifications->lastDistrictId($this->user()['id']))
             ]);
@@ -87,7 +106,7 @@ class ProfileController extends AbstractController {
                 $this->notifications->update(['seen' => true], ['receiver' => $this->user()['id']]);
             }
 
-            $this->render('/staff/notifications.php', [
+            $this->render('/staff/profile/notifications.php', [
                 'notifications' => $this->notifications->districtNotifications($this->user()['id'])
             ]);
         }

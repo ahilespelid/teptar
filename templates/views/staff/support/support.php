@@ -26,7 +26,7 @@
                 </div>
                 <div class="reports_main">
                     <div class="main__first">
-                        <div class="reports-title choose__list">
+                        <div class="footer__info__time">
                             <h3>Обратная связь</h3>
                         </div>
                         <div>
@@ -43,8 +43,7 @@
                     <div class="footer">
                         <div class="footer__info">
                             <div class="footer__info__time">
-                                <span class="footer__info__time__name">Управление делами Мэра</span>
-                                <span class="footer__info__time__open">Открыто с <span class="first_time">8:00</span> до <span class="second_time">16:00</span></span>
+                                <span class="footer__info__time__name">Служба поддержки</span>
                             </div>
                             <div class="footer__info__extra">
                                 <div class="footer__info__extra__address">
@@ -77,4 +76,3 @@
     </body>
 
 <?php include $this->layout('staff/base/foot.php'); ?>
-

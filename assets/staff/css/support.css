@@ -14,10 +14,9 @@
 .choose__list {
     width: 100%;
     background-color: #fff;
-    height: 64px;
     margin-bottom: 6px;
     border-radius: 4px;
-    padding-left: 9px;
+    padding: 8px;
     font-size: 17px;
 }
 
@@ -25,10 +24,9 @@
     width: 208px;
     height: 50px;
     border: 1px solid #DEDFE2;
-    margin-left: 7px;
-    border-radius: 2px;
     padding: 5px;
     display: flex;
+    border-radius: 4px;
 }
 
 .choose__list__buttons button, .choose__list__buttons a {
@@ -127,23 +125,27 @@
 }
 
 .footer__info__time {
-    height: 30%;
+    height: 60px;
     margin-bottom: 6px;
+    border-radius: 4px;
 }
 
 .footer__info__time__name {
-    margin-bottom: 8px;
     font-size: 18px;
     font-weight: 600;
 }
 
 .footer__info__extra {
-    height: 64.5%;
-    padding: 4px 0 16px 11px;
+    padding: 20px;
+    border-radius: 4px;
 }
 
 .footer__info__extra div {
-    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.footer__info__extra div:last-child {
+    margin: unset;
 }
 
 .footer__info__extra div span {

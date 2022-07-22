@@ -17,6 +17,7 @@
 .call-centers {
     max-height: 450px;
     overflow: scroll;
+    border-radius: 4px;
 }
 
 .call-centers .reports__body__line {

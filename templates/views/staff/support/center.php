@@ -13,26 +13,33 @@
                 <div class="grid-block column center-page">
                     <div class="grid-block-main">
                         <div class="media">
-                            <div class="avatar" style="background-image: url('<?= $center['flag'] ?>')"></div>
+                            <div class="avatar" style="background-image: url('<?= $center['flag'] ?? $this->security->setEmptyAvatar() ?>')"></div>
                         </div>
                         <span class="title"><?= $center['owner'] ?></span>
-                        <span class="muted"><i class="icon-pin"></i> <?= $center['center'] ?>, Российская Федерация</span>
+                        <span class="muted">
+                            <?php if ($center['center']) { ?>
+                            <i class="icon-pin"></i> <?= $center['center'] ?>,
+                            <?php } ?>
+                            Российская Федерация
+                        </span>
                     </div>
                     <div class="data">
                         <div class="column-item">
                             <div class="block-box block-title-box">
                                 <h3>Информация о министерстве</h3>
                             </div>
-                            <div class="item">
-                                <div class="content">
-                                    <span>Глава Министерства</span>
-                                    <span>
-                                        <a href="/profile?user=<?= $boss['login'] ?>">
-                                            <?= $boss['lastname'] . ' ' . $boss['firstname'] . ' ' . $boss['secondname'] ?>
-                                        </a>
-                                    </span>
+                            <?php if ($boss) { ?>
+                                <div class="item">
+                                    <div class="content">
+                                        <span>Глава Министерства</span>
+                                        <span>
+                                            <a href="/profile?user=<?= $boss['login'] ?>">
+                                                <?= $boss['lastname'] . ' ' . $boss['firstname'] . ' ' . $boss['secondname'] ?>
+                                            </a>
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php } ?>
                             <div class="item">
                                 <div class="content">
                                     <span>Адрес</span>

@@ -17,12 +17,12 @@ class SupportController extends AbstractController {
     }
 
     public function support() {
-        $this->render('/staff/profile/support.php');
+        $this->render('/staff/support/support.php');
     }
 
     public function callCenter() {
         if (isset($_GET['type']) && $this->uins->findOneBy(['type' => $_GET['type']])) {
-            $this->render('/staff/profile/call_center.php', [
+            $this->render('/staff/support/call_center.php', [
                 'centers' => $this->uins->findBy(['type' => $_GET['type']])
             ]);
         } else {
@@ -33,7 +33,7 @@ class SupportController extends AbstractController {
     public function center() {
         if (isset($_GET['center']) && $this->uins->findOneBy(['slug' => $_GET['center']])) {
             $uin = $this->uins->findOneBy(['slug' => $_GET['center']]);
-            $this->render('/staff/profile/center.php', [
+            $this->render('/staff/support/center.php', [
                 'center' => $uin,
                 'boss' => $this->users->findOneBy(['id_uin' => $uin['id']]),
                 'staffs' => $this->users->findBy(['id_uin' => $uin['id'], 'id_role' => 5])

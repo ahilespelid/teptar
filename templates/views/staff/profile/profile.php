@@ -25,7 +25,7 @@
                 <div class="profile">
                     <div class="profile__avatar-main">
                         <div class="profile__avatar">
-                            <img class="avatar" src="<?= $user['avatar'] ?>" alt="">
+                            <img class="avatar" src="<?= $user['avatar'] ?? $this->security->setEmptyAvatar() ?>" alt="">
 
 <!--                            --><?php //pa($currentUser) ?>
 

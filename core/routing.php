@@ -15,11 +15,14 @@
     'leader'                    =>  ['controller' => 'ProfileController', 'action' => 'leader'],
     'staff'                     =>  ['controller' => 'ProfileController', 'action' => 'staff'],
     'profile'                   =>  ['controller' => 'ProfileController', 'action' => 'profile'],
-    'support'                   =>  ['controller' => 'ProfileController', 'action' => 'support'],
-    'callCenter'                =>  ['controller' => 'ProfileController', 'action' => 'callCenter'],
-    'uinData'                   =>  ['controller' => 'ProfileController', 'action' => 'uinInJSON'],
     'notifications'             =>  ['controller' => 'ProfileController', 'action' => 'notifications'],
     'districtNotifications'     =>  ['controller' => 'ProfileController', 'action' => 'districtNotificationsJSON'],
+
+    // SupportController
+    'support'                   =>  ['controller' => 'SupportController', 'action' => 'support'],
+    'center'                    =>  ['controller' => 'SupportController', 'action' => 'center'],
+    'callCenter'                =>  ['controller' => 'SupportController', 'action' => 'callCenter'],
+    'uinData'                   =>  ['controller' => 'SupportController', 'action' => 'uinInJSON'],
 
     // MarkController
     'ratingByMark'              =>  ['controller' => 'MarkController', 'action' => 'jsonRatingByMark'],

@@ -28,7 +28,11 @@
 
             <div class="reports__body__line<?php if ($i == 1) {echo ' active';} ?>" id="center<?= $center['id'] ?>">
                 <div class="reports__body__line__name">
-                    <span><?= $center['owner'] ?><span>
+                    <span>
+                        <a href="/center?center=<?= $center['slug'] ?>">
+                            <?= $center['owner'] ?>
+                        </a>
+                    <span>
                     <span class="spinner"></span>
                 </div>
 

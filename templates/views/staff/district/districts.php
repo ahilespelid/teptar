@@ -75,7 +75,7 @@
 
                                                     <?php foreach ($district['staff'] as $staff) { ?>
                                                         <a href="/profile?user=<?= $staff['login'] ?>">
-                                                            <img class="reports__body__avatar" style="background-image: url('<?= $staff['avatar'] ?>')">
+                                                            <img class="reports__body__avatar" style="background-image: url('<?= $staff['avatar'] ?? $this->security->setEmptyAvatar() ?>')">
                                                         </a>
                                                     <?php } ?>
 

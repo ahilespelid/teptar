@@ -100,7 +100,8 @@
                                 <div class="reports__body__line__assistant">
                                     <div class="name-block">
                                         <a href="/profile?user=<?= $report['staff']['login'] ?>">
-                                            <img src="<?= $report['staff']['avatar'] ?>" class="reports__body__avatar">
+
+                                            <img src="<?= $report['staff']['avatar'] ?? $this->security->setEmptyAvatar() ?>" class="reports__body__avatar">
                                         </a>
                                         <span class="name">
                                             <?= $report['staff']['firstname'] . ' ' . $report['staff']['lastname'] ?>
@@ -111,7 +112,7 @@
                                 <div class="reports__body__line__responsible">
                                     <div class="name-block">
                                         <a href="/profile?user=<?= $report['boss']['login'] ?>">
-                                            <img src="<?= $report['boss']['avatar'] ?>" class="reports__body__avatar">
+                                            <img src="<?= $report['boss']['avatar'] ?? $this->security->setEmptyAvatar() ?>" class="reports__body__avatar">
                                         </a>
                                         <span class="name"><?= $report['boss']['firstname'] . ' ' . $report['boss']['lastname'] ?></span>
                                     </div>

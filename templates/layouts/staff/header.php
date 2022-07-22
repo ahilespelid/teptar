@@ -13,7 +13,7 @@
                 </div>
             </a>
             <div class="user__info">
-                <img class="user__info__avatar" src="<?= $this->user()['avatar'] ?>" alt="avatar">
+                <img class="user__info__avatar" src="<?= $this->user()['avatar'] ?? $this->security->setEmptyAvatar() ?>" alt="avatar">
                 <span class="user__info__name">
                   <span><?= $this->user()['firstname'] . ' ' . $this->user()['lastname'] ?></span>
                   <span class="user__info__post"><?= $this->user()['role']['post'] ?></span>

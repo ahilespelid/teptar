@@ -36,8 +36,7 @@
                 <div class="call-center-footer">
                     <div class="footer__info">
                         <div class="footer__info__time">
-                            <span class="footer__info__time__name">Управление делами Мэра</span>
-                            <span class="footer__info__time__open">Открыто с <span class="first_time">8:00</span> до <span class="second_time">16:00</span></span>
+                            <span class="footer__info__time__name"><?= $centers[0]['owner'] ?></span>
                         </div>
                         <div class="footer__info__extra">
                             <div class="footer__info__extra__address">
@@ -81,6 +80,7 @@
                         document.querySelector('.footer__info__extra__telephone .text').innerHTML = center.phone;
                         document.querySelector('.footer__info__extra__mail .text').innerHTML = center.email;
                         document.querySelector('.footer__info__extra__site .text').innerHTML = center.website;
+                        document.querySelector('.footer__info__time__name').innerHTML = center.owner;
                         document.querySelector('iframe').src = 'https://yandex.ru/map-widget/v1/?um=constructor%3A9a2dc468a0903afc3719ffaa936ee9156939d6c935b6c498a97c86f55dbfda5c&amp;source=constructor';
                         line.querySelector('.spinner').innerHTML = '';
                     });

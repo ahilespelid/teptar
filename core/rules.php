@@ -1,15 +1,15 @@
 <?php return [
     'authorized' => ['index', 'framework', 'notifications'],
 
-    'region_boss' => ['district', 'districtReports', 'leader', 'staff', 'ratingByMark', 'profile'],
+    'region_boss' => ['district', 'districtReports', 'leader', 'staff', 'ratingByMark', 'profile', 'support', 'callCenter', 'uinData'],
 
-    'ministry_boss' => ['reports', 'report', 'districts', 'districtNotifications', 'profile'],
+    'ministry_boss' => ['reports', 'report', 'districts', 'districtNotifications', 'profile', 'support', 'callCenter', 'uinData'],
 
-    'district_boss' => ['districts', 'reports', 'report', 'report/new', 'profile'],
+    'district_boss' => ['districts', 'reports', 'report', 'report/new', 'profile', 'support', 'callCenter', 'uinData'],
 
-    'district_staff' => ['reports', 'report', 'profile'],
+    'district_staff' => ['reports', 'report', 'profile', 'support', 'callCenter', 'uinData'],
 
     'guest' => ['index', 'login'],
 
-    'admin_admin' => ['calculate','district', 'districtReports', 'leader', 'staff', 'profile']
+    'admin_admin' => ['calculate','district', 'districtReports', 'leader', 'staff', 'profile', 'support', 'callCenter', 'uinData']
 ];

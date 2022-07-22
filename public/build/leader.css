@@ -2190,12 +2190,12 @@ template {
 
 @font-face {
     font-family: 'icomoon';
-    src:  url(3ce8a643cb3dd6663c4e.eot?1gvaa4);
-    src:  url(3ce8a643cb3dd6663c4e.eot?1gvaa4);
-    src:  url(3ce8a643cb3dd6663c4e.eot?1gvaa4#iefix) format('embedded-opentype'),
-    url(af5a54833e8a2e15135c.ttf?1gvaa4) format('truetype'),
-    url(a7d2f95966d5185b8c39.woff?1gvaa4) format('woff'),
-    url(2864bd5aa103d4d165e5.svg?1gvaa4#icomoon) format('svg');
+    src:  url(e955ea813f4061404847.eot?1gvaa4);
+    src:  url(e955ea813f4061404847.eot?1gvaa4);
+    src:  url(e955ea813f4061404847.eot?1gvaa4#iefix) format('embedded-opentype'),
+    url(7137196c22b472c22b2a.ttf?1gvaa4) format('truetype'),
+    url(f3e9513537b3ab74b132.woff?1gvaa4) format('woff'),
+    url(b091d1d68b336d638ea8.svg?1gvaa4#icomoon) format('svg');
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -2216,6 +2216,15 @@ template {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-envelope:before {
+    content: "\e92e";
+}
+.icon-phone:before {
+    content: "\e92f";
+}
+.icon-world:before {
+    content: "\e92d";
+}
 .icon-cross-circle:before {
     content: "\e92c";
 }

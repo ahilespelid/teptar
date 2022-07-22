@@ -55,17 +55,17 @@
             </div>
 
             <div class="menu__body__list">
-                <a href="#">
+                <a href="/support" <?php if ($this->security->route == 'support') { echo 'class="active"'; } ?>>
                     <span class="if_active">
                         <span class="icon-setting menu-icon"></span><span>Служба поддержки</span>
                     </span>
                 </a>
-                <a href="#">
+                <a href="/callCenter?type=ministry" <?php if ($this->security->route == 'callCenter') { echo 'class="active"'; } ?>>
                     <span class="if_active">
                         <span class="icon-dashboard_alt menu-icon"></span><span>Контакт-центр</span>
                     </span>
                 </a>
-                <a href="/profile?user=<?= $this->user()['login'] ?>" <?php if ($this->security->route == 'profile') { echo 'class="active"'; } ?>>
+                <a href="/profile?user=<?= $this->user()['login'] ?>" <?php if ($_SERVER['REQUEST_URI'] == 'profile?user=' . $this->user()['login']) { echo 'class="active"'; } ?>>
                     <span class="if_active">
                         <span class="icon-user menu-icon"></span><span>Профиль</span>
                     </span>

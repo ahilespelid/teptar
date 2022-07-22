@@ -1,0 +1,245 @@
+/* Block box */
+
+.block-box {
+    background: #fff;
+    border-radius: 12px;
+}
+
+.content-box {
+    line-height: 22.5px;
+}
+
+.content-box p:first-child {
+    margin-top: unset;
+}
+
+.content-box p:last-child {
+    margin-bottom: unset;
+}
+
+.block-padding {
+    padding: 16px;
+}
+
+.block-margin-top {
+    margin-top: 24px;
+}
+
+.sub-block-margin-top {
+    margin-top: 6px !important;
+}
+
+.sub-block-margin-bottom {
+    margin-bottom: 6px;
+}
+
+.sub-block-margin-right {
+    margin-right: 6px;
+}
+
+/* Block title */
+
+.block-box h3 {
+    padding: 14px 20px 16px;
+    margin: unset;
+    line-height: 34px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.block-title-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 13px;
+}
+
+.block-title-box .dropdowns-list {
+    display: flex;
+}
+
+.block-title-box .dropdowns-list .dropdown {
+    margin-right: 6px;
+}
+
+.block-title-box .dropdowns-list .dropdown:last-child {
+    margin: unset;
+}
+
+.box-input input {
+    border: 1px solid rgba(255,255,255,0.1);
+    background: unset;
+    color: #fff;
+    border-radius: 8px;
+    height: 40px;
+    width: 300px;
+    font-size: 12px;
+    padding: 8px 12px;
+}
+
+/* Grid block */
+
+.grid-block {
+    display: flex;
+}
+
+.grid-block .grid-block-main {
+    width: calc(100% / 3);
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-sizing: border-box;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.grid-block-main .media .avatar {
+    height: 180px;
+    width: 180px;
+    border-radius: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.grid-block-main .title {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 16px 0;
+}
+
+.grid-block-main .muted {
+    font-size: 14px;
+    color: #515860;
+    margin-bottom: 10px;
+}
+
+.grid-block-main .social a {
+    color: #565e66;
+    margin-right: 6px;
+}
+
+.grid-block-main .social a:hover {
+    color: #727c86;
+}
+
+.grid-block-main .social a:last-child {
+    margin-right: unset;
+}
+
+.grid-block-main .social i {
+    font-size: 30px;
+}
+
+.grid-block-main .icon-pin {
+    font-size: 10px;
+    margin-right: 2px;
+    position: relative;
+    top: -1px;
+}
+
+.grid-block-main .muted:last-child {
+    margin: unset;
+}
+
+.grid-block .data {
+    width: calc(100% - 100% / 3);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 12px;
+}
+
+.grid-block .data .item {
+    background: #fff;
+    border-radius: 12px;
+    align-items: center;
+    padding: 24px 0;
+    display: flex;
+}
+
+.grid-block .data .item .content {
+    display: flex;
+    flex-direction: column;
+    border-left: 3px solid #61b252;
+    padding-left: 16px;
+    padding-right: 12px;
+}
+
+.grid-block .data .item span:first-child {
+    font-size: 12px;
+    color: #515860;
+    margin-bottom: 6px;
+}
+
+.grid-block.column {
+    align-items: flex-start;
+}
+
+.grid-block.column .data {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-block.column .data .column-item .item {
+    margin-top: 6px;
+}
+
+/* User boxes */
+
+.user-boxes {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-gap: 12px;
+}
+
+.user-box {
+    display: flex;
+    border-radius: 8px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    background-color: #f9fbfd;
+}
+
+.user-box:hover {
+    background-color: #f5f7fb;
+}
+
+.user-box .user-avatar .avatar {
+    height: 80px;
+    width: 80px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 100%;
+}
+
+.user-box .user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-box .user-info .title {
+    margin-bottom: 2px;
+    margin-top: unset;
+    color: #535C69;
+}
+
+.user-box .user-info .muted {
+    color: #959ca4;
+    font-size: 14px;
+}
+
+.user-box .user-info span {
+    margin-top: 8px;
+}
+
+.user-box .user-avatar {
+    margin-right: 12px;
+}
+
+/* Center */
+
+.center-page .column-item a {
+    color: #587093;
+}

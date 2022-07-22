@@ -60,6 +60,15 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-envelope:before {
+    content: "\e92e";
+}
+.icon-phone:before {
+    content: "\e92f";
+}
+.icon-world:before {
+    content: "\e92d";
+}
 .icon-cross-circle:before {
     content: "\e92c";
 }

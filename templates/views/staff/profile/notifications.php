@@ -109,7 +109,9 @@
                                     `;
 
                                     contentBlock.innerHTML += block;
-                                    item.querySelector('.notifications-sidebar-districts-unseen').remove();
+                                    if (item.querySelector('.notifications-sidebar-districts-unseen')) {
+                                        item.querySelector('.notifications-sidebar-districts-unseen').remove();
+                                    }
                                 });
                             }
                         })

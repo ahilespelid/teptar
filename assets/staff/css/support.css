@@ -1,0 +1,161 @@
+.reports_main {
+    width: 100%;
+    display: flex;
+}
+
+.main__first {
+    width: 100%;
+}
+
+.none {
+    display: none;
+}
+
+.choose__list {
+    width: 100%;
+    background-color: #fff;
+    height: 64px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    padding-left: 9px;
+    font-size: 17px;
+}
+
+.choose__list__buttons {
+    width: 208px;
+    height: 50px;
+    border: 1px solid #DEDFE2;
+    margin-left: 7px;
+    border-radius: 2px;
+    padding: 5px;
+    display: flex;
+}
+
+.choose__list__buttons button, .choose__list__buttons a {
+    height: 100%;
+    width: 40%;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    line-height: 37px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.choose__list__buttons button:first-child, .choose__list__buttons a:first-child {
+    width: 60%;
+}
+
+.choose__list__buttons .active__button {
+    background-color: #157DCD;
+    color: #fff;
+}
+
+.choose__list__buttons .non__active__button {
+    background-color: #fff;
+    color: #535C69;
+}
+
+.textarea {
+    width: 100%;
+    height: 150px;
+    background-color: #fff;
+    padding: 11px 10px;
+    border-radius: 4px;
+}
+
+.textarea textarea {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: 1px solid #EEEFF0;
+    color: #535C69;
+    padding: 10px;
+    font-size: 14px;
+    resize: none;
+    border-radius: 4px;
+}
+
+.support__footer {
+    height: 64px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    border-radius: 4px;
+    margin-top: 6px;
+}
+
+.support__footer button {
+    width: 160px;
+    height: 40px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #00B894;
+    border-radius: 1px;
+    border: none;
+}
+
+.support__footer button:active {
+    background-color: #01a988;
+}
+
+.footer {
+    width: 30%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    margin-left: 24px;
+}
+
+.footer__info {
+    width: 100%;
+    height: 100%;
+}
+
+.footer__info__time, .footer__info__extra {
+    width: 100%;
+    background-color: #fff;
+    padding-left: 11px;
+    padding-right: 11px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer__info__time {
+    height: 30%;
+    margin-bottom: 6px;
+}
+
+.footer__info__time__name {
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.footer__info__extra {
+    height: 64.5%;
+    padding: 4px 0 16px 11px;
+}
+
+.footer__info__extra div {
+    margin-top: 12px;
+}
+
+.footer__info__extra div span {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.footer__info__extra .icon-pin {
+    font-size: 14px;
+}
+
+.footer__info__extra .icon-envelope {
+    font-size: 12px;
+}

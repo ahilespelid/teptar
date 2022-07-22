@@ -99,7 +99,9 @@
                                 </div>
                                 <div class="reports__body__line__assistant">
                                     <div class="name-block">
-                                        <img src="<?= $report['staff']['avatar'] ?>" class="reports__body__avatar">
+                                        <a href="/profile?user=<?= $report['staff']['login'] ?>">
+                                            <img src="<?= $report['staff']['avatar'] ?>" class="reports__body__avatar">
+                                        </a>
                                         <span class="name">
                                             <?= $report['staff']['firstname'] . ' ' . $report['staff']['lastname'] ?>
                                         </span>
@@ -108,7 +110,10 @@
                                 </div>
                                 <div class="reports__body__line__responsible">
                                     <div class="name-block">
-                                        <img src="<?= $report['boss']['avatar'] ?>" class="reports__body__avatar"><span class="name"><?= $report['boss']['firstname'] . ' ' . $report['boss']['lastname'] ?></span>
+                                        <a href="/profile?user=<?= $report['boss']['login'] ?>">
+                                            <img src="<?= $report['boss']['avatar'] ?>" class="reports__body__avatar">
+                                        </a>
+                                        <span class="name"><?= $report['boss']['firstname'] . ' ' . $report['boss']['lastname'] ?></span>
                                     </div>
                                 </div>
                             </div>

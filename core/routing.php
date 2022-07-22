@@ -15,6 +15,9 @@
     'leader'                    =>  ['controller' => 'ProfileController', 'action' => 'leader'],
     'staff'                     =>  ['controller' => 'ProfileController', 'action' => 'staff'],
     'profile'                   =>  ['controller' => 'ProfileController', 'action' => 'profile'],
+    'support'                   =>  ['controller' => 'ProfileController', 'action' => 'support'],
+    'callCenter'                =>  ['controller' => 'ProfileController', 'action' => 'callCenter'],
+    'uinData'                   =>  ['controller' => 'ProfileController', 'action' => 'uinInJSON'],
     'notifications'             =>  ['controller' => 'ProfileController', 'action' => 'notifications'],
     'districtNotifications'     =>  ['controller' => 'ProfileController', 'action' => 'districtNotificationsJSON'],
 

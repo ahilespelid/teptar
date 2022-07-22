@@ -1,0 +1,32 @@
+.call-center-footer {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.call-center-footer .footer__map {
+    height: 100%;
+}
+
+.call-center-footer .footer__info {
+    margin-right: 10px;
+}
+
+.call-centers {
+    max-height: 450px;
+    overflow: scroll;
+}
+
+.call-centers .reports__body__line {
+    cursor: pointer;
+}
+
+.reports__body__line.active {
+    background-color: #FEF0CB;
+}
+
+.reports__body__line .spinner {
+    font-size: 10px;
+}

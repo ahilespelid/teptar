@@ -90,6 +90,20 @@ class ProfileController extends AbstractController {
         }
     }
 
+    public function support() {
+        $this->render('/staff/profile/support.php');
+    }
+
+    public function callCenter() {
+        if (isset($_GET['type']) && $this->uins->findOneBy(['type' => $_GET['type']])) {
+            $this->render('/staff/profile/call_center.php', [
+                'centers' => $this->uins->findBy(['type' => $_GET['type']])
+            ]);
+        } else {
+            $this->security->error();
+        }
+    }
+
     /**
      * @throws Exception
      */
@@ -109,6 +123,15 @@ class ProfileController extends AbstractController {
             $this->render('/staff/profile/notifications.php', [
                 'notifications' => $this->notifications->districtNotifications($this->user()['id'])
             ]);
+        }
+    }
+
+    public function uinInJSON() {
+        if (isset($_GET['id']) && $this->uins->findOneBy(['id' => $_GET['id']])) {
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($this->uins->findOneBy(['id' => $_GET['id']]), JSON_UNESCAPED_UNICODE);
+        } else {
+            echo json_encode(0, JSON_UNESCAPED_UNICODE);
         }
     }
 

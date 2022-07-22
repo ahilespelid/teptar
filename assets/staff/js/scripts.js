@@ -40,17 +40,11 @@ $(document).ready(function() {
 // Выбрано: Район
 
 $(document).ready(function() {
-    let role = 1
-
     $(".content").on("click", function(e) {
         $(".sort__block").addClass("none")
         $(".reports-footer__action__sort").addClass("none")
         $(".user__dropdown-menu").addClass("none")
     })
-
-    if(role === 1) {
-        $(".reports").css("max-height", "75vh")
-    }
 })
 
 $(document).ready(function (e) {

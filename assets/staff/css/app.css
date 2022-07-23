@@ -1,3 +1,4 @@
+@import "/assets/components/components.css";
 @import "/assets/leader/css/fonts.css";
 @import "/assets/chosen/chosen.css";
 @import "header.css";
@@ -7,3 +8,9 @@
 @import "report.css";
 @import "styles.css";
 @import "components.css";
+@import "notifications.css";
+@import "profile.css";
+@import "support.css";
+@import "call_center.css";
+@import "center.css";
+@import "add_profile.css";

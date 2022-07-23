@@ -15,9 +15,9 @@
 
             <div class="navbar-menu">
                 <div class="item search">
-                    <form class="navbar-search" action="" method="post">
-                        <input type="search" name="" placeholder=" Поиск" class="input" />
-                    </form>
+<!--                    <form class="navbar-search" action="" method="post">-->
+<!--                        <input type="search" name="" placeholder=" Поиск" class="input" />-->
+<!--                    </form>-->
                 </div>
 
                 <?php if (isset($navbar) && $navbar == 'home') { ?>
@@ -30,7 +30,7 @@
 
                         <div class="options">
                             <div class="dropdown-map">
-                                <?php include $this->layout('leader/map/map.php'); ?>
+                                <?php include $this->layout('leader/map.php'); ?>
                             </div>
                         </div>
                     </div>

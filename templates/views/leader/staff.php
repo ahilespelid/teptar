@@ -13,7 +13,7 @@
                     <div class="grid-block column">
                         <div class="grid-block-main">
                             <div class="media">
-                                <div class="avatar" style="background-image: url('<?= $staff['avatar'] ?>')"></div>
+                                <div class="avatar" style="background-image: url('<?= $staff['avatar'] ?? $this->security->setEmptyAvatar('dark') ?>')"></div>
                             </div>
                             <span class="title"><?= $staff['lastname'] . ' ' . $staff['firstname'] . ' ' . $staff['secondname'] ?></span>
                             <span class="muted"><?= $role['post'] ?></span>

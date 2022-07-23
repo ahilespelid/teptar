@@ -2,7 +2,7 @@
 namespace App\Models; 
 
 class MarkModel extends \App\Data {
-    public $table, $tableRole;
+    public $table;
 
     public function __construct(){
         $this->table =$GLOBALS['db']['table']['marks'];

@@ -74,7 +74,9 @@
                                                 <?php if ($district['staffCount']) { ?>
 
                                                     <?php foreach ($district['staff'] as $staff) { ?>
-                                                        <img class="reports__body__avatar" style="background-image: url('<?= $staff['avatar'] ?>')">
+                                                        <a href="/profile?user=<?= $staff['login'] ?>">
+                                                            <img class="reports__body__avatar" style="background-image: url('<?= $staff['avatar'] ?? $this->security->setEmptyAvatar() ?>')">
+                                                        </a>
                                                     <?php } ?>
 
                                                     <?php if ($district['staffCount'] > 2) { ?>

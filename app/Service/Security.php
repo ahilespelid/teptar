@@ -10,8 +10,11 @@ class Security
 {
     private mixed $corPath;
     private string $rulesPath;
+
     private mixed $rules;
     public mixed $route;
+
+    public $notifications;
 
     public function __construct()
     {
@@ -19,6 +22,7 @@ class Security
         $this->rulesPath    = $this->corPath._DS_.'rules.php';
         $this->rules        = $this->getRules();
         $this->route        = $this->getRoute();
+        $this->notifications = new \App\Models\NotificationModel;
     }
 
     // Получает массив правил из файла core/rules.php
@@ -72,6 +76,17 @@ class Security
         }
 
         return $hasRole;
+    }
+
+    // Проверяет есть ли у текущего пользователя непрочитанные уведомлении и возвращает значение true/false
+    public function userHasNotification(): bool {
+        $user = new UserController();
+        $notification = $this->notifications->findOneBy([
+            'receiver' => $user->getLoginUser()['id'],
+            'seen' => false
+        ]);
+
+        return (bool)$notification;
     }
 
     // Определяет и выдает в массиве все разрешенные роуты для текущего пользователя в зависимости от его ролей

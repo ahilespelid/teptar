@@ -128,7 +128,13 @@
         <div class="item">
             <div class="content">
                 <span>Глава района</span>
-                <span><a href="/staff?district=<?= $district['slug'] ?>&login=<?= $districtBoss['login'] ?>"><?= $districtBoss['lastname'] . ' ' . $districtBoss['firstname'] . ' ' . $districtBoss['secondname'] ?></a></span>
+                <span>
+                    <?php if ($districtBoss) { ?>
+                        <a href="/staff?district=<?= $district['slug'] ?>&login=<?= $districtBoss['login'] ?>"><?= $districtBoss['lastname'] . ' ' . $districtBoss['firstname'] . ' ' . $districtBoss['secondname'] ?></a>
+                    <?php } else { ?>
+                        Глава данного района еще не назначен
+                    <?php } ?>
+                </span>
             </div>
         </div>
         <div class="item">

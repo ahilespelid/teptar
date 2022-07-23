@@ -217,10 +217,13 @@
 .reports-list__title {
   height: 70px;
   width: 100%;
+  box-shadow: 0 8px 10px rgba(0,0,0,0.05);
   background-color: #fff;
   display: table-row;
   border-radius: 4px;
   margin-bottom: 6px;
+  position: sticky;
+  top: 0;
 }
 
 .reports-list__title__element {

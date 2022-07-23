@@ -45,7 +45,7 @@
                                 <?= (new DateTime('now'))->format('d.m.o') ?>
                                 (Район: <?= $district['owner'] ?>)
                             </h2>
-                            <span class="report-deadline">Крайний срок: <?= (new DateTime('now + 30 days'))->format('d.m.o') ?></span>
+                            <span class="report-deadline">Крайний срок сдачи отчета: <?= (new DateTime('now + 31 days'))->format('d.m.o') ?></span>
                         </div>
 
                         <div class="report-form-textarea md-box">

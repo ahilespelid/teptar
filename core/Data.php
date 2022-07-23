@@ -136,7 +136,7 @@ abstract class Data{
 
         }return false;}
 
-    public function update($table = '', $data = []){
+    public function updateTable($table = '', $data = []){
         if(is_string($table) && !empty($table) && is_array($data) && !empty($data) && !is_array(current($data)) && !empty($data['id'])){
             $table = trim($table); $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
 
@@ -338,8 +338,65 @@ abstract class Data{
         $this->writeLog($sql, __FUNCTION__);
         $this->pdo->query($sql);
     }
-    
-    public function writeLog($sql, $action = __FUNCTION__, $timeWrite = true){
+
+    public function columnValues(array $entries, $type = null) {
+        $values = '';
+        $i = 1;
+
+        // Генерация строки запроса SQL (колонка = значение) в зависимости от типа значений
+        foreach ($entries as $column => $value) {
+            if (is_bool($value)) {
+                $values .= '`' . $column . '`' . ' = ';
+
+                if ($value === true) {
+                    $values .= 'true';
+                } else {
+                    $values .= 'false';
+                }
+            } elseif (is_int($value) || is_float($value)) {
+                $values .= '`' . $column . '`' . ' = ' . $value;
+            } elseif ($value instanceof \DateTime) {
+                $values .= '`' . $column . '`' . ' = ' . '"' . $value->format('Y-m-d H:i:s') . '"';
+            } elseif ($value === null) {
+                $values .= '`' . $column . '`' . ' = ' . 'NULL' ;
+            } else {
+                $values .= '`' . $column . '`' . ' = ' . '"' . $value . '"';
+            }
+
+            if ($i != count($entries)) {
+                if ($type === null) {
+                    $values .= ', ';
+                } elseif ($type == 'conditions') {
+                    $values .= ' AND ';
+                }
+            }
+
+            $i += 1;
+        }
+
+        return $values;
+    }
+
+    public function update(array $entries, array $conditions) {
+        // Генерация строки запроса SQL для изменения значений записей из базы данных
+        $columnValues = $this->columnValues($entries);
+        // Генерация строки запроса SQL для условий поиска записей из таблицы
+        $conditionsValues = $this->columnValues($conditions, 'conditions');
+
+        $sql = 'UPDATE '. $this->table .' SET '. $columnValues .' WHERE ' . $conditionsValues;
+        $this->pdo->query($sql);
+
+        return $sql;
+    }
+
+    // Позволяет сделать чистый SQL запрос в БД
+    public function customSQL(string $sql) {
+        $query = $this->pdo->query($sql);
+
+        return $query->fetchAll();
+    }
+
+    public function writeLog($sql, $action = __FUNCTION__, $timeWrite = true) {
         $date = (new \DateTime('now'));
         $dateFile = $date->format('Y-m-d');
         $filename = $action . $dateFile . '.txt';
@@ -349,5 +406,4 @@ abstract class Data{
             file_put_contents($this->logFile . $filename, $entry, FILE_APPEND | LOCK_EX);                                                     
         } 
     }
-
 }

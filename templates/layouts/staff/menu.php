@@ -30,14 +30,23 @@
                         <span class="icon-save_light menu-icon"></span><span>Диск</span>
                     </span>
                 </a>
-                <a href="/?ex=notifications#">
+
+                <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+                    <a href="#">
+                        <span class="if_active">
+                            <span class="icon-chart menu-icon"></span><span>Рейтинг</span>
+                        </span>
+                    </a>
+                <?php } ?>
+
+                <a href="/notifications" <?php if ($this->security->route == 'notifications') { echo 'class="active"'; } ?>>
                      <span class="if_active">
                         <span class="icon-bell menu-icon notif-icon"></span><span>Уведомления</span>
                      </span>
                 </a>
 
-                <?php if ($role === 2) { ?>
-                    <a href="/?ex=registration#">
+                <?php if ($this->security->userHasRole(['ministry_boss', 'district_boss'])) { ?>
+                    <a href="/profile/new" <?php if ($this->security->route == 'profile/new') { echo 'class="active"'; } ?>>
                          <span class="if_active">
                             <span class="icon-user menu-icon notif-icon"></span><span>Добавить сотрудника</span>
                          </span>
@@ -46,17 +55,17 @@
             </div>
 
             <div class="menu__body__list">
-                <a href="#">
+                <a href="/support" <?php if ($this->security->route == 'support') { echo 'class="active"'; } ?>>
                     <span class="if_active">
                         <span class="icon-setting menu-icon"></span><span>Служба поддержки</span>
                     </span>
                 </a>
-                <a href="#">
+                <a href="/callCenter?type=ministry" <?php if ($this->security->route == 'callCenter') { echo 'class="active"'; } ?>>
                     <span class="if_active">
                         <span class="icon-dashboard_alt menu-icon"></span><span>Контакт-центр</span>
                     </span>
                 </a>
-                <a href="#">
+                <a href="/profile?user=<?= $this->user()['login'] ?>" <?php if ($_SERVER['REQUEST_URI'] == 'profile?user=' . $this->user()['login']) { echo 'class="active"'; } ?>>
                     <span class="if_active">
                         <span class="icon-user menu-icon"></span><span>Профиль</span>
                     </span>

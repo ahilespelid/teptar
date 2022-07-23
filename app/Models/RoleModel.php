@@ -2,7 +2,7 @@
 namespace App\Models;
 
 class RoleModel extends \App\Data{
-    public $table, $tableRole;
+    public $table;
 
     public function __construct(){
         $this->table = $GLOBALS['db']['table']['roles'];

@@ -18,9 +18,9 @@
                         <div class="block-box block-title-box box-input break-title-input">
                             <h3>Зарегистрированные сотрудники</h3>
 
-                            <div class="title-box-input">
-                                <input type="search" name="search" placeholder=" Поиск" class="input">
-                            </div>
+<!--                            <div class="title-box-input">-->
+<!--                                <input type="search" name="search" placeholder=" Поиск" class="input">-->
+<!--                            </div>-->
                         </div>
 
                         <div class="user-boxes block-box block-padding sub-block-margin-top">
@@ -29,7 +29,7 @@
 
                                 <a class="user-box" href="/staff?district=<?= $district['slug'] ?>&login=<?= $districtStaff['login'] ?>">
                                     <div class="user-avatar">
-                                        <div class="avatar" style="background-image: url('<?= $districtStaff['avatar']; ?>')"></div>
+                                        <div class="avatar" style="background-image: url('<?= $districtStaff['avatar'] ?? $this->security->setEmptyAvatar('dark') ?>')"></div>
                                     </div>
                                     <div class="user-info">
                                         <span class="title"><?= $districtStaff['lastname'] . ' ' . $districtStaff['firstname'] ?></span>

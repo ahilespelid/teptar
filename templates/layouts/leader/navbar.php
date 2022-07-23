@@ -15,9 +15,9 @@
 
             <div class="navbar-menu">
                 <div class="item search">
-                    <form class="navbar-search" action="" method="post">
-                        <input type="search" name="" placeholder=" Поиск" class="input" />
-                    </form>
+<!--                    <form class="navbar-search" action="" method="post">-->
+<!--                        <input type="search" name="" placeholder=" Поиск" class="input" />-->
+<!--                    </form>-->
                 </div>
 
                 <?php if (isset($navbar) && $navbar == 'home') { ?>

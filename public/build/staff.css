@@ -53,6 +53,7 @@ a {
     font-size: 14px;
     color: #535C69;
     background-color: transparent;
+    white-space: nowrap;
 }
 
 .button i {

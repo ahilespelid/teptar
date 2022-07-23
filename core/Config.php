@@ -24,6 +24,8 @@ $table = [
     'notifications'  => 'notifications',
     'usersBlock'    => 'usersBlock',
     'tableUIN'      => 'uin',
+    'count'         => 'count',
+    'calculate'      => 'calculate',
 ];
 
 $GLOBALS['db']['table'] =  $table;
@@ -38,24 +40,22 @@ define('_DS_',DIRECTORY_SEPARATOR);
 $path = dirname(__DIR__);
 
 $path = [
-    'dev'       => $path,
-    'pub'       => $_SERVER['DOCUMENT_ROOT'],
-    'app'       => $path._DS_.'app',
-    'core'      => $path._DS_.'core',
-    'log'       => $path._DS_.'log',
-    'tmp'       => $path._DS_.'public'._DS_.'tmp',
-    'use'       => ['ex' => '/tmp/external', 'in' => '/tmp/internal'],
-    'out'       => ['ex' => 'tmp'._DS_.'external', 'in' => 'tmp'._DS_.'internal'],
-    'layouts'   => $path._DS_.'templates'. _DS_ . 'layouts',
-    'views'     => $path._DS_.'templates'. _DS_ . 'views',
+    'dev'               => $path,
+    'pub'               => $_SERVER['DOCUMENT_ROOT'],
+    'app'               => $path._DS_.'app',
+    'core'              => $path._DS_.'core',
+    'log'                => $path._DS_.'log',
+    'tmp'               => $path._DS_.'public'._DS_.'tmp',
+    'layouts'         => $path._DS_.'templates'. _DS_ . 'layouts',
+    'views'           => $path._DS_.'templates'. _DS_ . 'views',
 ];
 
 $GLOBALS['mantisa'] = 16;
 
-$GLOBALS['path']                = $path;
-$GLOBALS['path']['controller']  = $GLOBALS['path']['app']._DS_.'Controllers';
-$GLOBALS['path']['model']       = $GLOBALS['path']['app']._DS_.'Models';
-$GLOBALS['path']['view']        = $GLOBALS['path']['app']._DS_.'Views';
+$GLOBALS['path'] = $path;
+$GLOBALS['path']['controller'] = $GLOBALS['path']['app']._DS_.'Controllers';
+$GLOBALS['path']['model'] = $GLOBALS['path']['app']._DS_.'Models';
+$GLOBALS['path']['view'] = $GLOBALS['path']['app']._DS_.'Views';
 
 /*/-------------------------------------------------------------- Удочка для ошибок --------------------------------------------------------------/*/
 

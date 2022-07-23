@@ -86,11 +86,12 @@ class Registr{
         $date = (new \DateTime('now'))->format('Y-m-d');
         $filename = 'php_' . $date . '.txt';
 
-        /*/ Создание файла $filename если он не существует /*/
+        //
+        /*/ Создание файла $filename если он не существует
         if (!file_exists($this->logFile . $filename)) {
             fopen($this->logFile . $filename, "w");
         }
-
+        ///*/
         if ($error) {
             /*/ Создание новой записи текущего исключения /*/
             $entry = PHP_EOL . $this->exDate .' '. $error->getMessage() .' '. $error->getFile() .' (line '. $error->getLine() .')';

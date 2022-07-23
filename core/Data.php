@@ -9,9 +9,11 @@ define('dbPass',  $GLOBALS['db']['pass']);
 abstract class Data{
     public $pdo;
     public $table;
+    public $logFile;
 
     public function __construct(){}
     public function connPDO(){
+        $this->logFile = $GLOBALS['path']['log']._DS_.'sql'._DS_;
         $pdo = new \PDO("mysql:dbname=" .$GLOBALS['db']['base'] . ";host=".
             $GLOBALS['db']['host'],
             $GLOBALS['db']['user'],
@@ -31,6 +33,7 @@ abstract class Data{
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
 
         $sql = 'SELECT * FROM '.$table.' WHERE `id`='.$id.';';
+        $this->writeLog($sql, __FUNCTION__);
         $return = $this->pdo->query($sql);  //*/ return $return->queryString; echo $sql; //*/
 
         return $return->fetch();}
@@ -40,6 +43,7 @@ abstract class Data{
         $table = $this->pdo->quote($table); $table[0] = $table[strlen($table)-1] = '`';
 
         $sql = 'SELECT * FROM '.$table.';';
+        $this->writeLog($sql, __FUNCTION__);
         $return = $this->pdo->query($sql);
 
         return $return->fetchAll();}
@@ -64,6 +68,7 @@ abstract class Data{
                                                 ).((1+$i < $c ) ? ' AND ' : ''); $i++;
         }$whereString = ' WHERE '.$whereString.' '.$order;
         $sql =  'SELECT * FROM '.$table.$whereString .';'; //*/ echo $sql.'<br>'; //*/
+        $this->writeLog($sql, __FUNCTION__, false);  
 
         $return = $this->pdo->query($sql);
         
@@ -79,6 +84,7 @@ abstract class Data{
         }else{$colum = '*';}
 
         $sql =  'SELECT '.$colum.' FROM '.$table.' WHERE `id`>='.$from.' AND `id`<='.$to.';';
+        $this->writeLog($sql, __FUNCTION__);
         $return = $this->pdo->query($sql);
 
         return $return->fetchAll();}
@@ -86,6 +92,7 @@ abstract class Data{
     public function getRandTable(bool $oneOrMony = false, bool $orderRand = false){//*/ Берёт случайную таблиц(У|Ы) из схемы  //*/ 
             $sql =  'SELECT `TABLE_NAME` FROM `INFORMATION_SCHEMA`.`TABLES` WHERE `TABLE_SCHEMA`'." = '" . $GLOBALS['db']['base'] . "' ORDER BY ".
                         ((!$orderRand) ? 'RAND()' : '`TABLE_ROWS` DESC')." ".((!$oneOrMony) ? ' LIMIT 1;' : ';');
+            $this->writeLog($sql, __FUNCTION__);
             $return = $this->pdo->query($sql);
             
             $table = $return->fetchAll();
@@ -99,6 +106,7 @@ abstract class Data{
 
         $sql =  'SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='.
             "'". $this->base."'".'AND `TABLE_NAME`='. $table. ';';
+        $this->writeLog($sql, __FUNCTION__);
         $return = $this->pdo->query($sql);
 
         $colum = $return->fetchAll();
@@ -106,7 +114,8 @@ abstract class Data{
 
         return $return; //*/ $column [ 0 => TABLE_NAME], 1 => TABLE_NAME, ...] //*/ 
     }   
-/*/ -------------------------------------------------------------- Вставки в базу -------------------------------------------------------------- /*/ 
+
+///*/ -------------------------------------------------------------- Вставки в базу -------------------------------------------------------------- /*/// 
 
     public function insert($table = '', $data = []){
         if(is_string($table) && !empty($table) && is_array($data) && !empty($data) && !is_array(current($data))){
@@ -122,6 +131,7 @@ abstract class Data{
                 $values     .= $values     ? ', ' : ''; $values     .= $value;
             }
             $sql = 'INSERT INTO '.$table.' ('.$columns.') VALUES ('.$values.');'; //*/ echo $sql; //*/
+            $this->writeLog($sql, __FUNCTION__);
             return ($this->pdo->query($sql)) ? $this->pdo->lastInsertId() : false;
 
         }return false;}
@@ -143,6 +153,7 @@ abstract class Data{
             }
 
             $sql = 'UPDATE '.$table.' SET '.$columns.' WHERE `id` = :id;'; //*/ echo $sql; //*/
+            $this->writeLog($sql, __FUNCTION__);
             return ($this->pdo->prepare($sql)->execute($data)) ? $data['id'] : false;
 
         }return false;}
@@ -153,6 +164,7 @@ abstract class Data{
 
     public function getQuery($sql = '', $return = true){
         $sql = (is_string($sql) && !empty($sql)) ? trim($sql) : false;
+        $this->writeLog($sql, __FUNCTION__);
 
         if($return){
             return $this->pdo->query($sql)->fetchAll();
@@ -198,6 +210,7 @@ abstract class Data{
 
         // Генерация всего запроса из результатов предыдуще генерированных строков
         $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . " LIMIT 1";
+        $this->writeLog($sql, __FUNCTION__);
         $query = $this->pdo->query($sql);
 
         return (!empty($return = $query->fetchAll())) ? $return[0] : false;
@@ -206,6 +219,7 @@ abstract class Data{
     // Поиск всех записей таблицы
     public function findAll() {
         $sql = 'SELECT * FROM ' . $this->table . ';';
+        $this->writeLog($sql, __FUNCTION__);
         $query = $this->pdo->query($sql);
 
         return $query->fetchAll();
@@ -247,7 +261,7 @@ abstract class Data{
 
         // Генерация всего запроса из результатов предыдуще генерированных строков
         $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . $limitSQL . $offsetSQL;
-
+        $this->writeLog($sql, __FUNCTION__);
         $query = $this->pdo->query($sql);
 
         return $query->fetchAll();
@@ -288,7 +302,7 @@ abstract class Data{
 
         // Генерация всего запроса из результатов предыдуще генерированных строков
         $sql = "SELECT COUNT(*) FROM " . $this->table . " WHERE " . $criteriaSQL;
-
+        $this->writeLog($sql, __FUNCTION__);
         $query = $this->pdo->query($sql);
 
         return $query->fetchColumn();
@@ -321,7 +335,7 @@ abstract class Data{
 
         // Генерация всего запроса из результатов предыдуще генерированных строков
         $sql = "INSERT INTO " . $this->table . " (" . $columns . ") VALUES (" . $values . ")";
-
+        $this->writeLog($sql, __FUNCTION__);
         $this->pdo->query($sql);
     }
 
@@ -380,5 +394,16 @@ abstract class Data{
         $query = $this->pdo->query($sql);
 
         return $query->fetchAll();
+    }
+
+    public function writeLog($sql, $action = __FUNCTION__, $timeWrite = true) {
+        $date = (new \DateTime('now'));
+        $dateFile = $date->format('Y-m-d');
+        $filename = $action . $dateFile . '.txt';
+
+        if($sql){
+            $entry = PHP_EOL .(($timeWrite) ? $date->format('[H:i:s]')  : '') .' '. $sql;
+            file_put_contents($this->logFile . $filename, $entry, FILE_APPEND | LOCK_EX);                                                     
+        } 
     }
 }

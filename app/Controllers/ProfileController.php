@@ -90,6 +90,10 @@ class ProfileController extends AbstractController {
         }
     }
 
+    public function new() {
+        $this->render('/staff/profile/new.php', []);
+    }
+
     /**
      * @throws Exception
      */

@@ -46,7 +46,7 @@
                 </a>
 
                 <?php if ($this->security->userHasRole(['ministry_boss', 'district_boss'])) { ?>
-                    <a href="/?ex=registration#">
+                    <a href="/profile/new" <?php if ($this->security->route == 'profile/new') { echo 'class="active"'; } ?>>
                          <span class="if_active">
                             <span class="icon-user menu-icon notif-icon"></span><span>Добавить сотрудника</span>
                          </span>

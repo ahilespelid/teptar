@@ -3,9 +3,9 @@
 
     'region_boss' => ['district', 'districtReports', 'leader', 'staff', 'ratingByMark', 'profile', 'support', 'callCenter', 'uinData', 'center'],
 
-    'ministry_boss' => ['reports', 'report', 'districts', 'districtNotifications', 'profile', 'support', 'callCenter', 'uinData', 'center'],
+    'ministry_boss' => ['reports', 'report', 'districts', 'districtNotifications', 'profile', 'support', 'callCenter', 'uinData', 'center', 'profile/new'],
 
-    'district_boss' => ['districts', 'reports', 'report', 'report/new', 'profile', 'support', 'callCenter', 'uinData', 'center'],
+    'district_boss' => ['districts', 'reports', 'report', 'report/new', 'profile', 'support', 'callCenter', 'uinData', 'center', 'profile/new'],
 
     'district_staff' => ['reports', 'report', 'profile', 'support', 'callCenter', 'uinData', 'center'],
 

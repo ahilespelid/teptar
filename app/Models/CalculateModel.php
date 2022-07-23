@@ -2,10 +2,14 @@
 namespace App\Models; 
 
 class CalculateModel extends \App\Data{
-    public $table, $tableIndexes;
+    public 
+    $table, 
+    $tableCount,
+    $tableIndexes;
     public function __construct(){
          (object)$this->pdo = $this->connPDO();
-          $this->table = 'count';
+          $this->table = $GLOBALS['db']['table']['calculate'];
+          $this->tableCount = $GLOBALS['db']['table']['count'];
           $this->tableIndexes = $GLOBALS['db']['table']['indexes'];
     }
 

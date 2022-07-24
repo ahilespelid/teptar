@@ -1,12 +1,5 @@
-.registration {
-    width: 100%;
-    height: 100%;
+.registration form {
     display: flex;
-}
-
-.registration__form {
-    width: 70%;
-    /*height: 60vh;*/
 }
 
 .registration__form__first {
@@ -97,13 +90,24 @@
 }
 
 .registration__avatar {
-    width: 30%;
-    height: 330px;
+    min-width: 400px;
+    min-height: 400px;
+    max-width: 400px;
+    max-height: 400px;
     background-color: #fff;
     padding: 15px;
     margin-right: 24px;
     border-radius: 4px;
     position: relative;
+}
+
+.registration__form__second .chosen-search-off {
+    width: 100%;
+    padding: 0 16px;
+}
+
+.registration__info {
+    flex-basis: 100%;
 }
 
 .registration__avatar input {

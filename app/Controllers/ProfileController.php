@@ -80,6 +80,15 @@ class ProfileController extends AbstractController {
                 $currentUser = true;
             }
 
+            if ($currentUser && $_POST) {
+                foreach ($_POST as $field => $value) {
+                    $this->users->update([$field => $value],['id' => $this->user()['id']]);
+                }
+                $this->redirectToRoute('/profile', [
+                    'user' => $user['login']
+                ]);
+            }
+
             $this->render('/staff/profile/profile.php', [
                 'user' => $user,
                 'currentUser' => $currentUser,
@@ -91,7 +100,51 @@ class ProfileController extends AbstractController {
     }
 
     public function new() {
-        $this->render('/staff/profile/new.php', []);
+        $required = ['lastname', 'firstname', 'secondname', 'age', 'gender', 'email', 'phone', 'login'];
+
+        if ($this->formIsValid($required, 'avatar') && !$this->users->findOneBy(['login' => $_POST['login']])) {
+            $currentUser = $this->user();
+
+            if ($this->security->userHasRole(['district_boss'])) {
+                $role = 5;
+            } else {
+                $role = 7;
+            }
+
+            $this->users->add([
+                'login' => $_POST['login'],
+                'firstname' => $_POST['firstname'],
+                'lastname' => $_POST['lastname'],
+                'secondname' => $_POST['secondname'],
+                'age' => $_POST['age'],
+                'gender' => $_POST['gender'],
+                'email' => $_POST['email'],
+                'phone' => $_POST['phone'],
+                'avatar' => $this->setFormBaseImage('avatar'),
+                'id_uin' => $currentUser['id_uin'],
+                'id_role' => $role,
+                'active' => 1
+            ]);
+
+            $this->redirectToRoute('/profile', [
+                'user' => $_POST['login']
+            ]);
+        }
+
+        $this->render('/staff/profile/new.php');
+    }
+
+    public function fire() {
+        if (isset($_GET['id'])) {
+            $this->users->update(['active' => 0],['id' => $_GET['id']]);
+            $user = $this->users->findOneBy(['id' => $_GET['id']]);
+
+            $this->redirectToRoute('/profile', [
+                'user' => $user['login']
+            ]);
+        } else {
+            $this->security->error('404', 'Такого пользователя не существует');
+        }
     }
 
     /**
@@ -124,5 +177,9 @@ class ProfileController extends AbstractController {
         } else {
             echo json_encode(0, JSON_UNESCAPED_UNICODE);
         }
+    }
+
+    public function disk() {
+        $this->render('/staff/profile/disk.php');
     }
 }

@@ -44,6 +44,43 @@ class AbstractController {
         return $user->getLoginUser();
     }
 
+    // Генерирует base64 файл из $_FILES
+    public function setFormBaseImage(string $input): string
+    {
+        $avatar_name = $_FILES[$input]['name'][0];
+        $avatar_tmp = $_FILES[$input]['tmp_name'][0];
+        $avatar_ext = strrchr($avatar_name, '.');
+        $avatar = file_get_contents($avatar_tmp);
+
+        return 'data:image/' . $avatar_ext . ';base64,' . base64_encode($avatar);
+    }
+
+    // Проверяет действительна ли форма, и возвращает значение true/false
+    public function formIsValid(array $required, $file = null): bool
+    {
+        $valid = true;
+        $condition = isset($_POST);
+
+        if ($file) {
+            $condition = isset($_POST) && isset($_FILES);
+            if (!isset($_FILES[$file])) {
+                $valid = false;
+            }
+        }
+
+        if ($condition && $valid === true) {
+            foreach ($required as $input) {
+                if (!isset($_POST[$input]) || $_POST[$input] === '') {
+                    $valid = false;
+                }
+            }
+        } else {
+            $valid = false;
+        }
+
+        return $valid;
+    }
+
     public function image($file) {
         // Заменяем слэши из ссылки на изображение сепаратором
         $file = implode(DIRECTORY_SEPARATOR, explode('/', $file));    
@@ -72,6 +109,7 @@ class AbstractController {
         }
     }
 
+    // Перенаправляет на роут, с возможностью передать $_GET параметры
     public function redirectToRoute(string $route, array $parameters = null) {
         $params = '';
         $i = 1;

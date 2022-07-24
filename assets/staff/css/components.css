@@ -53,6 +53,17 @@
     background-color: #2089da;
 }
 
+/* Danger button */
+
+.button-danger {
+    background-color: #F7685B !important;
+    color: #fff;
+}
+
+.button-danger:hover {
+    background-color: #ff7568 !important;
+}
+
 /* Link button */
 
 .button-link {

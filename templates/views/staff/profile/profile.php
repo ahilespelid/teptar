@@ -22,12 +22,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="profile">
+
+                <div class="profile<?php if (!$user['active']) { echo ' fired'; } ?>">
+                    <div class="fired-message"><i class="icon-user"></i>Данный сотрудник уволен</div>
                     <div class="profile__avatar-main">
                         <div class="profile__avatar">
                             <img class="avatar" src="<?= $user['avatar'] ?? $this->security->setEmptyAvatar() ?>" alt="">
-
-<!--                            --><?php //pa($currentUser) ?>
 
                             <?php  $role = 2; ?>
 
@@ -54,14 +54,28 @@
                                 <span class="address__republic">Чеченская Республика,</span>
                                 <span class="address__country">Российская Федерация</span>
                             </div>
-                            <div class="profile__footer__social">
-                                <a href="https://<?= $user['social_in'] ?>"><i class="icon-instagram"></i></a>
-                                <a href="https://<?= $user['social_tg'] ?>"><i class="icon-telegram"></i></a>
-                                <a href="https://<?= $user['social_vk'] ?>"><i class="icon-vk"></i></a>
-                            </div>
+                            <?php if ($user['social_in'] || $user['social_tg'] || $user['social_vk']) { ?>
+                                <div class="profile__footer__social">
+                                    <?php if ($user['social_in']) { ?>
+                                        <a href="https://<?= $user['social_in'] ?>"><i class="icon-instagram"></i></a>
+                                    <?php } ?>
+                                    <?php if ($user['social_tg']) { ?>
+                                        <a href="https://<?= $user['social_tg'] ?>"><i class="icon-telegram"></i></a>
+                                    <?php } ?>
+                                    <?php if ($user['social_vk']) { ?>
+                                        <a href="https://<?= $user['social_vk'] ?>"><i class="icon-vk"></i></a>
+                                    <?php } ?>
+                                </div>
+                            <?php } ?>
+                            <?php if ($currentUser) { ?>
+                                <div class="profile__footer__edit">
+                                    <button class="button edit-profile-button">Редактировать профиль</button>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="profile__form">
+
                         <div class="profile__form__name">
                             <div class="profile__form__first">ФИО</div>
                             <div class="profile__form__second">
@@ -86,82 +100,31 @@
                             </div>
                         </div>
 
-                        <?php if($currentUser) { ?>
-
-                            <div class="profile__form__extra">
-                                <div class="profile__form__first">Дополнительные данные</div>
-                                <div class="profile__form__second">
-                                    <div class="profile__form__second__first-input">
-                                            <span id="birthday">
-                                                <div>Пол</div>
-                                                <div><?= ($user['gender']) ? 'Мужской' : 'Женский' ?></div>
-                                            </span>
-                                    </div>
-                                    <div class="profile__form__second__second-input">
-                                            <span id="post">
-                                                <div>Дата рождения</div>
-                                                <div><?= (new DateTime($user['age']))->format('d.m.o') ?></div>
-                                            </span>
-                                    </div>
-                                    <div class="profile__form__second__third-input">
-                                            <span id="district">
-                                                <div>Подразделение</div>
-                                                <div><?= $uin['owner'] ?></div>
-                                            </span>
-                                    </div>
+                        <div class="profile__form__extra">
+                            <div class="profile__form__first">Дополнительные данные</div>
+                            <div class="profile__form__second">
+                                <div class="profile__form__second__first-input">
+                                    <span id="birthday">
+                                        <div>Пол</div>
+                                        <div><?= ($user['gender']) ? 'Мужской' : 'Женский' ?></div>
+                                    </span>
+                                </div>
+                                <div class="profile__form__second__second-input">
+                                    <span id="post">
+                                        <div>Дата рождения</div>
+                                        <div><?= (new DateTime($user['age']))->format('d.m.o') ?></div>
+                                    </span>
+                                </div>
+                                <div class="profile__form__second__third-input">
+                                    <span id="district">
+                                        <div>Подразделение</div>
+                                        <div><?= $uin['owner'] ?></div>
+                                    </span>
                                 </div>
                             </div>
-                            <form>
-                                <div class="profile__form__contacts">
-                                    <div class="profile__form__first">Контакты</div>
-                                    <div class="profile__form__second">
-                                        <div class="profile__form__second__first-input">
-                                            <span>
-                                                <div>Почта</div>
-                                                <div><input type="email" value="<?= $user['email'] ?>" id="mail" required></div>
-                                            </span>
-                                        </div>
-                                        <div class="profile__form__second__second-input">
-                                            <span>
-                                                <div>Телефон</div>
-                                                <div><input type="tel" value="<?= $user['phone'] ?>" id="telephone_number" required></div>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="profile__form__social">
-                                    <div class="profile__form__first">Социальные сети</div>
-                                    <div class="profile__form__second">
-                                        <div class="profile__form__second__first-input">
-                                            <span>
-                                                <div>Телеграм</div>
-                                                <div><input type="text" value="<?= $user['social_tg'] ?>" id="telegram" required></div>
-                                            </span>
-                                        </div>
-                                        <div class="profile__form__second__first-input">
-                                            <span>
-                                                <div>Вконтакте</div>
-                                                <div><input type="text" value="<?= $user['social_vk'] ?>" id="vk" required></div>
-                                            </span>
-                                        </div>
-                                        <div class="profile__form__second__second-input">
-                                            <span>
-                                                <div>Инстаграм</div>
-                                                <div><input type="text" value="<?= $user['social_in'] ?>" id="instagram" required></div>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="profile__form__footer">
-                                    <input type="submit" class="profile__form__footer__button" value="Сохранить изменения">
-                                    <div class="profile__form__footer__text none">
-                                        <img src="../assets/img/svg/check_ring_light.svg" alt="check_ring_light">
-                                        Изменения сохранены
-                                    </div>
-                                </div>
-                            </form>
+                        </div>
 
-                        <?php } else { ?>
+                        <div class="view-profile-form active">
 
                             <div class="profile__form__contacts">
                                 <div class="profile__form__first">Контакты</div>
@@ -180,26 +143,78 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="profile__form__extra">
-                                <div class="profile__form__first">Дополнительные данные</div>
-                                <div class="profile__form__second">
-                                    <div class="profile__form__second__first-input">
-                                        <span id="birthday">
-                                            <div>Пол</div>
-                                            <div><?= ($user['gender']) ? 'Мужской' : 'Женский' ?></div>
-                                        </span>
+
+                        </div>
+
+                        <?php if ($currentUser) { ?>
+                            <form method="post" class="edit-profile-form">
+                                <div class="profile__form__contacts">
+                                    <div class="profile__form__first">Контакты</div>
+                                    <div class="profile__form__second">
+                                        <div class="profile__form__second__first-input">
+                                            <span>
+                                                <div>Почта</div>
+                                                <div><input type="email" name="email" value="<?= $user['email'] ?>" id="mail" required></div>
+                                            </span>
+                                        </div>
+                                        <div class="profile__form__second__second-input">
+                                            <span>
+                                                <div>Телефон</div>
+                                                <div><input type="tel" name="phone" value="<?= $user['phone'] ?>" id="telephone_number" required></div>
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="profile__form__second__second-input">
-                                        <span id="post">
-                                            <div>Дата рождения</div>
-                                            <div><?= (new DateTime($user['age']))->format('d.m.o') ?></div>
-                                        </span>
+                                </div>
+                                <div class="profile__form__social">
+                                    <div class="profile__form__first">Социальные сети</div>
+                                    <div class="profile__form__second">
+                                        <div class="profile__form__second__first-input">
+                                            <span>
+                                                <div>Телеграм</div>
+                                                <div><input type="text" name="social_tg" value="<?= $user['social_tg'] ?>" id="telegram"></div>
+                                            </span>
+                                        </div>
+                                        <div class="profile__form__second__first-input">
+                                            <span>
+                                                <div>Вконтакте</div>
+                                                <div><input type="text" name="social_vk" value="<?= $user['social_vk'] ?>" id="vk"></div>
+                                            </span>
+                                        </div>
+                                        <div class="profile__form__second__second-input">
+                                            <span>
+                                                <div>Инстаграм</div>
+                                                <div><input type="text" name="social_in" value="<?= $user['social_in'] ?>" id="instagram"></div>
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="profile__form__second__third-input">
-                                        <span id="district">
-                                            <div>Подразделение</div>
-                                            <div><?= $uin['owner'] ?></div>
-                                        </span>
+                                </div>
+                                <div class="profile__form__footer">
+                                    <input type="submit" class="profile__form__footer__button" value="Сохранить изменения">
+                                    <div class="profile__form__footer__text none">
+                                        <img src="../assets/img/svg/check_ring_light.svg" alt="check_ring_light">
+                                        Изменения сохранены
+                                    </div>
+                                </div>
+                            </form>
+                        <?php } ?>
+
+                        <?php if ($this->security->userHasRole(['district_boss', 'ministry_boss']) && $this->user()['id_uin'] == $user['id_uin'] && $this->user()['id_role'] != $user['id_role']) { ?>
+
+                            <div class="reports_main">
+                                <div class="main__first">
+                                    <div class="footer__info__time">
+                                        <span>Удалить сотрудника</span>
+                                    </div>
+                                    <div>
+                                        <div class="textarea">
+                                            <label for="deleteUserCause">
+                                                <textarea name="delete_user_cause" id="deleteUserCause" placeholder="Введите причину увольнения"></textarea>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="support__footer">
+                                        <div class="support__footer__text"></div>
+                                        <a href="/profile/fire?id=<?= $user['id'] ?>" onclick="return confirm('Вы уверены что хотите уволить данного сотрудника?')" class="button button-danger">Уволить сотрудника</a>
                                     </div>
                                 </div>
                             </div>
@@ -210,6 +225,19 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            if (document.querySelector('.edit-profile-button')) {
+                let button = document.querySelector('.edit-profile-button');
+                let editProfileForm = document.querySelector('.edit-profile-form');
+                let viewProfileForm = document.querySelector('.view-profile-form');
+
+                button.addEventListener('click', () => {
+                    editProfileForm.classList.toggle('active');
+                    viewProfileForm.classList.toggle('active');
+                })
+            }
+        </script>
 
     </body>
 

@@ -369,10 +369,17 @@ abstract class Data{
         // Генерация строки запроса SQL для условий поиска записей из таблицы
         $conditionsValues = $this->columnValues($conditions, 'conditions');
 
-        $sql = 'UPDATE '. $this->table .' SET '. $columnValues .' WHERE ' . $conditionsValues;
+        $sql = 'UPDATE ' . $this->table . ' SET ' . $columnValues . ' WHERE ' . $conditionsValues;
         $this->pdo->query($sql);
 
         return $sql;
+    }
+
+    public function remove(array $conditions) {
+        $conditionsValues = $this->columnValues($conditions, 'conditions');
+
+        $sql = 'DELETE FROM ' . $this->table . ' WHERE ' . $conditionsValues;
+        $this->pdo->query($sql);
     }
 
     // Позволяет сделать чистый SQL запрос в БД

@@ -1,4 +1,4 @@
-<div class="menu" id="menu">
+<div class="menu<?php if (isset($_COOKIE['menu'])) { echo ' menu__folded'; }?>" id="menu">
     <div class="menu__main">
 
         <div class="menu__header">
@@ -25,7 +25,7 @@
                     </a>
                 <?php } ?>
 
-                <a href="#">
+                <a href="/disk" <?php if ($this->security->route == 'disk') { echo 'class="active"'; } ?>>
                     <span class="if_active">
                         <span class="icon-save_light menu-icon"></span><span>Диск</span>
                     </span>

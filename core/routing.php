@@ -16,8 +16,10 @@
     'staff'                     =>  ['controller' => 'ProfileController', 'action' => 'staff'],
     'profile'                   =>  ['controller' => 'ProfileController', 'action' => 'profile'],
     'profile/new'               =>  ['controller' => 'ProfileController', 'action' => 'new'],
+    'profile/fire'              =>  ['controller' => 'ProfileController', 'action' => 'fire'],
     'notifications'             =>  ['controller' => 'ProfileController', 'action' => 'notifications'],
     'districtNotifications'     =>  ['controller' => 'ProfileController', 'action' => 'districtNotificationsJSON'],
+    'disk'                      =>  ['controller' => 'ProfileController', 'action' => 'disk'],
 
     // SupportController
     'support'                   =>  ['controller' => 'SupportController', 'action' => 'support'],
@@ -38,8 +40,10 @@
     'report'                    =>  ['controller' => 'ReportController', 'action' => 'report'],
     'report/new'                =>  ['controller' => 'ReportController', 'action' => 'new'],
 
-    // ПОКА НЕ ГОТОВЫ //
+    // UserController
     'login'                     =>  ['controller' => 'UserController', 'action' => 'login'],
+
+    // ПОКА НЕ ГОТОВЫ //
     'exel'                      =>  ['controller' => 'ExelController', 'action' => 'work'],
     'ajax'                      =>  ['controller' => 'AjaxController', 'action' => 'getMarkData'],
     'calculate'                 =>  ['controller' => 'CalculateController', 'action' => 'index'],

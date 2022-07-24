@@ -3,6 +3,12 @@
 $(document).ready(function () {
     $(".menu__footer__toggle a")["0"].addEventListener("click", function () {
         $(".menu").toggleClass("menu__folded")
+        let menu = document.getElementById('menu');
+        if (menu.classList.contains('menu__folded')) {
+            document.cookie = "menu=folded";
+        } else {
+            document.cookie = "menu=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
     })
 })
 

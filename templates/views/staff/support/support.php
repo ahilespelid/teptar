@@ -27,7 +27,7 @@
                 <div class="reports_main">
                     <div class="main__first">
                         <div class="footer__info__time">
-                            <h3>Обратная связь</h3>
+                            <span class="footer__info__time__name">Обратная связь</span>
                         </div>
                         <div>
                             <div class="textarea">

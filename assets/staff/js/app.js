@@ -3,6 +3,8 @@ import './report';
 import './profile';
 import './new-staff';
 import './disk';
+import './rating';
+import './table';
 import '/assets/components/collapse'
 import '/assets/components/dropdown'
 

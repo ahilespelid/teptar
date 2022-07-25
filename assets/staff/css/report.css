@@ -385,6 +385,7 @@
 }
 
 .responsible__name, .assistant__name {
+  white-space: nowrap;
   font-size: 14px;
 }
 

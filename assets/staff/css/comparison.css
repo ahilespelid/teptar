@@ -1,0 +1,245 @@
+/* Comparison */
+
+.comparison {
+    flex-direction: column;
+    margin-top: 24px;
+    display: flex;
+}
+
+.comparison a {
+    color: #535C69;
+}
+
+.comparison__info {
+    border-radius: 12px;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.comparison__info .sub-collapsible .collapse-indicator-button, .comparison__info .sub-collapsible .collapse-indicator-content {
+    padding-left: 40px;
+}
+
+.comparison__info .sub-collapsible .collapse-indicator-button::before {
+    color: rgba(255,255,255,0.2);
+    position: absolute;
+    font-size: 14px;
+    content: "↳";
+    left: 18px;
+    top: 17px;
+}
+
+.comparison__info .collapse-indicator-button {
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    position: relative;
+    line-height: 20px;
+    transition: 0.3s;
+    padding: 18px 40px 18px 18px;
+    box-sizing: border-box;
+}
+
+.collapse-indicator-button {
+    position: relative;
+    user-select: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    border: none;
+}
+
+.collapse-indicator-button .icon-refresh {
+    height: 14px;
+    font-size: 14px;
+    width: 14px;
+    top: 4px;
+    position: relative;
+    margin-left: 10px;
+}
+
+.collapse-indicator.muted .collapse-indicator-button {
+    cursor: unset;
+    user-select: unset;
+}
+
+.collapse-indicator.chevron .collapse-indicator-button:after {
+    top: calc((100% - 20px) / 2);
+    font-family: 'icomoon', serif;
+    position: absolute;
+    content: "\e906";
+    transition: 0.3s;
+    font-size: 6px;
+    right: 20px;
+}
+
+.collapse-indicator.chevron.active .collapse-indicator-button:after {
+    rotate: 180deg;
+}
+
+.collapse-indicator .collapse-indicator-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.comparison__info .collapse-indicator:last-child .collapse-indicator-button {
+    border: unset;
+}
+
+.comparison__info .collapse-indicator:first-child .collapse-indicator-button {
+    border-radius: 12px 12px 0 0;
+}
+
+.comparison__info .collapse-indicator:last-child .collapse-indicator-button {
+    border-radius: 0 0 12px 12px;
+}
+
+.comparison__info .collapse-indicator.active:first-child .collapse-indicator-button {
+    border-radius: 12px;
+
+}
+.comparison__info .collapse-indicator.active:not(:first-child) .collapse-indicator-button {
+    border-radius: 0 0 12px 12px;
+}
+
+.comparison__info .collapse-indicator.active.previous-open:not(:first-child) .collapse-indicator-button {
+    border-radius: 12px;
+}
+
+.comparison__info .collapse-indicator.previous-open .collapse-indicator-button {
+    border-radius: 12px 12px 0 0;
+}
+
+.comparison__info .collapse-indicator.previous-open:last-child .collapse-indicator-button {
+    border-radius: 12px;
+}
+
+.districts-score {
+    margin: 6px 0;
+}
+
+.districts-score-table {
+    border-spacing: unset;
+    margin-top: 6px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.districts-score-table tbody td {
+    background: #fff;
+    line-height: 40px;
+    height: 50px;
+}
+
+.districts-score-table tbody tr:first-child td:first-child {
+    border-radius: 12px 0 0 0;
+}
+
+.districts-score-table tbody tr:first-child td:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+.districts-score-table tbody tr:last-child td:last-child {
+    border-radius: 0 0 12px 0;
+}
+
+.districts-score-table tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 12px;
+}
+
+.districts-score-table thead {
+    height: 64px;
+    font-size: 14px;
+}
+
+.districts-score-table tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #eee;
+}
+
+.districts-score-table thead th {
+    background: #fff;
+}
+
+.districts-score-table thead th:first-child {
+    border-radius: 12px 0 0 12px;
+}
+
+.districts-score-table thead th:last-child {
+    border-radius: 0 12px 12px 0;
+}
+
+.districts-score-table tbody:before {
+    content:"@";
+    display:block;
+    line-height:0;
+    text-indent:-99999px;
+}
+
+.districts-score-table tbody tr td.separator {
+    width: 16px;
+    border: unset;
+}
+
+.districts-score-table tr th.separator {
+    height: 64px;
+}
+
+/* Tables */
+
+.sortable-table th {
+    cursor: pointer;
+}
+
+.sortable-table thead {
+    user-select: none;
+    text-align: left;
+}
+
+.sortable-table .sortable-icon:before {
+    content: "\e921";
+    font-family: 'icomoon' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 10px;
+    position: relative;
+}
+
+.sortable-table .th-sort-asc .sortable-icon::before {
+    content: "\e91f";
+    font-size: 7px;
+    left: 2px;
+}
+
+.sortable-table .th-sort-desc .sortable-icon::before {
+    content: "\e920";
+    font-size: 7px;
+    left: 2px;
+}
+
+.table-avatar {
+    background-position: center;
+    background-size: cover;
+    border-radius: 100%;
+    margin-right: 8px;
+    height: 40px;
+    width: 40px;
+    float: left;
+}
+
+.table-progress-bar {
+    border-radius: 0 8px 8px 0;
+    height: 34px;
+    line-height: 34px;
+    box-sizing: border-box;
+}
+
+.table-progress-bar-gradient {
+    background: linear-gradient(90deg, rgba(23,33,43,0.8) 0%, rgba(23,33,43,0) 60%);
+    padding-left: 10px;
+    font-size: 12px;
+}

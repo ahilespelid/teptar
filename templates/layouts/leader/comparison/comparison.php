@@ -18,315 +18,58 @@
 
     <div class="comparison__info">
 
-            <div class="collapse-indicator sub-collapsible chevron">
-                <div class="collapse-indicator-button block-background">dfsgdg . dfgfsdgd</div>
+        <?php foreach ($marks as $mark) { ?>
 
-                    <div class="collapse-indicator-content">
+            <?php
 
-                        <div class="districts-score">
-                            <div class="block-box block-title-box">
-                                <h3>Показатель по всем районам</h3>
-                            </div>
+            $type = ' chevron';
 
-                            <div class="smooth-border">
+            if ($mark['type'] == 'description') {
+                $type = ' muted';
+            } elseif ($mark['type'] == 'subparagraph') {
+                $type = ' sub-collapsible chevron';
+            }
 
-                                <div class="scrollable-table">
+            ?>
 
-                                    <table class="districts-score-table sortable-table block-background">
-                                        <thead>
-                                            <tr>
-                                                <th>Район <i class="sortable-icon"></i></th>
-                                                <th>Глава <i class="sortable-icon"></i></th>
-                                                <th>Эффективность <i class="sortable-icon"></i></th>
-                                            </tr>
-                                        </thead>
+            <div id="indicator<?= $mark['num'] ?>" class="collapse-indicator<?= $type ?>">
 
-                                        <tbody>
-                                                <tr>
-                                                    <td>dfsgf</td>
-                                                    <td>
-                                                        <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
-                                                        Хасан Шали
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-progress-bar" style="width: '100'%">
-                                                            <div class="table-progress-bar-gradient"></div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                        </tbody>
-                                    </table>
+                <div class="collapse-indicator-button block-background">
+                    <?= (str_contains($mark['num'],'_SV')) ? str_replace('_SV', '', $mark['num']) . ' (сводный)' : $mark['num'] ?>. <?=$mark['name'];?>
+                </div>
 
-                                </div>
+                <div class="collapse-indicator-content">
 
-                            </div>
-
+                    <div class="districts-score">
+                        <div class="block-box block-title-box">
+                            <h3>Показатель по всем районам</h3>
                         </div>
 
+                        <div class="smooth-border">
+                            <div class="scrollable-table">
+
+                                <table class="districts-score-table sortable-table block-background">
+                                    <thead>
+                                        <tr>
+                                            <th>Район <i class="sortable-icon"></i></th>
+                                            <th>Глава <i class="sortable-icon"></i></th>
+                                            <th>Эффективность <i class="sortable-icon"></i></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody></tbody>
+                                </table>
+
+                            </div>
+                        </div>
                     </div>
+
+                </div>
 
             </div>
 
-    </div>
-
-</div>
-
-<div class="districts-score" style="display: none">
-    <div class="block-box block-title-box">
-        <h3>Показатель по всем районам</h3>
-    </div>
-
-    <div class="smooth-border">
-
-        <div class="scrollable-table">
-
-            <table class="districts-score-table sortable-table block-background">
-                <thead>
-                    <tr>
-                        <th>Район <i class="sortable-icon"></i></th>
-                        <th>Глава <i class="sortable-icon"></i></th>
-                        <th>Эффективность <i class="sortable-icon"></i></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>Надтеречный</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
-                            Хасан Шали
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 96.8%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Аргун</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar2.jpeg')"></div>
-                            Усман Аргун
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 91.7%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Грозный</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar.jpg')"></div>
-                            Ибрагим Грозный
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 82.5%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Серноводский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
-                            Хасан Шали
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 76.4%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Итум-Калинский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar2.jpeg')"></div>
-                            Усман Аргун
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 68.5%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Гудермесский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar2.jpeg')"></div>
-                            Усман Аргун
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 64.1%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Грозненский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar2.jpeg')"></div>
-                            Усман Аргун
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 60.3%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Шалинский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
-                            Хасан Шали
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 54.3%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Урус-Мартановский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar5.jpg')"></div>
-                            Керим Гудермес
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 46.6%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Наурский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar5.jpg')"></div>
-                            Керим Гудермес
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 41.4%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Шатойский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar.jpg')"></div>
-                            Ибрагим Грозный
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 37.1%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Шаройский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar3.jpeg')"></div>
-                            Хасан Шали
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 32.8%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Веденский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar4.jpg')"></div>
-                            Ахмед Шатой
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 28.4%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Шелковской</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar.jpg')"></div>
-                            Ибрагим Грозный
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 23.1%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Ножай-Юртовский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar5.jpg')"></div>
-                            Керим Гудермес
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 17.9%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Ачхой-Мартановский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar4.jpg')"></div>
-                            Ахмед Шатой
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 14.4%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Курчалоевский</td>
-                        <td>
-                            <div class="table-avatar" style="background-image: url('/assets/images/avatar4.jpg')"></div>
-                            Ахмед Шатой
-                        </td>
-                        <td>
-                            <div class="table-progress-bar" style="width: 12.4%">
-                                <div class="table-progress-bar-gradient"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
+        <?php } ?>
 
     </div>
 
 </div>
-
-<!--<script>-->
-<!--    // Временная мера для дублирования таблиц во всех развернутых показателях-->
-<!--    let collapsibleContent = document.querySelectorAll('.temp-content .collapsible-content');-->
-<!--    collapsibleContent.forEach((content) => {-->
-<!--        let clone = document.querySelector('.districts-score').cloneNode(true);-->
-<!--        clone.style.display = 'block';-->
-<!--        content.appendChild(clone);-->
-<!--    })-->
-<!--</script>-->

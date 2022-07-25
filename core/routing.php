@@ -29,7 +29,7 @@
     'uinData'                   =>  ['controller' => 'SupportController', 'action' => 'uinInJSON'],
 
     // MarkController
-    'ratingByMark'              =>  ['controller' => 'MarkController', 'action' => 'jsonRatingByMark'],
+    'generalRating'             =>  ['controller' => 'MarkController', 'action' => 'jsonGeneralRating'],
 
     // STAFF //
 

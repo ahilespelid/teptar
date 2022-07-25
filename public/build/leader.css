@@ -944,15 +944,15 @@ h3 {
 }
 
 .sortable-table .th-sort-asc .sortable-icon::before {
-    content: "\e90b";
-    font-size: 4px;
-    top: -3px;
+    content: "\e91f";
+    font-size: 7px;
+    left: 2px;
 }
 
 .sortable-table .th-sort-desc .sortable-icon::before {
-    content: "\e90c";
-    font-size: 4px;
-    top: -3px;
+    content: "\e920";
+    font-size: 7px;
+    left: 2px;
 }
 
 .table-avatar {
@@ -1410,7 +1410,6 @@ h3 {
 }
 
 .collapse-indicator-button {
-    justify-content: space-between;
     position: relative;
     user-select: none;
     text-align: left;
@@ -1418,6 +1417,15 @@ h3 {
     display: flex;
     outline: none;
     border: none;
+}
+
+.collapse-indicator-button .icon-refresh {
+    height: 14px;
+    font-size: 14px;
+    width: 14px;
+    top: 4px;
+    position: relative;
+    margin-left: 10px;
 }
 
 .collapse-indicator.muted .collapse-indicator-button {

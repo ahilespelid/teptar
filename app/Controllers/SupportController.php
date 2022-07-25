@@ -30,6 +30,12 @@ class SupportController extends AbstractController {
         }
     }
 
+    public function rating() {
+        $this->render('/staff/support/rating.php', [
+            'districts' => $this->uins->findBy(['type' => 'district'])
+        ]);
+    }
+
     public function center() {
         if (isset($_GET['center']) && $this->uins->findOneBy(['slug' => $_GET['center']])) {
             $uin = $this->uins->findOneBy(['slug' => $_GET['center']]);

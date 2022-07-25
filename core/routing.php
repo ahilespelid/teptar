@@ -23,6 +23,7 @@
 
     // SupportController
     'support'                   =>  ['controller' => 'SupportController', 'action' => 'support'],
+    'rating'                    =>  ['controller' => 'SupportController', 'action' => 'rating'],
     'center'                    =>  ['controller' => 'SupportController', 'action' => 'center'],
     'callCenter'                =>  ['controller' => 'SupportController', 'action' => 'callCenter'],
     'uinData'                   =>  ['controller' => 'SupportController', 'action' => 'uinInJSON'],
@@ -38,6 +39,7 @@
     // ReportController
     'reports'                   =>  ['controller' => 'ReportController', 'action' => 'reports'],
     'report'                    =>  ['controller' => 'ReportController', 'action' => 'report'],
+    'report/table'              =>  ['controller' => 'ReportController', 'action' => 'table'],
     'report/new'                =>  ['controller' => 'ReportController', 'action' => 'new'],
 
     // UserController

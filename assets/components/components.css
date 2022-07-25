@@ -407,10 +407,15 @@ a {
     max-height: 0;
 }
 
+.collapse.fill .collapse-content {
+    background: #fff;
+    border-radius: 12px;
+}
+
 .collapse .collapse-content .item {
     display: block;
     padding: 12px;
-    color: #000;
+    color: #535C69;
 }
 
 .collapse.dark .collapse-content .item {

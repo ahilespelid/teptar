@@ -70,6 +70,10 @@ class ReportController extends AbstractController{
         }
     }
 
+    public function table() {
+        $this->render('/staff/report/table.php');
+    }
+
     public function new() {
         $district = $this->uinModel->findOneBy(['id' => $this->user()['uin']['id']]);
 

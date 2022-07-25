@@ -32,7 +32,7 @@
                 </a>
 
                 <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
-                    <a href="#">
+                    <a href="/rating" <?php if ($this->security->route == 'rating') { echo 'class="active"'; } ?>>
                         <span class="if_active">
                             <span class="icon-chart menu-icon"></span><span>Рейтинг</span>
                         </span>

@@ -8,10 +8,12 @@ class HomeController extends AbstractController {
     public $uins;
     public $reports;
     public $security;
+    public $marks;
 
     public function __construct(){
         $this->uins = new \App\Models\UINModel;
         $this->reports = new \App\Models\ReportModel;
+        $this->marks = new \App\Models\MarkModel;
         $this->security = new Security();
     }
 
@@ -46,6 +48,7 @@ class HomeController extends AbstractController {
             'navbar' => 'home',
             'reportsType' => 'home',
             'district' => $district,
+            'marks' => $this->marks->findAll()
         ]);
     }
 

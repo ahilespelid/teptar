@@ -260,7 +260,7 @@ abstract class Data{
         }
 
         // Генерация всего запроса из результатов предыдуще генерированных строков
-        $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . $limitSQL . $offsetSQL;
+        $sql = "SELECT * FROM `" . $this->table . "` WHERE " . $criteriaSQL . $orderSQL . $limitSQL . $offsetSQL;
         $this->writeLog($sql, __FUNCTION__);
         $query = $this->pdo->query($sql);
 
@@ -411,6 +411,6 @@ abstract class Data{
         if($sql){
             $entry = PHP_EOL .(($timeWrite) ? $date->format('[H:i:s]')  : '') .' '. $sql;
             file_put_contents($this->logFile . $filename, $entry, FILE_APPEND | LOCK_EX);                                                     
-        } 
+        }
     }
 }

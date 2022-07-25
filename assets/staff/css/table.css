@@ -44,12 +44,14 @@
     background-color:white;
     min-width: 60px;
 }
-.report-table td:nth-child(2),th:nth-child(2)  {
+
+.report-table td:nth-child(2), .report-table th:nth-child(2)  {
     position:sticky;
     left:40px;
     z-index:1;
     background-color:white;
 }
+
 .report-table .tableFixHead th {
     position: sticky;
     top: 0;
@@ -62,7 +64,7 @@
     border-right: 6px solid #EEF2F4;
 }
 
-.report-table th:first-child , th:nth-child(2) {
+.report-table th:first-child, .report-table th:nth-child(2) {
     z-index:5;
     border-left: none;
 }

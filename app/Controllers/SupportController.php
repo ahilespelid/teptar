@@ -8,11 +8,13 @@ class SupportController extends AbstractController {
     public $security;
     public $users;
     public $uins;
+    public $marks;
 
     public function __construct()
     {
         $this->uins = new \App\Models\UINModel;
         $this->users = new \App\Models\UserModel;
+        $this->marks = new \App\Models\MarkModel;
         $this->security = new Security();
     }
 
@@ -32,7 +34,8 @@ class SupportController extends AbstractController {
 
     public function rating() {
         $this->render('/staff/support/rating.php', [
-            'districts' => $this->uins->findBy(['type' => 'district'])
+            'districts' => $this->uins->findBy(['type' => 'district']),
+            'marks' => $this->marks->findAll()
         ]);
     }
 

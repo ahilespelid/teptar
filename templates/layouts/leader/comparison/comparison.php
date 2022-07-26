@@ -32,7 +32,7 @@
 
             ?>
 
-            <div id="indicator<?= $mark['num'] ?>" class="collapse-indicator<?= $type ?>">
+            <div id="indicator<?= $mark['num'] ?>" class="collapse-indicator general<?= $type ?>">
 
                 <div class="collapse-indicator-button block-background">
                     <?= (str_contains($mark['num'],'_SV')) ? str_replace('_SV', '', $mark['num']) . ' (сводный)' : $mark['num'] ?>. <?=$mark['name'];?>

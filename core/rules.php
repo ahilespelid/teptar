@@ -1,9 +1,9 @@
 <?php return [
     'authorized' => ['index', 'framework', 'notifications'],
 
-    'region_boss' => ['district', 'districtReports', 'leader', 'staff', 'generalRating', 'profile', 'support', 'callCenter', 'uinData', 'center'],
+    'region_boss' => ['district', 'districtReports', 'leader', 'staff', 'generalRating', 'districtRating', 'profile', 'support', 'callCenter', 'uinData', 'center'],
 
-    'ministry_boss' => ['reports', 'report', 'districts', 'districtNotifications', 'generalRating', 'profile', 'support', 'callCenter', 'uinData', 'center', 'profile/new', 'profile/fire', 'disk', 'rating', 'report/table'],
+    'ministry_boss' => ['reports', 'report', 'districts', 'districtNotifications', 'generalRating', 'districtRating', 'profile', 'support', 'callCenter', 'uinData', 'center', 'profile/new', 'profile/fire', 'disk', 'rating', 'report/table'],
 
     'district_boss' => ['districts', 'reports', 'report', 'report/new', 'profile', 'support', 'callCenter', 'uinData', 'center', 'profile/new', 'profile/fire', 'disk', 'report/table'],
 

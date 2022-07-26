@@ -13,7 +13,7 @@ class CalculateModel extends \App\Data{
           $this->tableIndexes = $GLOBALS['db']['table']['indexes'];
     }
 
-    public function markRating($mark) {
+    public function markGeneralRating($mark) {
         if (str_contains($mark, '_SV')) {
             $mark = str_replace('_SV', '', $mark) . '.1';
             $index = 'index_sv';
@@ -30,6 +30,26 @@ class CalculateModel extends \App\Data{
             GROUP BY owner
             ORDER BY ' . $index . ' DESC
             ';
+
+        return $this->customSQL($sql);
+    }
+
+    public function markDistrictRating($mark, $district) {
+        if (str_contains($mark, '_SV')) {
+            $mark = str_replace('_SV', '', $mark) . '.1';
+            $index = 'index_sv';
+        } else {
+            $index = 'index_final';
+        }
+
+        $sql = '
+            SELECT ' . $index . ' as `index`, DATE_FORMAT(deadline,"%Y") as `date`
+            FROM calculate
+            LEFT JOIN uin on calculate.id_uin = uin.id
+            WHERE mark = ' . $mark . '
+            AND slug = "' . $district . '"
+            ORDER BY deadline DESC
+        ';
 
         return $this->customSQL($sql);
     }

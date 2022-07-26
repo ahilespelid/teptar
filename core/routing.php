@@ -30,6 +30,7 @@
 
     // MarkController
     'generalRating'             =>  ['controller' => 'MarkController', 'action' => 'jsonGeneralRating'],
+    'districtRating'            =>  ['controller' => 'MarkController', 'action' => 'jsonDistrictRating'],
 
     // STAFF //
 

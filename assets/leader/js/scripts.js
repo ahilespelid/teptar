@@ -1,14 +1,5 @@
-// Color by percent
-
-function hslColor(percent, start, end) {
-    var a = percent / 100,
-        b = (end - start) * a,
-        c = b + start;
-
-    return 'hsl('+c+', 60%, 56%)';
-}
-
 // Make a table sortable with class name 'sortable-table'
+
 function sortTableByColumn(table, column, asc = true) {
     const dirModifier = asc ? 1 : -1;
     const tBody = table.tBodies[0];
@@ -58,9 +49,8 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     });
 });
 
-// Comparison
+// Добавление элементов 'separator' в таблицы для улучшения верстки
 
-// Добавление элементов 'separator' для улучшения верстки
 document.querySelectorAll('.districts-score-table').forEach(function (table) {
     // Добавление элементов 'separator' для улучшения верстки
     table.querySelector('thead tr').insertAdjacentHTML('afterbegin','<th class="separator"></th>');
@@ -73,30 +63,58 @@ document.querySelectorAll('.districts-score-table').forEach(function (table) {
     })
 });
 
-var collapseIndicatorElements = document.querySelectorAll('.collapse-indicator');
+// Вывод цвета из диапазона цветов в процентах
 
-collapseIndicatorElements.forEach(function (block) {
+function hslColor(percent, start, end) {
+    var a = percent / 100,
+        b = (end - start) * a,
+        c = b + start;
+
+    return 'hsl('+c+', 60%, 56%)';
+}
+
+// =========================== Открытие и закрытие спадающего блока и загрузка рейтингов =========================== //
+
+var collapseGeneralRatingElements = document.querySelectorAll('.collapse-indicator.general');
+var collapseDistrictRatingElements = document.querySelectorAll('.collapse-indicator.district');
+
+// Открытие и закрытие элементов спадающего блока
+function collapseRatingElements(block) {
+    let nextElement = block.nextElementSibling;
+
+    block.classList.toggle("active");
+    let content = block.querySelector('.collapse-indicator-content');
+
+    if (content.style.maxHeight){
+        if (nextElement) {
+            nextElement.classList.remove('previous-open');
+        }
+        content.style.maxHeight = null;
+    } else {
+        if (nextElement) {
+            nextElement.classList.add('previous-open');
+        }
+        content.style.maxHeight = content.scrollHeight + "px";
+    }
+}
+
+// Закрытие предыдуще открытых элементов спадающего блока
+function closePreviousCollapse(block) {
+    if (document.querySelector('.collapse-indicator.active') && !block.classList.contains('active')) {
+        let activeCollapseIndicator = document.querySelector('.collapse-indicator.active');
+        activeCollapseIndicator.classList.toggle('active');
+        activeCollapseIndicator.querySelector('.collapse-indicator-content').style.maxHeight = null;
+        if (document.querySelector('.collapse-indicator.previous-open')) {
+            document.querySelector('.collapse-indicator.previous-open').classList.toggle('previous-open');
+        }
+    }
+}
+
+// Загрузка всех данных спадающего блока с общим рейтингом
+collapseGeneralRatingElements.forEach(function (block) {
     if (!block.classList.contains('muted')) {
         block.querySelector('.collapse-indicator-button').addEventListener('click', function () {
-
-            function collapse() {
-                let nextElement = block.nextElementSibling;
-
-                block.classList.toggle("active");
-                let content = block.querySelector('.collapse-indicator-content');
-
-                if (content.style.maxHeight){
-                    if (nextElement) {
-                        nextElement.classList.remove('previous-open');
-                    }
-                    content.style.maxHeight = null;
-                } else {
-                    if (nextElement) {
-                        nextElement.classList.add('previous-open');
-                    }
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            }
+            closePreviousCollapse(block);
 
             // Если этот блок не был открыт до этого и если он уже не загружается
             if (!block.querySelector('tbody').innerHTML && !block.querySelector('.spin')) {
@@ -144,31 +162,121 @@ collapseIndicatorElements.forEach(function (block) {
                     collapseButton.querySelector('.spin').remove();
 
                 }).then(() => {
-                    collapse();
+                    collapseRatingElements(block);
                     // Создание цвета из диапазона двух цветов для индикатора эффективности в зависимовсти от процента
                     block.querySelectorAll('.table-progress-bar').forEach((bar) => {
                         bar.style.backgroundColor = hslColor(bar.style.width.replace('%',''),0,120);
                     })
                 });
             } else {
-                collapse();
-            }
-
-            // Закрыть уже открытый показатель
-            if (document.querySelector('.collapse-indicator.active') && !block.classList.contains('active')) {
-                let activeCollapseIndicator = document.querySelector('.collapse-indicator.active');
-                activeCollapseIndicator.classList.toggle('active');
-                activeCollapseIndicator.querySelector('.collapse-indicator-content').style.maxHeight = null;
-                if (document.querySelector('.collapse-indicator.previous-open')) {
-                    document.querySelector('.collapse-indicator.previous-open').classList.toggle('previous-open');
-                }
+                collapseRatingElements(block);
             }
         })
     }
 })
 
-// District
+function lineChart(canvas, dataPoints, dataLabels) {
+    let ctx = canvas.getContext('2d');
 
+    let gradient = ctx.createLinearGradient(0, 0, 0, 800);
+    gradient.addColorStop(0, 'rgba(238, 67, 67,0.1)');
+    gradient.addColorStop(1, 'rgb(238, 67, 67)');
+
+    const data = {
+        labels: dataLabels,
+        datasets: [
+            {
+                label: 'Значение',
+                data: dataPoints,
+                borderColor: '#60B251',
+                pointBackgroundColor: '#60B251',
+                backgroundColor: gradient,
+                fill: true,
+                cubicInterpolationMode: 'monotone',
+                tension: 0.4,
+            }
+        ]
+    }
+
+    new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    display: false,
+                }
+            },
+            responsive: true,
+            interaction: {
+                intersect: false,
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#fff'
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#fff'
+                    },
+                    display: true,
+                    suggestedMin: 0.200,
+                    suggestedMax: 0.900,
+                    grid: {
+                        color: 'rgba(255,255,255,0.1)',
+                        borderDash: [8, 6]
+                    }
+                }
+            }
+        },
+    });
+}
+
+// Загрузка всех данных спадающего блока с рейтингом района
+collapseDistrictRatingElements.forEach(function (block) {
+    if (!block.classList.contains('muted')) {
+        block.querySelector('.collapse-indicator-button').addEventListener('click', function () {
+            closePreviousCollapse(block);
+
+            // Если этот блок не был открыт до этого и если он уже не загружается
+            if (!block.querySelector('.spin') && !block.querySelector('.district-line-chart canvas').classList.contains('active')) {
+                let collapseButton = block.querySelector('.collapse-indicator-button');
+                collapseButton.insertAdjacentHTML('beforeend', '<i class="icon-refresh spin"></i>')
+                $.getJSON('/districtRating?mark=' + block.dataset.mark + '&district=' + block.dataset.district, (calculations) => {
+                    if (calculations.length === 1) {
+                        calculations = [
+                            { index: calculations[0].index, date: calculations[0].date },
+                            { index: calculations[0].index, date: calculations[0].date}
+                        ];
+                    }
+
+                    let canvas = block.querySelector('.district-line-chart canvas');
+                    canvas.classList.add('active');
+
+                    let dataPoints = [];
+                    let dataLabels = [];
+
+                    calculations.forEach((calculation) => {
+                        dataPoints.push(calculation.index);
+                        dataLabels.push(calculation.date)
+                    })
+
+                    lineChart(canvas, dataPoints, dataLabels);
+
+                    collapseButton.querySelector('.spin').remove();
+                }).then(() => {
+                    collapseRatingElements(block);
+                });
+            } else {
+                collapseRatingElements(block);
+            }
+        })
+    }
+})
+
+// Интерактивность карты региона
 var mapLinks = document.querySelectorAll('.map-link');
 
 mapLinks.forEach(function (link) {

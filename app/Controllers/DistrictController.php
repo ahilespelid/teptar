@@ -9,12 +9,14 @@ class DistrictController extends AbstractController {
     public $user;
     public $reports;
     public $security;
+    public $marks;
 
     public function __construct() {
         $this->user = new UserController;
         $this->users = new \App\Models\UserModel;
         $this->uins = new \App\Models\UINModel;
         $this->reports = new \App\Models\ReportModel;
+        $this->marks = new \App\Models\MarkModel;
         $this->security = new Security();
     }
 
@@ -31,7 +33,8 @@ class DistrictController extends AbstractController {
                     'districts' => $this->uins->findBy(['type' => 'district']),
                     'districtBoss' => $districtBoss,
                     'districtStaffs' => $this->users->findBy(['id_uin' => $district['id'], 'id_role' => 5]),
-                    'reports' => $this->reports->findDistrictReportsByDate($date, $district['id'])
+                    'reports' => $this->reports->findDistrictReportsByDate($date, $district['id']),
+                    'marks' => $this->marks->findAll()
                 ]);
             }
         } else {

@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" data-pagetype="staff">
     <div class="header__main">
 <!--        <div class="header__input">-->
 <!--            <input type="text" placeholder="Поиск">-->

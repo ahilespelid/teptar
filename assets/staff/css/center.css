@@ -211,6 +211,7 @@
     background-position: center;
     background-size: cover;
     border-radius: 100%;
+    border: 2px solid #e0e0e0;
 }
 
 .user-box .user-info {

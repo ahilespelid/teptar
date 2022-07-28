@@ -14,21 +14,14 @@ class CalculateModel extends \App\Data{
     }
 
     public function markGeneralRating($mark) {
-        if (str_contains($mark, '_SV')) {
-            $mark = str_replace('_SV', '', $mark) . '.1';
-            $index = 'index_sv';
-        } else {
-            $index = 'index_final';
-        }
-
         $sql = '
-            SELECT slug, owner, firstname, lastname, secondname, login, avatar, ' . $index . ' as `index`
-            FROM calculate
-            LEFT JOIN uin on calculate.id_uin = uin.id
-            LEFT JOIN users on users.id_uin = uin.id
-            WHERE mark = ' . $mark . '
-            GROUP BY owner
-            ORDER BY ' . $index . ' DESC
+            SELECT slug, owner, firstname, lastname, secondname, login, avatar, `mark_' . $mark . '` AS `index`
+            FROM kp
+            LEFT JOIN reports ON kp.id_report = reports.id
+            LEFT JOIN uin ON reports.id_uin = uin.id
+            LEFT JOIN users ON reports.id_userBoss = users.id
+            WHERE kp.id
+            ORDER BY `index` DESC
             ';
 
         return $this->customSQL($sql);

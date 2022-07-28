@@ -2,13 +2,21 @@
     <div class="grid-block-main">
         <div class="media">
 
-            <?php if (isset($_GET['district'])) { ?>
+            <?php if (isset($_GET['district']) || isset($_GET['center'])) { ?>
                 <style type="text/css">
-                    .<?php echo $_GET['district']; ?> {
-                        display: block;
-                        fill: #F1C40F;
-                        stroke: #495562;
-                    }
+                    <?php if (isset($_GET['district'])) { ?>
+                        .<?php echo $_GET['district']; ?> {
+                            display: block;
+                            fill: #F1C40F;
+                            stroke: #495562;
+                        }
+                    <?php } else { ?>
+                        .<?php echo $_GET['center']; ?> {
+                            display: block;
+                            fill: #F1C40F;
+                            stroke: #495562;
+                        }
+                    <?php } ?>
                 </style>
             <?php } ?>
 
@@ -108,10 +116,13 @@
             .rating-place:after {
                 position: absolute;
                 content: "";
-                top: 9px;
                 right: -14px;
                 border: 4px solid transparent;
+            }
+
+            .rating-place.down:after {
                 border-color: #EE4343 transparent transparent transparent;
+                top: 9px;
             }
 
             .rating-place.up:after {
@@ -138,9 +149,13 @@
             </div>
         </div>
         <div class="item">
-            <div class="content" style="border-color: #F1C40F;">
+<!--            <div class="content" style="border-color: #F1C40F;">-->
+<!--                <span>Место в рейтинге</span>-->
+<!--                <span class="rating-place up">16</span>-->
+<!--            </div>-->
+            <div class="content">
                 <span>Место в рейтинге</span>
-                <span class="rating-place up">16</span>
+                <span class="rating-place"><?= $rank ?></span>
             </div>
         </div>
         <div class="item">

@@ -85,24 +85,7 @@
 
                 </div>
 
-                <style>
-                    .in-work {
-                        background: #ffdddb;
-                        padding: 30px;
-                        border-radius: 12px;
-                        margin-top: 24px;
-                        color: #ee8a8a;
-                    }
-                    .in-work i {
-                        position: relative;
-                        top: 1px;
-                    }
-                </style>
-                <div class="in-work">
-                    <i class="icon-cross-circle"></i> Стили показателей не доработаны, приходите завтра.
-                </div>
-
-                <?php include $this->layout('leader/comparison/comparison.php'); ?>
+                <?php include $this->layout('leader/comparison/home.php'); ?>
 
             </div>
         </div>

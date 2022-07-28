@@ -182,7 +182,7 @@
 }
 
 .districts-score-table tr th.separator {
-    height: 64px;
+    height: 38px;
 }
 
 /* Tables */
@@ -223,6 +223,7 @@
 
 .table-avatar {
     background-position: center;
+    border: 2px solid #e0e0e0;
     background-size: cover;
     border-radius: 100%;
     margin-right: 8px;
@@ -239,7 +240,9 @@
 }
 
 .table-progress-bar-gradient {
-    background: linear-gradient(90deg, rgba(23,33,43,0.8) 0%, rgba(23,33,43,0) 60%);
+    background: linear-gradient(90deg, rgba(111, 184, 213, 0.8) 0%, rgba(23,33,43,0) 60%);
     padding-left: 10px;
     font-size: 12px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.9);
+    color: #fff;
 }

@@ -1897,6 +1897,10 @@ h3 {
     transition: 0.4s;
 }
 
+.district-bar-chart canvas {
+    max-height: 420px;
+}
+
 /* Welcome block */
 
 .start {

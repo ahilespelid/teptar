@@ -10,6 +10,7 @@ class DistrictController extends AbstractController {
     public $reports;
     public $security;
     public $marks;
+    public $calculations;
 
     public function __construct() {
         $this->user = new UserController;
@@ -17,6 +18,7 @@ class DistrictController extends AbstractController {
         $this->uins = new \App\Models\UINModel;
         $this->reports = new \App\Models\ReportModel;
         $this->marks = new \App\Models\MarkModel;
+        $this->calculations = new \App\Models\CalculateModel;
         $this->security = new Security();
     }
 
@@ -27,6 +29,15 @@ class DistrictController extends AbstractController {
 
             $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
 
+            $generalRating = $this->calculations->markGeneralRating('ko');
+            $rank = null;
+
+            foreach ($generalRating as $key => $rating) {
+                if ($rating['slug'] === $_GET['district']) {
+                    $rank = $key + 1;
+                }
+            }
+
             if ($this->security->userHasRole(['region_boss'])) {
                 $this->render('/leader/district.php', [
                     'district' => $district,
@@ -34,7 +45,8 @@ class DistrictController extends AbstractController {
                     'districtBoss' => $districtBoss,
                     'districtStaffs' => $this->users->findBy(['id_uin' => $district['id'], 'id_role' => 5]),
                     'reports' => $this->reports->findDistrictReportsByDate($date, $district['id']),
-                    'marks' => $this->marks->findAll()
+                    'marks' => $this->marks->findAll(),
+                    'rank' => $rank
                 ]);
             }
         } else {

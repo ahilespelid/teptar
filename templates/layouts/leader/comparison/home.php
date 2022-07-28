@@ -3,13 +3,13 @@
     <div class="block-box block-title-box break-title-dropdown">
         <h3>Сравнение показателей по Региону</h3>
 
-        <div class="dropdown interactive rounded right dark chevron">
-            <div class="current button button-dropdown rounded"><span class="title">Сравнение:</span> за предыдущий год</div>
-
-            <div class="options">
-                <a class="option">за предыдущий год</a>
-            </div>
-        </div>
+<!--        <div class="dropdown interactive rounded right dark chevron">-->
+<!--            <div class="current button button-dropdown rounded"><span class="title">Сравнение:</span> за предыдущий год</div>-->
+<!---->
+<!--            <div class="options">-->
+<!--                <a class="option">за предыдущий год</a>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 
     <div class="block-box block-title-box sub-block-margin-top">

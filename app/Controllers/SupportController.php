@@ -9,12 +9,14 @@ class SupportController extends AbstractController {
     public $users;
     public $uins;
     public $marks;
+    public $calculations;
 
     public function __construct()
     {
         $this->uins = new \App\Models\UINModel;
         $this->users = new \App\Models\UserModel;
         $this->marks = new \App\Models\MarkModel;
+        $this->calculations = new \App\Models\CalculateModel;
         $this->security = new Security();
     }
 
@@ -42,10 +44,23 @@ class SupportController extends AbstractController {
     public function center() {
         if (isset($_GET['center']) && $this->uins->findOneBy(['slug' => $_GET['center']])) {
             $uin = $this->uins->findOneBy(['slug' => $_GET['center']]);
+
+            $generalRating = $this->calculations->markGeneralRating('ko');
+            $rank = null;
+
+            foreach ($generalRating as $key => $rating) {
+                if ($rating['slug'] === $_GET['center']) {
+                    $rank = $key + 1;
+                }
+            }
+
             $this->render('/staff/support/center.php', [
-                'center' => $uin,
-                'boss' => $this->users->findOneBy(['id_uin' => $uin['id']]),
-                'staffs' => $this->users->findBy(['id_uin' => $uin['id'], 'id_role' => 5])
+                'district' => $uin,
+                'districtBoss' => $this->users->findOneBy(['id_uin' => $uin['id']]),
+                'staffs' => $this->users->findBy(['id_uin' => $uin['id'], 'id_role' => 5]),
+                'type' => ($uin['type'] == 'district') ? 'district' : 'ministry',
+                'marks' => $this->marks->findAll(),
+                'rank' => $rank
             ]);
         } else {
             $this->security->error();

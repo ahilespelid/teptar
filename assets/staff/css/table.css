@@ -135,10 +135,6 @@
 /*    right: 0;*/
 /*}*/
 
-.report-table .ministry, .district {
-    width: 130px;
-}
-
 .report-table .ministry input, .district input {
     width: 100px;
     height: 40px;

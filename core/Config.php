@@ -5,7 +5,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$GLOBALS['lifeToken'] = (60*60)*24;
+$GLOBALS['lifeToken'] = (3600)*24;
 
 // Режим разработчика
 //$GLOBALS['env'] = 'dev';

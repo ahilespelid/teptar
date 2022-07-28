@@ -32,5 +32,51 @@ if (themeToggleButtons) {themeToggleButtons.addEventListener('click', () => {
         body.classList.add('d');
     }
 });}
+
+function mus(elem) {elem.addEventListener('mousemove', (e) => { e =  e.target;
+    var offset = e.getBoundingClientRect();
+    var x1 = offset.left,
+    y1 = offset.top;
+    var r = 500,
+    x, y, isProcessed = false;
+    
+  if (!isProcessed) {
+    isProcessed = true;
+    var x2 = e.pageX,
+      y2 = e.pageY;
+    y = ((r * (y2 - y1)) / Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))) + y1;
+    x = (((y - y1) * (x2 - x1)) / (y2 - y1)) + x1;
+    e.style.marginTop =  (y - y1 + 1) + 'px';
+    e.style.marginLeft =  (x - x1) + 'px';
+    isProcessed = false;
+  }
+});}
+
+var ar = Array.from(document.querySelectorAll('a'));
+ar.map( (i) => {mus(i);} );
+
+var i = 0;                     //alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+function randtxt(e){var alphabet = '安高破皮脑比波故干拿 篮哈考包跑哭南路办абвгдеёжзийклмнопрстуфхцчшщъыьэюя'+e; var randomIndex = Math.floor(Math.random() * alphabet.length); var randomLetter = alphabet[randomIndex]; return randomLetter} 
+document.addEventListener('copy', (e) => {
+while(i < 1000000){   
+    setTimeout(() => { var txt = randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+
+    randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt()+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i)+randtxt(i);
+    console.log('%c'+txt, 'background: #000; color: #0f0; padding: 0px; border-radius: 5px;'); }, 750);
+i++;}
+});
+
+
 </script>
 </body>

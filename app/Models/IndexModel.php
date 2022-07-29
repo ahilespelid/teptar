@@ -17,4 +17,13 @@ class IndexModel extends \App\Data{
         
         return (is_array($r) && !empty($r)) ? $r : null;
     }
+
+    public function reportActivities($reportId) {
+        $sql = 'SELECT *
+                FROM `' . $this->table . '`
+                WHERE id_report = ' . $reportId . '
+                ORDER BY id_mark+0 ASC, `date` DESC';
+
+        return $this->customSQL($sql);
+    }
 }

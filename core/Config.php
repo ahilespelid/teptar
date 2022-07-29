@@ -21,11 +21,11 @@ $table = [
     'index'         => 'index',
     'marks'         => 'marks',
     'count'         => 'count',
-    'notifications'  => 'notifications',
+    'notifications' => 'notifications',
     'usersBlock'    => 'usersBlock',
     'tableUIN'      => 'uin',
-    'count'         => 'count',
-    'calculate'      => 'calculate',
+    'deadline'      => 'deadline',
+    'calculate'     => 'calculate',
 ];
 
 $GLOBALS['db']['table'] =  $table;

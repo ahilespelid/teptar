@@ -138,6 +138,10 @@
   transition: 0.1s;
 }
 
+.reports__body__line .reports__body__number {
+  white-space: nowrap;
+}
+
 .reports__body__line__name, .reports__body__line__activity, .reports__body__line__term,
 .reports__body__line__assistant, .reports__body__line__responsible
 {
@@ -332,8 +336,10 @@
 }
 
 .reports-title__my-reports {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
+  display: flex;
+  width: 100%;
 }
 
 .reports-title__my-reports__text {

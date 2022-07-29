@@ -149,7 +149,13 @@
                         <div class="reports-body__side-block__status">
                             <div class="side-block__header<?php reportStatus($data['status']['name']) ?>">
                                 <span class="side-block__header__status"><?= $data['status']['name'] ?></span>
-                                <span class="side-block__header__date"><?= (new DateTime($data['report']['submitting']))->format('d.m.o') ?></span>
+                                <span class="side-block__header__date">
+                                    <?php if ($data['report']['submitting']) { ?>
+                                        <?= (new DateTime($data['report']['submitting']))->format('d.m.o G:s') ?>
+                                    <?php } else { ?>
+                                        - дата не указана -
+                                    <?php } ?>
+                                </span>
                             </div>
 
                             <div class="side-block__body">
@@ -160,8 +166,20 @@
                                 </ul>
 
                                 <ul class="side-block__body__values">
-                                    <li class="side-block__body__term-date"><?= (new DateTime($data['report']['deadline']))->format('d.m.o G:s') ?></li>
-                                    <li class="side-block__body__create-date"><?= (new DateTime($data['report']['creating']))->format('d.m.o G:s') ?></li>
+                                    <li class="side-block__body__term-date">
+                                        <?php if ($data['report']['deadline']) { ?>
+                                            <?= (new DateTime($data['report']['deadline']))->format('d.m.o G:s') ?>
+                                        <?php } else { ?>
+                                            - дата не указана -
+                                        <?php } ?>
+                                     </li>
+                                    <li class="side-block__body__create-date">
+                                        <?php if ($data['report']['creating']) { ?>
+                                            <?= (new DateTime($data['report']['creating']))->format('d.m.o G:s') ?>
+                                        <?php } else { ?>
+                                            - дата не указана -
+                                        <?php } ?>
+                                    </li>
                                     <li class="side-block__body__rating">
                                         <?php for ($i = 1; $i <= 5; $i++) { ?>
                                             <?php if ($i <= $data['report']['grade']) { ?>
@@ -197,46 +215,45 @@
                         </div>
 
                         <div class="reports-body__side-block__assistant">
-                            <div class="side-block__header">Сотрудник</div>
+                            <div class="side-block__header">Сотрудники</div>
 
-                            <div class="side-block__body">
-                                <img src="<?php if ($data['staff']['avatar']) { echo $data['staff']['avatar']; } else { echo $this->security->setEmptyAvatar(); } ?>">
-                                <div class="assistant__info">
-                                    <span class="assistant__name"><?= $data['staff']['firstname'] . ' ' . $data['staff']['lastname'] ?></span>
-                                    <span class="assistant__post">Районный сотрудник</span>
+                            <?php if ($data['staffs']) { ?>
+                                <?php foreach ($data['staffs'] as $staff) { ?>
+                                    <div class="side-block__body">
+                                        <img src="<?php if ($staff['avatar']) { echo $staff['avatar']; } else { echo $this->security->setEmptyAvatar(); } ?>">
+                                        <div class="assistant__info">
+                                            <span class="assistant__name"><?= $staff['firstname'] . ' ' . $staff['lastname'] ?></span>
+                                            <span class="assistant__post">Районный сотрудник</span>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            <?php } else { ?>
+                                <div class="side-block__body">
+                                    - у отчета нет сотрудников -
                                 </div>
-                            </div>
+                            <?php } ?>
                         </div>
 
-                        <?php
-                        if($status === "В работе") {
-                            if($role === 1) {
-                                echo '<div class="reports-body__side-block__button" id = "send_report" >
-                                    <span class="icon-check" ></span >
-                                    Отправить отчет
-                                    </div>';
-                            }
-                        } elseif($status === "Сдан на проверку") {
-                            if ($role === 2) {
-                                echo  '<div class="reports-body__side-block__button" id="accept_report">
-                                            <span class="icon-check"></span>
-                                            Принять отчет
-                                            </div>';
-                                echo '<div class="reports-body__side-block__button" id="finalize_report">
-                                            <span class=\"icon-plus-circle\"></span>
-                                            Отправить на доработку
-                                            </div>';
-                            }
-                        } elseif ($status === "На доработке") {
-                            if($role === 1) {
-                                echo '<div class="reports-body__side-block__button" id="send_report_again">
-                                            <span class="icon-check"></span>
-                                            Сдать повторно отчет
-                                        </div>';
-                            }
-                        }
-
-                        ?>
+                        <?php if ($data['status']['id'] == 1) { ?>
+                            <div class="reports-body__side-block__button" id = "send_report" >
+                                <span class="icon-check" ></span >
+                                Отправить отчет
+                            </div>
+                        <?php } elseif ($data['status']['id'] == 2) { ?>
+                            <div class="reports-body__side-block__button" id="accept_report">
+                                <span class="icon-check"></span>
+                                Принять отчет
+                            </div>
+                            <div class="reports-body__side-block__button" id="finalize_report">
+                                <span class=\"icon-plus-circle\"></span>
+                                Отправить на доработку
+                            </div>
+                        <?php } elseif ($data['status']['id'] == 3) { ?>
+                            <div class="reports-body__side-block__button" id="send_report_again">
+                                <span class="icon-check"></span>
+                                Сдать повторно отчет
+                            </div>
+                        <?php } ?>
 
                     </div>
 

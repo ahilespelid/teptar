@@ -11,5 +11,5 @@
 
     'guest' => ['index', 'login'],
 
-    'admin_admin' => ['calculate','district', 'districtReports', 'leader', 'staff', 'profile', 'support', 'callCenter', 'uinData', 'center', 'notifications', 'report/table', 'report/svTable']
+    'admin_admin' => ['calculate', 'district', 'districts', 'districtReports', 'generalRating', 'districtRating', 'uinData', 'leader', 'staff', 'profile', 'support', 'callCenter', 'uinData', 'center', 'notifications', 'report/table', 'report/svTable']
 ];

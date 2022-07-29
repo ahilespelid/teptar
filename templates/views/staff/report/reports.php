@@ -89,7 +89,7 @@
                                 <div class="reports__body__line<?php reportStatus($report['status']['id']) ?>">
                                     <div class="reports__body__line__name">
                                         <input type="checkbox" id="checkbox-0" class="reports__body__checkbox">
-                                        <i class="icon-menu reports__body__i"></i>
+                                        <i class="icon-menu reports__body__i" style="opacity: 0"></i>
                                         <a href="/report?id=<?= $report['report']['id'] ?>">
                                             <span><?= $report['report']['name'] ?><span>
                                         </a>

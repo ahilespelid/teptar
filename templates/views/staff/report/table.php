@@ -9,6 +9,10 @@
             <?php include $this->layout('staff/header.php'); ?>
 
             <div class="body report-table">
+                <div class="developer-alert">
+                    <i class="icon-refresh spin"></i> Страница «Таблица» на стадии разработки, пожалуйста заходите позже
+                </div>
+
                 <div class="body__back-button">
                     <a href="#">
                         <span class="icon-expand_left_right body__back__arrow"></span>

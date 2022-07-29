@@ -182,7 +182,7 @@
                 <div class="actions__activity-info">
                     <div class="actions__activity-user">
                         <div class="avatar">
-                            <img src="/assets/images/avatar.jpg" alt="Avatar">
+                            <img src="<?= $this->security->setEmptyAvatar('dark') ?>" alt="Avatar">
                         </div>
                         <div class="info">
                             <span class="name">Ибрагим Грозный</span>
@@ -218,7 +218,7 @@
                 <div class="actions__activity-info">
                     <div class="actions__activity-user">
                         <div class="avatar">
-                            <img src="/assets/images/avatar.jpg" alt="Avatar">
+                            <img src="<?= $this->security->setEmptyAvatar('dark') ?>" alt="Avatar">
                         </div>
                         <div class="info">
                             <span class="name">Ибрагим Грозный</span>

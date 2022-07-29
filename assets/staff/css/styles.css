@@ -18,6 +18,18 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+.developer-alert {
+  background-color: #ffe7e6;
+  color: #ee8a8a;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.developer-alert i {
+  margin-right: 4px;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -33,6 +45,10 @@ input, textarea {
 body {
 	line-height: 1;
     font-family: 'Open Sans', serif;
+}
+
+iframe {
+  max-width: 100%;
 }
 
 a {

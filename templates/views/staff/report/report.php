@@ -197,7 +197,7 @@
                             <div class="side-block__header">Таблица</div>
                             <div class="side-block__body">
                                 <span class="icon-darhboard_alt"></span>
-                                <a href="#">Смотреть таблицу</a>
+                                <a href="/report/table?report=<?= $data['report']['id'] ?>">Смотреть таблицу</a>
                             </div>
                         </div>
 

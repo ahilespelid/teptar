@@ -34,11 +34,14 @@
             <?php include $this->layout('staff/header.php'); ?>
 
             <div class="body">
-                <div class="body__back-button">
-                    <a href="#">
-                        <span class="icon-expand_left_right body__back__arrow"></span>
-                        Вернуться
-                    </a>
+<!--                <div class="body__back-button">-->
+<!--                    <a href="#">-->
+<!--                        <span class="icon-expand_left_right body__back__arrow"></span>-->
+<!--                        Вернуться-->
+<!--                    </a>-->
+<!--                </div>-->
+                <div class="developer-alert">
+                    <i class="icon-refresh spin"></i> Страница «Диск» на стадии разработки, пожалуйста заходите позже
                 </div>
                 <div class="reports-title">
                     <div class="reports-title__my-reports">

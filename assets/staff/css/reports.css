@@ -163,6 +163,10 @@
   margin-right: 0;
 }
 
+.reports__body__line div {
+  white-space: nowrap;
+}
+
 .reports__body__i {
   font-size: 11px;
   margin-right: 6px;

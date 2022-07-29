@@ -110,6 +110,10 @@ class ReportController extends AbstractController{
         $this->render('/staff/report/table.php');
     }
 
+    public function svTable() {
+        $this->render('/staff/report/sv_table.php');
+    }
+
     public function new() {
         $deadline = $this->deadlines->findOneBy(null,['date' => 'DESC']);
 

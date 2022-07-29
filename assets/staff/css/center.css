@@ -166,6 +166,10 @@
     padding-right: 12px;
 }
 
+.grid-block .data .item .content a {
+    color: #535c69;
+}
+
 .grid-block .data .item span:first-child {
     font-size: 12px;
     color: #515860;

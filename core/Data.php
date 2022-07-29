@@ -186,16 +186,20 @@ abstract class Data{
 
     // Ищет одну запись по критериям
     // Пример: ['name' => 'John']
-    public function findOneBy(array $criteria, array $orderBy = null){
+    public function findOneBy(array $criteria = null, array $orderBy = null){
         $criteriaSQL = '';
         $orderSQL = '';
         $iteration = 1;
 
         // Генерация строки запроса SQL для обязательного параметра критериев $criteria
-        foreach ($criteria as $column => $value) {
-            ($iteration == 1) ? $criteriaSQL .= "" : $criteriaSQL .= " AND ";
-            $criteriaSQL .= $column . " = '" . $value . "'";
-            $iteration += 1;
+        if ($criteria) {
+            foreach ($criteria as $column => $value) {
+                ($iteration == 1) ? $criteriaSQL .= "" : $criteriaSQL .= " AND ";
+                $criteriaSQL .= $column . " = '" . $value . "'";
+                $iteration += 1;
+            }
+        } else {
+            $criteriaSQL = $this->table . '.id';
         }
 
         // Генерация строки запроса SQL для необязательного параметра сортировки $orderBy

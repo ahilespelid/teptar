@@ -10,20 +10,12 @@
 
             <div class="body">
 
-                <div class="body__back-button">
-                    <a href="#">
-                        <span class="icon-expand_left_right body__back__arrow"></span>
-                        Вернуться
-                    </a>
-                    <div class="body__back-button__icons">
-                        <a href="#">
-                      <span class="body__back-button__icon">
-                        <span class="icon-save_light"></span>
-                        Диск
-                      </span>
-                        </a>
-                    </div>
-                </div>
+<!--                <div class="body__back-button">-->
+<!--                    <a href="#">-->
+<!--                        <span class="icon-expand_left_right body__back__arrow"></span>-->
+<!--                        Вернуться-->
+<!--                    </a>-->
+<!--                </div>-->
 
                 <div class="reports-title">
                     <div class="reports-title__my-reports">
@@ -41,11 +33,9 @@
 
                         <div class="report-form-title chosen-search-off md-box">
                             <h2>
-                                Отчет
-                                <?= (new DateTime('now'))->format('d.m.o') ?>
-                                (Район: <?= $district['owner'] ?>)
+                                <?= $deadline['name'] ?>
                             </h2>
-                            <span class="report-deadline">Крайний срок сдачи отчета: <?= (new DateTime('now + 31 days'))->format('d.m.o') ?></span>
+                            <span class="report-deadline">Крайний срок сдачи отчета: <?= (new DateTime($deadline['date']))->format('d.m.o') ?></span>
                         </div>
 
                         <div class="report-form-textarea md-box">
@@ -66,7 +56,7 @@
 
                         <div class="report-form-actions md-box">
                             <button type="submit" class="button button-success"><i class="icon-plus-circle"></i> Создать отчет</button>
-                            <a class="button button-link"><i class="icon-cross-circle"></i> Отмена</a>
+                            <a href="/reports" class="button button-link"><i class="icon-cross-circle"></i> Отмена</a>
                         </div>
 
                     </form>

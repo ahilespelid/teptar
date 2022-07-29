@@ -36,7 +36,7 @@ class Security
     {
         $parsedURL = parse_url($_SERVER['REQUEST_URI']);
 
-        if ($parsedURL['path']) {
+        if (!empty($parsedURL['path'])) {
             $route = $parsedURL['path'];
         } else {
             $route = 'index';

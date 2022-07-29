@@ -23,6 +23,7 @@ class UserController extends AbstractController{
             $firstname,
             $secondname,
             $age,
+            $active,
             $token;
 
     public function __construct(){
@@ -58,12 +59,13 @@ class UserController extends AbstractController{
                 $this->firstname        = (empty($user['firstname'])) ? '': $user['firstname'];
                 $this->secondname       = (empty($user['secondname'])) ? '': $user['secondname'];
                 $this->age              = (empty($user['age'])) ? '': $user['age'];
+                $this->active              = (empty($user['active'])) ? '': $user['active'];
 
                 $this->district         = $user['district'] = (!empty($user['id_district'])) ? $this->model->getDistrict($user['id_district']) : [];
                 $this->uin              = $user['uin'] = (!empty($uin['name']) && !empty($user['id_uin'])) ? $this->model->getUIN(['id' => $user['id_uin'], 'name' => $uin['name']]) : [];
                 $this->role             = $user['role'] = (!empty($user['id_role'])) ? $this->model->getRole($user['id_role']) : [];
                 $this->rule             = $user['rule'] = (!empty($user['role']['subject']) && !empty($user['id_uin'])) ? $this->model->getRule($user['role']['subject'], $user['id_uin']) : [];
-                
+
                 if (!empty($this->uin)) {
                     if($this->model->updateTable($this->model->table,['id' => $user['id'] ,'hash'=>$hashNew,'token'=>$this->token])
                     && $this->model->insert($this->model->tableUsersBlock,['id_user' => $user['id'],'hash'=>$this->hash, 'token'=>$this->token])){

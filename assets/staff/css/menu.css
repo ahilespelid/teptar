@@ -376,6 +376,7 @@
   }
 
   body .menu__folded {
+    min-width: 146px;
     width: 146px;
   }
 

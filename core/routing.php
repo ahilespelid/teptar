@@ -16,17 +16,21 @@
     'staff'                     =>  ['controller' => 'ProfileController', 'action' => 'staff'],
     'profile'                   =>  ['controller' => 'ProfileController', 'action' => 'profile'],
     'profile/new'               =>  ['controller' => 'ProfileController', 'action' => 'new'],
+    'profile/fire'              =>  ['controller' => 'ProfileController', 'action' => 'fire'],
     'notifications'             =>  ['controller' => 'ProfileController', 'action' => 'notifications'],
     'districtNotifications'     =>  ['controller' => 'ProfileController', 'action' => 'districtNotificationsJSON'],
+    'disk'                      =>  ['controller' => 'ProfileController', 'action' => 'disk'],
 
     // SupportController
     'support'                   =>  ['controller' => 'SupportController', 'action' => 'support'],
+    'rating'                    =>  ['controller' => 'SupportController', 'action' => 'rating'],
     'center'                    =>  ['controller' => 'SupportController', 'action' => 'center'],
     'callCenter'                =>  ['controller' => 'SupportController', 'action' => 'callCenter'],
     'uinData'                   =>  ['controller' => 'SupportController', 'action' => 'uinInJSON'],
 
     // MarkController
-    'ratingByMark'              =>  ['controller' => 'MarkController', 'action' => 'jsonRatingByMark'],
+    'generalRating'             =>  ['controller' => 'MarkController', 'action' => 'jsonGeneralRating'],
+    'districtRating'            =>  ['controller' => 'MarkController', 'action' => 'jsonDistrictRating'],
 
     // STAFF //
 
@@ -36,10 +40,13 @@
     // ReportController
     'reports'                   =>  ['controller' => 'ReportController', 'action' => 'reports'],
     'report'                    =>  ['controller' => 'ReportController', 'action' => 'report'],
+    'report/table'              =>  ['controller' => 'ReportController', 'action' => 'table'],
     'report/new'                =>  ['controller' => 'ReportController', 'action' => 'new'],
 
-    // ПОКА НЕ ГОТОВЫ //
+    // UserController
     'login'                     =>  ['controller' => 'UserController', 'action' => 'login'],
+
+    // ПОКА НЕ ГОТОВЫ //
     'exel'                      =>  ['controller' => 'ExelController', 'action' => 'work'],
     'ajax'                      =>  ['controller' => 'AjaxController', 'action' => 'getMarkData'],
     'calculate'                 =>  ['controller' => 'CalculateController', 'action' => 'index'],

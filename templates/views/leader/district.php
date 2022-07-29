@@ -45,7 +45,7 @@
 
                 <?php } ?>
 
-<!--                --><?php //include '../blocks/comparison/district-comparison.php';?>
+                <?php include $this->layout('leader/comparison/district.php'); ?>
                 <?php include $this->layout('leader/actions.php'); ?>
             </div>
 

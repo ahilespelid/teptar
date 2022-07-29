@@ -15,6 +15,6 @@ class IndexModel extends \App\Data{
         $return = $this->getQuery($sql); $r = [];
         foreach($return as $key => $val){foreach($val as $k => $v){if('id_mark' == $k){$r[$v] []= $val;}}}
         
-        return (is_array($r) && !empty($r)) ? $r : null;     
+        return (is_array($r) && !empty($r)) ? $r : null;
     }
 }

@@ -10,57 +10,65 @@
 
             <div class="body">
 
-                <div class="grid-block column center-page">
-                    <div class="grid-block-main">
-                        <div class="media">
-                            <div class="avatar" style="background-image: url('<?= $center['flag'] ?? $this->security->setEmptyAvatar() ?>')"></div>
-                        </div>
-                        <span class="title"><?= $center['owner'] ?></span>
-                        <span class="muted">
-                            <?php if ($center['center']) { ?>
-                            <i class="icon-pin"></i> <?= $center['center'] ?>,
-                            <?php } ?>
-                            Российская Федерация
-                        </span>
-                    </div>
-                    <div class="data">
-                        <div class="column-item">
-                            <div class="block-box block-title-box">
-                                <h3>Информация о министерстве</h3>
+                <?php if ($type === 'district') { ?>
+
+                    <?php include $this->layout('leader/district.php'); ?>
+
+                <?php } else { ?>
+
+                    <div class="grid-block column center-page">
+                        <div class="grid-block-main">
+                            <div class="media">
+                                <div class="avatar" style="background-image: url('<?= $district['flag'] ?? $this->security->setEmptyAvatar() ?>')"></div>
                             </div>
-                            <?php if ($boss) { ?>
+                            <span class="title"><?= $district['owner'] ?></span>
+                            <span class="muted">
+                                <?php if ($district['center']) { ?>
+                                <i class="icon-pin"></i> <?= $district['center'] ?>,
+                                <?php } ?>
+                                Российская Федерация
+                            </span>
+                        </div>
+                        <div class="data">
+                            <div class="column-item">
+                                <div class="block-box block-title-box">
+                                    <h3>Информация о министерстве</h3>
+                                </div>
+                                <?php if ($districtBoss) { ?>
+                                    <div class="item">
+                                        <div class="content">
+                                            <span>Глава Министерства</span>
+                                            <span>
+                                                <a href="/profile?user=<?= $districtBoss['login'] ?>">
+                                                    <?= $districtBoss['lastname'] . ' ' . $districtBoss['firstname'] . ' ' . $districtBoss['secondname'] ?>
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                                 <div class="item">
                                     <div class="content">
-                                        <span>Глава Министерства</span>
-                                        <span>
-                                            <a href="/profile?user=<?= $boss['login'] ?>">
-                                                <?= $boss['lastname'] . ' ' . $boss['firstname'] . ' ' . $boss['secondname'] ?>
-                                            </a>
-                                        </span>
+                                        <span>Адрес</span>
+                                        <span><?= $district['address'] ?></span>
                                     </div>
                                 </div>
-                            <?php } ?>
-                            <div class="item">
-                                <div class="content">
-                                    <span>Адрес</span>
-                                    <span><?= $center['address'] ?></span>
+                                <div class="item">
+                                    <div class="content">
+                                        <span>Телефон</span>
+                                        <span><?= $district['phone'] ?></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="content">
-                                    <span>Телефон</span>
-                                    <span><?= $center['phone'] ?></span>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="content">
-                                    <span>Население</span>
-                                    <span>n/A</span>
+                                <div class="item">
+                                    <div class="content">
+                                        <span>Население</span>
+                                        <span>n/A</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                <?php } ?>
 
                 <?php if ($staffs) { ?>
 
@@ -80,7 +88,7 @@
 
                                 <a class="user-box" href="/profile?user=<?= $staff['login'] ?>">
                                     <div class="user-avatar">
-                                        <div class="avatar" style="background-image: url('<?= $staff['avatar']; ?>')"></div>
+                                        <div class="avatar" style="background-image: url('<?= $staff['avatar'] ?? $this->security->setEmptyAvatar() ?>')"></div>
                                     </div>
                                     <div class="user-info">
                                         <span class="title"><?= $staff['lastname'] . ' ' . $staff['firstname'] ?></span>
@@ -94,6 +102,10 @@
 
                     </div>
 
+                <?php } ?>
+
+                <?php if ($type === 'district' && $this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+                    <?php include $this->layout('leader/comparison/district.php'); ?>
                 <?php } ?>
 
             </div>

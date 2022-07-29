@@ -9,12 +9,14 @@ class ReportController extends AbstractController{
     public $uinModel;
     public $statuses;
     public $security;
+    public $indexes;
 
     public function __construct() {
         $this->model    = new \App\Models\ReportModel;
         $this->uinModel = new \App\Models\UINModel;
         $this->statuses = new \App\Models\StatusModel;
         $this->users    = new \App\Models\UserModel;
+        $this->indexes    = new \App\Models\IndexModel();
         $this->security = new Security();
     }
 
@@ -63,11 +65,16 @@ class ReportController extends AbstractController{
             ];
 
             $this->render('/staff/report/report.php', [
-                'data' => $data
+                'data' => $data,
+                'indexes' => $this->indexes->getActivity($report['id'])
             ]);
         } else {
             $this->security->error('404', 'Такой отчет не существует');
         }
+    }
+
+    public function table() {
+        $this->render('/staff/report/table.php');
     }
 
     public function new() {

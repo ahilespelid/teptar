@@ -38,7 +38,7 @@ class DistrictController extends AbstractController {
                 }
             }
 
-            if ($this->security->userHasRole(['region_boss'])) {
+            if ($this->security->userHasRole(['region_boss', 'admin_admin'])) {
                 $this->render('/leader/district.php', [
                     'district' => $district,
                     'districts' => $this->uins->findBy(['type' => 'district']),

@@ -122,8 +122,8 @@
                             </div>
 
                             <div class="reports-body__content__changes">
-<!--                                --><?php //pa($marks) ?>
-                                <?php include $this->layout('staff/activity.php'); ?>
+                                <?php pa($marks) ?>
+<!--                                --><?php //include $this->layout('staff/activity.php'); ?>
                             </div>
 
                         </div>

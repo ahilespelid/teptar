@@ -100,7 +100,7 @@ class ReportController extends AbstractController{
 
             $this->render('/staff/report/report.php', [
                 'data' => $data,
-                'activities' => $this->indexes->reportActivities($report['id'])
+                'marks' => $this->indexes->reportActions($report['id'])
             ]);
         } else {
             $this->security->error('404', 'Такой отчет не существует');

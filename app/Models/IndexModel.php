@@ -10,8 +10,8 @@ class IndexModel extends \App\Data{
     }
     public function reportActions($id_repotr){if(!is_numeric($id_repotr)){return false;}
         $sql = "SELECT * FROM `index` WHERE id_report = `$id_repotr` ORDER BY id_mark+0 ASC, date DESC";
-        $indexes = $this->getQuery($sql); $r = [];
         
+        $indexes = $this->getQuery($sql); $r = [];       
         foreach($indexes as $key => $val){foreach($val as $k => $v){if('id_mark' == $k){$r[$v] []= $val;}}}
         
         if(is_array($r) && !empty($r)){$return = [];
@@ -20,5 +20,14 @@ class IndexModel extends \App\Data{
         }}}else{return false;}//*/ $return; //*/
         
         return (is_array($return) && !empty($return)) ? $return : null;
+    }
+
+    public function reportActivities($reportId) {
+        $sql = 'SELECT *
+                FROM `' . $this->table . '`
+                WHERE id_report = ' . $reportId . '
+                ORDER BY id_mark+0 ASC, `date` DESC';
+
+        return $this->customSQL($sql);
     }
 }

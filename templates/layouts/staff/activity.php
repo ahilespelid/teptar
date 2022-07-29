@@ -1,53 +1,56 @@
 <div class="actions__info block-box sub-block-margin-top">
 
-    <?php foreach ($activities as $activity) { ?>
+    <?php foreach ($marks as $activities) { ?>
 
-        <div class="actions__info-item">
+            <?php foreach ($activities as $activity) { ?>
+                <div class="actions__info-item">
 
-            <div class="actions__activity-info">
-                <div class="actions__activity-user">
-                    <div class="avatar">
-                        <img src="<?php echo $this->security->setEmptyAvatar() ?>" alt="Avatar">
+                    <div class="actions__activity-info">
+                        <div class="actions__activity-user">
+                            <div class="avatar">
+                                <img src="<?php echo $this->security->setEmptyAvatar() ?>" alt="Avatar">
+                            </div>
+                            <div class="info">
+                                <span class="name">Ибрагим Грозный</span>
+                                <span class="post">
+                                    Районный сотрудник
+                                    <br>
+                                    Сегодня, 19:30
+                                </span>
+                            </div>
+                        </div>
+                        <div class="status second-status">
+                            <span>
+                                <i class="icon-document-add"></i> Данные введены
+                            </span>
+                            <span class="active">
+                                <i class="icon-document-update"></i> Изменено
+                            </span>
+                            <span>
+                                <i class="icon-document-check"></i> Согласовано
+                            </span>
+                        </div>
                     </div>
-                    <div class="info">
-                        <span class="name">Ибрагим Грозный</span>
-                        <span class="post">
-                            Районный сотрудник
-                            <br>
-                            Сегодня, 19:30
-                        </span>
+
+                    <div class="actions__activity-indicators">
+                        <div class="indicators-list">
+                          <div class="title">Изменены показатели:</div>
+                          <div class="list">
+                              <div class="item">4</div>
+                          </div>
+                        </div>
+                        <div class="indicator-description">
+                          <b>8.</b> Среднемесячная номинальная начисленная заработная плата работников в среднем по республике, (руб):
+                        </div>
+                        <div class="indicator-comparison">
+                          <div>Было: <b>13.8</b></div>
+                          <div>Стало: <b>18.4</b></div>
+                        </div>
                     </div>
-                </div>
-                <div class="status second-status">
-                    <span>
-                        <i class="icon-document-add"></i> Данные введены
-                    </span>
-                    <span class="active">
-                        <i class="icon-document-update"></i> Изменено
-                    </span>
-                    <span>
-                        <i class="icon-document-check"></i> Согласовано
-                    </span>
-                </div>
-            </div>
 
-            <div class="actions__activity-indicators">
-                <div class="indicators-list">
-                  <div class="title">Изменены показатели:</div>
-                  <div class="list">
-                      <div class="item">4</div>
-                  </div>
                 </div>
-                <div class="indicator-description">
-                  <b>8.</b> Среднемесячная номинальная начисленная заработная плата работников в среднем по республике, (руб):
-                </div>
-                <div class="indicator-comparison">
-                  <div>Было: <b>13.8</b></div>
-                  <div>Стало: <b>18.4</b></div>
-                </div>
-            </div>
 
-        </div>
+            <?php } ?>
 
     <?php } ?>
 

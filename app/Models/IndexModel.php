@@ -9,7 +9,7 @@ class IndexModel extends \App\Data{
         (object)$this->pdo = $this->connPDO();
     }
     public function reportActions($id_repotr){if(!is_numeric($id_repotr)){return false;}
-        $sql = "SELECT * FROM `index` WHERE id_report = `$id_repotr` ORDER BY id_mark+0 ASC, date DESC";
+        $sql = "SELECT * FROM `index` WHERE `id_report` = '$id_repotr' ORDER BY id_mark+0 ASC, date DESC";
         $return = $this->getQuery($sql); $r = [];
         
         foreach($return as $key => $val){foreach($val as $k => $v){if('id_mark' == $k){$r[$v] []= $val;}}}

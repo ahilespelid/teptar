@@ -1,56 +1,60 @@
 <div class="actions__info block-box sub-block-margin-top">
 
-    <?php foreach ($marks as $activities) { ?>
+    <?php foreach ($activities as $activity) { ?>
 
-            <?php foreach ($activities as $activity) { ?>
-                <div class="actions__info-item">
+        <div class="actions__info-item">
 
-                    <div class="actions__activity-info">
-                        <div class="actions__activity-user">
-                            <div class="avatar">
-                                <img src="<?php echo $this->security->setEmptyAvatar() ?>" alt="Avatar">
-                            </div>
-                            <div class="info">
-                                <span class="name">Ибрагим Грозный</span>
-                                <span class="post">
-                                    Районный сотрудник
-                                    <br>
-                                    Сегодня, 19:30
-                                </span>
-                            </div>
-                        </div>
-                        <div class="status second-status">
-                            <span>
-                                <i class="icon-document-add"></i> Данные введены
-                            </span>
-                            <span class="active">
-                                <i class="icon-document-update"></i> Изменено
-                            </span>
-                            <span>
-                                <i class="icon-document-check"></i> Согласовано
-                            </span>
-                        </div>
+            <div class="actions__activity-info">
+                <div class="actions__activity-user">
+                    <div class="avatar">
+                        <img src="<?= $activity['avatar'] ?? $this->security->setEmptyAvatar() ?>" alt="Avatar">
                     </div>
-
-                    <div class="actions__activity-indicators">
-                        <div class="indicators-list">
-                          <div class="title">Изменены показатели:</div>
-                          <div class="list">
-                              <div class="item">4</div>
-                          </div>
-                        </div>
-                        <div class="indicator-description">
-                          <b>8.</b> Среднемесячная номинальная начисленная заработная плата работников в среднем по республике, (руб):
-                        </div>
-                        <div class="indicator-comparison">
-                          <div>Было: <b>13.8</b></div>
-                          <div>Стало: <b>18.4</b></div>
-                        </div>
+                    <div class="info">
+                        <span class="name"><?= $activity['firstname'] ?> <?= $activity['lastname'] ?> <?= $activity['secondname'] ?></span>
+                        <span class="post">
+                            <?= $activity['post'] ?>
+                            <br>
+                            <?= $activity['date'] ?>
+                        </span>
                     </div>
-
                 </div>
+                <div class="status second-status">
+                    <span>
+                        <i class="icon-document-add"></i> Данные введены
+                    </span>
+                    <span<?php if ($activity['status'] == 5) { echo 'class=" active"'; } ?>>
+                        <i class="icon-document-update"></i> Изменено
+                    </span>
+                    <span<?php if ($activity['status'] == 6) { echo 'class=" active"'; } ?>>
+                        <i class="icon-document-check"></i> Согласовано
+                    </span>
+                </div>
+            </div>
 
-            <?php } ?>
+            <div class="actions__activity-indicators">
+                <div class="indicators-list">
+                    <div class="title">Изменены показатели:</div>
+                    <div class="list">
+                        <?php foreach ($activity['marks'] as $mark) { ?>
+                            <div class="item">
+                                <span class="mark"><?= $mark['mark'] ?></span>
+                                <span class="id">ID: <?= $mark['test'] ?></span>
+                                <span class="before" style="display: none"><?= $mark['before'] ?></span>
+                                <span class="now" style="display: none"><?= $mark['now'] ?></span>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                <div class="indicator-description">
+                  <b><?= $activity['marks'][0]['mark'] ?>.</b> Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения (ед).
+                </div>
+                <div class="indicator-comparison">
+                  <div>Было: <b class="before"><?= $activity['marks'][0]['before'] ?></b></div>
+                  <div>Стало: <b class="now"><?= $activity['marks'][0]['now'] ?></b></div>
+                </div>
+            </div>
+
+        </div>
 
     <?php } ?>
 
@@ -121,3 +125,29 @@
 <!--    </div>-->
 
 </div>
+
+<div id="marksForJS" style="display: none">
+    <?php foreach ($marks as $mark) { ?>
+        <span class="mark">
+            <span class="num"><?= $mark['num'] ?></span>
+            <span id="description<?= $mark['num'] ?>"><?= $mark['name'] ?></span>
+        </span>
+    <?php } ?>
+</div>
+
+<script>
+    let activities = document.querySelectorAll('.actions__info-item');
+
+    activities.forEach((activity) => {
+        activity.querySelectorAll('.indicators-list .item').forEach((mark) => {
+            let num = mark.querySelector('.mark').innerHTML;
+            let before = mark.querySelector('.before').innerHTML;
+            let now = mark.querySelector('.now').innerHTML;
+            mark.addEventListener('click', () => {
+                activity.querySelector('.indicator-description').innerHTML = '<b>' + num + '.</b> ' + document.getElementById('description' + num).innerHTML;
+                activity.querySelector('.indicator-comparison .before').innerHTML = before;
+                activity.querySelector('.indicator-comparison .now').innerHTML = now;
+            })
+        })
+    })
+</script>

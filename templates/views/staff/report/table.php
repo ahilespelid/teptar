@@ -33,7 +33,8 @@
                 <div class="reports-title">
                     <div class="reports-title__my-reports">
                         <div class="reports-title__my-reports__text">
-                            <h1>Грозный: Таблица 2022</h1>
+                            <h1>Общая таблица</h1>
+                            <span class="title">(Район: <?= $uin['owner'] ?>)</span>
                         </div>
                         <div class="reports-title__my-reports__btn">
                         </div>
@@ -43,129 +44,26 @@
                 <div class="table tableFixHead">
                     <table class="table__main">
                         <thead class="table__main__header">
-                        <tr>
-                            <th>#</th>
-                            <th id="description__title">Показатели</th>
-                            <th id="unit__title">Ед. измерения</th>
-                            <th class="years">2017</th>
-                            <th class="years">2018</th>
-                            <th class="years">2019</th>
-                            <th class="years">2020</th>
-                            <th class="years">2021</th>
-                            <th class="years">2022</th>
-                        </tr>
+                            <tr>
+                                <th>#</th>
+                                <th id="description__title">Показатели</th>
+                                <th id="unit__title">Ед. измерения</th>
+                                <?php foreach ($years as $year) { ?>
+                                    <th class="years"><?= $year ?></th>
+                                <?php } ?>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                            <td class="years">20</td>
-                        </tr>
+                            <?php foreach ($data as $entry) { ?>
+                                <tr>
+                                    <td class="number"><?= $entry['mark'] ?></td>
+                                    <td class="description"><?= $entry['description'] ?></td>
+                                    <td class="unit"><?= $entry['unit'] ?></td>
+                                    <?php foreach ($years as $year) { ?>
+                                        <td class="years"><?= (isset($entry[$year][0])) ? $entry[$year][0]['index'] : '' ?></td>
+                                    <?php } ?>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

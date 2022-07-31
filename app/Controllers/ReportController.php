@@ -11,6 +11,7 @@ class ReportController extends AbstractController{
     public $security;
     public $indexes;
     public $deadlines;
+    public $marks;
 
     public function __construct() {
         $this->model    = new \App\Models\ReportModel;
@@ -19,6 +20,7 @@ class ReportController extends AbstractController{
         $this->users    = new \App\Models\UserModel;
         $this->indexes    = new \App\Models\IndexModel;
         $this->deadlines    = new \App\Models\DeadlineModel;
+        $this->marks    = new \App\Models\MarkModel;
         $this->security = new Security();
     }
 
@@ -100,7 +102,7 @@ class ReportController extends AbstractController{
 
             $this->render('/staff/report/report.php', [
                 'data' => $data,
-                'marks' => $this->indexes->reportActions($report['id'])
+                'marks' => null
             ]);
         } else {
             $this->security->error('404', 'Такой отчет не существует');
@@ -108,7 +110,35 @@ class ReportController extends AbstractController{
     }
 
     public function table() {
-        $this->render('/staff/report/table.php');
+        $marks = $this->marks->customSQL("SELECT * FROM marks WHERE num NOT LIKE '%_SV'");
+        $data = [];
+
+        $currentReport  = $this->model->findOneBy(['id' => $_GET['report']]);
+        $yearsQuantity  = $this->indexes->countTableYears($currentReport['id_uin']);
+        $years = [];
+
+        for ($i = 0; $i <= $yearsQuantity - 1; $i++) {
+            $years[$i] = 2018 + $i;
+        }
+
+
+        foreach ($marks as $key => $mark) {
+            $data[$key] = [
+                'mark' => $mark['num'],
+                'description' => $mark['name'],
+                'unit' => $mark['unit']
+            ];
+
+            foreach ($years as $year) {
+                $data[$key][$year] = $this->indexes->yearIndexByMarkAndUin($currentReport['id_uin'], $mark['num'], $year);
+            }
+        }
+
+        $this->render('/staff/report/table.php', [
+            'data' => $data,
+            'years' => $years,
+            'uin' => $this->uinModel->findOneBy(['id' => $currentReport['id_uin']])
+        ]);
     }
 
     public function svTable() {

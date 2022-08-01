@@ -38,7 +38,7 @@
                         деятельности органов местного самоуправления муниципальных, городских
                         округов и муниципальных районов.
                     </p>
-                    <a href="/generatePDF" class="button button-outline-success rounded dark block-margin-top">
+                    <a href="#" class="button button-outline-success rounded dark block-margin-top" onclick="window.print(document);">
                         <i class="icon-document icon_margin"></i>
                         Сформировать в PDF
                     </a>

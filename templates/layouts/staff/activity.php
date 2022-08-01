@@ -1,21 +1,88 @@
-<div class="actions__info block-box sub-block-margin-top">
+<div class="actions__info block-box sub-block-margin-top">  <style type="text/css">.red{background: #f00;}</style>
+    <?php 
+$roles = ($roles = $this->model->getAll('roles')) ? array_combine(range(1, count($roles)), $roles) : null;
+$NA = 'n|a'; $readMarks =''; $uid = ($_GET['uid']) ?? false; $mid= ($_GET['mid']) ?? false;
 
-    <?php foreach ($activities as $activity) { ?>
+//$markForUser = $marks;
 
-        <div class="actions__info-item">
+foreach ($marks as $user => $activMarks){ ///* / pa($activMarks); ///* /
+    $ava = (empty($ava = $marks[$user][0]['avatar'])) ? $this->security->setEmptyAvatar() : $ava; $fname = (empty($fname = $marks[$user][0]['firstname'])) ? $NA : $fname; 
+    $sname = (empty($sname = $marks[$user][0]['secondname'])) ? $NA : $sname; $lname = (empty($lname = $marks[$user][0]['lastname'])) ? $NA : $lname;
+    $role = (empty($marks[$user][0]['id_role']['post'])) ? $roles[8]['post'] : $marks[$user][0]['id_role']['post']; 
+    
+    $markForUser = $activMarks;   
+    if(reset($markForUser)){next($markForUser); $currMark = current($markForUser);}
+    $currMark = ($mid && $uid && $uid == $user && $mid != $currMark[1]['id_mark']) ? $marks[$user][$mid] : $currMark;
+    
+     
+    $checkReadIndex = ($currMark[2]) ?? false;
+    
+    //pa($currMark); 
+     
+    $status = (empty($currMark[1]['id_status'])) ? $NA : $currMark[1]['id_status']; 
+    $date = (empty($currMark[1]['date'])) ? (new DateTime('0000-00-00')) : $this->is_date($currMark[1]['date']);
+    $IntlDate = new IntlDateFormatter('ru_RU', IntlDateFormatter::MEDIUM , IntlDateFormatter::MEDIUM );
+    $IntlDate->setPattern('d F Y, G:i:s');
+    
+    $listItem = '<a name="'.$currMark[1]['id'].'" >';  foreach((array_keys($activMarks)) as $m){if(0 != $m){
+            $listItem .= '<div class="item'.((!$mid && $m == $currMark[1]['id_mark']) ? ' red' : 
+                                                             ((($user != $uid && $m == $currMark[1]['id_mark']) || ($user == $uid && $m == $mid)) ? ' red' : '')).'"><a href="/'.$_GET['q'].'?id='.$_GET['id'].'&uid='.$user.'&mid='.$m.'#'.$currMark[1]['id'].'">'.$m.'</a></div>';
+    }} 
 
-            <div class="actions__activity-info">
-                <div class="actions__activity-user">
-                    <div class="avatar">
-                        <img src="<?= $activity['avatar'] ?? $this->security->setEmptyAvatar() ?>" alt="Avatar">
-                    </div>
-                    <div class="info">
-                        <span class="name"><?= $activity['firstname'] ?> <?= $activity['lastname'] ?> <?= $activity['secondname'] ?></span>
-                        <span class="post">
-                            <?= $activity['post'] ?>
-                            <br>
-                            <?= $activity['date'] ?>
-                        </span>
+?>
+
+                <div class="actions__info-item">
+                    <div class="actions__activity-info">
+                        <div class="actions__activity-user">
+                            <div class="avatar">
+                                <img src="<?=$ava;?>" alt="Avatar">
+                            </div>
+                            <div class="info">
+                                <span class="name"><?=$fname.' '.$sname.' '.$lname;?></span>
+                                <span class="post">
+                                    <?=$role;?>
+                                    <br>
+                                    <?=$IntlDate->formatObject($date); ?>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="status second-status">
+<?php if($checkReadIndex){?>
+                            <span class="active">
+                                <i class="icon-document-update"></i> Изменено
+                            </span>
+<?php } else { ?>
+                            <span class="active">
+                                <i class="icon-document-add"></i> Данные введены
+                            </span>
+<?php } ?>
+
+                            <span<?=('5' == $status || '6' == $status) ? ' class="active"' : ''?>>
+                                <i class="icon-document-check"></i> <?=('5' == $status) ? 'Согласовано' : 'Не согласовано'?>
+                            </span>
+                        </div>
+                    </div>             
+             
+<?php
+?>
+                
+                    <div class="actions__activity-indicators">
+                        <div class="indicators-list">
+                          <div class="title">Изменены показатели:</div>
+                          <div class="list">
+                              <?=$listItem;?>
+                          </div>
+                        </div>
+                        <div class="indicator-description">
+                          <?=(!empty($currMark[0])) ? '<b>'.$currMark[0]['num'].'</b> '.$currMark[0]['name'] : '';?>
+                        </div>
+                        <div class="indicator-comparison">
+<?php if($checkReadIndex){?>
+                          <div>Было: <b><?=$currMark[2]['index'];?></b></div>
+<?php } ?>
+                          <div>Стало: <b><?=$currMark[1]['index'];?></b></div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="status second-status">
@@ -31,30 +98,7 @@
                 </div>
             </div>
 
-            <div class="actions__activity-indicators">
-                <div class="indicators-list">
-                    <div class="title">Изменены показатели:</div>
-                    <div class="list">
-                        <?php foreach ($activity['marks'] as $mark) { ?>
-                            <div class="item">
-                                <span class="mark"><?= $mark['mark'] ?></span>
-                                <span class="id">ID: <?= $mark['test'] ?></span>
-                                <span class="before" style="display: none"><?= $mark['before'] ?></span>
-                                <span class="now" style="display: none"><?= $mark['now'] ?></span>
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
-                <div class="indicator-description">
-                  <b><?= $activity['marks'][0]['mark'] ?>.</b> Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения (ед).
-                </div>
-                <div class="indicator-comparison">
-                  <div>Было: <b class="before"><?= $activity['marks'][0]['before'] ?></b></div>
-                  <div>Стало: <b class="now"><?= $activity['marks'][0]['now'] ?></b></div>
-                </div>
-            </div>
-
-        </div>
+                 </div>
 
     <?php } ?>
 

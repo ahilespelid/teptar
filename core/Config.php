@@ -1,5 +1,10 @@
 <?php namespace App;
 //ini_set('memory_limit', '-1');
+///*/ Локаль.
+setlocale(LC_ALL, 'ru_RU', 'ru_RU.UTF-8', 'ru', 'russian');
+header('Content-type: text/html; charset=utf-8');
+date_default_timezone_set('Europe/Moscow'); ///*/ 
+
 
 /*/ Режим вывода ошибок /*/
 ini_set('display_errors', 1);
@@ -56,6 +61,7 @@ $GLOBALS['path'] = $path;
 $GLOBALS['path']['controller'] = $GLOBALS['path']['app']._DS_.'Controllers';
 $GLOBALS['path']['model'] = $GLOBALS['path']['app']._DS_.'Models';
 $GLOBALS['path']['view'] = $GLOBALS['path']['app']._DS_.'Views';
+$GLOBALS['path']['disk'] = $GLOBALS['path']['dev']._DS_.'disk';
 
 /*/-------------------------------------------------------------- Удочка для ошибок --------------------------------------------------------------/*/
 

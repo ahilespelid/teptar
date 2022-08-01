@@ -213,7 +213,7 @@ abstract class Data{
         }
 
         // Генерация всего запроса из результатов предыдуще генерированных строков
-        $sql = "SELECT * FROM " . $this->table . " WHERE " . $criteriaSQL . $orderSQL . " LIMIT 1";
+        $sql = "SELECT * FROM `" . $this->table . "` WHERE " . $criteriaSQL . $orderSQL . " LIMIT 1";
         $this->writeLog($sql, __FUNCTION__);
         $query = $this->pdo->query($sql);
 
@@ -338,7 +338,7 @@ abstract class Data{
         }
 
         // Генерация всего запроса из результатов предыдуще генерированных строков
-        $sql = "INSERT INTO " . $this->table . " (" . $columns . ") VALUES (" . $values . ")";
+        $sql = "INSERT INTO `" . $this->table . "` (" . $columns . ") VALUES (" . $values . ")";
         $this->writeLog($sql, __FUNCTION__);
         $this->pdo->query($sql);
     }

@@ -83,8 +83,20 @@ foreach ($marks as $user => $activMarks){ ///* / pa($activMarks); ///* /
                           <div>Стало: <b><?=$currMark[1]['index'];?></b></div>
                         </div>
                     </div>
-
-                 </div>
+                </div>
+                <div class="status second-status">
+                    <span>
+                        <i class="icon-document-add"></i> Данные введены
+                    </span>
+                    <span<?php if ($activity['status'] == 5) { echo 'class=" active"'; } ?>>
+                        <i class="icon-document-update"></i> Изменено
+                    </span>
+                    <span<?php if ($activity['status'] == 6) { echo 'class=" active"'; } ?>>
+                        <i class="icon-document-check"></i> Согласовано
+                    </span>
+                </div>
+            </div>
+         </div>
     <?php } ?>
 
 <!--    <div class="actions__info-item">-->
@@ -154,3 +166,29 @@ foreach ($marks as $user => $activMarks){ ///* / pa($activMarks); ///* /
 <!--    </div>-->
 
 </div>
+
+<div id="marksForJS" style="display: none">
+    <?php foreach ($marks as $mark) { ?>
+        <span class="mark">
+            <span class="num"><?= $mark['num'] ?></span>
+            <span id="description<?= $mark['num'] ?>"><?= $mark['name'] ?></span>
+        </span>
+    <?php } ?>
+</div>
+
+<script>
+    let activities = document.querySelectorAll('.actions__info-item');
+
+    activities.forEach((activity) => {
+        activity.querySelectorAll('.indicators-list .item').forEach((mark) => {
+            let num = mark.querySelector('.mark').innerHTML;
+            let before = mark.querySelector('.before').innerHTML;
+            let now = mark.querySelector('.now').innerHTML;
+            mark.addEventListener('click', () => {
+                activity.querySelector('.indicator-description').innerHTML = '<b>' + num + '.</b> ' + document.getElementById('description' + num).innerHTML;
+                activity.querySelector('.indicator-comparison .before').innerHTML = before;
+                activity.querySelector('.indicator-comparison .now').innerHTML = now;
+            })
+        })
+    })
+</script>

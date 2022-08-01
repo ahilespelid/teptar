@@ -8,4 +8,8 @@ class MarkModel extends \App\Data {
         $this->table =$GLOBALS['db']['table']['marks'];
          (object)$this->pdo = $this->connPDO();
     }
+
+    public function marksWithoutSV() {
+        return $this->customSQL("SELECT * FROM marks WHERE num NOT LIKE '%_SV'");
+    }
 }

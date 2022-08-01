@@ -338,7 +338,7 @@ abstract class Data{
         }
 
         // Генерация всего запроса из результатов предыдуще генерированных строков
-        $sql = "INSERT INTO " . $this->table . " (" . $columns . ") VALUES (" . $values . ")";
+        $sql = "INSERT INTO `" . $this->table . "` (" . $columns . ") VALUES (" . $values . ")";
         $this->writeLog($sql, __FUNCTION__);
         $this->pdo->query($sql);
     }

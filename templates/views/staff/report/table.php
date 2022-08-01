@@ -9,21 +9,17 @@
             <?php include $this->layout('staff/header.php'); ?>
 
             <div class="body report-table">
-                <div class="developer-alert">
-                    <i class="icon-refresh spin"></i> Страница «Таблица» на стадии разработки, пожалуйста заходите позже
-                </div>
-
                 <div class="body__back-button">
-                    <a href="#">
+                    <a href="/report?id=<?= $report['id'] ?>">
                         <span class="icon-expand_left_right body__back__arrow"></span>
                         Вернуться
                     </a>
                     <div class="body__back-button__tables">
-                        <a href="" class="finished__table">
+                        <a href="/report/sv-table?report=<?= $report['id'] ?>" class="finished__table">
                             <span class="icon-archive"></span>
                             Общая таблица
                         </a>
-                        <a href="" class="pivot__table">
+                        <a href="/report/sv-table?report=<?= $report['id'] ?>" class="pivot__table">
                             <span class="icon-save_light"></span>
                             Сводная таблица
                         </a>
@@ -57,18 +53,19 @@
                             <?php foreach ($data as $entry) { ?>
                                 <tr>
                                     <td class="number"><?= $entry['mark'] ?></td>
-                                    <td class="description"><?= $entry['description'] ?></td>
-                                    <td class="unit"><?= $entry['unit'] ?></td>
-                                    <?php foreach ($years as $year) { ?>
-                                        <td class="years"><?= (isset($entry[$year][0])) ? $entry[$year][0]['index'] : '' ?></td>
+                                    <?php if ($entry['type'] == 'description') { ?>
+                                        <td class="description" colspan="<?= count($years) + 2 ?>"><?= $entry['description'] ?></td>
+                                    <?php } else { ?>
+                                        <td class="description"><?= $entry['description'] ?></td>
+                                        <td class="unit"><?= $entry['unit'] ?></td>
+                                        <?php foreach ($years as $year) { ?>
+                                            <td class="years"><?= (isset($entry[$year][0])) ? $entry[$year][0]['index'] : '' ?></td>
+                                        <?php } ?>
                                     <?php } ?>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
-                </div>
-                <div class="table__footer none">
-                    <button class="table__footer__button">Сохранить изменения</button>
                 </div>
             </div>
         </div>

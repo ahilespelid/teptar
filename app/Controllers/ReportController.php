@@ -110,7 +110,7 @@ class ReportController extends AbstractController{
     }
 
     public function table() {
-        $marks = $this->marks->customSQL("SELECT * FROM marks WHERE num NOT LIKE '%_SV'");
+        $marks = $this->marks->marksWithoutSV();
         $data = [];
 
         $currentReport  = $this->model->findOneBy(['id' => $_GET['report']]);
@@ -121,12 +121,12 @@ class ReportController extends AbstractController{
             $years[$i] = 2018 + $i;
         }
 
-
         foreach ($marks as $key => $mark) {
             $data[$key] = [
                 'mark' => $mark['num'],
                 'description' => $mark['name'],
-                'unit' => $mark['unit']
+                'unit' => $mark['unit'],
+                'type' => $mark['type']
             ];
 
             foreach ($years as $year) {
@@ -137,12 +137,70 @@ class ReportController extends AbstractController{
         $this->render('/staff/report/table.php', [
             'data' => $data,
             'years' => $years,
-            'uin' => $this->uinModel->findOneBy(['id' => $currentReport['id_uin']])
+            'uin' => $this->uinModel->findOneBy(['id' => $currentReport['id_uin']]),
+            'report' => $currentReport
         ]);
     }
 
+    public function indexIsValid($mark, $data, $report) {
+        $reportUIN = $this->uinModel->findOneBy(['id' => $report['id_uin']]);
+        $sendMethod = null;
+
+        $reportHaveDistrictData = $this->indexes->indexByMarkReportAndUinType($mark, $report['id'], 'district') ?? false;
+        $reportHaveMinistryData = $this->indexes->indexByMarkReportAndUinType($mark, $report['id'], 'ministry') ?? false;
+
+        return true;
+    }
+
     public function svTable() {
-        $this->render('/staff/report/sv_table.php');
+        $report = $this->model->findOneBy(['id' => $_GET['report']]);
+        $marks = $this->marks->marksWithoutSV();
+
+        $this->indexIsValid(
+            1,
+            [
+                'district' => 1,
+                'action' => 0,
+                'result' => null,
+            ],
+            [
+                'id' => 55,
+                'id_uin' => 4
+            ]
+        );
+
+        if ($_POST) {
+//            if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) {
+//                foreach ($_POST['marks'] as $mark => $data) {
+//                    if ($data['ministry']) {
+//                        pa('fd');
+//                    }
+//                }
+//            }
+
+//            foreach ($_POST['marks'] as $mark => $data) {
+//                if ($this->indexIsValid($mark, $data, $report)) {
+//                    pa('valid');
+//                }
+//
+//                if ($data['district']) {
+//                    $this->indexes->add([
+//                        'id_user' => $this->user()['id'],
+//                        'id_mark' => $mark,
+//                        'id_report' => $report['id'],
+//                        'id_uin' => $report['id_uin'],
+//                        'id_status' => 6,
+//                        'index' => $data['district'],
+//                        'date' => new \DateTime('now')
+//                    ]);
+//                }
+//            }
+        }
+
+        $this->render('/staff/report/sv_table.php', [
+            'marks' => $marks,
+            'uin' => $this->uinModel->findOneBy(['id' => $report['id_uin']]),
+        ]);
     }
 
     public function new() {

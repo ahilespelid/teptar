@@ -41,258 +41,76 @@
                 </div>
 
                 <div class="table">
-                    <table class="table__main">
-                        <thead class="table__main__header">
-                        <tr>
-                            <td>#</td>
-                            <td id="description__title">Показатели</td>
-                            <td id="unit__title">Ед. измерения</td>
-                            <td id="ministry__title">Ведомство</td>
-                            <td id="district__title">Район</td>
-                            <td id="dropdown__title">Действие</td>
-                            <td id="status__title">Итог</td>
-                        </tr>
-                        </thead>
-                            <?php
-                            $role = 1
-                            ?>
-                        <tbody>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <?php
+                    <?php pa($_POST) ?>
 
-                            if($role === 1) {
-                                echo '<td class="ministry red"><input readonly type="text" value="19"></td>
-                            <td class="district green"><input autofocus type="text" value="19"></td>';
-                            } elseif($role === 2) {
-                                echo '<td class="ministry green"><input autofocus type="text" value="19"></td>
-                            <td class="district red"><input readonly type="text" value="19"></td>';
-                            }
+                    <form method="post" action="">
+                        <table>
+                            <table>
+                                <thead class="table__main__header">
+                                    <tr>
+                                        <th>Показатель</th>
+                                        <th>Описание</th>
+                                        <th>Ед. измерения</th>
+                                        <th>Район</th>
+                                        <th>Ведомство</th>
+                                        <th>Действие</th>
+                                        <th>Итог</th>
+                                    </tr>
+                                </thead>
 
-                            ?>
-                            <td class="dropdown">
-                                <?php
-                                if($role === 1) {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>
-                            <div class="dropdown__menu__variables none">
-                                <div class="dropdown__menu__variables__element on-agreed">На согласовании</div>
-                                <div class="dropdown__menu__variables__element agreed">Согласовано</div>
-                            </div>';
-                                } else {
-                                    echo '<div class="dropdown__menu__none">
-                                <span class="text">Согласовано</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>';
-                                }
-                                ?>
-                            </td>
-                            <td class="status">
-                                <input class="status__final" value="19">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <?php
-
-                            if($role === 1) {
-                                echo '<td class="ministry red"><input readonly type="text" value="19"></td>
-                            <td class="district green"><input autofocus type="text" value="19"></td>';
-                            } elseif($role === 2) {
-                                echo '<td class="ministry green"><input autofocus type="text" value="19"></td>
-                            <td class="district red"><input readonly type="text" value="19"></td>';
-                            }
-
-                            ?>
-                            <td class="dropdown">
-                                <?php
-                                if($role === 1) {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>
-                            <div class="dropdown__menu__variables none">
-                                <div class="dropdown__menu__variables__element on-agreed">На согласовании</div>
-                                <div class="dropdown__menu__variables__element agreed">Согласовано</div>
-                            </div>';
-                                } else {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>';
-                                }
-                                ?>
-                            </td>
-                            <td class="status">
-                                Действие не выбрано
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <?php
-
-                            if($role === 1) {
-                                echo '<td class="ministry red"><input readonly type="text" value="19"></td>
-                            <td class="district green"><input autofocus type="text" value="19"></td>';
-                            } elseif($role === 2) {
-                                echo '<td class="ministry green"><input autofocus type="text" value="19"></td>
-                            <td class="district red"><input readonly type="text" value="19"></td>';
-                            }
-
-                            ?>
-                            <td class="dropdown">
-                                <?php
-                                if($role === 1) {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>
-                            <div class="dropdown__menu__variables none">
-                                <div class="dropdown__menu__variables__element on-agreed">На согласовании</div>
-                                <div class="dropdown__menu__variables__element agreed">Согласовано</div>
-                            </div>';
-                                } else {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>';
-                                }
-                                ?>
-                            </td>
-                            <td class="status">
-                                Действие не выбрано
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <?php
-
-                            if($role === 1) {
-                                echo '<td class="ministry red"><input readonly type="text" value="19"></td>
-                            <td class="district green"><input autofocus type="text" value="19"></td>';
-                            } elseif($role === 2) {
-                                echo '<td class="ministry green"><input autofocus type="text" value="19"></td>
-                            <td class="district red"><input readonly type="text" value="19"></td>';
-                            }
-
-                            ?>
-                            <td class="dropdown">
-                                <?php
-                                if($role === 1) {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>
-                            <div class="dropdown__menu__variables none">
-                                <div class="dropdown__menu__variables__element on-agreed">На согласовании</div>
-                                <div class="dropdown__menu__variables__element agreed">Согласовано</div>
-                            </div>';
-                                } else {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>';
-                                }
-                                ?>
-                            </td>
-                            <td class="status">
-                                Действие не выбрано
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <?php
-
-                            if($role === 1) {
-                                echo '<td class="ministry red"><input readonly type="text" value="19"></td>
-                            <td class="district green"><input autofocus type="text" value="19"></td>';
-                            } elseif($role === 2) {
-                                echo '<td class="ministry green"><input autofocus type="text" value="19"></td>
-                            <td class="district red"><input readonly type="text" value="19"></td>';
-                            }
-
-                            ?>
-                            <td class="dropdown">
-                                <?php
-                                if($role === 1) {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>
-                            <div class="dropdown__menu__variables none">
-                                <div class="dropdown__menu__variables__element on-agreed">На согласовании</div>
-                                <div class="dropdown__menu__variables__element agreed">Согласовано</div>
-                            </div>';
-                                } else {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>';
-                                }
-                                ?>
-                            </td>
-                            <td class="status">
-                                Действие не выбрано
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="number">1</td>
-                            <td class="description">Число субъектов малого и среднего предпринимательства в расчете на 10 тыс. человек населения</td>
-                            <td class="unit">Единиц</td>
-                            <?php
-
-                            if($role === 1) {
-                                echo '<td class="ministry red"><input readonly type="text" value="19"></td>
-                            <td class="district green"><input autofocus type="text" value="19"></td>';
-                            } elseif($role === 2) {
-                                echo '<td class="ministry green"><input autofocus type="text" value="19"></td>
-                            <td class="district red"><input readonly type="text" value="19"></td>';
-                            }
-
-                            ?>
-                            <td class="dropdown">
-                                <?php
-                                if($role === 1) {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>
-                            <div class="dropdown__menu__variables none">
-                                <div class="dropdown__menu__variables__element on-agreed">На согласовании</div>
-                                <div class="dropdown__menu__variables__element agreed">Согласовано</div>
-                            </div>';
-                                } else {
-                                    echo '<div class="dropdown__menu">
-                                <span class="text">Выберите действие</span>
-                                <span class="icon-arrow_drop_down arrow-icon"></span>
-                            </div>';
-                                }
-                                ?>
-                            </td>
-                            <td class="status">
-                                Действие не выбрано
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                                <tbody>
+                                    <?php foreach ($marks as $mark) { ?>
+                                        <tr>
+                                            <td><?= $mark['num'] ?></td>
+                                            <?php if ($mark['type'] != 'description') { ?>
+                                                <td><?= $mark['name'] ?></td>
+                                                <td><?= $mark['unit'] ?></td>
+                                                <td>
+                                                    <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
+                                                        <label for="districtMark<?= $mark['num'] ?>"></label>
+                                                        <input type="text" name="marks[<?= $mark['num'] ?>][district]" placeholder="Индекс (района: <?= $uin['owner'] ?>)" id="districtMark<?= $mark['num'] ?>">
+                                                    <?php } else { ?>
+                                                        <input type="text">
+                                                    <?php } ?>
+                                                </td>
+                                                <td>
+                                                    <label for="ministryMark<?= $mark['num'] ?>"></label>
+                                                    <input type="text" name="marks[<?= $mark['num'] ?>][ministry]" placeholder="Индекс" id="ministryMark<?= $mark['num'] ?>">
+                                                </td>
+                                                <td>
+                                                    <label for="markActions<?= $mark['num'] ?>"></label><select id="markActions<?= $mark['num'] ?>" name="marks[<?= $mark['num'] ?>][action]" data-placeholder="Выбрать действие">
+                                                        <option value="0" selected>Выбрать действие</option>
+                                                        <option value="agreed">Согласовано</option>
+                                                        <option value="disagreed">Не согласовано</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <label for="districtResult<?= $mark['num'] ?>"></label>
+                                                    <input type="text" name="marks[<?= $mark['num'] ?>][result]" placeholder="Итоговый индекс" id="districtResult<?= $mark['num'] ?>">
+                                                </td>
+                                            <?php } else { ?>
+                                                <td colspan="6"><?= $mark['name'] ?></td>
+                                            <?php } ?>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </table>
+                        <input type="submit" class="registration__form__footer__button" value="Сохранить">
+                    </form>
                 </div>
-                <div class="table__footer none">
-                    <button class="table__footer__button">Сохранить изменения</button>
-                </div>
+
             </div>
         </div>
+
+        <script>
+            function disableEmptyInputs(form) {
+                var controls = form.elements;
+                for (var i=0, iLen=controls.length; i<iLen; i++) {
+                    controls[i].disabled = controls[i].value === '';
+                }
+            }
+        </script>
 
     </body>
 

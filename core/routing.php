@@ -19,7 +19,6 @@
     'profile/fire'              =>  ['controller' => 'ProfileController', 'action' => 'fire'],
     'notifications'             =>  ['controller' => 'ProfileController', 'action' => 'notifications'],
     'districtNotifications'     =>  ['controller' => 'ProfileController', 'action' => 'districtNotificationsJSON'],
-    'disk'                      =>  ['controller' => 'ProfileController', 'action' => 'disk'],
 
     // SupportController
     'support'                   =>  ['controller' => 'SupportController', 'action' => 'support'],
@@ -51,7 +50,7 @@
     'exel'                      =>  ['controller' => 'ExelController', 'action' => 'work'],
     'ajax'                      =>  ['controller' => 'AjaxController', 'action' => 'getMarkData'],
     'calculate'                 =>  ['controller' => 'CalculateController', 'action' => 'index'],
-    'disk'                 =>  ['controller' => 'DiskController', 'action' => 'index'],
+    'disk'                      =>  ['controller' => 'DiskController', 'action' => 'index'],
     ];
 
     return $GLOBALS['url'];

@@ -123,7 +123,7 @@
 
                             <div class="reports-body__content__changes">
 
-<!--                                --><?php //include $this->layout('staff/activity.php'); ?>
+                                <?php include $this->layout('staff/activity.php'); ?>
 
                             </div>
 

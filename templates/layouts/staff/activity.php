@@ -82,7 +82,6 @@ foreach ($marks as $user => $activMarks){ ///* / pa($activMarks); ///* /
 <?php } ?>
                           <div>Стало: <b><?=$currMark[1]['index'];?></b></div>
                         </div>
-
                     </div>
                 </div>
                 <div class="status second-status">
@@ -97,9 +96,7 @@ foreach ($marks as $user => $activMarks){ ///* / pa($activMarks); ///* /
                     </span>
                 </div>
             </div>
-
-                 </div>
-
+         </div>
     <?php } ?>
 
 <!--    <div class="actions__info-item">-->

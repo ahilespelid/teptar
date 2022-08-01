@@ -64,7 +64,7 @@ class CalculateController extends AbstractController{
         for($i_r=1, $c_r=count($_r = $this->reports); $i_r <= $c_r; $i_r++){
             $deadline = $_r[$i_r]['deadline']; unset($this->reports[$i_r]['deadline'], $_r[$i_r]['deadline']);                    
             for($i_m=0, $c_m=count($_m = $this->marks); $i_m < $c_m; $i_m++){
-                $_4_inxdexa = $this->model->getIndexes([$_m[$i_m]],[$i_r],$_r[$i_r],4); ///*/ Бывает и пустым, например 8, там где есть .1,.2 и т.д., но нет ведущего числа, например 20.1, 20.2, но нет 20 ///*/
+                $_4_inxdexa = $this->model->getIndexes([$_m[$i_m]],[$i_r],$_r[$i_r]); ///*/ Бывает и пустым, например 8, там где есть .1,.2 и т.д., но нет ведущего числа, например 20.1, 20.2, но нет 20 ///*/
                 if(!empty($_4_inxdexa) && 4 == count($_4_inxdexa)){
                     for($i=0; $i<4; $i++){$_4_inxdexa[$i]['index'] = ('' == $_4_inxdexa[$i]['index']) ? '' : number_format((float) $_4_inxdexa[$i]['index'], 3, '.', '');}
                     $this->index[$i_r][$_m[$i_m]]['reports'] = json_encode($_r[$i_r]);
@@ -468,7 +468,7 @@ return;}
         echo '<a href="https://yandex.ru/images/search?text=сиськи"> （•ㅅ•） сиськи</a><br><br><form method="post" action=""><table>'.$table.'</table><br><input type="submit" value="СОХРАНИТЬ ЗНАЧЕНИЯ"></form><style>td{border-right:2px solid #000; padding: 0 5px}.textCenter{text-align: center;}.textRight{text-align: right;}</style>'; ///*/ 
     }
 /// */ Метод генерации exel с данными расчётов и записью файла в каталог /public/ftp /// */     
-    public function genExel($round = 16, $roundIndex = 3, $dirname = '/var/www/public'._DS_.'exel'){///*/
+    public function genExel($round = 16, $roundIndex = 3, $dirname = _DS_.'var'._DS_.'www'._DS_.'disk'._DS_.'exel'){///*/
         $date1 = (new \DateTime)->modify( '-1 year' )->format('Y'); 
         $date2 = (new \DateTime)->modify( '-2 year' )->format('Y'); 
         $date3 = (new \DateTime)->modify( '-3 year' )->format('Y'); 
@@ -573,7 +573,7 @@ return;}
                 //pa($sheet->getStyle('A1:A18')->exportArray());
         }
          $spreadsheet->removeSheetByIndex(0); $spreadsheet->setActiveSheetIndex(1);
-        if(file_exists($dirname)){$exel = (new \DateTime)->format('Y-m'); (new Xlsx($spreadsheet))->save($dirname._DS_.$exel.'.xlsx');}
+        if(file_exists($dirname)){$filename = $dirname._DS_.(new \DateTime)->format('Y-m-d-his').'.xlsx'; (new Xlsx($spreadsheet))->save($filename);}
        
          return $this;
     }          

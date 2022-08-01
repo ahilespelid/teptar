@@ -6,6 +6,8 @@ class AbstractController {
     public $notifications;
     public $users;
     public $user;
+    
+    private static $memory = [];
 
     public function __construct() {
         $this->users = new \App\Models\UserModel;
@@ -153,4 +155,13 @@ class AbstractController {
                     ('max' == $return && !empty ($max)) ? $max : (
                         ((('max|min' == $return) || ('min|max' == $return)) && (!empty($min) || !empty($max))) ? array('min' => $min, 'max' => $max) : false));
     }
+
+    /// */ Метод сохранения данных в памяти /// */
+    public function store(string $key, $value): bool{self::$memory[$key] = $value;return true;}
+    /// */  Метод получения данных из памяти /// */ 
+    public function fetch(string $key){return self::$memory[$key] ?? null;}
+    /// */ Метод удаления данных из памяти /// */ 
+    public function delete(string $key): bool{unset(self::$memory[$key]);return true;}
+    /// */ Метод проверки наличия данных по ключу /// */ 
+    public function exists(string $key): bool{return array_key_exists($key, self::$memory);}
 }

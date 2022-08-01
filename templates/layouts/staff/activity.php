@@ -84,17 +84,6 @@ foreach ($marks as $user => $activMarks){ ///* / pa($activMarks); ///* /
                         </div>
                     </div>
                 </div>
-                <div class="status second-status">
-                    <span>
-                        <i class="icon-document-add"></i> Данные введены
-                    </span>
-                    <span<?php if ($activity['status'] == 5) { echo 'class=" active"'; } ?>>
-                        <i class="icon-document-update"></i> Изменено
-                    </span>
-                    <span<?php if ($activity['status'] == 6) { echo 'class=" active"'; } ?>>
-                        <i class="icon-document-check"></i> Согласовано
-                    </span>
-                </div>
             </div>
          </div>
     <?php } ?>

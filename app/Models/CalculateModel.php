@@ -81,8 +81,8 @@ class CalculateModel extends \App\Data{
         foreach($idReport as $k => $report){$sql .= "(SELECT i".$k.".`id` FROM `index` i".$k." WHERE i".$k.".`id_mark`= t.`id_mark` AND i".$k.".`id_uin`= t.`id_uin` AND i".$k.".`id_report`= '".$report."' AND i".$k.".`id_status`= t.`id_status` ORDER BY `date` DESC LIMIT 1),";}
             $sql = rtrim($sql,','); $sql .= ') ORDER BY t.`date` DESC, t.`id` DESC';      
         }$sql .= ';';
-        ///*/ $indexes = $this->getQuery($sql); ///*/ 
-        echo $sql.'<br><br>'; ///*/
+        ///*/ 
+        $indexes = $this->getQuery($sql); ///*/ echo $sql.'<br><br>'; ///*/
 
         if(is_array($indexes) && !empty($indexes)){$return = [];
             foreach($indexes as $key => $index){foreach($index as $k => $v){$table =$this->getTableFromIdString($k);

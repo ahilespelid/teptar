@@ -60,7 +60,7 @@
 
                                 <div class="reports-body__header__buttons">
                                     <span class="reports-body__header__edit">Редактировать</span>
-                                    <span class="reports-body__header__print">Печать</span>
+                                    <span class="reports-body__header__print" onclick="window.print(document);">Печать</span>
                                 </div>
 
                                 <div class="reports-body__content__header__download">
@@ -122,7 +122,9 @@
                             </div>
 
                             <div class="reports-body__content__changes">
+
 <!--                                --><?php //include $this->layout('staff/activity.php'); ?>
+
                             </div>
 
                         </div>

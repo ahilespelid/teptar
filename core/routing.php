@@ -51,6 +51,7 @@
     'exel'                      =>  ['controller' => 'ExelController', 'action' => 'work'],
     'ajax'                      =>  ['controller' => 'AjaxController', 'action' => 'getMarkData'],
     'calculate'                 =>  ['controller' => 'CalculateController', 'action' => 'index'],
+    'disk'                 =>  ['controller' => 'DiskController', 'action' => 'index'],
     ];
 
     return $GLOBALS['url'];

@@ -321,7 +321,7 @@ abstract class Data{
 
         // Генерация строки запроса SQL для добавления новой записи в базу данных
         foreach ($entries as $column => $value) {
-            $columns .= $column;
+            $columns .= '`' . $column . '`';
 
             if ($value instanceof \DateTime) {
                 $values .= "'" . $value->format('Y-m-d H:i:s') . "'";

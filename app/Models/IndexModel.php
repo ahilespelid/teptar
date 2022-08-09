@@ -1,6 +1,8 @@
 <?php  
 namespace App\Models;
 
+use http\Exception\BadUrlException;
+
 class IndexModel extends \App\Data{
     public $table;
 
@@ -60,5 +62,17 @@ class IndexModel extends \App\Data{
 
         $query = $this->pdo->query($sql);
         return $query->rowCount();
+    }
+
+    public function oneReportIndexByUinTypeAndMarkNum($markNum, $reportId, $uinType) {
+        $sql = "SELECT *
+                FROM `index`
+                LEFT JOIN uin ON uin.id = `index`.id_uin
+                WHERE uin.type = '" . $uinType . "' AND id_report = " . $reportId . " AND id_mark = " . $markNum . "
+                ORDER BY date DESC
+                LIMIT 1";
+
+        $query = $this->pdo->query($sql);
+        return (!empty($return = $query->fetchAll())) ? $return[0] : null;
     }
 }

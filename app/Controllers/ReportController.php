@@ -154,22 +154,52 @@ class ReportController extends AbstractController{
 
     public function svTable() {
         $report = $this->model->findOneBy(['id' => $_GET['report']]);
-        $marks = $this->marks->marksWithoutSV();
+        $marks = [];
 
-        $this->indexIsValid(
-            1,
-            [
-                'district' => 1,
-                'action' => 0,
-                'result' => null,
-            ],
-            [
-                'id' => 55,
-                'id_uin' => 4
-            ]
-        );
+        foreach ($this->marks->marksWithoutSV() as $key => $mark) {
+            $ministryIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark['num'], $report['id'], 'ministry');
+
+            if ($ministryIndexForThisReport) {
+                $mark['ministry'] = $ministryIndexForThisReport['index'];
+            }
+
+            $marks[$key] = $mark;
+        }
+
+//        pa($marks);
+//        $this->indexIsValid(
+//            1,
+//            [
+//                'district' => 1,
+//                'action' => 0,
+//                'result' => null,
+//            ],
+//            [
+//                'id' => 55,
+//                'id_uin' => 4
+//            ]
+//        );
 
         if ($_POST) {
+
+//            pa($_POST);
+
+            if ($this->security->userHasRole(['ministry_boss', 'ministry_staff']) && isset($_POST['marks'])) {
+                foreach ($_POST['marks'] as $mark => $data) {
+                    if ($data['ministry'] && (int)$data['ministry'] == $data['ministry']) {
+                        $this->indexes->add([
+                            'id_user' => $this->user()['id'],
+                            'id_mark' => $mark,
+                            'id_report' => $report['id'],
+                            'id_uin' => $this->user()['id_uin'],
+                            'id_status' => 6,
+                            'index' => $data['ministry'],
+                            'date' => new \DateTime('now')
+                        ]);
+                    }
+                }
+            }
+
 //            if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) {
 //                foreach ($_POST['marks'] as $mark => $data) {
 //                    if ($data['ministry']) {

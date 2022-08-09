@@ -53,8 +53,10 @@
                                         <th>Ед. измерения</th>
                                         <th>Район</th>
                                         <th>Ведомство</th>
-                                        <th>Действие</th>
-                                        <th>Итог</th>
+                                        <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
+                                            <th>Действие</th>
+                                            <th>Итог</th>
+                                        <?php } ?>
                                     </tr>
                                 </thead>
 
@@ -70,24 +72,31 @@
                                                         <label for="districtMark<?= $mark['num'] ?>"></label>
                                                         <input type="text" name="marks[<?= $mark['num'] ?>][district]" placeholder="Индекс (района: <?= $uin['owner'] ?>)" id="districtMark<?= $mark['num'] ?>">
                                                     <?php } else { ?>
-                                                        <input type="text">
+                                                        <input type="text" disabled>
                                                     <?php } ?>
                                                 </td>
                                                 <td>
-                                                    <label for="ministryMark<?= $mark['num'] ?>"></label>
-                                                    <input type="text" name="marks[<?= $mark['num'] ?>][ministry]" placeholder="Индекс" id="ministryMark<?= $mark['num'] ?>">
+                                                    <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+                                                        <label for="ministryMark<?= $mark['num'] ?>"></label>
+                                                        <input type="text" name="marks[<?= $mark['num'] ?>][ministry]" <?= (isset($mark['ministry'])) ? 'value="' . $mark['ministry'] .  '"' : '' ?> placeholder="Индекс" id="ministryMark<?= $mark['num'] ?>">
+                                                    <?php } else { ?>
+                                                        <input type="text" disabled>
+                                                    <?php } ?>
                                                 </td>
-                                                <td>
-                                                    <label for="markActions<?= $mark['num'] ?>"></label><select id="markActions<?= $mark['num'] ?>" name="marks[<?= $mark['num'] ?>][action]" data-placeholder="Выбрать действие">
-                                                        <option value="0" selected>Выбрать действие</option>
-                                                        <option value="agreed">Согласовано</option>
-                                                        <option value="disagreed">Не согласовано</option>
-                                                    </select>
-                                                </td>
-                                                <td>
-                                                    <label for="districtResult<?= $mark['num'] ?>"></label>
-                                                    <input type="text" name="marks[<?= $mark['num'] ?>][result]" placeholder="Итоговый индекс" id="districtResult<?= $mark['num'] ?>">
-                                                </td>
+                                                <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
+                                                    <td>
+                                                        <label for="markActions<?= $mark['num'] ?>"></label>
+                                                        <select id="markActions<?= $mark['num'] ?>" name="marks[<?= $mark['num'] ?>][action]" data-placeholder="Выбрать действие">
+                                                            <option value="0" selected>Выбрать действие</option>
+                                                            <option value="agreed">Согласовано</option>
+                                                            <option value="disagreed">Не согласовано</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <label for="districtResult<?= $mark['num'] ?>"></label>
+                                                        <input type="text" name="marks[<?= $mark['num'] ?>][result]" placeholder="Итоговый индекс" id="districtResult<?= $mark['num'] ?>">
+                                                    </td>
+                                                <?php } ?>
                                             <?php } else { ?>
                                                 <td colspan="6"><?= $mark['name'] ?></td>
                                             <?php } ?>
@@ -104,6 +113,16 @@
         </div>
 
         <script>
+            // Prevent letters and symbols
+            // $('.report-table input').on('keypress', function (event) {
+            //     let regex = new RegExp("^[0-9]+$");
+            //     let key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            //     if (!regex.test(key)) {
+            //         event.preventDefault();
+            //         return false;
+            //     }
+            // });
+
             function disableEmptyInputs(form) {
                 var controls = form.elements;
                 for (var i=0, iLen=controls.length; i<iLen; i++) {

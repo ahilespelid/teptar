@@ -408,12 +408,17 @@ abstract class Data{
     }
 
     public function writeLog($sql, $action = __FUNCTION__, $timeWrite = true) {
+        $backtrace = debug_backtrace(); $fileinfo = '';
+        for($i = 0, $c = count($backtrace); $i < $c; $i++){$fileinfo .= (is_array($backtrace[$i]) && !empty($backtrace[$i])) ? $backtrace[$i]['file'].':'.$backtrace[$i]['line'].' '.$backtrace[$i]['class'].'::'.$backtrace[$i]['function'].'()    '.(($i % 2 != 0) ? PHP_EOL : '') : '';}
+
         $date = (new \DateTime('now'));
         $dateFile = $date->format('Y-m-d');
         $filename = $action . $dateFile . '.txt';
 
         if($sql){
-            $entry = PHP_EOL .(($timeWrite) ? $date->format('[H:i:s]')  : '') .' '. $sql;
+            $entry = _LS_.PHP_EOL .
+            $fileinfo.PHP_EOL._LS_.PHP_EOL .
+            (($timeWrite) ? $date->format('[H:i:s]')  : '') .' '. $sql.PHP_EOL;
             file_put_contents($this->logFile . $filename, $entry, FILE_APPEND | LOCK_EX);                                                     
         }
     }

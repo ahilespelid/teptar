@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php 
 //ini_set('memory_limit', '-1');
 ///*/ Локаль.
 setlocale(LC_ALL, 'ru_RU', 'ru_RU.UTF-8', 'ru', 'russian');
@@ -40,10 +40,10 @@ $GLOBALS['db']['user']  = 'tepuser';
 $GLOBALS['db']['pass']  = '-Txh9y#j_sJM';
 
 /*/ --------------------------------------------------------------Глобальный массив параметров --------------------------------------------------------------/*/
+if (!defined('_DS_')){define('_DS_', DIRECTORY_SEPARATOR);}
+if (!defined('_LS_')){define('_LS_', '----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');}
 
-define('_DS_',DIRECTORY_SEPARATOR);
 $path = dirname(__DIR__);
-
 $path = [
     'dev'               => $path,
     'pub'               => $_SERVER['DOCUMENT_ROOT'],
@@ -65,8 +65,8 @@ $GLOBALS['path']['disk'] = $GLOBALS['path']['dev']._DS_.'disk';
 
 /*/-------------------------------------------------------------- Удочка для ошибок --------------------------------------------------------------/*/
 
-class Config{
-    public function handleUncaughtException($e){
+if (!function_exists('handleUncaughtException')){
+    function handleUncaughtException($e){
         // */  Запись в лог исключений (new \App\Registr)->writeLog($e); // */
         // */  
         pa($e); // */
@@ -75,4 +75,4 @@ class Config{
 }
 
 /*/-------------------------------------------------------------- Цепляем удочку для ошибок глобально --------------------------------------------------------------/*/
-set_exception_handler([(new Config), 'handleUncaughtException']);
+set_exception_handler('handleUncaughtException');

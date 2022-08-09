@@ -1,4 +1,5 @@
 <?php
+if (!function_exists('pn')){
 function pn($flag = true){$namespaces = array();
 if(true == $flag){
     foreach(get_declared_classes() as $name) {
@@ -15,4 +16,4 @@ if(true == $flag){
     }
 }else{$namespaces = get_declared_classes();}
     return (!empty($namespaces)) ? $namespaces : false;
-}
+}}

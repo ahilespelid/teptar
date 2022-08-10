@@ -49,8 +49,9 @@
     // ПОКА НЕ ГОТОВЫ //
     'exel'                      =>  ['controller' => 'ExelController', 'action' => 'work'],
     'ajax'                      =>  ['controller' => 'AjaxController', 'action' => 'getMarkData'],
-    'calculate'                 =>  ['controller' => 'CalculateController', 'action' => 'index'],
+    'calculate'              =>  ['controller' => 'CalculateController', 'action' => 'index'],
     'disk'                      =>  ['controller' => 'DiskController', 'action' => 'index'],
+    'disk/up'                 =>  ['controller' => 'DiskController', 'action' => 'upload'],
     ];
 
     return $GLOBALS['url'];

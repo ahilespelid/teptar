@@ -409,7 +409,9 @@ abstract class Data{
 
     public function writeLog($sql, $action = __FUNCTION__, $timeWrite = true) {
         $backtrace = debug_backtrace(); $fileinfo = '';
-        for($i = 0, $c = count($backtrace); $i < $c; $i++){$fileinfo .= (is_array($backtrace[$i]) && !empty($backtrace[$i])) ? $backtrace[$i]['file'].':'.$backtrace[$i]['line'].' '.$backtrace[$i]['class'].'::'.$backtrace[$i]['function'].'()    '.(($i % 2 != 0) ? PHP_EOL : '') : '';}
+        for($i = 0, $c = count($backtrace); $i < $c; $i++){
+            $fileinfo .= ((!empty($backtrace[$i]['file'])) ? $backtrace[$i]['file'] : 'file') .':'. ((!empty($backtrace[$i]['line'])) ? $backtrace[$i]['line'] : 'line').' '.
+                               ((!empty($backtrace[$i]['class'])) ? $backtrace[$i]['class'] : 'class') .'::'.((!empty($backtrace[$i]['function'])) ? $backtrace[$i]['function'] : 'function').'()    '.(($i % 2 != 0) ? PHP_EOL : '');}
 
         $date = (new \DateTime('now'));
         $dateFile = $date->format('Y-m-d');

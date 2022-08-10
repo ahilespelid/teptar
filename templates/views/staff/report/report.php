@@ -10,6 +10,13 @@
 
             <div class="body">
 
+                <?php if (isset($_COOKIE['alert'])) { ?>
+                    <?php $alert = json_decode($_COOKIE['alert']); ?>
+                    <div class="alert alert-<?= $alert->type ?>">
+                        <?= $alert->message ?>
+                    </div>
+                <?php } ?>
+
                 <div class="body__back-button">
                     <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
                         <a href="/reports?district=<?= $data['district']['slug'] ?>">
@@ -138,12 +145,11 @@
                             function reportStatus($name) {
                                 $statuses = [
                                     'Успешно' => 'green',
-                                    'В работе' => 'orange',
-                                    'Дорабатывается' => 'red',
-                                    'Завершен' => '',
+                                    'На проверке' => 'green',
+                                    'Просрочен' => 'red'
                                 ];
 
-                                echo ' ' . $statuses[$name];
+                                echo (isset($statuses[$name])) ? ' ' . $statuses[$name] : '';
                             }
 
                         ?>
@@ -154,8 +160,6 @@
                                 <span class="side-block__header__date">
                                     <?php if ($data['report']['submitting']) { ?>
                                         <?= (new DateTime($data['report']['submitting']))->format('d.m.o G:s') ?>
-                                    <?php } else { ?>
-                                        - дата не указана -
                                     <?php } ?>
                                 </span>
                             </div>
@@ -169,8 +173,8 @@
 
                                 <ul class="side-block__body__values">
                                     <li class="side-block__body__term-date">
-                                        <?php if ($data['report']['deadline']) { ?>
-                                            <?= (new DateTime($data['report']['deadline']))->format('d.m.o G:s') ?>
+                                        <?php if ($data['deadline']) { ?>
+                                            <?= (new DateTime($data['deadline']))->format('d.m.o G:s') ?>
                                         <?php } else { ?>
                                             - дата не указана -
                                         <?php } ?>
@@ -236,65 +240,73 @@
                             <?php } ?>
                         </div>
 
-                        <?php if ($data['status']['id'] == 1) { ?>
-                            <div class="reports-body__side-block__button" id = "send_report" >
-                                <span class="icon-check" ></span >
-                                Отправить отчет
-                            </div>
-                        <?php } elseif ($data['status']['id'] == 2) { ?>
-                            <div class="reports-body__side-block__button" id="accept_report">
-                                <span class="icon-check"></span>
-                                Принять отчет
-                            </div>
-                            <div class="reports-body__side-block__button" id="finalize_report">
-                                <span class=\"icon-plus-circle\"></span>
-                                Отправить на доработку
-                            </div>
-                        <?php } elseif ($data['status']['id'] == 3) { ?>
-                            <div class="reports-body__side-block__button" id="send_report_again">
-                                <span class="icon-check"></span>
-                                Сдать повторно отчет
-                            </div>
+                        <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
+
+                            <?php if ($data['status']['id'] == 3) { ?>
+                                <a href="/switchReportStatus?report=<?= $data['report']['id'] ?>&status=4" class="reports-body__side-block__button" id="send_report" onclick="return confirm('Вы уверены что отчет готов и хотите отправить его на проверку?')">
+                                    <span class="icon-check" ></span >
+                                    Отправить отчет
+                                </a>
+                            <?php } ?>
+
+                        <?php } else if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+
+                            <?php if ($data['status']['id'] == 4) { ?>
+                                <div class="reports-body__side-block__button" id="accept_report">
+                                    <span class="icon-check"></span>
+                                    Принять отчет
+                                </div>
+
+                                <div class="success__modal none">
+                                    <div class="success__modal__header">
+                                        <span class="success__modal__header__text">Подтверждение</span>
+                                        <span class="success__modal__header__exit"><img src="../assets/img/svg/xmark.svg" alt=""></span>
+                                    </div>
+
+                                    <div class="success__modal__body">
+                                        <div class="success__modal__body__text">Пожалуйста, подтвердите что вы хотите принять данный отчет:</div>
+
+                                        <a href="/switchReportStatus?report=<?= $data['report']['id'] ?>&status=1" class="success__modal__body__button">
+                                            <span class="icon-check"></span>
+                                            Принять отчет
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="reports-body__side-block__button" id="finalize_report">
+                                    <span class="icon-plus-circle"></span>
+                                    Отправить на доработку
+                                </div>
+
+                                <div class="fail__modal none">
+                                    <div class="fail__modal__header">
+                                        <span class="fail__modal__header__text">Подтверждение</span>
+                                        <span class="fail__modal__header__exit"><img src="../assets/img/svg/xmark.svg" alt=""></span>
+                                    </div>
+
+                                    <div class="fail__modal__body">
+                                        <div class="fail__modal__body__text">Пожалуйста, напишите причину по которой вы считаете что задача не выполнена:</div>
+
+                                        <form action="/switchReportStatus?report=<?= $data['report']['id'] ?>&status=3" method="post">
+                                            <label>
+                                                <textarea placeholder="Начинайте вводить текст..." class="fail__modal__body__textarea" name="rejectionReason"></textarea>
+                                            </label>
+
+                                            <div class="fail__modal__footer">
+                                                <button type="submit" class="fail_modal__body__button" id='modal_finalize_report'>
+                                                    <span class="icon-plus-circle"></span>
+                                                    Отправить на доработку
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php } ?>
+
                         <?php } ?>
 
                     </div>
 
-                </div>
-
-                <div class="success__modal none">
-                    <div class="success__modal__header">
-                        <span class="success__modal__header__text">Подтверждение</span>
-                        <span class="success__modal__header__exit"><img src="../assets/img/svg/xmark.svg" alt=""></span>
-                    </div>
-
-                    <div class="success__modal__body">
-                        <div class="success__modal__body__text">Пожалуйста, подтвердите что вы хотите принять данный отчет:</div>
-
-                        <div class="success__modal__body__button">
-                            <span class="icon-check"></span>
-                            Принять отчет
-                        </div>
-                    </div>
-                </div>
-
-                <div class="fail__modal none">
-                    <div class="fail__modal__header">
-                        <span class="fail__modal__header__text">Подтверждение</span>
-                        <span class="fail__modal__header__exit"><img src="../assets/img/svg/xmark.svg" alt=""></span>
-                    </div>
-
-                    <div class="fail__modal__body">
-                        <div class="fail__modal__body__text">Пожалуйста, напишите причину по которой вы считаете что задача не выполнена:</div>
-
-                        <textarea placeholder="Начинайте вводить текст..." class="fail__modal__body__textarea" name="" id=""></textarea>
-
-                        <div class="fail__modal__footer">
-                            <div class="fail_modal__body__button" id='modal_finalize_report'>
-                                <span class="icon-plus-circle"></span>
-                                Отправить на доработку
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="revision__modal none">

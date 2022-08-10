@@ -76,10 +76,10 @@
                                             1 => 'finished',
                                             2 => 'expired',
                                             3 => 'warning',
-                                            4 => '',
+                                            4 => 'review'
                                     ];
 
-                                    echo ' ' . $statuses[$name];
+                                    echo (isset($statuses[$name])) ? ' ' . $statuses[$name] : '';
                                 }
 
                             ?>
@@ -98,8 +98,8 @@
                                         <?= $report['status']['name'] ?>
                                     </div>
                                     <div class="reports__body__line__term">
-                                        <?php if ($report['report']['deadline']) { ?>
-                                            <?= (new DateTime($report['report']['deadline']))->format('d.m.o') ?>
+                                        <?php if ($report['deadline']) { ?>
+                                            <?= (new DateTime($report['deadline']))->format('d.m.o') ?>
                                         <?php } ?>
                                     </div>
                                     <div class="reports__body__line__assistant">

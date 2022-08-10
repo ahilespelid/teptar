@@ -42,6 +42,7 @@
     'report/table'              =>  ['controller' => 'ReportController', 'action' => 'table'],
     'report/sv-table'           =>  ['controller' => 'ReportController', 'action' => 'svTable'],
     'report/new'                =>  ['controller' => 'ReportController', 'action' => 'new'],
+    'switchReportStatus'        =>  ['controller' => 'ReportController', 'action' => 'switchReportStatus'],
 
     // UserController
     'login'                     =>  ['controller' => 'UserController', 'action' => 'login'],

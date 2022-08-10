@@ -1,0 +1,178 @@
+
+[00:22:05] SELECT * FROM uin WHERE type = 'district'
+[00:22:14] SELECT * FROM uin WHERE type = 'district'
+[00:22:15] SELECT * FROM uin WHERE type = 'district'
+[00:23:10] SELECT * FROM uin WHERE type = 'district'
+[00:23:10] SELECT * FROM uin WHERE type = 'district'
+[00:23:10] SELECT * FROM uin WHERE type = 'district'
+[12:16:05] SELECT * FROM uin WHERE type = 'district'
+[12:21:19] SELECT * FROM uin WHERE type = 'district'
+[13:22:08] SELECT * FROM reports WHERE id_uin = '4'
+[13:22:29] SELECT * FROM uin WHERE type = 'ministry'
+[13:22:51] SELECT * FROM uin WHERE type = 'district'
+[13:22:52] SELECT * FROM uin WHERE type = 'ministry'
+[13:23:19] SELECT * FROM uin WHERE type = 'ministry'
+[13:23:32] SELECT * FROM reports WHERE id_uin = '4'
+[13:24:07] SELECT * FROM reports WHERE id_uin = '4'
+[13:24:18] SELECT * FROM reports WHERE id_uin = '4'
+[13:24:26] SELECT * FROM uin WHERE type = 'ministry'
+[13:24:30] SELECT * FROM users WHERE id_uin = '22' AND id_role = '5'
+[13:24:32] SELECT * FROM uin WHERE type = 'ministry'
+[13:24:35] SELECT * FROM users WHERE id_uin = '20' AND id_role = '5'
+[13:24:39] SELECT * FROM uin WHERE type = 'ministry'
+[13:24:40] SELECT * FROM users WHERE id_uin = '21' AND id_role = '5'
+[13:24:44] SELECT * FROM uin WHERE type = 'ministry'
+[13:24:48] SELECT * FROM reports WHERE id_uin = '4'
+[13:25:12] SELECT * FROM reports WHERE id_uin = '4'
+[14:39:48] SELECT * FROM uin WHERE type = 'district'
+[14:39:48] SELECT * FROM users WHERE id_uin = '1' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '2' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '3' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '4' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '5' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '6' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '7' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '8' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '9' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '10' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '11' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '12' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '13' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '14' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '15' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '16' AND id_role = '5' LIMIT 2
+[14:39:48] SELECT * FROM users WHERE id_uin = '17' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM uin WHERE type = 'district'
+[14:40:37] SELECT * FROM users WHERE id_uin = '1' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '2' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '3' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '4' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '5' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '6' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '7' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '8' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '9' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '10' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '11' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '12' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '13' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '14' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '15' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '16' AND id_role = '5' LIMIT 2
+[14:40:37] SELECT * FROM users WHERE id_uin = '17' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM uin WHERE type = 'district'
+[14:41:06] SELECT * FROM users WHERE id_uin = '1' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '2' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '3' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '4' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '5' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '6' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '7' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '8' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '9' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '10' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '11' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '12' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '13' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '14' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '15' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '16' AND id_role = '5' LIMIT 2
+[14:41:06] SELECT * FROM users WHERE id_uin = '17' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM uin WHERE type = 'district'
+[14:41:14] SELECT * FROM users WHERE id_uin = '1' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '2' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '3' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '4' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '5' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '6' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '7' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '8' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '9' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '10' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '11' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '12' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '13' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '14' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '15' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '16' AND id_role = '5' LIMIT 2
+[14:41:14] SELECT * FROM users WHERE id_uin = '17' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM uin WHERE type = 'district'
+[14:41:26] SELECT * FROM users WHERE id_uin = '1' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '2' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '3' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '4' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '5' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '6' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '7' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '8' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '9' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '10' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '11' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '12' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '13' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '14' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '15' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '16' AND id_role = '5' LIMIT 2
+[14:41:26] SELECT * FROM users WHERE id_uin = '17' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM uin WHERE type = 'district'
+[14:41:41] SELECT * FROM users WHERE id_uin = '1' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '2' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '3' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '4' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '5' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '6' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '7' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '8' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '9' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '10' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '11' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '12' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '13' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '14' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '15' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '16' AND id_role = '5' LIMIT 2
+[14:41:41] SELECT * FROM users WHERE id_uin = '17' AND id_role = '5' LIMIT 2
+[14:41:47] SELECT * FROM reports WHERE id_uin = '17'
+[14:41:49] SELECT * FROM uin WHERE type = 'district'
+[14:41:49] SELECT * FROM users WHERE id_uin = '1' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '2' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '3' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '4' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '5' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '6' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '7' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '8' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '9' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '10' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '11' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '12' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '13' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '14' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '15' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '16' AND id_role = '5' LIMIT 2
+[14:41:49] SELECT * FROM users WHERE id_uin = '17' AND id_role = '5' LIMIT 2
+[14:41:51] SELECT * FROM reports WHERE id_uin = '3'
+[14:41:58] SELECT * FROM reports WHERE id_uin = '3'
+[14:42:00] SELECT * FROM uin WHERE type = 'district'
+[14:42:00] SELECT * FROM users WHERE id_uin = '1' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '2' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '3' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '4' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '5' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '6' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '7' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '8' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '9' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '10' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '11' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '12' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '13' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '14' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '15' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '16' AND id_role = '5' LIMIT 2
+[14:42:00] SELECT * FROM users WHERE id_uin = '17' AND id_role = '5' LIMIT 2
+[14:42:04] SELECT * FROM reports WHERE id_uin = '13'
+[14:42:19] SELECT * FROM reports WHERE id_uin = '13'
+[14:42:50] SELECT * FROM reports WHERE id_uin = '13'
+[15:58:33] SELECT * FROM uin WHERE type = 'district'
+[16:49:18] SELECT * FROM uin WHERE type = 'district'

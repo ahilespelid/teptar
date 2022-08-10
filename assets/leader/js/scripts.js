@@ -146,25 +146,25 @@ collapseGeneralRatingElements.forEach(function (block) {
                         }
 
                         let tableEntry = `
-                        <tr>
-                            <td class="separator"></td>
-                            <td>${calculation.owner}</td>
-                            <td>
-                            <a href="${profileLink}">
-                                <div class="table-avatar" style="background-image: url('${avatar}')"></div>
-                                ${calculation.firstname} ${calculation.lastname} ${calculation.secondname}
-                            </a>
-                            </td>
-                            <td>
-                                <div class="table-progress-bar" style="width: ${calculation.index * 100}%">
-                                    <span style="display: none">${i}</span>
+                            <tr>
+                                <td class="separator"></td>
+                                <td>${calculation.owner}</td>
+                                <td>
+                                <a href="${profileLink}">
+                                    <div class="table-avatar" style="background-image: url('${avatar}')"></div>
+                                    ${calculation.firstname} ${calculation.lastname} ${calculation.secondname}
+                                </a>
+                                </td>
+                                <td>
+                                    <div class="table-progress-bar" style="width: ${calculation.index * 100}%">
+                                        <span style="display: none">${i}</span>
 <!--                                    <div class="table-progress-bar-gradient">${Math.round(calculation.index * 100)}%</div>-->
-                                    <div class="table-progress-bar-gradient">${calculation.index}</div>
-                                </div>
-                            </td>
-                            <td class="separator"></td>
-                        </tr>
-                    `;
+                                        <div class="table-progress-bar-gradient">${Number(calculation.index).toFixed(4)}</div>
+                                    </div>
+                                </td>
+                                <td class="separator"></td>
+                            </tr>
+                        `;
 
                         tBody.innerHTML += tableEntry;
                         i--;

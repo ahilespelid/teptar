@@ -3468,6 +3468,32 @@ table {
   height: 100%;
 }
 
+/* Alerts */
+
+.alert {
+  margin-bottom: 24px;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.alert ul li {
+  margin-bottom: 8px;
+}
+
+.alert ul li:last-child {
+  margin: unset;
+}
+
+.alert-success {
+  background: #d7f2e5;
+  color: #40c29d;
+}
+
+.alert-error {
+  background: #ffe7e6;
+  color: #ee8a8a;
+}
+
 /*
 Обнуляющие теги
 */
@@ -3503,6 +3529,10 @@ body {
 
 .warning {
   background-color: #fef0cb;
+}
+
+.review {
+  background-color: #dde4f0;
 }
 
 .expired {

@@ -9,9 +9,26 @@
             <?php include $this->layout('staff/header.php'); ?>
 
             <div class="body report-table">
-                <div class="developer-alert">
-                    <i class="icon-refresh spin"></i> Страница «Сводная таблица» на стадии разработки, пожалуйста заходите позже
-                </div>
+
+                <?php if ($alerts && isset($alerts['errors'])) { ?>
+                    <div class="alert alert-error">
+                        <ul>
+                            <?php foreach ($alerts['errors'] as $mark => $message) { ?>
+                                <li>Показатель <?= $mark ?>: <?= $message ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                <?php } ?>
+
+                <?php if ($alerts && isset($alerts['successes'])) { ?>
+                    <div class="alert alert-success">
+                        <ul>
+                            <?php foreach ($alerts['successes'] as $mark => $message) { ?>
+                                <li>Показатель <?= $mark ?>: <?= $message ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                <?php } ?>
 
                 <div class="body__back-button">
                     <a href="#">
@@ -41,7 +58,7 @@
                 </div>
 
                 <div class="table">
-                    <?php pa($_POST) ?>
+<!--                    --><?php //pa($_POST) ?>
 
                     <form method="post" action="">
                         <table>
@@ -70,9 +87,10 @@
                                                 <td>
                                                     <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
                                                         <label for="districtMark<?= $mark['num'] ?>"></label>
-                                                        <input type="text" name="marks[<?= $mark['num'] ?>][district]" placeholder="Индекс (района: <?= $uin['owner'] ?>)" id="districtMark<?= $mark['num'] ?>">
+                                                        <input type="text" name="marks[<?= $mark['num'] ?>][district]" <?= (isset($mark['district'])) ? 'value="' . $mark['district'] .  '"' : '' ?> placeholder="Индекс (района: <?= $uin['owner'] ?>)" id="districtMark<?= $mark['num'] ?>">
                                                     <?php } else { ?>
-                                                        <input type="text" disabled>
+<!--                                                        <input type="text" disabled>-->
+                                                        <?= (isset($mark['district'])) ? $mark['district'] : '-' ?>
                                                     <?php } ?>
                                                 </td>
                                                 <td>
@@ -80,7 +98,7 @@
                                                         <label for="ministryMark<?= $mark['num'] ?>"></label>
                                                         <input type="text" name="marks[<?= $mark['num'] ?>][ministry]" <?= (isset($mark['ministry'])) ? 'value="' . $mark['ministry'] .  '"' : '' ?> placeholder="Индекс" id="ministryMark<?= $mark['num'] ?>">
                                                     <?php } else { ?>
-                                                        <input type="text" disabled>
+                                                        <?= (isset($mark['ministry'])) ? $mark['ministry'] : '-' ?>
                                                     <?php } ?>
                                                 </td>
                                                 <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>

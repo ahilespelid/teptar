@@ -11,6 +11,7 @@ class ReportController extends AbstractController{
     public $security;
     public $indexes;
     public $deadlines;
+    public $notificationsModel;
     public $marks;
 
     public function __construct() {
@@ -20,6 +21,7 @@ class ReportController extends AbstractController{
         $this->users    = new \App\Models\UserModel;
         $this->indexes    = new \App\Models\IndexModel;
         $this->deadlines    = new \App\Models\DeadlineModel;
+        $this->notificationsModel    = new \App\Models\NotificationModel;
         $this->marks    = new \App\Models\MarkModel;
         $this->security = new Security();
     }
@@ -38,13 +40,13 @@ class ReportController extends AbstractController{
         if ($district) {
             $reports = [];
             $deadline = $this->deadlines->findOneBy(null,['date' => 'DESC']);
-            if ($this->model->findOneBy(['deadline' => $deadline['date']])) {
+            if ($this->model->findOneBy(['id_deadline' => $deadline['id']])) {
                 $lastReportCreated = false;
             } else {
                 $lastReportCreated = true;
             }
 
-            foreach ($this->model->findBy(['id_uin' => $district['id']]) as $key => $report) {
+            foreach ($this->model->findBy(['id_uin' => $district['id']], ['creating' => 'DESC']) as $key => $report) {
                 if ($report['staff_ids']) {
                     $staffs = [];
                     $staffCount = 0;
@@ -62,6 +64,7 @@ class ReportController extends AbstractController{
 
                 $reports[$key] = [
                     'report' => $report,
+                    'deadline' => $this->deadlines->findOneBy(['id' => $report['id_deadline']])['date'],
                     'boss' => $this->users->findOneBy(['id' => $report['id_userBoss']]),
                     'staffs' => $staffs,
                     'staffCount' => $staffCount,
@@ -94,6 +97,7 @@ class ReportController extends AbstractController{
 
             $data = [
                 'report' => $report,
+                'deadline' => $this->deadlines->findOneBy(['id' => $report['id_deadline']])['date'],
                 'district' => $this->uinModel->findOneBy(['id' => $report['id_uin']]),
                 'boss' => $this->users->findOneBy(['id' => $report['id_userBoss']]),
                 'staffs' => $staffs,
@@ -106,6 +110,70 @@ class ReportController extends AbstractController{
             ]);
         } else {
             $this->security->error('404', 'Такой отчет не существует');
+        }
+    }
+
+    public function switchReportStatus() {
+        if (isset($_GET['report'])) {
+            $report = $this->model->findOneBy(['id' => $_GET['report']]);
+            $uin = $this->uinModel->findOneBy(['id' => $report['id_uin']]);
+
+            if ($this->security->userHasRole(['district_boss', 'district_staff']) && $report['status'] == 3) {
+                $this->model->update(['status' => 4],['id' => $report['id']]);
+                setcookie('alert', json_encode([
+                    'message' => '«' . $report['name'] . ' (Район: ' . $uin['owner'] . ')» отправлен на проверку',
+                    'type' => 'success'
+                ]), time()+1, '/');
+            } elseif ($this->security->userHasRole(['ministry_boss', 'ministry_staff']) && isset($_GET['status'])) {
+                pa($_POST);
+                if ($_GET['status'] == 1 || $_GET['status'] == 3) {
+
+                    if ($_GET['status'] == 3) {
+                        if ($_POST['rejectionReason']) {
+                        $this->model->update(['status' => $_GET['status']],['id' => $report['id']]);
+
+                            foreach ($this->users->findBy(['id_uin' => $report['id_uin']]) as $user) {
+                                $this->notificationsModel->add([
+                                    'sender' => $this->user()['id'],
+                                    'receiver' => $user['id'],
+                                    'datetime' => new \DateTime('now'),
+                                    'seen' => 0,
+                                    'message' => 'Министерство экономики отправило «' . $report['name'] . '» на доработку по следующей причине: ' . $_POST['rejectionReason']
+                                ]);
+                            }
+                            setcookie('alert', json_encode([
+                                'message' => '«' . $report['name'] . ' (Район: ' . $uin['owner'] . ')» отправлен на доработку',
+                                'type' => 'success'
+                            ]), time()+1, '/');
+                        } else {
+                            setcookie('alert', json_encode([
+                                'message' => 'Вы не указали причину отправки отчета на доработку',
+                                'type' => 'error'
+                            ]), time()+1, '/');
+                        }
+                    } else {
+                        $this->model->update(['status' => $_GET['status']],['id' => $report['id']]);
+
+                        foreach ($this->users->findBy(['id_uin' => $report['id_uin']]) as $user) {
+                            $this->notificationsModel->add([
+                                'sender' => $this->user()['id'],
+                                'receiver' => $user['id'],
+                                'datetime' => new \DateTime('now'),
+                                'seen' => 0,
+                                'message' => 'Министерство экономики утвердило «' . $report['name'] . '»'
+                            ]);
+                        }
+                        setcookie('alert', json_encode([
+                            'message' => '«' . $report['name'] . ' (Район: ' . $uin['owner'] . ')» утвержден',
+                            'type' => 'success'
+                        ]), time()+1, '/');
+                    }
+                }
+            }
+
+            $this->redirectToRoute('/report', ['id' => $report['id']], ['test' => 20]);
+        } else {
+            $this->redirectToRoute('/');
         }
     }
 
@@ -142,94 +210,84 @@ class ReportController extends AbstractController{
         ]);
     }
 
-    public function indexIsValid($mark, $data, $report) {
-        $reportUIN = $this->uinModel->findOneBy(['id' => $report['id_uin']]);
-        $sendMethod = null;
-
-        $reportHaveDistrictData = $this->indexes->indexByMarkReportAndUinType($mark, $report['id'], 'district') ?? false;
-        $reportHaveMinistryData = $this->indexes->indexByMarkReportAndUinType($mark, $report['id'], 'ministry') ?? false;
-
-        return true;
-    }
-
     public function svTable() {
         $report = $this->model->findOneBy(['id' => $_GET['report']]);
+        $alerts = [];
         $marks = [];
+
+        if ($_POST) {
+            if ($this->security->userHasRole(['ministry_boss', 'ministry_staff']) && isset($_POST['marks'])) {
+                foreach ($_POST['marks'] as $mark => $data) {
+                    $ministryIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark, $report['id'], 'ministry');
+                    if ($data['ministry'] && (int)$data['ministry'] == $data['ministry']) {
+                        if ($ministryIndexForThisReport && $ministryIndexForThisReport['index'] !== $data['ministry'] || !$ministryIndexForThisReport) {
+                            $this->indexes->add([
+                                'id_user' => $this->user()['id'],
+                                'id_mark' => $mark,
+                                'id_report' => $report['id'],
+                                'id_uin' => $this->user()['id_uin'],
+                                'id_status' => 6,
+                                'index' => $data['ministry'],
+                                'date' => new \DateTime('now')
+                            ]);
+                            $alerts['successes'][$mark] = 'Индекс успешно изменен';
+                        }
+                    } elseif ((int)$data['ministry'] != $data['ministry'] && $data['ministry']) {
+                        $alerts['errors'][$mark] = 'Индекс введен неправильно';
+                    }
+                }
+            } elseif ($this->security->userHasRole(['district_boss', 'district_staff']) && isset($_POST['marks'])) {
+                foreach ($_POST['marks'] as $mark => $data) {
+                    $action = ($data['action'] === 'agreed') ? 'agreed' : 'disagreed';
+                    $result = $data['result'];
+
+                    $ministryIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark, $report['id'], 'ministry');
+                    $districtIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark, $report['id'], 'district');
+
+                    if ($data['district'] && (int)$data['district'] == $data['district']) {
+                        if ($result && $action === 'agreed' && !$ministryIndexForThisReport || $result && !$ministryIndexForThisReport || $action === 'agreed' && !$result || $action === 'agreed' && !$ministryIndexForThisReport) {
+                            $alerts['errors'][$mark] = 'Итоговый индекс не может быть согласован, если министерство не вводил данные';
+                        } elseif (!$districtIndexForThisReport && $result || !$districtIndexForThisReport && $action === 'agreed') {
+                            $alerts['errors'][$mark] = 'Индекс от района должен быть уже введен, перед тем как его согласовать';
+                        } elseif ($districtIndexForThisReport && $districtIndexForThisReport['index'] !== $data['district'] || !$districtIndexForThisReport) {
+                            ($action == 'agreed') ? $action = 5 : $action = 6;
+                            $this->indexes->add([
+                                'id_user' => $this->user()['id'],
+                                'id_mark' => $mark,
+                                'id_report' => $report['id'],
+                                'id_uin' => $this->user()['id_uin'],
+                                'id_status' => $action,
+                                'index' => $data['district'],
+                                'date' => new \DateTime('now')
+                            ]);
+                            $alerts['successes'][$mark] = 'Индекс успешно изменен';
+                        }
+                    } elseif ((int)$data['district'] != $data['district'] && $data['district']) {
+                        $alerts['errors'][$mark] = 'Индекс введен неправильно';
+                    }
+                }
+            }
+        }
 
         foreach ($this->marks->marksWithoutSV() as $key => $mark) {
             $ministryIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark['num'], $report['id'], 'ministry');
+            $districtIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark['num'], $report['id'], 'district');
 
             if ($ministryIndexForThisReport) {
                 $mark['ministry'] = $ministryIndexForThisReport['index'];
             }
 
-            $marks[$key] = $mark;
-        }
-
-//        pa($marks);
-//        $this->indexIsValid(
-//            1,
-//            [
-//                'district' => 1,
-//                'action' => 0,
-//                'result' => null,
-//            ],
-//            [
-//                'id' => 55,
-//                'id_uin' => 4
-//            ]
-//        );
-
-        if ($_POST) {
-
-//            pa($_POST);
-
-            if ($this->security->userHasRole(['ministry_boss', 'ministry_staff']) && isset($_POST['marks'])) {
-                foreach ($_POST['marks'] as $mark => $data) {
-                    if ($data['ministry'] && (int)$data['ministry'] == $data['ministry']) {
-                        $this->indexes->add([
-                            'id_user' => $this->user()['id'],
-                            'id_mark' => $mark,
-                            'id_report' => $report['id'],
-                            'id_uin' => $this->user()['id_uin'],
-                            'id_status' => 6,
-                            'index' => $data['ministry'],
-                            'date' => new \DateTime('now')
-                        ]);
-                    }
-                }
+            if ($districtIndexForThisReport) {
+                $mark['district'] = $districtIndexForThisReport['index'];
             }
 
-//            if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) {
-//                foreach ($_POST['marks'] as $mark => $data) {
-//                    if ($data['ministry']) {
-//                        pa('fd');
-//                    }
-//                }
-//            }
-
-//            foreach ($_POST['marks'] as $mark => $data) {
-//                if ($this->indexIsValid($mark, $data, $report)) {
-//                    pa('valid');
-//                }
-//
-//                if ($data['district']) {
-//                    $this->indexes->add([
-//                        'id_user' => $this->user()['id'],
-//                        'id_mark' => $mark,
-//                        'id_report' => $report['id'],
-//                        'id_uin' => $report['id_uin'],
-//                        'id_status' => 6,
-//                        'index' => $data['district'],
-//                        'date' => new \DateTime('now')
-//                    ]);
-//                }
-//            }
+            $marks[$key] = $mark;
         }
 
         $this->render('/staff/report/sv_table.php', [
             'marks' => $marks,
             'uin' => $this->uinModel->findOneBy(['id' => $report['id_uin']]),
+            'alerts' => $alerts,
         ]);
     }
 
@@ -237,7 +295,7 @@ class ReportController extends AbstractController{
         $deadline = $this->deadlines->findOneBy(null,['date' => 'DESC']);
 
         // Если не существует отчета с последней датой из таблицы deadline то разреши создать отчет
-        if (!$this->model->findOneBy(['deadline' => $deadline['date']])) {
+        if (!$this->model->findOneBy(['id_deadline' => $deadline['id']])) {
             $district = $this->uinModel->findOneBy(['id' => $this->user()['uin']['id']]);
             $deadline = $this->deadlines->findOneBy(null,['date' => 'DESC']);
 
@@ -247,7 +305,7 @@ class ReportController extends AbstractController{
                 $entries['description'] = $_POST['report_description'];
 
                 $entries['name'] = $deadline['name'];
-                $entries['deadline'] = (new \DateTime($deadline['date']));
+                $entries['id_deadline'] = $deadline['id'];
                 $entries['creating'] = (new \DateTime('now'));
 
                 $entries['id_userBoss'] = $this->user()['id'];
@@ -255,7 +313,6 @@ class ReportController extends AbstractController{
                 $entries['status'] = 3;
 
                 $this->model->add($entries);
-
                 $this->redirectToRoute('/reports');
             }
 

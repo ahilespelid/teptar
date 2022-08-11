@@ -74,11 +74,66 @@
                     </div>
                 </div>
                 <div class="disc">
+<?php if($dirs){foreach($dirs as $dir){ ?>
                     <div class="disc__element">
                         <div class="disc__element__header">
                             <span class="icon-menu"></span>
                             <div class="dropdown__menu none">
+                                <div class="dropdown__menu__element get">
+                                    <!--Скачать-->
+                                </div>
                                 <div class="dropdown__menu__element">
+                                    Переименовать
+                                </div>
+                                <div class="dropdown__menu__element">
+                                    Удалить
+                                </div>
+                            </div>
+                            <input class="disc__element__header__checkbox" type="checkbox">
+                        </div>
+                        <div class="disc__element__img">
+                            <img src="<?= $this->image($dir['img']); ?>" alt="">
+                        </div>
+                        <div class="disc__element__name"><?= $dir['name']; ?></div>
+                    </div>
+<?php }} ?>
+<script type="text/javascript">
+$(document).ready(function(){
+let get = $('.get'); get.css({'cursor' : 'pointer'});
+
+get.on('click', function(e){
+    var name = $(this).attr('data-path');
+    console.log(name);
+    
+$.ajax({
+    url: '/disk',
+    type: 'POST',
+    data:  {'getFile': $(this).attr('data-path')},
+    xhrFields: { responseType: 'blob' },
+    success: function (data, textStatus, jqXHR){
+        /* console.log(jqXHR.getAllResponseHeaders()); */
+        let link = document.createElement('a'), filename = name;
+        if(jqXHR.getResponseHeader('Content-Disposition')){//имя файла
+            /* filename = jqXHR.getResponseHeader('Content-Disposition').match(/=(.+\..+)/gm); */
+            filename = jqXHR.getResponseHeader('Content-Disposition').split('=');
+            console.log(filename);
+            filename = (filename) ? filename[1] : name;
+            console.log(filename);
+            filename = decodeURIComponent(escape(filename));
+        }
+        link.href = window.URL.createObjectURL(data);
+        link.download = filename;
+        link.click();
+}});
+
+});});
+</script>
+<?php if($dirs){foreach($files as $file){ ?>
+                    <div class="disc__element">
+                        <div class="disc__element__header">
+                            <span class="icon-menu"></span>
+                            <div class="dropdown__menu none">
+                                <div class="dropdown__menu__element get" data-path="<?= $file['path']; ?>">
                                     Скачать
                                 </div>
                                 <div class="dropdown__menu__element">
@@ -91,157 +146,11 @@
                             <input class="disc__element__header__checkbox" type="checkbox">
                         </div>
                         <div class="disc__element__img">
-                            <img src="<?= $this->image('/assets/images/staff/folder.svg'); ?>" alt="">
+                            <img src="<?= $this->image($file['img']); ?>" alt="">
                         </div>
-                        <div class="disc__element__name">Загруженные файлы</div>
+                        <div class="disc__element__name"><?= $file['name']; ?></div>
                     </div>
-                    <div class="disc__element">
-                        <div class="disc__element__header">
-                            <span class="icon-menu"></span>
-                            <div class="dropdown__menu none">
-                                <div class="dropdown__menu__element">
-                                    Скачать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Переименовать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Удалить
-                                </div>
-                            </div>
-                            <input class="disc__element__header__checkbox" type="checkbox">
-                        </div>
-                        <div class="disc__element__img">
-                            <img src="<?= $this->image('/assets/images/staff/pdf.svg'); ?>" alt="">
-                        </div>
-                        <div class="disc__element__name">Описание.pdf</div>
-                    </div>
-                    <div class="disc__element">
-                        <div class="disc__element__header">
-                            <span class="icon-menu"></span>
-                            <div class="dropdown__menu none">
-                                <div class="dropdown__menu__element">
-                                    Скачать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Переименовать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Удалить
-                                </div>
-                            </div>
-                            <input class="disc__element__header__checkbox" type="checkbox">
-                        </div>
-                        <div class="disc__element__img">
-                            <img src="<?= $this->image('/assets/images/staff/word.svg'); ?>" alt="">
-                        </div>
-                        <div class="disc__element__name">Описание.word</div>
-                    </div>
-                    <div class="disc__element">
-                        <div class="disc__element__header">
-                            <span class="icon-menu"></span>
-                            <div class="dropdown__menu none">
-                                <div class="dropdown__menu__element">
-                                    Скачать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Переименовать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Удалить
-                                </div>
-                            </div>
-                            <input class="disc__element__header__checkbox" type="checkbox">
-                        </div>
-                        <div class="disc__element__img">
-                            <img src="<?= $this->image('/assets/images/staff/mp3.svg'); ?>" alt="">
-                        </div>
-                        <div class="disc__element__name">Описание.mp3</div>
-                    </div>
-                    <div class="disc__element">
-                        <div class="disc__element__header">
-                            <span class="icon-menu"></span>
-                            <div class="dropdown__menu none">
-                                <div class="dropdown__menu__element">
-                                    Скачать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Переименовать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Удалить
-                                </div>
-                            </div>
-                            <input class="disc__element__header__checkbox" type="checkbox">
-                        </div>
-                        <div class="disc__element__img">
-                            <img src="<?= $this->image('/assets/images/staff/ppt.svg'); ?>" alt="">
-                        </div>
-                        <div class="disc__element__name">Описание.ppt</div>
-                    </div>
-                    <div class="disc__element">
-                        <div class="disc__element__header">
-                            <span class="icon-menu"></span>
-                            <div class="dropdown__menu none">
-                                <div class="dropdown__menu__element">
-                                    Скачать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Переименовать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Удалить
-                                </div>
-                            </div>
-                            <input class="disc__element__header__checkbox" type="checkbox">
-                        </div>
-                        <div class="disc__element__img">
-                            <img src="<?= $this->image('/assets/images/staff/txt.svg'); ?>" alt="">
-                        </div>
-                        <div class="disc__element__name">Описание.txt</div>
-                    </div>
-                    <div class="disc__element">
-                        <div class="disc__element__header">
-                            <span class="icon-menu"></span>
-                            <div class="dropdown__menu none">
-                                <div class="dropdown__menu__element">
-                                    Скачать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Переименовать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Удалить
-                                </div>
-                            </div>
-                            <input class="disc__element__header__checkbox" type="checkbox">
-                        </div>
-                        <div class="disc__element__img">
-                            <img src="<?= $this->image('/assets/images/staff/zip.svg'); ?>" alt="">
-                        </div>
-                        <div class="disc__element__name">Описание.zip</div>
-                    </div>
-                    <div class="disc__element">
-                        <div class="disc__element__header">
-                            <span class="icon-menu"></span>
-                            <div class="dropdown__menu none">
-                                <div class="dropdown__menu__element">
-                                    Скачать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Переименовать
-                                </div>
-                                <div class="dropdown__menu__element">
-                                    Удалить
-                                </div>
-                            </div>
-                            <input class="disc__element__header__checkbox" type="checkbox">
-                        </div>
-                        <div class="disc__element__img">
-                            <img src="<?= $this->image('/assets/images/staff/mov.svg'); ?>" alt="">
-                        </div>
-                        <div class="disc__element__name">Описание.mov</div>
-                    </div>
+<?php }} ?>
                 </div>
                 <div class="disc-footer none">
                     <div class="disc-footer__action">

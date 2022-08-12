@@ -140,10 +140,27 @@ $(document).ready(function (e) {
     })
 
     saveChangesButton.on("click", function (e) {
+        $(".save__changes .message").append('<i class="icon-refresh spin"></i>');
         text = $(".reports-body__info").val()
-        $(this).prop("disabled", "disabled")
-        $(this).addClass("disabled")
-        $(".save__changes span").append("Сохранено")
-        // $(".reports-body__info").replaceWith("<div class=\"reports-body__info\">\n"+`${$(".reports-body__info").val()}`+"</div>")
+
+        const reportId = new URLSearchParams(window.location.search).get('id');
+        const axios = require('axios').default;
+
+        axios.post('/report/edit?report=' + reportId, {
+            description: text
+        })
+        .then((response) => {
+            $(this).prop("disabled", "disabled")
+            $(this).addClass("disabled")
+            $(".save__changes .icon-refresh").remove()
+            let message = null;
+
+            if (response.data === 1) {
+                message = 'Сохранено';
+            } else {
+                message = '<span style="color: #e87979">Ошибка соединения</span>';
+            }
+            $(".save__changes .message").append(message)
+        })
     })
 })

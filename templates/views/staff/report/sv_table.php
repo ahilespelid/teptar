@@ -31,16 +31,16 @@
                 <?php } ?>
 
                 <div class="body__back-button">
-                    <a href="#">
+                    <a href="/report/table?report=<?= $report['id'] ?>">
                         <span class="icon-expand_left_right body__back__arrow"></span>
                         Вернуться
                     </a>
                     <div class="body__back-button__tables">
-                        <a href="" class="finished__table">
+                        <a href="/report/table?report=<?= $report['id'] ?>" class="finished__table">
                             <span class="icon-archive"></span>
                             Общая таблица
                         </a>
-                        <a href="" class="pivot__table">
+                        <a href="/report/sv-table?report=<?= $report['id'] ?>" class="pivot__table">
                             <span class="icon-save_light"></span>
                             Сводная таблица
                         </a>

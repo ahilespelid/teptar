@@ -15,15 +15,15 @@ class ReportController extends AbstractController{
     public $marks;
 
     public function __construct() {
-        $this->model    = new \App\Models\ReportModel;
-        $this->uinModel = new \App\Models\UINModel;
-        $this->statuses = new \App\Models\StatusModel;
-        $this->users    = new \App\Models\UserModel;
-        $this->indexes    = new \App\Models\IndexModel;
-        $this->deadlines    = new \App\Models\DeadlineModel;
-        $this->notificationsModel    = new \App\Models\NotificationModel;
-        $this->marks    = new \App\Models\MarkModel;
-        $this->security = new Security();
+        $this->model                = new \App\Models\ReportModel;
+        $this->uinModel             = new \App\Models\UINModel;
+        $this->statuses             = new \App\Models\StatusModel;
+        $this->users                = new \App\Models\UserModel;
+        $this->indexes              = new \App\Models\IndexModel;
+        $this->deadlines            = new \App\Models\DeadlineModel;
+        $this->notificationsModel   = new \App\Models\NotificationModel;
+        $this->marks                = new \App\Models\MarkModel;
+        $this->security             = new \App\Service\Security;
     }
 
     public function reports() {
@@ -83,33 +83,37 @@ class ReportController extends AbstractController{
     }
 
     public function report() {
-        if (isset($_GET['id'])) {
+        if (isset($_GET['id']) && $this->model->findOneBy(['id' => $_GET['id']])) {
             $report = $this->model->findOneBy(['id' => $_GET['id']]);
 
-            if ($report['staff_ids']) {
-                $staffs = [];
-                foreach (explode(',',$report['staff_ids']) as $staffId) {
-                    $staffs[] = $this->users->findOneBy(['id' => $staffId]);
+            if ($this->user()['id_uin'] === $report['id_uin'] || $this->security->userHasRole(['ministry_boss', 'ministry_staff', 'admin_admin'])) {
+                if ($report['staff_ids']) {
+                    $staffs = [];
+                    foreach (explode(',',$report['staff_ids']) as $staffId) {
+                        $staffs[] = $this->users->findOneBy(['id' => $staffId]);
+                    }
+                } else {
+                    $staffs = null;
                 }
+
+                $data = [
+                    'report' => $report,
+                    'deadline' => $this->deadlines->findOneBy(['id' => $report['id_deadline']])['date'],
+                    'district' => $this->uinModel->findOneBy(['id' => $report['id_uin']]),
+                    'boss' => $this->users->findOneBy(['id' => $report['id_userBoss']]),
+                    'staffs' => $staffs,
+                    'status' => $this->statuses->findOneBy(['id' => $report['status']])
+                ];
+
+                $this->render('/staff/report/report.php', [
+                    'data' => $data,
+                    'marks' => $this->indexes->reportActions($report['id'])
+                ]);
             } else {
-                $staffs = null;
+                $this->security->error('403', 'У вас недостаточно прав для доступа к данному отчету');
             }
-
-            $data = [
-                'report' => $report,
-                'deadline' => $this->deadlines->findOneBy(['id' => $report['id_deadline']])['date'],
-                'district' => $this->uinModel->findOneBy(['id' => $report['id_uin']]),
-                'boss' => $this->users->findOneBy(['id' => $report['id_userBoss']]),
-                'staffs' => $staffs,
-                'status' => $this->statuses->findOneBy(['id' => $report['status']])
-            ];
-
-            $this->render('/staff/report/report.php', [
-                'data' => $data,
-                'marks' => $this->indexes->reportActions($report['id'])
-            ]);
         } else {
-            $this->security->error('404', 'Такой отчет не существует');
+            $this->security->error('404', 'Такого отчета не существует');
         }
     }
 
@@ -288,6 +292,7 @@ class ReportController extends AbstractController{
             'marks' => $marks,
             'uin' => $this->uinModel->findOneBy(['id' => $report['id_uin']]),
             'alerts' => $alerts,
+            'report' => $report
         ]);
     }
 
@@ -323,6 +328,21 @@ class ReportController extends AbstractController{
             ]);
         } else {
             $this->security->error('404', 'Отчет за последний год уже создан');
+        }
+    }
+
+    public function edit() {
+        if (isset($_GET['report'])) {
+            $report = $this->model->findOneBy(['id' => $_GET['report']]);
+            $request = file_get_contents('php://input');
+            $data = json_decode($request, true);
+
+            if ($report && isset($data['description']) && $this->user()['id_uin'] == $report['id_uin']) {
+                $this->model->update(['description' => $data['description']],['id' => $_GET['report']]);
+                echo true;
+            } else {
+                $this->security->error();
+            }
         }
     }
 }

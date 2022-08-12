@@ -39,6 +39,7 @@
     // ReportController
     'reports'                   =>  ['controller' => 'ReportController', 'action' => 'reports'],
     'report'                    =>  ['controller' => 'ReportController', 'action' => 'report'],
+    'report/edit'               =>  ['controller' => 'ReportController', 'action' => 'edit'],
     'report/table'              =>  ['controller' => 'ReportController', 'action' => 'table'],
     'report/sv-table'           =>  ['controller' => 'ReportController', 'action' => 'svTable'],
     'report/new'                =>  ['controller' => 'ReportController', 'action' => 'new'],

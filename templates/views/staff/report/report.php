@@ -31,13 +31,15 @@
                     <?php } ?>
 
                     <div class="body__back-button__icons">
-                        <a href="#">
-                            <span class="body__back-button__icon">
-                                <span class="icon-trophy"></span>
-                                Рейтинг
-                            </span>
-                        </a>
-                        <a href="#">
+                        <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+                            <a href="/center?center=<?= $data['district']['slug'] ?>">
+                                <span class="body__back-button__icon">
+                                    <span class="icon-trophy"></span>
+                                    Рейтинг
+                                </span>
+                            </a>
+                        <?php } ?>
+                        <a href="/disk">
                             <span class="body__back-button__icon">
                                 <span class="icon-save_light"></span> Диск
                             </span>
@@ -66,7 +68,9 @@
                             <div class="reports-body__header">
 
                                 <div class="reports-body__header__buttons">
-                                    <span class="reports-body__header__edit">Редактировать</span>
+                                    <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
+                                        <span class="reports-body__header__edit">Редактировать</span>
+                                    <?php } ?>
                                     <span class="reports-body__header__print" onclick="window.print(document);">Печать</span>
                                 </div>
 
@@ -117,7 +121,7 @@
 
                             <div class="save__changes none">
                                 <button disabled>Сохранить</button>
-                                <span></span>
+                                <span class="message"></span>
                             </div>
 
                         </div>

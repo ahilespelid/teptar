@@ -15,7 +15,7 @@
                         Вернуться
                     </a>
                     <div class="body__back-button__tables">
-                        <a href="/report/sv-table?report=<?= $report['id'] ?>" class="finished__table">
+                        <a href="/report/table?report=<?= $report['id'] ?>" class="finished__table">
                             <span class="icon-archive"></span>
                             Общая таблица
                         </a>

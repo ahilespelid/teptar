@@ -48,6 +48,9 @@ class DiskController extends AbstractController{
                 header('Content-Transfer-Encoding: binary'); header('Expires: 0'); header('Content-Length: ' . filesize($q['getFile']));
                 echo file_get_contents($q['getFile']);
             }
+            if(!empty($q['delFile'])){
+                pa($q['delFile']);
+            }
 
         }
         
@@ -80,9 +83,14 @@ class DiskController extends AbstractController{
     return (is_array($return) && !empty($return)) ? $return : false;}
 ///*/ Удаление файлов ///*/
     public function rm($path){
-        return !empty($path) && is_file($path) ? @unlink($path) : (array_reduce(glob($path.'/*'), function ($r, $i) { return $r && $this->rm($i); }, TRUE)) && @rmdir($path);
+        return !empty($path) && is_file($path) ? @unlink($path) : (array_reduce(glob($path.'/*'), function ($r, $i) { return $r && $this->rm($i); }, true)) && @rmdir($path);
     }
-
+ ///*/ Переименование файла ///*/   
+    public function rn($path, $name){
+        $name = (trim($name)) ?? false;
+        if(!file_exists($path) && !is_string($name)){return false;}
+        return rename($path, pathinfo($path)['dirname']._DS_. str_replace(' ', '_', $name));
+    } 
   ///*/ Проверяет наличие сепоратора в начале или конце переданного пути ///*/       
     public function is_seporator($dir, $sORe = 'e'){
         if(!is_string($dir) && empty($dir)){return false;}
@@ -93,7 +101,7 @@ class DiskController extends AbstractController{
         }
     return false;}
 
-    public function getPath($file){}    
+   
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Поиск и чтение файла

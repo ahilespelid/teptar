@@ -29,7 +29,7 @@ class ReportController extends AbstractController{
     public function reports() {
         if ($this->security->userHasRole(['ministry_boss']) && isset($_GET['district'])) {
             $districtSlug = $_GET['district'];
-        } elseif ($this->security->userHasRole(['district_boss', 'district_staff'])) {
+        } elseif ($this->security->userHasRole(['district_boss', 'district_staff', 'admin_admin'])) {
             $districtSlug = $this->user()['uin']['slug'];
         } else {
             $districtSlug = false;

@@ -327,3 +327,7 @@
     transform: rotate(-45deg);
     margin: 0 6px 0 10px;
 }
+
+.pointer {
+    cursor: pointer;
+}

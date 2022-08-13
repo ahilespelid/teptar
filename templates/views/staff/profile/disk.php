@@ -49,19 +49,19 @@
                             <h1>Диск Грозненский</h1>
                         </div>
                         <div class="reports-title__my-reports__btn">
-                            <button class="add-report-btn add_file">
+                            <button class="add-report-btn sumbit_add_file">
                                 <i class="icon-document-add"></i>
                                 Добавить файл
                             </button>
                         </div>
                         <div class="reports-title__my-reports__btn">
-                            <button class="add-report-btn create_folder">
+                            <button class="add-report-btn sumbit_create_folder">
                                 <i class="icon-folder_alt"></i>
                                 Создать папку
                             </button>
                         </div>
                     </div>
-                    <div class="sort">
+                    <!--div class="sort">
               <span class="sort__toggle">
                 Сортировать по: <span class="sort__value">Году</span> <span class="icon-sort sort__icon">
               </span>
@@ -71,7 +71,7 @@
                 <div class="sort__block__element"><span class="icon-save_light sort-element important"></span>По важности</div>
                 <div class="sort__block__element"><span class="icon-save_light sort-element views"></span>По просмотрам</div>
               </div>
-                    </div>
+                    </div-->
                 </div>
                 <div class="disc">
 <?php if($dirs){foreach($dirs as $dir){ ?>
@@ -85,11 +85,11 @@
                                 <div class="dropdown__menu__element">
                                     Переименовать
                                 </div>
-                                <div class="dropdown__menu__element">
+                                <div class="dropdown__menu__element del">
                                     Удалить
                                 </div>
                             </div>
-                            <input class="disc__element__header__checkbox" type="checkbox">
+                            <!--input class="disc__element__header__checkbox" type="checkbox"-->
                         </div>
                         <div class="disc__element__img">
                             <img src="<?= $this->image($dir['img']); ?>" alt="">
@@ -98,38 +98,48 @@
                     </div>
 <?php }} ?>
 <script type="text/javascript">
+$.fn.pulse = function(options) {
+    var options = $.extend({
+        times: 3,
+        duration: 1000
+    }, options);
+    var period = function(callback) {
+        $(this).animate({opacity: 0}, options.duration, function() {
+            $(this).animate({opacity: 1}, options.duration, callback);
+        });
+    };
+    return this.each(function() {
+        var i = +options.times, self = this,
+        repeat = function() { --i && period.call(self, repeat)};
+        period.call(this, repeat);
+    });
+}
 $(document).ready(function(){
 let get = $('.get'); get.css({'cursor' : 'pointer'});
+let del = $('.del'); del.css({'cursor' : 'pointer'});
 
-get.on('click', function(e){
-    var name = $(this).attr('data-path');
-    console.log(name);
-    
+get.on('click', function(e){var name = $(this).attr('data-path');
 $.ajax({
-    url: '/disk',
-    type: 'POST',
-    data:  {'getFile': $(this).attr('data-path')},
+    url: '/disk', type: 'POST', data:  {'getFile': $(this).attr('data-path')},
     xhrFields: { responseType: 'blob' },
+    success: function (data, textStatus, jqXHR){let link = document.createElement('a'), filename = name;
+        if(jqXHR.getResponseHeader('Content-Disposition')){filename = jqXHR.getResponseHeader('Content-Disposition').split('='); filename = (filename) ? decodeURIComponent(escape(filename[1])) : decodeURIComponent(escape(name));}
+        link.href = window.URL.createObjectURL(data); link.download = filename; link.click();
+}});});
+del.on('click', function(e){var name = $(this).attr('data-path');
+$.ajax({
+    url: '/disk', type: 'POST', data:  {'delFile': $(this).attr('data-path')},
     success: function (data, textStatus, jqXHR){
-        /* console.log(jqXHR.getAllResponseHeaders()); */
-        let link = document.createElement('a'), filename = name;
-        if(jqXHR.getResponseHeader('Content-Disposition')){//имя файла
-            /* filename = jqXHR.getResponseHeader('Content-Disposition').match(/=(.+\..+)/gm); */
-            filename = jqXHR.getResponseHeader('Content-Disposition').split('=');
-            console.log(filename);
-            filename = (filename) ? filename[1] : name;
-            console.log(filename);
-            filename = decodeURIComponent(escape(filename));
-        }
-        link.href = window.URL.createObjectURL(data);
-        link.download = filename;
-        link.click();
-}});
+        if(jqXHR.getResponseHeader('Content-Disposition')){filename = jqXHR.getResponseHeader('Content-Disposition').split('='); filename = (filename) ? decodeURIComponent(escape(filename[1])) : decodeURIComponent(escape(name));}
+        $('.disc').pulse({times: 2, duration: 150});
+        console.log(data);
 
-});});
+}});});
+
+});
 </script>
 <?php if($dirs){foreach($files as $file){ ?>
-                    <div class="disc__element">
+                    <div class="disc__element pointer">
                         <div class="disc__element__header">
                             <span class="icon-menu"></span>
                             <div class="dropdown__menu none">
@@ -139,7 +149,7 @@ $.ajax({
                                 <div class="dropdown__menu__element">
                                     Переименовать
                                 </div>
-                                <div class="dropdown__menu__element">
+                                <div class="dropdown__menu__element del">
                                     Удалить
                                 </div>
                             </div>
@@ -153,11 +163,11 @@ $.ajax({
 <?php }} ?>
                 </div>
                 <div class="disc-footer none">
-                    <div class="disc-footer__action">
+                    <div class="disc-footer__action" id="get">
                         <span class="icon-import_light"></span>
                         Скачать
                     </div>
-                    <div class="disc-footer__action">
+                    <div class="disc-footer__action" id="del">
                         <span class="icon-plus-circle"></span>
                         Удалить
                     </div>

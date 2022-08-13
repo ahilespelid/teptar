@@ -1,6 +1,3 @@
-
-
-<style>.red{background: #f00;}</style>
 <?php
     $roles = ($roles = $this->model->getAll('roles')) ? array_combine(range(1, count($roles)), $roles) : null;
     $NA = 'n|a'; $readMarks =''; $uid = ($_GET['uid']) ?? false; $mid= ($_GET['mid']) ?? false;
@@ -27,7 +24,7 @@
         $IntlDate->setPattern('d F Y, G:i:s');
 
         $listItem = '<a name="'.$currMark[1]['id'].'" >';  foreach((array_keys($activMarks)) as $m){if(0 != $m){
-                $listItem .= '<div class="item'.((!$mid && $m == $currMark[1]['id_mark']) ? ' red' :
+                $listItem .= '<div class="item'.((!$mid && $m == $currMark[1]['id_mark']) ? ' active' :
                                                                  ((($user != $uid && $m == $currMark[1]['id_mark']) || ($user == $uid && $m == $mid)) ? ' red' : '')).'"><a href="/'.$_GET['q'].'?id='.$_GET['id'].'&uid='.$user.'&mid='.$m.'#'.$currMark[1]['id'].'">'.$m.'</a></div>';
         }}
 
@@ -153,28 +150,28 @@
 <!--    </div>-->
 
 
-<div id="marksForJS" style="display: none">
-    <?php foreach ($marks as $mark) { ?>
-        <span class="mark">
-            <span class="num"><?= $mark['num'] ?></span>
-            <span id="description<?= $mark['num'] ?>"><?= $mark['name'] ?></span>
-        </span>
-    <?php } ?>
-</div>
-
-<script>
-    let activities = document.querySelectorAll('.actions__info-item');
-
-    activities.forEach((activity) => {
-        activity.querySelectorAll('.indicators-list .item').forEach((mark) => {
-            let num = mark.querySelector('.mark').innerHTML;
-            let before = mark.querySelector('.before').innerHTML;
-            let now = mark.querySelector('.now').innerHTML;
-            mark.addEventListener('click', () => {
-                activity.querySelector('.indicator-description').innerHTML = '<b>' + num + '.</b> ' + document.getElementById('description' + num).innerHTML;
-                activity.querySelector('.indicator-comparison .before').innerHTML = before;
-                activity.querySelector('.indicator-comparison .now').innerHTML = now;
-            })
-        })
-    })
-</script>
+<!--<div id="marksForJS" style="display: none">-->
+<!--    --><?php //foreach ($marks as $mark) { ?>
+<!--        <span class="mark">-->
+<!--            <span class="num">--><?//= $mark['num'] ?><!--</span>-->
+<!--            <span id="description--><?//= $mark['num'] ?><!--">--><?//= $mark['name'] ?><!--</span>-->
+<!--        </span>-->
+<!--    --><?php //} ?>
+<!--</div>-->
+<!---->
+<!--<script>-->
+<!--    let activities = document.querySelectorAll('.actions__info-item');-->
+<!---->
+<!--    activities.forEach((activity) => {-->
+<!--        activity.querySelectorAll('.indicators-list .item').forEach((mark) => {-->
+<!--            let num = mark.querySelector('.mark').innerHTML;-->
+<!--            let before = mark.querySelector('.before').innerHTML;-->
+<!--            let now = mark.querySelector('.now').innerHTML;-->
+<!--            mark.addEventListener('click', () => {-->
+<!--                activity.querySelector('.indicator-description').innerHTML = '<b>' + num + '.</b> ' + document.getElementById('description' + num).innerHTML;-->
+<!--                activity.querySelector('.indicator-comparison .before').innerHTML = before;-->
+<!--                activity.querySelector('.indicator-comparison .now').innerHTML = now;-->
+<!--            })-->
+<!--        })-->
+<!--    })-->
+<!--</script>-->

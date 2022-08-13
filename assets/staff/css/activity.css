@@ -192,6 +192,10 @@
     width: 38px;
 }
 
+.actions__activity-indicators .indicators-list .list .item a {
+    color: #535C69;
+}
+
 .actions__activity-indicators .indicators-list .list .item.active {
     border: 1px solid #fff;
     color: #535C69 !important;

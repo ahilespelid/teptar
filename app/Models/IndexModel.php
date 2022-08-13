@@ -52,23 +52,15 @@ class IndexModel extends \App\Data{
         return $this->customSQL('SELECT * FROM `index` WHERE id_uin = ' . $uinId . ' AND id_status = 5 AND id_mark = ' . $markNum . ' AND date BETWEEN "' . $year . '-01-01" AND "' . $year . '-12-31"');
     }
 
-    public function indexByMarkReportAndUinType($markNum, $reportId, $uinType) {
-        $sql = "SELECT *
-                FROM `index`
-                LEFT JOIN users on `index`.id_user = users.id
-                LEFT JOIN uin on users.id_uin = uin.id
-                WHERE id_mark = " . $markNum . " AND id_report = " . $reportId . " AND uin.type = '" . $uinType . "'
-                LIMIT 1";
+    public function oneReportIndexByUinTypeAndMarkNum($markNum, $reportId, $uinType, $status = null) {
+        if ($status) {
+            $status = 'AND id_status = ' . $status;
+        }
 
-        $query = $this->pdo->query($sql);
-        return $query->rowCount();
-    }
-
-    public function oneReportIndexByUinTypeAndMarkNum($markNum, $reportId, $uinType) {
         $sql = "SELECT *
                 FROM `index`
                 LEFT JOIN uin ON uin.id = `index`.id_uin
-                WHERE uin.type = '" . $uinType . "' AND id_report = " . $reportId . " AND id_mark = " . $markNum . "
+                WHERE uin.type = '" . $uinType . "' AND id_report = " . $reportId . " AND id_mark = " . $markNum . " " . $status .  "
                 ORDER BY date DESC
                 LIMIT 1";
 

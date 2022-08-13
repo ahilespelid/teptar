@@ -246,3 +246,61 @@
     border: none;
     font-size: 14px;
 }
+
+.sv-table td {
+    text-align: center;
+}
+
+.sv-table td:nth-child(2) {
+    text-align: left;
+}
+
+.sv-table input {
+    padding: 8.5px 9px;
+    border-radius: 5px;
+    color: black;
+    border: 1px solid #D4D6D9;
+}
+
+.sv-table .ministry-index-input {
+    border: 1px solid #3AA12A;
+    background-color: #EAF9C4;
+}
+
+.sv-table .district-index-input {
+    border: 1px solid #F7685B;
+    background-color: #EEF2F4;
+}
+
+.sv-table .result-index-input {
+    border: 1px solid #E1E1E1;
+    background-color: #F3F5F7;
+    color: #b7b1b1;
+}
+
+.sv-table .ministry-index-input.not-current, .sv-table .district-index-input.not-current, .sv-table .result-index-input.not-current {
+    text-align: center;
+}
+
+.sv-table .table {
+    position: relative;
+}
+
+.table-actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 99;
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    margin: 0 6px;
+}
+
+.table-result-block .result, .table-result-block .input {
+    display: none;
+}
+
+.table-result-block .result.active, .table-result-block .input.active {
+    display: block;
+}

@@ -223,7 +223,7 @@ class ReportController extends AbstractController{
             if ($this->security->userHasRole(['ministry_boss', 'ministry_staff']) && isset($_POST['marks'])) {
                 foreach ($_POST['marks'] as $mark => $data) {
                     $ministryIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark, $report['id'], 'ministry');
-                    if ($data['ministry'] && (int)$data['ministry'] == $data['ministry']) {
+                    if ($data['ministry'] && (float)$data['ministry'] == $data['ministry']) {
                         if ($ministryIndexForThisReport && $ministryIndexForThisReport['index'] !== $data['ministry'] || !$ministryIndexForThisReport) {
                             $this->indexes->add([
                                 'id_user' => $this->user()['id'],
@@ -236,7 +236,7 @@ class ReportController extends AbstractController{
                             ]);
                             $alerts['successes'][$mark] = 'Индекс успешно изменен';
                         }
-                    } elseif ((int)$data['ministry'] != $data['ministry'] && $data['ministry']) {
+                    } elseif ((float)$data['ministry'] != $data['ministry'] && $data['ministry']) {
                         $alerts['errors'][$mark] = 'Индекс введен неправильно';
                     }
                 }
@@ -245,12 +245,14 @@ class ReportController extends AbstractController{
                     $action = ($data['action'] === 'agreed') ? 'agreed' : 'disagreed';
                     $result = $data['result'];
 
-                    $ministryIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark, $report['id'], 'ministry');
-                    $districtIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark, $report['id'], 'district');
+                    $ministryIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark, $report['id'], 'ministry',6);
+                    $districtIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark, $report['id'], 'district',6);
 
-                    if ($data['district'] && (int)$data['district'] == $data['district']) {
-                        if ($result && $action === 'agreed' && !$ministryIndexForThisReport || $result && !$ministryIndexForThisReport || $action === 'agreed' && !$result || $action === 'agreed' && !$ministryIndexForThisReport) {
+                    if ($data['district'] && (float)$data['district'] == $data['district']) {
+                        if ($result && $action === 'agreed' && !$ministryIndexForThisReport || $result && !$ministryIndexForThisReport || $action === 'agreed' && !$ministryIndexForThisReport) {
                             $alerts['errors'][$mark] = 'Итоговый индекс не может быть согласован, если министерство не вводил данные';
+                        } elseif ($action === 'agreed' && !$result) {
+                            $alerts['errors'][$mark] = 'Индекс не может быть согласован, если не введен итоговый индекс';
                         } elseif (!$districtIndexForThisReport && $result || !$districtIndexForThisReport && $action === 'agreed') {
                             $alerts['errors'][$mark] = 'Индекс от района должен быть уже введен, перед тем как его согласовать';
                         } elseif ($districtIndexForThisReport && $districtIndexForThisReport['index'] !== $data['district'] || !$districtIndexForThisReport) {
@@ -265,8 +267,23 @@ class ReportController extends AbstractController{
                                 'date' => new \DateTime('now')
                             ]);
                             $alerts['successes'][$mark] = 'Индекс успешно изменен';
+                        } elseif ($ministryIndexForThisReport && $districtIndexForThisReport && $result && $action === 'agreed') {
+                            $agreedIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark, $report['id'], 'district', 5);
+
+                            if (!$agreedIndexForThisReport || $agreedIndexForThisReport['index'] != $result) {
+                                $alerts['successes'][$mark] = 'Итоговый индекс ' . $result .  ' согласован';
+                                $this->indexes->add([
+                                    'id_user' => $this->user()['id'],
+                                    'id_mark' => $mark,
+                                    'id_report' => $report['id'],
+                                    'id_uin' => $this->user()['id_uin'],
+                                    'id_status' => 5,
+                                    'index' => $result,
+                                    'date' => new \DateTime('now')
+                                ]);
+                            }
                         }
-                    } elseif ((int)$data['district'] != $data['district'] && $data['district']) {
+                    } elseif ((float)$data['district'] != $data['district'] && $data['district']) {
                         $alerts['errors'][$mark] = 'Индекс введен неправильно';
                     }
                 }
@@ -274,15 +291,18 @@ class ReportController extends AbstractController{
         }
 
         foreach ($this->marks->marksWithoutSV() as $key => $mark) {
-            $ministryIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark['num'], $report['id'], 'ministry');
-            $districtIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark['num'], $report['id'], 'district');
+            $ministryIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark['num'], $report['id'], 'ministry',6);
+            $districtIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark['num'], $report['id'], 'district',6);
+            $agreedIndexForThisReport = $this->indexes->oneReportIndexByUinTypeAndMarkNum($mark['num'], $report['id'], 'district', 5);
 
             if ($ministryIndexForThisReport) {
                 $mark['ministry'] = $ministryIndexForThisReport['index'];
             }
-
             if ($districtIndexForThisReport) {
                 $mark['district'] = $districtIndexForThisReport['index'];
+            }
+            if ($agreedIndexForThisReport) {
+                $mark['result'] = $agreedIndexForThisReport['index'];
             }
 
             $marks[$key] = $mark;

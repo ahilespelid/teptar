@@ -279,10 +279,6 @@ body {
     width: 40px;
   }
 
-  .actions__activity-info .status span.active {
-    width: 180px;
-  }
-
   .actions__info-item .post {
     font-size: 12px;
     line-height: 16px;

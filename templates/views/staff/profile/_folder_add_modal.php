@@ -2,7 +2,7 @@
     <div class="fileload-modal">
         <div class="fileload-modal__header">
             <span>Создать папку</span>
-            <img src="../assets/img/svg/xmark.svg" alt="x">
+            <i class="icon-cross pointer"></i>
         </div>
         <div class="fileload-modal__footer">
             <div class="fileload-modal__footer__files">

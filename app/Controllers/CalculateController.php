@@ -53,7 +53,9 @@ class CalculateController extends AbstractController{
         if(empty($this->reports) && !empty($this->districts) && is_array($this->districts)){
             for($i=0,$c=count($this->districts); $i<$c; $i++){
                 (int)$uin = $this->districts[$i];
-                $d = $this->model->getQuery("SELECT id,deadline FROM reports WHERE `id_uin`='".($uin)."' AND `status`=1 ORDER BY `id` DESC LIMIT 4;");
+                $d = $this->model->getQuery("SELECT r.`id`, (SELECT `date` FROM `deadline` d WHERE d.`id`=r.`id_deadline`) AS `deadline` FROM `reports` r WHERE r.`id_uin`='".($uin)."' AND r.`status` IN ('1','9')".
+                ///*/ " AND YEAR((SELECT `date` FROM `deadline` d WHERE d.`id`=r.`id_deadline`))<>'2022'". ///*/ Смещение отчётов для подсчётов
+                " ORDER BY r.`id` DESC LIMIT 4;");
                 if(is_array($d) && !empty($d) && 4 != count($d)){return null;}
             for($l=0,$s=count($d); $l<$s; $l++){$r[$uin]['deadline'] = $d[0]['deadline']; $r[$uin][] = $d[$l]['id'];
             }}
@@ -90,7 +92,7 @@ class CalculateController extends AbstractController{
         $this->memcached->flush(1);/// */ 
         ///*/ Логическая цепочка методов расчёта, записи в базу, генерации exel, вывода на экран
         $this->CalculateIP()?->writeData()?->genExel()?->printWeb(); ///*/
-        ///*/ pa($this); ///*/ pa($this->iP);
+        ///*/ pa($this); ///*/ pa($this->iP); $this->genExelFromInAnyIndex();     
     }
 /// */ Метод инициатор расчёта формул /// */     
     public function CalculateIP(){
@@ -576,5 +578,14 @@ return;}
         if(file_exists($dirname)){$filename = $dirname._DS_.(new \DateTime)->format('Y-m-d-his').'.xlsx'; (new Xlsx($spreadsheet))->save($filename);}
        
          return $this;
+    }          
+
+    public function genExelFromInAnyIndex($dirname = _DS_.'var'._DS_.'www'._DS_.'disk'){///*/
+        $spreadsheet = new Spreadsheet();
+        pa($index = $this->model->getQuery("SELECT * FROM `index` ORDER BY `id` ASC;"));
+
+        $sheet = $spreadsheet->createSheet(1); $sheet->fromArray($index, NULL, 'A1');
+        $spreadsheet->removeSheetByIndex(0); //$spreadsheet->setActiveSheetIndex(2);
+        if(file_exists($dirname)){$filename = $dirname._DS_.'idx'.(new \DateTime)->format('Y-m-d-his').'.xlsx'; (new Xlsx($spreadsheet))->save($filename);}
     }          
 }

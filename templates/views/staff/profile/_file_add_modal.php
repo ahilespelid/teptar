@@ -2,12 +2,12 @@
     <div class="fileload-modal">
         <div class="fileload-modal__header">
             <span>Добавить задачу</span>
-            <img src="../../../../assets/img/svg/xmark.svg" alt="x">
+            <i class="icon-cross pointer"></i>
         </div>
         <div class="fileload-modal__body">
             <label for="fileload-modal__input">
                 <div class="fileload-modal__input__middle">
-                    <img src="../../../../assets/img/svg/file_dock.svg" alt="file_dock">
+                    <img src="<?= $this->image('/assets/images/staff/file_dock.svg'); ?>" alt="file_dock">
                     <div>Перетащите файл сюда</div>
                 </div>
             </label>

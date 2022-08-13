@@ -158,7 +158,7 @@ class ProfileController extends AbstractController {
                 'districts' => $this->notifications->districtsNotificationsList($this->user()['id']),
                 'notifications' => $this->notifications->districtNotifications($this->user()['id'], $this->notifications->lastDistrictId($this->user()['id']))
             ]);
-        } elseif ($this->security->userHasRole(['district_boss', 'district_staff'])) {
+        } elseif ($this->security->userHasRole(['district_boss', 'district_staff', 'admin_admin'])) {
             if ($this->security->userHasNotification()) {
                 $this->notifications->update(['seen' => true], ['receiver' => $this->user()['id']]);
             }

@@ -817,6 +817,7 @@ a {
     margin-right: 32px;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #000;
 }
 
 .chosen-container-single .chosen-single-with-deselect span {
@@ -6008,12 +6009,12 @@ canvas {
     border: 1px solid #D4D6D9;
 }
 
-.sv-table .ministry-index-input {
+.sv-table .success-index-input {
     border: 1px solid #3AA12A;
     background-color: #EAF9C4;
 }
 
-.sv-table .district-index-input {
+.sv-table .danger-index-input {
     border: 1px solid #F7685B;
     background-color: #EEF2F4;
 }
@@ -6024,7 +6025,7 @@ canvas {
     color: #b7b1b1;
 }
 
-.sv-table .ministry-index-input.not-current, .sv-table .district-index-input.not-current, .sv-table .result-index-input.not-current {
+.sv-table .success-index-input.not-current, .sv-table .danger-index-input.not-current, .sv-table .result-index-input.not-current {
     text-align: center;
 }
 

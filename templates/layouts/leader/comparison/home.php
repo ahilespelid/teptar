@@ -3,13 +3,18 @@
     <div class="block-box block-title-box break-title-dropdown">
         <h3>Сравнение показателей по Региону</h3>
 
-<!--        <div class="dropdown interactive rounded right dark chevron">-->
-<!--            <div class="current button button-dropdown rounded"><span class="title">Сравнение:</span> за предыдущий год</div>-->
-<!---->
-<!--            <div class="options">-->
-<!--                <a class="option">за предыдущий год</a>-->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="dropdown interactive rounded right dark chevron" id="districtsComparisonRatingToggle">
+            <div class="current button button-dropdown rounded"><?= (new DateTime('-1 year'))->format('Y') ?></div>
+
+            <?php $first = 2020 ?>
+            <?php $last = (int)(new DateTime('-1 year'))->format('Y') ?>
+
+            <div class="options">
+                <?php for ($i = 0; $i <= $last - $first; $i++) { ?>
+                    <span class="option"><?= $first + $i ?></span>
+                <?php } ?>
+            </div>
+        </div>
     </div>
 
     <div class="block-box block-title-box sub-block-margin-top">

@@ -87,6 +87,7 @@
     margin-right: 32px;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #000;
 }
 
 .chosen-container-single .chosen-single-with-deselect span {

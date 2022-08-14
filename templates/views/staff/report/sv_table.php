@@ -71,8 +71,8 @@
                                     <th>Район</th>
                                     <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
                                         <th>Действие</th>
-                                        <th>Итог</th>
                                     <?php } ?>
+                                    <th>Итог</th>
                                 </tr>
                             </thead>
 
@@ -86,20 +86,20 @@
                                             <td>
                                                 <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
                                                     <label for="ministryMark<?= $mark['num'] ?>"></label>
-                                                    <input class="ministry-index-input" type="text" name="marks[<?= $mark['num'] ?>][ministry]" <?= (isset($mark['ministry'])) ? 'value="' . $mark['ministry'] .  '"' : '' ?> placeholder="Индекс министерства" id="ministryMark<?= $mark['num'] ?>">
+                                                    <input class="success-index-input" type="text" name="marks[<?= $mark['num'] ?>][ministry]" <?= (isset($mark['ministry'])) ? 'value="' . $mark['ministry'] .  '"' : '' ?> placeholder="Индекс министерства" id="ministryMark<?= $mark['num'] ?>">
                                                 <?php } else { ?>
                                                     <label>
-                                                        <input class="ministry-index-input not-current" type="text" <?= (isset($mark['ministry'])) ? 'value="' . $mark['ministry'] .  '"' : '' ?> placeholder="Не введен" disabled>
+                                                        <input class="danger-index-input not-current" type="text" <?= (isset($mark['ministry'])) ? 'value="' . $mark['ministry'] .  '"' : '' ?> placeholder="Не введен" disabled>
                                                     </label>
                                                 <?php } ?>
                                             </td>
                                             <td>
                                                 <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
                                                     <label for="districtMark<?= $mark['num'] ?>"></label>
-                                                    <input class="district-index-input" type="text" name="marks[<?= $mark['num'] ?>][district]" <?= (isset($mark['district'])) ? 'value="' . $mark['district'] .  '"' : '' ?> placeholder="Индекс района" id="districtMark<?= $mark['num'] ?>">
+                                                    <input class="success-index-input" type="text" name="marks[<?= $mark['num'] ?>][district]" <?= (isset($mark['district'])) ? 'value="' . $mark['district'] .  '"' : '' ?> placeholder="Индекс района" id="districtMark<?= $mark['num'] ?>">
                                                 <?php } else { ?>
                                                     <label>
-                                                        <input class="district-index-input not-current" type="text" <?= (isset($mark['district'])) ? 'value="' . $mark['district'] .  '"' : '' ?> placeholder="Не введен" disabled>
+                                                        <input class="danger-index-input not-current" type="text" <?= (isset($mark['district'])) ? 'value="' . $mark['district'] .  '"' : '' ?> placeholder="Не введен" disabled>
                                                     </label>
                                                 <?php } ?>
                                             </td>
@@ -118,10 +118,23 @@
                                                     <label for="districtResult<?= $mark['num'] ?>"></label>
                                                     <div class="table-result-block">
                                                         <div class="result active">
-                                                            <input class="result-index-input not-current" type="text" value="<?= (isset($mark['result'])) ? $mark['result'] : 'Не согласовано' ?>" placeholder="Не введен" disabled>
+                                                            <label>
+                                                                <input class="result-index-input not-current" type="text" value="<?= (isset($mark['result'])) ? $mark['result'] : 'Не согласовано' ?>" placeholder="Не введен" disabled>
+                                                            </label>
                                                         </div>
                                                         <div class="input">
                                                             <input type="text" <?= (isset($mark['result'])) ? 'value="' . $mark['result'] .  '"' : '' ?> name="marks[<?= $mark['num'] ?>][result]" placeholder="Итоговый индекс" id="districtResult<?= $mark['num'] ?>">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            <?php } else { ?>
+                                                <td>
+                                                    <label for="districtResult<?= $mark['num'] ?>"></label>
+                                                    <div class="table-result-block">
+                                                        <div class="result active">
+                                                            <label>
+                                                                <input class="result-index-input not-current" type="text" value="<?= (isset($mark['result'])) ? $mark['result'] : 'Не согласовано' ?>" placeholder="Не введен" disabled>
+                                                            </label>
                                                         </div>
                                                     </div>
                                                 </td>

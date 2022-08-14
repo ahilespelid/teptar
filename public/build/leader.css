@@ -1763,6 +1763,7 @@ h3 {
 .rating__regions {
     padding: 10px 40px;
     width: 220px;
+    position: relative;
 }
 
 .rating__regions ul {
@@ -1782,6 +1783,7 @@ h3 {
     flex-basis: 100%;
     display: flex;
     padding: 16px;
+    position: relative;
 }
 
 .rating__bars-diagram .rating-list {

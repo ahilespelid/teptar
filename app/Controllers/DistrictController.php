@@ -29,7 +29,7 @@ class DistrictController extends AbstractController {
 
             $date = $_GET['year'] ?? (new \DateTime('now'))->format('Y');
 
-            $generalRating = $this->calculations->markGeneralRating('ko');
+            $generalRating = $this->calculations->markGeneralRating('ko', (new \DateTime('-1 year'))->format('Y'));
             $rank = null;
 
             foreach ($generalRating as $key => $rating) {

@@ -51,7 +51,7 @@ class HomeController extends AbstractController {
             'reportsType' => 'home',
             'district' => $district,
             'marks' => $this->marks->findAll(),
-            'ratings' => $this->calculations->markGeneralRating('ko')
+            'ratings' => $this->calculations->markGeneralRating('ko', (new \DateTime('-1 year'))->format('Y'))
         ]);
     }
 

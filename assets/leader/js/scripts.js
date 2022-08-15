@@ -108,6 +108,13 @@ function closePreviousCollapse(block = null) {
             setTimeout(() => {
                 activeCollapseIndicator.querySelector('tbody').innerHTML = '';
             }, 300);
+        } else if (activeCollapseIndicator.classList.contains('district')) {
+            setTimeout(() => {
+                barChartBlock.destroy();
+                lineChartBlock.destroy();
+                activeCollapseIndicator.querySelector('.district-line-chart canvas').classList.toggle('active');
+                activeCollapseIndicator.querySelector('ul').innerHTML = '';
+            }, 300);
         }
         if (document.querySelector('.collapse-indicator.previous-open')) {
             document.querySelector('.collapse-indicator.previous-open').classList.toggle('previous-open');
@@ -242,7 +249,7 @@ function lineChart(canvas, chartData) {
         ]
     }
 
-    new Chart(ctx, {
+    return new Chart(ctx, {
         type: 'line',
         data: data,
         options: {
@@ -402,48 +409,69 @@ if (document.getElementById('overallRating')) {
     })
 }
 
+// Загрузка всех данных спадающего блока с общим рейтингом
+if (document.getElementById('districtComparisonRatingToggle')) {
+    document.querySelectorAll('#districtComparisonRatingToggle .options .option').forEach((option) => {
+        option.addEventListener('click', () => {
+            closePreviousCollapse();
+        })
+    });
+}
+
 // Загрузка всех данных спадающего блока с рейтингом района
+let lineChartBlock = null;
+let barChartBlock = null;
+
 collapseDistrictRatingElements.forEach(function (block) {
     if (!block.classList.contains('muted')) {
         block.querySelector('.collapse-indicator-button').addEventListener('click', function () {
-            closePreviousCollapse(block);
+            if (!block.querySelector('.spin')) {
+                closePreviousCollapse(block);
 
-            // Если этот блок не был открыт до этого и если он уже не загружается
-            if (!block.querySelector('.district-line-chart canvas').classList.contains('active')) {
-                let collapseButton = block.querySelector('.collapse-indicator-button');
-                if (!block.querySelector('.spin')) {
-                    collapseButton.insertAdjacentHTML('beforeend', '<i class="icon-refresh spin"></i>')
-                }
-                $.getJSON('/districtRating?mark=' + block.dataset.mark + '&district=' + block.dataset.district + '&year=' + 2021, (ratings) => {
-                    let ratingDistricts = block.querySelector('.rating__regions ul')
-
-                    let i = 1;
-
-                    ratings.mark.forEach((districtMarkRating) => {
-                        ratingDistricts.innerHTML += '<li><b>' + i + '.</b> ' + districtMarkRating.owner + '</li>';
-                        i++;
-                    });
-
-                    if (ratings.district.length === 1) {
-                        ratings.district = [
-                            {index: ratings.district[0].index, date: ratings.district[0].date},
-                            {index: ratings.district[0].index, date: ratings.district[0].date}
-                        ];
+                // Если этот блок не был открыт до этого и если он уже не загружается
+                if (!block.querySelector('.district-line-chart canvas').classList.contains('active')) {
+                    let collapseButton = block.querySelector('.collapse-indicator-button');
+                    let currentYear = document.querySelector('#districtComparisonRatingToggle .current').innerHTML;
+                    if (!block.querySelector('.spin')) {
+                        collapseButton.insertAdjacentHTML('beforeend', '<i class="icon-refresh spin"></i>')
                     }
+                    $.getJSON('/districtRating?mark=' + block.dataset.mark + '&district=' + block.dataset.district + '&year=' + currentYear, (ratings) => {
+                        let ratingDistricts = block.querySelector('.rating__regions ul')
 
-                    let lineCanvas = block.querySelector('.district-line-chart canvas');
-                    let barCanvas = block.querySelector('.district-bar-chart canvas');
-                    lineCanvas.classList.add('active');
+                        let i = 1;
 
-                    lineChart(lineCanvas, ratings.district);
-                    barChart(barCanvas, ratings.mark)
+                        ratings.mark.forEach((districtMarkRating) => {
+                            ratingDistricts.innerHTML += '<li><b>' + i + '.</b> ' + districtMarkRating.owner + '</li>';
+                            i++;
+                        });
 
-                    collapseButton.querySelector('.spin').remove();
-                }).then(() => {
+                        if (ratings.district.length === 1) {
+                            ratings.district = [
+                                {index: ratings.district[0].index, date: ratings.district[0].date},
+                                {index: ratings.district[0].index, date: ratings.district[0].date}
+                            ];
+                        }
+
+                        let barCanvas = block.querySelector('.district-bar-chart canvas');
+                        let lineCanvas = block.querySelector('.district-line-chart canvas');
+                        lineCanvas.classList.add('active');
+
+                        barChartBlock = barChart(barCanvas, ratings.mark);
+                        lineChartBlock = lineChart(lineCanvas, ratings.district);
+
+                        collapseButton.querySelector('.spin').remove();
+                    }).then(() => {
+                        collapseRatingElements(block);
+                    });
+                } else {
                     collapseRatingElements(block);
-                });
-            } else {
-                collapseRatingElements(block);
+                    setTimeout(() => {
+                        barChartBlock.destroy();
+                        lineChartBlock.destroy();
+                        block.querySelector('.district-line-chart canvas').classList.toggle('active');
+                        block.querySelector('ul').innerHTML = '';
+                    }, 300);
+                }
             }
         })
     }

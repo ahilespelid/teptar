@@ -42,7 +42,7 @@ class CalculateModel extends \App\Data{
             LEFT JOIN uin on calculate.id_uin = uin.id
             WHERE mark = ' . $mark . '
             AND slug = "' . $district . '"
-            ORDER BY deadline DESC
+            ORDER BY deadline ASC
         ';
 
         return $this->customSQL($sql);

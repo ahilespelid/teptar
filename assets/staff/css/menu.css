@@ -23,8 +23,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 250px;
-  min-width: 250px;
+  width: 294px;
+  min-width: 294px;
   color: #535c69;
   transition: 0.5s;
   background: none !important;
@@ -33,7 +33,7 @@
 .menu__main {
  position: fixed;
  height: 100vh;
- width: 250px;
+ width: 294px;
  min-height: 700px;
  display: flex;
  flex-direction: column;
@@ -206,9 +206,19 @@
   transition: 0.1s;
   text-decoration: none;
   color: #535c69;
-  width: 95%;
+  width: 100%;
   white-space: nowrap;
   padding: 10px 10px 10px 25px;
+  position: relative;
+}
+
+.menu__body__list a .menu-counter {
+  background: #F7685B;
+  color: #fff;
+  padding: 2px 9px;
+  border-radius: 34px;
+  font-size: 18px;
+  margin-left: 8px;
 }
 
 .menu__folded .menu__body__list a {

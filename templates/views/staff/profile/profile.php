@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="profile<?php if (!$user['active']) { echo ' fired'; } ?>">
-                    <div class="fired-message"><i class="icon-user"></i>Данный сотрудник уволен</div>
+                    <div class="fired-message"><i class="icon-user"></i>Данный сотрудник не активен</div>
                     <div class="profile__avatar-main">
                         <div class="profile__avatar">
                             <img class="avatar" src="<?= $user['avatar'] ?? $this->security->setEmptyAvatar() ?>" alt="">
@@ -203,7 +203,7 @@
                             <div class="reports_main">
                                 <div class="main__first">
                                     <div class="footer__info__time">
-                                        <span>Удалить сотрудника</span>
+                                        <span>Деактивировать сотрудника</span>
                                     </div>
                                     <div>
                                         <div class="textarea">
@@ -214,7 +214,7 @@
                                     </div>
                                     <div class="support__footer">
                                         <div class="support__footer__text"></div>
-                                        <a href="/profile/fire?id=<?= $user['id'] ?>" onclick="return confirm('Вы уверены что хотите уволить данного сотрудника?')" class="button button-danger">Уволить сотрудника</a>
+                                        <a href="/profile/fire?id=<?= $user['id'] ?>" onclick="return confirm('Вы уверены что хотите уволить данного сотрудника?')" class="button button-danger">Деактивировать сотрудника</a>
                                     </div>
                                 </div>
                             </div>

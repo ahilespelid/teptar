@@ -15,6 +15,7 @@ class Security
     public mixed $route;
 
     public $notifications;
+    public $messages;
 
     public function __construct()
     {
@@ -22,7 +23,12 @@ class Security
         $this->rulesPath    = $this->corPath._DS_.'rules.php';
         $this->rules        = $this->getRules();
         $this->route        = $this->getRoute();
+        $this->messages     = new \App\Models\SupportModel;
         $this->notifications = new \App\Models\NotificationModel;
+    }
+
+    public function unreadMessages() {
+        return $this->messages->count(['seen' => 0]);
     }
 
     // Получает массив правил из файла core/rules.php

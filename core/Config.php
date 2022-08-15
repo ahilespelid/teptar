@@ -26,6 +26,7 @@ $table = [
     'index'         => 'index',
     'marks'         => 'marks',
     'count'         => 'count',
+    'support'       => 'support',
     'notifications' => 'notifications',
     'usersBlock'    => 'usersBlock',
     'tableUIN'      => 'uin',

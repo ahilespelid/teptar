@@ -29,9 +29,8 @@
   align-items: center;
 }
 
-.reports-body__header__edit {
-  margin-left: 14px;
-  margin-right: 24px;
+.reports-body__header__buttons .btn {
+  margin-left: 32px;
 }
 
 .reports-body__header__edit, .reports-body__header__print {

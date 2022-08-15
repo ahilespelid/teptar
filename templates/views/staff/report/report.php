@@ -69,9 +69,9 @@
 
                                 <div class="reports-body__header__buttons">
                                     <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
-                                        <span class="reports-body__header__edit">Редактировать</span>
+                                        <span class="reports-body__header__edit btn">Редактировать</span>
                                     <?php } ?>
-                                    <span class="reports-body__header__print" onclick="window.print(document);">Печать</span>
+                                    <span class="reports-body__header__print btn" onclick="window.print(document);">Печать</span>
                                 </div>
 
                                 <div class="reports-body__content__header__download">
@@ -100,20 +100,12 @@
 
                             </div>
 
-                            <?php
-                            $status = "Сдан на проверку";
-                            $role = 2;
-
-                            if($status === "На доработке") {
-                            echo    '<div class="reports-body__comment warning">
-                            <p>Комментарий от проверяющего:</p>
-                            ФВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВ
-                            ВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВ
-                            ВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВ
-                            ВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВФЫВ
-                            </div>';
-                            }
-                            ?>
+                            <?php if ($data['report']['comment']) { ?>
+                                <div class="reports-body__comment warning">
+                                    <p>Комментарий от проверяющего:</p>
+                                    <?= $data['report']['comment'] ?>
+                                </div>
+                            <?php } ?>
 
                             <div class="reports-body__info">
                                 <?= $data['report']['description'] ?>
@@ -149,8 +141,9 @@
                             function reportStatus($name) {
                                 $statuses = [
                                     'Успешно' => 'green',
-                                    'На проверке' => 'green',
-                                    'Просрочен' => 'red'
+                                    'На проверке' => 'orange',
+                                    'Просрочен' => 'red',
+                                    'В работе' => 'orange',
                                 ];
 
                                 echo (isset($statuses[$name])) ? ' ' . $statuses[$name] : '';

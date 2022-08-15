@@ -123,7 +123,7 @@ class ProfileController extends AbstractController {
                 'avatar' => $this->setFormBaseImage('avatar'),
                 'id_uin' => $currentUser['id_uin'],
                 'id_role' => $role,
-                'active' => 1
+                'active' => 0
             ]);
 
             $this->redirectToRoute('/profile', [

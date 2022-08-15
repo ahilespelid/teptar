@@ -134,7 +134,11 @@ class ReportController extends AbstractController{
 
                     if ($_GET['status'] == 3) {
                         if ($_POST['rejectionReason']) {
-                        $this->model->update(['status' => $_GET['status']],['id' => $report['id']]);
+                            $this->model->update([
+                                'status' => $_GET['status'],
+                                'remark' => $report['remark'] + 1,
+                                'comment' => $_POST['rejectionReason']
+                            ],['id' => $report['id']]);
 
                             foreach ($this->users->findBy(['id_uin' => $report['id_uin']]) as $user) {
                                 $this->notificationsModel->add([
@@ -156,7 +160,20 @@ class ReportController extends AbstractController{
                             ]), time()+1, '/');
                         }
                     } else {
-                        $this->model->update(['status' => $_GET['status']],['id' => $report['id']]);
+                        $deadline = $this->deadlines->findOneBy(['id' => $report['id_deadline']]);
+                        if (new \DateTime($deadline['date']) > new \DateTime('now') && !$report['remark']) {
+                            $grade = 5;
+                        } elseif (new \DateTime($deadline['date']) > new \DateTime('now') && $report['remark'] === 1) {
+                            $grade = 4;
+                        } elseif (new \DateTime($deadline['date']) > new \DateTime('now') && $report['remark'] > 1) {
+                            $grade = 3;
+                        } elseif (new \DateTime($deadline['date']) < new \DateTime('now') && !$report['remark']) {
+                            $grade = 2;
+                        } else {
+                            $grade = 1;
+                        }
+
+                        $this->model->update(['status' => $_GET['status'], 'grade' => $grade],['id' => $report['id']]);
 
                         foreach ($this->users->findBy(['id_uin' => $report['id_uin']]) as $user) {
                             $this->notificationsModel->add([

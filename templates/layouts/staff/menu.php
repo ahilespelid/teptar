@@ -25,6 +25,16 @@
                     </a>
                 <?php } ?>
 
+                <?php if ($this->security->userHasRole(['admin_admin'])) { ?>
+                    <a href="/messages" <?php if ($this->security->route == 'messages') { echo 'class="active"'; } ?>>
+                        <span class="if_active">
+                            <span class="icon-envelope menu-icon"></span>
+                            <span>Сообщении</span>
+                            <span class="menu-counter"><?= $this->security->unreadMessages() ?></span>
+                        </span>
+                    </a>
+                <?php } ?>
+
                 <a href="/disk" <?php if ($this->security->route == 'disk') { echo 'class="active"'; } ?>>
                     <span class="if_active">
                         <span class="icon-save_light menu-icon"></span><span>Диск</span>

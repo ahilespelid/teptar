@@ -9,12 +9,6 @@
             <?php include $this->layout('staff/header.php'); ?>
 
             <div class="body">
-<!--                <div class="body__back-button">-->
-<!--                    <a href="#">-->
-<!--                        <img width="16" height="16" src="" alt="&#8249">-->
-<!--                        Вернуться-->
-<!--                    </a>-->
-<!--                </div>-->
                 <div class="reports-title">
                     <div class="reports-title__my-reports">
                         <div class="reports-title__my-reports__text">
@@ -24,20 +18,28 @@
                         </div>
                     </div>
                 </div>
+
+                <?php if (isset($_COOKIE['alert'])) { ?>
+                    <?php $alert = json_decode($_COOKIE['alert']); ?>
+                    <div class="alert alert-<?= $alert->type ?>">
+                        <?= $alert->message ?>
+                    </div>
+                <?php } ?>
+
                 <div class="reports_main">
                     <div class="main__first">
                         <div class="footer__info__time">
                             <span class="footer__info__time__name">Обратная связь</span>
                         </div>
-                        <div>
+                        <form action="/support" method="post">
                             <div class="textarea">
-                                <textarea name="" id=""></textarea>
+                                <label for="message"></label><textarea name="message" id="message"></textarea>
                             </div>
-                        </div>
-                        <div class="support__footer">
-                            <div class="support__footer__text"></div>
-                            <button class="support__footer__button">Отправить</button>
-                        </div>
+                            <div class="support__footer">
+                                <div class="support__footer__text"></div>
+                                <button type="submit" class="support__footer__button">Отправить</button>
+                            </div>
+                        </form>
                     </div>
 
                     <div class="footer">

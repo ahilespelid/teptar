@@ -60,7 +60,7 @@ class DistrictController extends AbstractController {
         foreach ($this->uins->findBy(['type' => 'district']) as $key => $district) {
             $districts[$key] = [
                 'district' => $district,
-                'report' => $this->reports->findOneBy(['id_uin' => $district['id']], ['submitting' => 'DESC']),
+                'report' => $this->reports->findOneBy(['id_uin' => $district['id']], ['creating' => 'DESC']),
                 'staff' => $this->users->findBy(['id_uin' => $district['id'], 'id_role' => 5], null, 2),
                 'staffCount' => $this->users->count(['id_uin' => $district['id'], 'id_role' => 5]),
             ];

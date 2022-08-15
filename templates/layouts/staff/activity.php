@@ -25,7 +25,7 @@
 
         $listItem = '<a name="'.$currMark[1]['id'].'" >';  foreach((array_keys($activMarks)) as $m){if(0 != $m){
                 $listItem .= '<div class="item'.((!$mid && $m == $currMark[1]['id_mark']) ? ' active' :
-                                                                 ((($user != $uid && $m == $currMark[1]['id_mark']) || ($user == $uid && $m == $mid)) ? ' red' : '')).'"><a href="/'.$_GET['q'].'?id='.$_GET['id'].'&uid='.$user.'&mid='.$m.'#'.$currMark[1]['id'].'">'.$m.'</a></div>';
+                                                                 ((($user != $uid && $m == $currMark[1]['id_mark']) || ($user == $uid && $m == $mid)) ? ' active' : '')).'"><a href="/'.$_GET['q'].'?id='.$_GET['id'].'&uid='.$user.'&mid='.$m.'#'.$currMark[1]['id'].'">'.$m.'</a></div>';
         }}
 
 ?>

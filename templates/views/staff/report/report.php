@@ -68,7 +68,7 @@
                             <div class="reports-body__header">
 
                                 <div class="reports-body__header__buttons">
-                                    <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
+                                    <?php if ($this->security->userHasRole(['district_boss', 'district_staff']) && $data['report']['status'] == 3) { ?>
                                         <span class="reports-body__header__edit btn">Редактировать</span>
                                     <?php } ?>
                                     <span class="reports-body__header__print btn" onclick="window.print(document);">Печать</span>
@@ -246,7 +246,7 @@
                                 </a>
                             <?php } ?>
 
-                        <?php } else if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+                        <?php } elseif ($this->security->userHasRole(['ministry_boss', 'ministry_staff']) && $this->security->userUIN()['name'] === 'M_ECONOM') { ?>
 
                             <?php if ($data['status']['id'] == 4) { ?>
                                 <div class="reports-body__side-block__button" id="accept_report">
@@ -257,7 +257,7 @@
                                 <div class="success__modal none">
                                     <div class="success__modal__header">
                                         <span class="success__modal__header__text">Подтверждение</span>
-                                        <span class="success__modal__header__exit"><img src="../assets/img/svg/xmark.svg" alt=""></span>
+                                        <span class="success__modal__header__exit"><i class="icon-cross"></i></span>
                                     </div>
 
                                     <div class="success__modal__body">
@@ -278,7 +278,7 @@
                                 <div class="fail__modal none">
                                     <div class="fail__modal__header">
                                         <span class="fail__modal__header__text">Подтверждение</span>
-                                        <span class="fail__modal__header__exit"><img src="../assets/img/svg/xmark.svg" alt=""></span>
+                                        <span class="fail__modal__header__exit"><i class="icon-cross"></i></span>
                                     </div>
 
                                     <div class="fail__modal__body">
@@ -291,7 +291,7 @@
 
                                             <div class="fail__modal__footer">
                                                 <button type="submit" class="fail_modal__body__button" id='modal_finalize_report'>
-                                                    <span class="icon-plus-circle"></span>
+                                                    <span class="icon-cross-circle"></span>
                                                     Отправить на доработку
                                                 </button>
                                             </div>

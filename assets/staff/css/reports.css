@@ -22,6 +22,10 @@
   color: #535c69;
 }
 
+.body__back-button__tables a {
+  margin-right: 25px;
+}
+
 .body__back-button img {
   margin-left: 16px;
   margin-right: 4px;

@@ -2210,6 +2210,10 @@ header {
   color: #535c69;
 }
 
+.body__back-button__tables a {
+  margin-right: 25px;
+}
+
 .body__back-button img {
   margin-left: 16px;
   margin-right: 4px;
@@ -2992,6 +2996,7 @@ header {
   user-select: none;
   cursor: pointer;
   margin-right: 13px;
+  border-radius: 4px;
 }
 
 .reports-footer__action img {
@@ -3110,15 +3115,44 @@ header {
   -moz-box-shadow: -1px 3px 29px -5px rgba(34, 60, 80, 0.2);
   box-shadow: -1px 3px 29px -5px rgba(34, 60, 80, 0.2);
   user-select: none;
+  border-radius: 4px;
 }
 
 .success__modal__header__exit, .fail__modal__header__exit, .revision__modal__header__exit {
   cursor: pointer;
 }
 
+.fail__modal__header__text, .success__modal__header__text {
+  margin-left: 4px;
+}
+.fail__modal__header__exit, .success__modal__header__exit{
+  margin-right: 12px;
+}
+
 .success__modal__header__exit img, .fail__modal__header__exit img, .revision__modal__header__exit img {
   width: 20px;
   height: 20px;
+}
+
+.fail__modal__body form {
+  width: 100%;
+}
+
+.fail__modal__body form .fail__modal__footer button {
+  border: unset;
+  border-radius: 4px;
+}
+
+.fail__modal__body form textarea {
+  border-radius: 4px;
+}
+
+.success__modal__body__text {
+  margin: 0 0 14px;
+}
+
+.fail__modal__body__text {
+  margin: 0 0 8px;
 }
 
 .revision__modal__body {
@@ -3171,11 +3205,11 @@ header {
 
 .success__modal__body {
   font-size: 14px;
-  height: 120px;
   flex-direction: column;
   align-items: start;
   padding: 17px 15px 18px 15px;
   margin-top: 6px;
+  display: table;
 }
 
 .fail__modal__body {
@@ -3232,12 +3266,14 @@ header {
   height: 40px;
   background-color: #00B894;
   color: #fff;
-  display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 1px;
   user-select: none;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 4px;
+  display: flex;
 }
 
 .success__modal__body__button:active {
@@ -3250,6 +3286,7 @@ header {
 
 .reports-body__side-block__button {
   width: unset;
+  border-radius: 4px;
 }
 
 .reports-body__side-block {
@@ -3539,6 +3576,12 @@ body {
   padding: 10px;
   transition: 0.3s;
   border-radius: 5px;
+}
+
+.empty-message {
+  background: rgba(0,0,0,0.03);
+  padding: 18px;
+  border-radius: 4px;
 }
 
 .warning {

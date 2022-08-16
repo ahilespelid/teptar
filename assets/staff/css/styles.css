@@ -137,6 +137,12 @@ body {
   border-radius: 5px;
 }
 
+.empty-message {
+  background: rgba(0,0,0,0.03);
+  padding: 18px;
+  border-radius: 4px;
+}
+
 .warning {
   background-color: #fef0cb;
 }

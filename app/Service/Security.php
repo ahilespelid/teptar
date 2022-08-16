@@ -16,6 +16,7 @@ class Security
 
     public $notifications;
     public $messages;
+    public $uins;
 
     public function __construct()
     {
@@ -25,6 +26,7 @@ class Security
         $this->route        = $this->getRoute();
         $this->messages     = new \App\Models\SupportModel;
         $this->notifications = new \App\Models\NotificationModel;
+        $this->uins = new \App\Models\UINModel;
     }
 
     public function unreadMessages() {
@@ -82,6 +84,11 @@ class Security
         }
 
         return $hasRole;
+    }
+
+    public function userUIN() {
+        $user = new UserController();
+        return $this->uins->findOneBy(['id' => $user->getLoginUser()['id_uin']]);
     }
 
     // Проверяет есть ли у текущего пользователя непрочитанные уведомлении и возвращает значение true/false

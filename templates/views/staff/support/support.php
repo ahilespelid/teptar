@@ -72,6 +72,46 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="support-messages">
+
+                    <?php foreach ($questions as $question) { ?>
+
+                        <div class="actions__info-item">
+                            <div class="actions__activity-info">
+                                <div class="actions__activity-user">
+                                    <div class="avatar">
+                                        <img src="<?= $question['avatar'] ?? $this->security->setEmptyAvatar() ?>" alt="Avatar">
+                                    </div>
+                                    <div class="info">
+                                        <span class="name"><?= $question['firstname'] ?> <?= $question['secondname'] ?> <?= $question['lastname'] ?></span>
+                                        <span class="post">
+                                            <?= $question['post'] ?>
+                                            <br>
+                                            <?= (new \DateTime($question['question_date']))->format('d.m.o G:i')?>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="actions__activity-message" <?= (!$question['answer']) ? 'style="padding-bottom:0"' : '' ?>>
+                                <?= $question['question'] ?>
+                            </div>
+
+                            <?php if ($question['answer']) { ?>
+                                <div class="actions__activity-reply">
+                                    <span class="info">Ответ от службы поддержки:</span>
+                                    <span class="info"><?= (new \DateTime($question['answer_date']))->format('d.m.o G:i')?></span>
+                                    <span class="message">
+                                        <?= $question['answer'] ?>
+                                    </span>
+                                </div>
+                            <?php } ?>
+                        </div>
+
+                    <?php } ?>
+
+                </div>
             </div>
         </div>
 

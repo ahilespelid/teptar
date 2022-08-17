@@ -10,6 +10,7 @@ class SupportController extends AbstractController {
     public $uins;
     public $marks;
     public $calculations;
+    public $notifications;
     public $supports;
 
     public function __construct()
@@ -18,6 +19,7 @@ class SupportController extends AbstractController {
         $this->users = new \App\Models\UserModel;
         $this->marks = new \App\Models\MarkModel;
         $this->calculations = new \App\Models\CalculateModel;
+        $this->notifications = new \App\Models\NotificationModel;
         $this->supports = new \App\Models\SupportModel;
         $this->security = new Security();
     }
@@ -28,7 +30,7 @@ class SupportController extends AbstractController {
                 'id_user' => $this->user()['id'],
                 'date' => new \DateTime('now'),
                 'message' => $_POST['message'],
-                'seen' => 0
+                'answered' => 0
             ]);
 
             setcookie('alert', json_encode([
@@ -39,7 +41,44 @@ class SupportController extends AbstractController {
             $this->redirectToRoute('/support');
         }
 
-        $this->render('/staff/support/support.php');
+        $this->render('/staff/support/support.php', [
+            'questions' => $this->supports->questions($this->user()['id'])
+        ]);
+    }
+
+    public function messages() {
+        if ($_POST && $_POST['message']) {
+            foreach ($_POST['message'] as $questionID => $answer) {
+                $this->supports->update(['answered' => 1],['id' => $questionID]);
+                $question = $this->supports->findOneBy(['id' => $questionID]);
+
+                $this->supports->add([
+                    'id_user' => $this->user()['id'],
+                    'date' => new \DateTime('now'),
+                    'message' => $answer,
+                    'answerFor' => $questionID
+                ]);
+
+                $this->notifications->add([
+                    'sender' => $this->user()['id'],
+                    'receiver' => $question['id_user'],
+                    'datetime' => new \DateTime('now'),
+                    'seen' => 0,
+                    'message' => 'Служба поддержки ответила на ваше обращение, перейдите во вкладку «Служба поддержки» чтобы посмотреть ответ.'
+                ]);
+            }
+            $this->redirectToRoute('/messages');
+        }
+
+        $this->render('/staff/support/messages.php', [
+            'messages' => $this->supports->messages()
+        ]);
+    }
+
+    public function answers() {
+        $this->render('/staff/support/answers.php', [
+            'messages' => $this->supports->answers()
+        ]);
     }
 
     public function callCenter() {

@@ -33,5 +33,8 @@
         'report',
         'report/table',
         'report/sv-table',
-        'switchReportStatus']
+        'switchReportStatus',
+        'messages',
+        'messages/answers'
+    ]
 ];

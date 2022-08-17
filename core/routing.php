@@ -22,6 +22,8 @@
 
     // SupportController
     'support'                   =>  ['controller' => 'SupportController', 'action' => 'support'],
+    'messages'                  =>  ['controller' => 'SupportController', 'action' => 'messages'],
+    'messages/answers'          =>  ['controller' => 'SupportController', 'action' => 'answers'],
     'rating'                    =>  ['controller' => 'SupportController', 'action' => 'rating'],
     'center'                    =>  ['controller' => 'SupportController', 'action' => 'center'],
     'callCenter'                =>  ['controller' => 'SupportController', 'action' => 'callCenter'],

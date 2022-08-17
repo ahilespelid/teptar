@@ -1,7 +1,25 @@
 <?php include $this->layout('staff/base/head.php'); ?>
 
     <body>
-
+<script type="text/javascript">
+$(document).ready(function(){
+ $.fn.pulse = function(options) {
+    var options = $.extend({
+        times: 3,
+        duration: 1000
+    }, options);
+    var period = function(callback) {                 
+        $(this).animate({opacity: 0}, options.duration, function() {
+            $(this).animate({opacity: 1}, options.duration, callback);
+        });
+    };
+    return this.each(function() {
+        var i = +options.times, self = this,
+        repeat = function() { --i && period.call(self, repeat)};
+        period.call(this, repeat);
+    });
+}});
+</script>
         <?php  require_once '_folder_add_modal.php' ?>
         <?php  require_once '_file_add_modal.php' ?>
 
@@ -9,7 +27,7 @@
             <div class="fileload-modal">
                 <div class="fileload-modal__header">
                     <span>Переименовать (название папки/файла)</span>
-                    <img src="../assets/img/svg/xmark.svg" alt="x">
+                    <i class="icon-cross pointer"></i>
                 </div>
                 <div class="fileload-modal__footer">
                     <div class="fileload-modal__footer__files">
@@ -53,8 +71,6 @@
                                 <i class="icon-document-add"></i>
                                 Добавить файл
                             </button>
-                        </div>
-                        <div class="reports-title__my-reports__btn">
                             <button class="add-report-btn sumbit_create_folder">
                                 <i class="icon-folder_alt"></i>
                                 Создать папку
@@ -75,14 +91,14 @@
                 </div>
                 <div class="disc">
 <?php if($dirs){foreach($dirs as $dir){ ?>
-                    <div class="disc__element">
+                    <div class="disc__element disk"  data-path="<?= $dir['path']; ?>">
                         <div class="disc__element__header">
                             <span class="icon-menu"></span>
                             <div class="dropdown__menu none">
-                                <div class="dropdown__menu__element get">
-                                    <!--Скачать-->
-                                </div>
-                                <div class="dropdown__menu__element">
+                                <!--div class="dropdown__menu__element get">
+                                    Скачать
+                                </div-->
+                                <div class="dropdown__menu__element ren">
                                     Переименовать
                                 </div>
                                 <div class="dropdown__menu__element del">
@@ -96,57 +112,15 @@
                         </div>
                         <div class="disc__element__name"><?= $dir['name']; ?></div>
                     </div>
-<?php }} ?>
-<script type="text/javascript">
-$.fn.pulse = function(options) {
-    var options = $.extend({
-        times: 3,
-        duration: 1000
-    }, options);
-    var period = function(callback) {
-        $(this).animate({opacity: 0}, options.duration, function() {
-            $(this).animate({opacity: 1}, options.duration, callback);
-        });
-    };
-    return this.each(function() {
-        var i = +options.times, self = this,
-        repeat = function() { --i && period.call(self, repeat)};
-        period.call(this, repeat);
-    });
-}
-$(document).ready(function(){
-let get = $('.get'); get.css({'cursor' : 'pointer'});
-let del = $('.del'); del.css({'cursor' : 'pointer'});
-
-get.on('click', function(e){var name = $(this).attr('data-path');
-$.ajax({
-    url: '/disk', type: 'POST', data:  {'getFile': $(this).attr('data-path')},
-    xhrFields: { responseType: 'blob' },
-    success: function (data, textStatus, jqXHR){let link = document.createElement('a'), filename = name;
-        if(jqXHR.getResponseHeader('Content-Disposition')){filename = jqXHR.getResponseHeader('Content-Disposition').split('='); filename = (filename) ? decodeURIComponent(escape(filename[1])) : decodeURIComponent(escape(name));}
-        link.href = window.URL.createObjectURL(data); link.download = filename; link.click();
-}});});
-del.on('click', function(e){var name = $(this).attr('data-path');
-$.ajax({
-    url: '/disk', type: 'POST', data:  {'delFile': $(this).attr('data-path')},
-    success: function (data, textStatus, jqXHR){
-        if(jqXHR.getResponseHeader('Content-Disposition')){filename = jqXHR.getResponseHeader('Content-Disposition').split('='); filename = (filename) ? decodeURIComponent(escape(filename[1])) : decodeURIComponent(escape(name));}
-        $('.disc').pulse({times: 2, duration: 150});
-        console.log(data);
-
-}});});
-
-});
-</script>
-<?php if($dirs){foreach($files as $file){ ?>
-                    <div class="disc__element pointer">
+<?php }} if($dirs){foreach($files as $file){ ?>
+                    <div class="disc__element pointer" data-path="<?= $file['path']; ?>" data-mime="<?= $file['mime']; ?>">
                         <div class="disc__element__header">
                             <span class="icon-menu"></span>
                             <div class="dropdown__menu none">
-                                <div class="dropdown__menu__element get" data-path="<?= $file['path']; ?>">
+                                <div class="dropdown__menu__element get">
                                     Скачать
                                 </div>
-                                <div class="dropdown__menu__element">
+                                <div class="dropdown__menu__element ren">
                                     Переименовать
                                 </div>
                                 <div class="dropdown__menu__element del">

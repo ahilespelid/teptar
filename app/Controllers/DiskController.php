@@ -1,5 +1,7 @@
 <?php
 namespace App\Controllers ; use App\Service\Security;
+/// */ Убираем вывод ошибок, устанавливаем необходимое количество памяти
+ini_set('display_errors', 0); ini_set('display_startup_errors', 0); error_reporting(E_ALL); ini_set('memory_limit','0');  ini_set('memory_limit','0'); set_time_limit(0); /// */
 
 class DiskController extends AbstractController{
     public  $model, $user, $path, $imgPath, $security;
@@ -10,65 +12,51 @@ class DiskController extends AbstractController{
         $this->model = new \App\Models\IndexModel;
         $this->path = $GLOBALS['path']['disk'];
         $this->imgPath = _DS_.'assets'._DS_.'images'._DS_.'staff'._DS_;
-
-
-        //
-        /*/ 
-        if(file_exists($this->path)){
-            $this->iterator = new \RecursiveDirectoryIterator($this->path);
-            pa($this->path);
-            pa($this->iterator->getATime());
-            pa($this->iterator->getBasename());
-            pa($this->iterator->getCTime());
-            pa($this->iterator->getExtension());
-            pa($this->iterator->getFilename());
-            pa($this->iterator->getGroup());
-            pa($this->iterator->getInode());
-            pa($this->iterator->getMTime());
-            pa($this->iterator->getOwner());
-            pa($this->iterator->getPath());
-            pa($this->iterator->getPathname());
-            pa($this->iterator->getPerms());
-            pa($this->iterator->getSize());
-            pa($this->iterator->getType());
-            pa($this->iterator->getFlags());
-            pa($this->iterator->getFileInfo());
-            //pa($this->iterator->getLinkTarget());
-            pa($this->iterator->getPathInfo());
-            pa($this->iterator->getRealPath());
-            pa($this->iterator->getBasename());
-        } ///*/ 
         
     }
 /*/ -------------------------------------------------------------- Диск -------------------------------------------------------------- /*/
     public function index($q){$xmr = ($_SERVER['HTTP_X_REQUESTED_WITH']) ?? false;
+        $path = $this->path;
+        if(!empty($q['07c5be14']) && str_starts_with($q['07c5be14'], $this->path)){$path = $q['07c5be14'];}
+    
         if($xmr && !empty($q)){
-            if(!empty($q['getFile'])){
-                header('Content-Type: application/octet-stream'); header('Content-Disposition: attachment; filename=' . basename($q['getFile']));
-                header('Content-Transfer-Encoding: binary'); header('Expires: 0'); header('Content-Length: ' . filesize($q['getFile']));
-                echo file_get_contents($q['getFile']);
-            }
-            if(!empty($q['delFile'])){
-                pa($q['delFile']);
-            }
-
-        }
-        
-        $dirs = $this->dirScan($this->path,'d');
-        $files = $this->dirScan($this->path,'f');
+            $file = (file_exists($q['05c7be12'])) ? $q['05c7be12'] : false;
+            $rm = ('c287b455c3d5' == $q['bb4de946']) ? 1 : 0;           
+            if($file){
+                if (ob_get_level()){ob_end_clean();}
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename=' . basename($file));
+                header('Content-Transfer-Encoding: binary');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($file));
+                $return = @readfile($file);
+                if(-1 == $return){
+                    $zip = $this->zip($file);
+                    header("Content-Type: application/zip");
+                    header('Content-Length: ' . filesize($zip));
+                    $return = @readfile($zip);
+                }
+                if($rm){
+                    $this->rm($file); 
+                    if(-1 == $return){
+                        echo PHP_EOL.'(' . basename($file) . ').'.PHP_EOL.'ahilespelid@yandex.ru'.PHP_EOL;
+                }}
+                echo $return;
+                
+                exit;
+        }}
+        //$this->rm('/var/www/disk/log1');        
+      
+        $dirs = $this->dirScan($path,'d');
+        $files = $this->dirScan($path,'f');
 
         $this->render('/staff/profile/disk.php', [
             'dirs' => $dirs,
             'files' => $files,
         ]);
 
-        
-        ;
- //
- /*/ 
-        pa($this->dirScan($this->path))      
-        pa($this->dirScan('/var/www/disk/log'));
-        pa($this->rm('/var/www/disk/log'));  ///*/
     }    
 ///*/ Сканирование файлов и папок ///*/
     public function dirScan($dir, $fORd = 'a'){$dir = (empty($dir)) ? $this->path : ((is_dir($dir)) ? $dir : false);
@@ -77,21 +65,21 @@ class DiskController extends AbstractController{
         foreach($scanDir as $v){$fileORdir = $dir.$v; if(($fORd == 'd' && is_file($fileORdir)) || ($fORd == 'f' && is_dir($fileORdir))){continue;}
             $type = (is_file($fileORdir)) ? 'f' : 'd';
             $img = $this->imgPath.(('d' == $type) ? 'dir.svg' : ((file_exists($GLOBALS['path']['dev'].$this->imgPath.$svg = pathinfo($fileORdir, PATHINFO_EXTENSION).'.svg')) ? $svg : 'def.svg'));
-
-            $return[] = ['img' => $img, 'type' => $type, 'path' => $fileORdir, 'name'=> $v, 'user' => $this->user->getLoginUser()['id']];
+            $ret = ['img' => $img, 'type' => $type, 'path' => $fileORdir, 'name'=> $v, 'user' => $this->user->getLoginUser()['id']];  
+            if('f' == $type){$ret['mime'] = (new \finfo(FILEINFO_MIME_TYPE))->file($fileORdir);} $return[] = $ret;
         }}else{return false;}
     return (is_array($return) && !empty($return)) ? $return : false;}
 ///*/ Удаление файлов ///*/
     public function rm($path){
-        return !empty($path) && is_file($path) ? @unlink($path) : (array_reduce(glob($path.'/*'), function ($r, $i) { return $r && $this->rm($i); }, true)) && @rmdir($path);
+        return !empty($path) && is_file($path) ? unlink($path) : (array_reduce(glob($path.'/*'), function ($r, $i) { return $r && $this->rm($i); }, true)) && rmdir($path);
     }
- ///*/ Переименование файла ///*/   
+///*/ Переименование файла ///*/   
     public function rn($path, $name){
         $name = (trim($name)) ?? false;
         if(!file_exists($path) && !is_string($name)){return false;}
         return rename($path, pathinfo($path)['dirname']._DS_. str_replace(' ', '_', $name));
     } 
-  ///*/ Проверяет наличие сепоратора в начале или конце переданного пути ///*/       
+ ///*/ Проверяет наличие сепоратора в начале или конце переданного пути ///*/       
     public function is_seporator($dir, $sORe = 'e'){
         if(!is_string($dir) && empty($dir)){return false;}
         if('e' == $sORe){
@@ -100,253 +88,51 @@ class DiskController extends AbstractController{
             if(str_starts_with($dir, DIRECTORY_SEPARATOR)){return true;}
         }
     return false;}
-
-   
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Поиск и чтение файла
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public function File_who($file, $arst, $options) {
-
-        if ($arst == 'Что получаем: str') {
-
-            if ($options[0] == 'Поиск файла: true') {
-
-                return $file = file_get_contents($file, FILE_USE_INCLUDE_PATH);
-
-            } 
-
-            $file = self::dopRes($file); // удаление слеша
-            $file = self::dopUrl($file); // получить поть от корня
-            return $file = file_get_contents($file);
-            
-        } elseif ($arst == 'Что получаем: array') {
-
-            if ($options[0] == 'Поиск файла: true' and 
-                $options[1] == 'Пропускать пустые строки: true') {
-
-                return $file = file($file, 
-                    FILE_USE_INCLUDE_PATH | 
-                    FILE_IGNORE_NEW_LINES | 
-                    FILE_SKIP_EMPTY_LINES);
-
-            } elseif ($options[0] == 'Поиск файла: false' and 
-                      $options[1] == 'Пропускать пустые строки: true') {
-
-                $file = self::dopRes($file); // удаление слеша
-                $file = self::dopUrl($file); // получить поть от корня
-                return $file = file($file, 
-                    FILE_IGNORE_NEW_LINES | 
-                    FILE_SKIP_EMPTY_LINES);
-
-            } elseif ($options[0] == 'Поиск файла: true' and 
-                      $options[1] == 'Пропускать пустые строки: false') {
-
-                return $file = file($file, 
-                    FILE_USE_INCLUDE_PATH | 
-                    FILE_IGNORE_NEW_LINES);
-
-            } elseif ($options[0] == 'Поиск файла: false' and 
-                      $options[1] == 'Пропускать пустые строки: false') {
+///*/ Заворачивает каталог в архив ///*/ 
+    public static function zip($source){
+        $destination = sys_get_temp_dir()._DS_.uniqid('arh').'.zip';
+        if (!extension_loaded('zip') || !file_exists($source)){return false;}
+        $zip = new \ZipArchive(); 
+        if(!$zip->open($destination, \ZipArchive::CREATE)){return false;}
+        
+        $source = str_replace(['\\', '/'], _DS_, realpath($source));
+        
+        if (is_dir($source)){
+            $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($source), \RecursiveIteratorIterator::SELF_FIRST);
+            foreach ($files as $file){
+                $file = str_replace(['\\', '/'], _DS_, $file);
+                if ($file == '.' || $file == '..' || empty($file) || _DS_ == $file){continue;}
+                if (in_array(substr($file, strrpos($file, _DS_) + 1), array('.', '..'))){continue;}
                 
-                $file = self::dopRes($file); // удаление слеша
-                $file = self::dopUrl($file); // получить поть от корня
-                return $file = file($file, FILE_IGNORE_NEW_LINES);
-            }
-        }
-    }
+                $file = realpath($file); $file = str_replace(['\\', '/'], _DS_, $file);
+                
+                if (is_dir($file)){
+                    $d = str_replace($source . _DS_, '', $file);
+                    if (empty($d)){continue;}
+                    $zip->addEmptyDir($d);
+                } elseif (is_file($file)){
+                    $zip->addFromString(str_replace($source . _DS_, '', $file),file_get_contents($file));
+        }}} elseif (is_file($source)){$zip->addFromString(basename($source), file_get_contents($source));}
+        return ($zip->close()) ? $destination : false;}  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // перезаписать файл
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function SetFile($file, $array)
-    {
-        $s = 1;
+public function SetFile($file, $array)
+{
+$s = 1;
 
-        foreach ($array as $value) {
-            if ($s === 1) {
-                file_put_contents($file, $value."\r\n");
-                $s++;
-            } else {
-                file_put_contents($file, $value."\r\n", FILE_APPEND | LOCK_EX);
-            }
-        }
-    }
+foreach ($array as $value) {
+if ($s === 1) {
+file_put_contents($file, $value."\r\n");
+$s++;
+} else {
+file_put_contents($file, $value."\r\n", FILE_APPEND | LOCK_EX);
+}
+}
+}
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// работа со строками
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //
-    /* строка (найти, получить, заменить, добавить)
-    public function JobFileStr($file, $content, $options = 'r', $array)
-    {
-        if ($array == false) $array = $this -> options;
-
-        $this -> in_root = self::dopUrl(self::dopRes($file));
-        $this -> in_file = self::File_who($file, $array[0], $array[1]);
-        $this -> in_file_clon = $this -> in_file;
-
-        //////////////////////////////
-        // найти / получить строку
-        //////////////////////////////
-        $GetStr = function ($Search_str) {
-
-            foreach ($this -> in_file as $key => $value) {
-
-                if (is_string($Search_str) and $value == $Search_str) {
-                    return array('строка' => $key, 'текст' => $value);
-                }
-
-                if (is_int($Search_str) and $key == $Search_str) {
-                    return array('строка' => $key, 'текст' => $value);
-                }
-            }
-
-            return false;
-        };
-
-        //////////////////////////////
-        // заменить строку
-        //////////////////////////////
-        $SetStr = function ($Search_str) {
-
-            foreach ($this -> in_file as $key => $value) {
-
-                if (is_array($Search_str[1]) and is_int($Search_str[0]) and $key === $Search_str[0]) {
-                    
-                    unset($this -> in_file_clon[$key]);
-                    array_splice($this -> in_file_clon, $Search_str[0], 0, $Search_str[1]);
-
-                    self::SetFile($this -> in_root, $this -> in_file_clon);
-
-                    return $this -> in_file_clon;
-
-                } else {
-
-                    if (is_string($Search_str[0]) and $value == $Search_str[0]) {
-
-                        $this -> in_file_clon[$key] = $Search_str[1];
-                        return array('строка' => $key, 'текст' => $value);
-                    }
-
-                    if (is_int($Search_str[0]) and $key == $Search_str[0]) {
-
-                        $this -> in_file_clon[$key] = $Search_str[1];
-                        return $this -> in_file_clon;
-                    }
-                }
-
-
-            }
-
-            return false;
-        };
-
-        //////////////////////////////
-        // заменить строки
-        //////////////////////////////
-        $SetStrArr = function ($Search_str, $bool) {
-
-            $i = 0;
-            $array_old_str = array();
-
-            foreach ($this -> in_file as $key => $value) {
-
-                if (is_int($Search_str[0][0]) and is_int($Search_str[0][1]) and $key >= $Search_str[0][0]) {
-
-                    if ($key == $Search_str[0][1]) {
-
-                        if ($bool) {
-
-                            $array_old_str[] = $this -> in_file_clon[$key];
-                            self::dopCube($Search_str, $key, $i);
-                            array_splice($this -> in_file_clon, $Search_str[0][0], 0, $Search_str[1]);
-
-                        } elseif($bool === 'key') {
-
-                            $array_old_str[$key] = $this -> in_file_clon[$key];
-
-                        } else {
-
-                            $array_old_str[] = $this -> in_file_clon[$key];
-                        }
-
-                        return array($this -> in_file_clon, $array_old_str);
-                        exit();
-
-                    } else {
-
-                        if ($bool) {
-
-                            $array_old_str[] = $this -> in_file_clon[$key];
-                            self::dopCube($Search_str, $key, $i);
-
-                        } elseif($bool === 'key') {
-
-                            $array_old_str[$key] = $this -> in_file_clon[$key];
-
-                        } else {
-
-                            $array_old_str[] = $this -> in_file_clon[$key];
-                        }
-                    }
-                }
-            }
-
-            return false;
-        };
-
-
-        if (is_writable($this -> in_root) and $options === 'r') {
-
-            return $this -> in_file;
-            exit();
-        }
-
-        if (is_writable($this -> in_root) and $options === 'a') {
-
-            $count = count($this -> in_file_clon);
-
-            array_splice($this -> in_file_clon, $count, 0, $content);
-            return array($this -> in_file, $this -> in_file_clon);
-            exit();
-        }
-
-        if (is_writable($this -> in_root) or $options === 'w') {
-
-            // запись, содание, изменение
-            if ($options === 'w') {
-
-                if (is_array($content)) {
-
-                    if (is_array($content[0]) and is_array($content[1])) {
-
-                        return $SetStrArr($content, true);
-                    }
-
-                    if (is_string($content[0]) and is_string($content[1]) or 
-                        is_int($content[0]) and is_string($content[1]) or 
-                        is_int($content[0]) and is_array($content[1])) {
-
-                        return $SetStr($content);
-                    }
-
-                    if (is_array($content[0]) and $content[1] === false) {
-                        
-                        return $SetStrArr($content, false);
-                    }
-
-                } else {
-
-                    return $GetStr($content);
-                }               
-            }
-        }
-    } 
-     ///*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Переименование файлов (работает для директорий) 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

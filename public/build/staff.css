@@ -5314,6 +5314,7 @@ body {
     margin-bottom: 12px;
     border: 1px solid #EEEFF0;
     transition: 0.2s;
+    overflow: hidden;
 }
 
 .disc__element input[type="checkbox"] {
@@ -5349,7 +5350,8 @@ body {
 
 .disc__element__name {
     display: flex;
-    word-break: break-word;
+    word-break: unset;
+    white-space: nowrap;
     align-items: flex-end;
     justify-content: start;
     margin-left: 8px;
@@ -5372,10 +5374,10 @@ body {
 }
 
 .fileload, .folderload {
-    opacity: 0;
+    display: none;
     pointer-events: none;
-    transition: .3s;
-}
+    transition: .7s;
+}.onModal{display: block!important; pointer-events: auto; z-index: 1001}.offModal{display: none; pointer-events: none; z-index: 0}
 
 .fileload-modal {
     position: absolute;
@@ -5553,15 +5555,39 @@ body {
     width: 100%;
     height: 100%;
     background-color: #9b9a9a;
-    z-index: 0;
-    opacity: 0;
+    z-index: 1000;
     transition: 0.5s;
-    pointer-events: none;
+    pointer-events: auto;
+    opacity: .3;
+    display: none;
 }
 
 .disc-footer__action .icon-plus-circle {
     transform: rotate(-45deg);
     margin: 0 6px 0 10px;
+}
+
+.dropdown__menu {
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    border: 1px solid #efefef;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px 0px grey;
+}
+
+.dropdown__menu__element {
+    min-height: 20px;
+    background-color: #fff;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+}
+
+.dropdown__menu__element:hover {
+    background-color: #ededed;
+    transition: 0.2s 
 }
 
 .pointer {

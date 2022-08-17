@@ -1,0 +1,3 @@
+
+[20:33:16] SELECT * FROM uin WHERE type = 'district'
+[21:42:36] SELECT * FROM uin WHERE type = 'district'

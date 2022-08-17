@@ -817,6 +817,7 @@ a {
     margin-right: 32px;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #000;
 }
 
 .chosen-container-single .chosen-single-with-deselect span {
@@ -1595,8 +1596,8 @@ header {
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 250px;
-  min-width: 250px;
+  width: 294px;
+  min-width: 294px;
   color: #535c69;
   transition: 0.5s;
   background: none !important;
@@ -1605,7 +1606,7 @@ header {
 .menu__main {
  position: fixed;
  height: 100vh;
- width: 250px;
+ width: 294px;
  min-height: 700px;
  display: flex;
  flex-direction: column;
@@ -1778,9 +1779,19 @@ header {
   transition: 0.1s;
   text-decoration: none;
   color: #535c69;
-  width: 95%;
+  width: 100%;
   white-space: nowrap;
   padding: 10px 10px 10px 25px;
+  position: relative;
+}
+
+.menu__body__list a .menu-counter {
+  background: #F7685B;
+  color: #fff;
+  padding: 2px 9px;
+  border-radius: 34px;
+  font-size: 18px;
+  margin-left: 8px;
 }
 
 .menu__folded .menu__body__list a {
@@ -2197,6 +2208,10 @@ header {
 .body__back-button a {
   text-decoration: none;
   color: #535c69;
+}
+
+.body__back-button__tables a {
+  margin-right: 25px;
 }
 
 .body__back-button img {
@@ -2930,9 +2945,8 @@ header {
   align-items: center;
 }
 
-.reports-body__header__edit {
-  margin-left: 14px;
-  margin-right: 24px;
+.reports-body__header__buttons .btn {
+  margin-left: 32px;
 }
 
 .reports-body__header__edit, .reports-body__header__print {
@@ -2982,6 +2996,7 @@ header {
   user-select: none;
   cursor: pointer;
   margin-right: 13px;
+  border-radius: 4px;
 }
 
 .reports-footer__action img {
@@ -3100,15 +3115,44 @@ header {
   -moz-box-shadow: -1px 3px 29px -5px rgba(34, 60, 80, 0.2);
   box-shadow: -1px 3px 29px -5px rgba(34, 60, 80, 0.2);
   user-select: none;
+  border-radius: 4px;
 }
 
 .success__modal__header__exit, .fail__modal__header__exit, .revision__modal__header__exit {
   cursor: pointer;
 }
 
+.fail__modal__header__text, .success__modal__header__text {
+  margin-left: 4px;
+}
+.fail__modal__header__exit, .success__modal__header__exit{
+  margin-right: 12px;
+}
+
 .success__modal__header__exit img, .fail__modal__header__exit img, .revision__modal__header__exit img {
   width: 20px;
   height: 20px;
+}
+
+.fail__modal__body form {
+  width: 100%;
+}
+
+.fail__modal__body form .fail__modal__footer button {
+  border: unset;
+  border-radius: 4px;
+}
+
+.fail__modal__body form textarea {
+  border-radius: 4px;
+}
+
+.success__modal__body__text {
+  margin: 0 0 14px;
+}
+
+.fail__modal__body__text {
+  margin: 0 0 8px;
 }
 
 .revision__modal__body {
@@ -3161,11 +3205,11 @@ header {
 
 .success__modal__body {
   font-size: 14px;
-  height: 120px;
   flex-direction: column;
   align-items: start;
   padding: 17px 15px 18px 15px;
   margin-top: 6px;
+  display: table;
 }
 
 .fail__modal__body {
@@ -3222,12 +3266,14 @@ header {
   height: 40px;
   background-color: #00B894;
   color: #fff;
-  display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 1px;
   user-select: none;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 4px;
+  display: flex;
 }
 
 .success__modal__body__button:active {
@@ -3240,6 +3286,7 @@ header {
 
 .reports-body__side-block__button {
   width: unset;
+  border-radius: 4px;
 }
 
 .reports-body__side-block {
@@ -3529,6 +3576,12 @@ body {
   padding: 10px;
   transition: 0.3s;
   border-radius: 5px;
+}
+
+.empty-message {
+  background: rgba(0,0,0,0.03);
+  padding: 18px;
+  border-radius: 4px;
 }
 
 .warning {
@@ -4674,7 +4727,7 @@ body {
     font-size: 14px;
     color: #fff;
     background-color: #00B894;
-    border-radius: 1px;
+    border-radius: 4px;
     border: none;
 }
 
@@ -6034,12 +6087,12 @@ canvas {
     border: 1px solid #D4D6D9;
 }
 
-.sv-table .ministry-index-input {
+.sv-table .success-index-input {
     border: 1px solid #3AA12A;
     background-color: #EAF9C4;
 }
 
-.sv-table .district-index-input {
+.sv-table .danger-index-input {
     border: 1px solid #F7685B;
     background-color: #EEF2F4;
 }
@@ -6050,7 +6103,7 @@ canvas {
     color: #b7b1b1;
 }
 
-.sv-table .ministry-index-input.not-current, .sv-table .district-index-input.not-current, .sv-table .result-index-input.not-current {
+.sv-table .success-index-input.not-current, .sv-table .danger-index-input.not-current, .sv-table .result-index-input.not-current {
     text-align: center;
 }
 

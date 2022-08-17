@@ -50,94 +50,127 @@
                 <div class="reports-title">
                     <div class="reports-title__my-reports">
                         <div class="reports-title__my-reports__text">
-                            <h1>Грозный: Таблица 2022</h1>
+                            <h1 class="district">Сводная таблица «<?= $report['name'] ?>»</h1>
+                            <span class="title">(Район: <?= $uin['owner'] ?>)</span>
                         </div>
+
                         <div class="reports-title__my-reports__btn">
                         </div>
                     </div>
                 </div>
 
-                <div class="table">
-<!--                    --><?php //pa($_POST) ?>
+                <?php if ($report['status'] == 3) { ?>
 
-                    <form method="post" action="">
-                        <table>
-                            <thead class="table__main__header">
-                                <tr>
-                                    <th>Показатель</th>
-                                    <th>Описание</th>
-                                    <th>Ед. измерения</th>
-                                    <th>Ведомство</th>
-                                    <th>Район</th>
-                                    <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
-                                        <th>Действие</th>
-                                        <th>Итог</th>
-                                    <?php } ?>
-                                </tr>
-                            </thead>
+                    <div class="table">
 
-                            <tbody>
-                                <?php foreach ($marks as $mark) { ?>
+                        <form method="post" action="">
+                            <table>
+                                <thead class="table__main__header">
                                     <tr>
-                                        <td><?= $mark['num'] ?></td>
-                                        <?php if ($mark['type'] != 'description') { ?>
-                                            <td><?= $mark['name'] ?></td>
-                                            <td><?= $mark['unit'] ?></td>
-                                            <td>
-                                                <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
-                                                    <label for="ministryMark<?= $mark['num'] ?>"></label>
-                                                    <input class="ministry-index-input" type="text" name="marks[<?= $mark['num'] ?>][ministry]" <?= (isset($mark['ministry'])) ? 'value="' . $mark['ministry'] .  '"' : '' ?> placeholder="Индекс министерства" id="ministryMark<?= $mark['num'] ?>">
-                                                <?php } else { ?>
-                                                    <label>
-                                                        <input class="ministry-index-input not-current" type="text" <?= (isset($mark['ministry'])) ? 'value="' . $mark['ministry'] .  '"' : '' ?> placeholder="Не введен" disabled>
-                                                    </label>
-                                                <?php } ?>
-                                            </td>
-                                            <td>
-                                                <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
-                                                    <label for="districtMark<?= $mark['num'] ?>"></label>
-                                                    <input class="district-index-input" type="text" name="marks[<?= $mark['num'] ?>][district]" <?= (isset($mark['district'])) ? 'value="' . $mark['district'] .  '"' : '' ?> placeholder="Индекс района" id="districtMark<?= $mark['num'] ?>">
-                                                <?php } else { ?>
-                                                    <label>
-                                                        <input class="district-index-input not-current" type="text" <?= (isset($mark['district'])) ? 'value="' . $mark['district'] .  '"' : '' ?> placeholder="Не введен" disabled>
-                                                    </label>
-                                                <?php } ?>
-                                            </td>
-                                            <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
-                                                <td>
-                                                    <div class="chosen-search-off">
-                                                        <label for="markActions<?= $mark['num'] ?>"></label>
-                                                        <select class="markAction" id="markActions<?= $mark['num'] ?>" name="marks[<?= $mark['num'] ?>][action]" data-placeholder="Выбрать действие">
-                                                            <option value="0" selected>Выбрать действие</option>
-                                                            <option value="agreed">Согласовано</option>
-                                                            <option value="disagreed">Не согласовано</option>
-                                                        </select>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <label for="districtResult<?= $mark['num'] ?>"></label>
-                                                    <div class="table-result-block">
-                                                        <div class="result active">
-                                                            <input class="result-index-input not-current" type="text" value="<?= (isset($mark['result'])) ? $mark['result'] : 'Не согласовано' ?>" placeholder="Не введен" disabled>
-                                                        </div>
-                                                        <div class="input">
-                                                            <input type="text" <?= (isset($mark['result'])) ? 'value="' . $mark['result'] .  '"' : '' ?> name="marks[<?= $mark['num'] ?>][result]" placeholder="Итоговый индекс" id="districtResult<?= $mark['num'] ?>">
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            <?php } ?>
-                                        <?php } else { ?>
-                                            <td colspan="6"><?= $mark['name'] ?></td>
+                                        <th>Показатель</th>
+                                        <th>Описание</th>
+                                        <th>Ед. измерения</th>
+                                        <th>Ведомство</th>
+                                        <th>Район</th>
+                                        <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
+                                            <th>Действие</th>
                                         <?php } ?>
+                                        <th>Итог</th>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                        <div class="table-actions">
-                            <input type="submit" class="profile__form__footer__button" value="Сохранить изменения">
-                        </div>
-                    </form>
-                </div>
+                                </thead>
+
+                                <tbody>
+                                    <?php foreach ($marks as $mark) { ?>
+                                        <tr>
+                                            <td><?= $mark['num'] ?></td>
+                                            <?php if ($mark['type'] != 'description') { ?>
+                                                <td><?= $mark['name'] ?></td>
+                                                <td><?= $mark['unit'] ?></td>
+                                                <td>
+                                                    <?php if ($this->security->userHasRole(['ministry_boss', 'ministry_staff'])) { ?>
+                                                        <label for="ministryMark<?= $mark['num'] ?>"></label>
+                                                        <input class="success-index-input" type="text" name="marks[<?= $mark['num'] ?>][ministry]" <?= (isset($mark['ministry'])) ? 'value="' . $mark['ministry'] .  '"' : '' ?> placeholder="Индекс министерства" id="ministryMark<?= $mark['num'] ?>">
+                                                    <?php } else { ?>
+                                                        <label>
+                                                            <input class="danger-index-input not-current" type="text" <?= (isset($mark['ministry'])) ? 'value="' . $mark['ministry'] .  '"' : '' ?> placeholder="Не введен" disabled>
+                                                        </label>
+                                                    <?php } ?>
+                                                </td>
+                                                <td>
+                                                    <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
+                                                        <label for="districtMark<?= $mark['num'] ?>"></label>
+                                                        <input class="success-index-input" type="text" name="marks[<?= $mark['num'] ?>][district]" <?= (isset($mark['district'])) ? 'value="' . $mark['district'] .  '"' : '' ?> placeholder="Индекс района" id="districtMark<?= $mark['num'] ?>">
+                                                    <?php } else { ?>
+                                                        <label>
+                                                            <input class="danger-index-input not-current" type="text" <?= (isset($mark['district'])) ? 'value="' . $mark['district'] .  '"' : '' ?> placeholder="Не введен" disabled>
+                                                        </label>
+                                                    <?php } ?>
+                                                </td>
+                                                <?php if ($this->security->userHasRole(['district_boss', 'district_staff'])) { ?>
+                                                    <td>
+                                                        <div class="chosen-search-off">
+                                                            <label for="markActions<?= $mark['num'] ?>"></label>
+                                                            <select class="markAction" id="markActions<?= $mark['num'] ?>" name="marks[<?= $mark['num'] ?>][action]" data-placeholder="Выбрать действие">
+                                                                <option value="0" selected>Выбрать действие</option>
+                                                                <option value="agreed">Согласовано</option>
+                                                                <option value="disagreed">Не согласовано</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <label for="districtResult<?= $mark['num'] ?>"></label>
+                                                        <div class="table-result-block">
+                                                            <div class="result active">
+                                                                <label>
+                                                                    <input class="result-index-input not-current" type="text" value="<?= (isset($mark['result'])) ? $mark['result'] : 'Не согласовано' ?>" placeholder="Не введен" disabled>
+                                                                </label>
+                                                            </div>
+                                                            <div class="input">
+                                                                <input type="text" class="success-index-input" <?= (isset($mark['result'])) ? 'value="' . $mark['result'] .  '"' : '' ?> name="marks[<?= $mark['num'] ?>][result]" placeholder="Итоговый индекс" id="districtResult<?= $mark['num'] ?>">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                <?php } else { ?>
+                                                    <td>
+                                                        <label for="districtResult<?= $mark['num'] ?>"></label>
+                                                        <div class="table-result-block">
+                                                            <div class="result active">
+                                                                <label>
+                                                                    <input class="result-index-input not-current" type="text" value="<?= (isset($mark['result'])) ? $mark['result'] : 'Не согласовано' ?>" placeholder="Не введен" disabled>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                <?php } ?>
+                                            <?php } else { ?>
+                                                <td colspan="6"><?= $mark['name'] ?></td>
+                                            <?php } ?>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                            <div class="table-actions">
+                                <input type="submit" class="profile__form__footer__button" value="Сохранить изменения">
+                            </div>
+                        </form>
+                    </div>
+
+                <?php } else { ?>
+                    <?php
+                        $statuses = [
+                                1 => 'Успешно',
+                                4 => 'На проверке',
+                                9 => 'Завершен'
+                        ];
+                    ?>
+
+                    <div class="empty-message">
+                        Данные отчета можно менять только когда у отчета статус: «В работе»
+                        <br>
+                        <br>
+                        Текущий статус: «<?= $statuses[$report['status']] ?>»
+                    </div>
+                <?php } ?>
 
             </div>
         </div>

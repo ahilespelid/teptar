@@ -31,19 +31,19 @@
                             </div>
                         <?php } ?>
                     </div>
-    <!--                <div class="sort">-->
-    <!--                    <span class="sort__toggle">-->
-    <!--                        Сортировать по:-->
-    <!--                        <span class="sort__toggle__time">Году</span>-->
-    <!--                        <img src="/assets/img/svg/sort.svg">-->
-    <!--                    </span>-->
-    <!--                    <div class="sort__block none">-->
-    <!--                        <div class="sort__block__element"><span class="icon-folder_alt sort-element"></span>По годам</div>-->
-    <!--                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По месяцам</div>-->
-    <!--                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По важности</div>-->
-    <!--                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По просмотрам</div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
+<!--                <div class="sort">-->
+<!--                    <span class="sort__toggle">-->
+<!--                        Сортировать по:-->
+<!--                        <span class="sort__toggle__time">Году</span>-->
+<!--                        <img src="/assets/img/svg/sort.svg">-->
+<!--                    </span>-->
+<!--                    <div class="sort__block none">-->
+<!--                        <div class="sort__block__element"><span class="icon-folder_alt sort-element"></span>По годам</div>-->
+<!--                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По месяцам</div>-->
+<!--                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По важности</div>-->
+<!--                        <div class="sort__block__element"><span class="icon-save_light sort-element"></span>По просмотрам</div>-->
+<!--                    </div>-->
+<!--                </div>-->
                 </div>
 
                 <div class="reports">
@@ -76,7 +76,7 @@
                                             1 => 'finished',
                                             2 => 'expired',
                                             3 => 'warning',
-                                            4 => 'review'
+                                            4 => 'warning'
                                     ];
 
                                     echo (isset($statuses[$name])) ? ' ' . $statuses[$name] : '';

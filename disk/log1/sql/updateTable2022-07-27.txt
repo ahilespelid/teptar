@@ -1,0 +1,2 @@
+
+[21:42:36] UPDATE `users` SET `hash`=:hash, `token`=:token WHERE `id` = :id;

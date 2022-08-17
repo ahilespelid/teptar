@@ -4,7 +4,8 @@
 
 ###> Other files ###
 yarn.lock
-node_modules
+/node_modules
 #--------DIR-------#
-log/
-vendor/
+/log
+/vendor
+/public/build

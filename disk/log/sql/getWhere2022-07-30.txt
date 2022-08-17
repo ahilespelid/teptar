@@ -1,0 +1,14 @@
+
+ SELECT * FROM `users` WHERE `login` ='admin' AND pass ='21232f297a57a5a743894a0e4a801fc3' ORDER BY `id` ASC;
+ SELECT * FROM `uin` WHERE `id` ='29' AND name ='ABC' ORDER BY `id` ASC;
+ SELECT * FROM `users` WHERE `login` ='rustam' AND pass ='a25221cf7964323dac587ee0c1e53d13' ORDER BY `id` ASC;
+ SELECT * FROM `uin` WHERE `id` ='4' AND name ='CHR_GRR' ORDER BY `id` ASC;
+ SELECT * FROM `users` WHERE `login` ='admin' AND pass ='21232f297a57a5a743894a0e4a801fc3' ORDER BY `id` ASC;
+ SELECT * FROM `uin` WHERE `id` ='29' AND name ='ABC' ORDER BY `id` ASC;
+ SELECT * FROM `users` WHERE `login` ='admin' AND pass ='21232f297a57a5a743894a0e4a801fc3' ORDER BY `id` ASC;
+ SELECT * FROM `uin` WHERE `id` ='29' AND name ='ABC' ORDER BY `id` ASC;
+ SELECT * FROM `indexes` WHERE `id` ='1' ORDER BY `id` ASC;
+ SELECT * FROM `index` WHERE `id` ='1' ORDER BY `id` ASC;
+ SELECT * FROM `index` WHERE `id` ='1' ORDER BY `id` ASC;
+ SELECT * FROM `users` WHERE `login` ='admin' AND pass ='21232f297a57a5a743894a0e4a801fc3' ORDER BY `id` ASC;
+ SELECT * FROM `uin` WHERE `id` ='29' AND name ='ABC' ORDER BY `id` ASC;

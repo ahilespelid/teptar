@@ -13,16 +13,17 @@ class CalculateModel extends \App\Data{
           $this->tableIndexes = $GLOBALS['db']['table']['indexes'];
     }
 
-    public function markGeneralRating($mark) {
+    public function markGeneralRating($mark, $year) {
         $sql = '
             SELECT slug, owner, firstname, lastname, secondname, login, avatar, `mark_' . $mark . '` AS `index`
             FROM kp
             LEFT JOIN reports ON kp.id_report = reports.id
             LEFT JOIN uin ON reports.id_uin = uin.id
             LEFT JOIN users ON reports.id_userBoss = users.id
-            WHERE kp.id
+            LEFT JOIN deadline ON deadline.id = reports.id_deadline
+            WHERE deadline.year = ' . $year . '
             ORDER BY `index` DESC
-            ';
+        ';
 
         return $this->customSQL($sql);
     }
@@ -41,7 +42,7 @@ class CalculateModel extends \App\Data{
             LEFT JOIN uin on calculate.id_uin = uin.id
             WHERE mark = ' . $mark . '
             AND slug = "' . $district . '"
-            ORDER BY deadline DESC
+            ORDER BY deadline ASC
         ';
 
         return $this->customSQL($sql);

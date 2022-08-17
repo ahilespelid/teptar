@@ -49,7 +49,7 @@
                                         </a>
 
                                         <div class="reports__body__line__activity">
-                                            <?= $district['report']['submitting'] ?>
+                                            <?= $district['report']['creating'] ?>
                                         </div>
 
                                         <div class="reports__body__line__term">
@@ -60,7 +60,7 @@
                                                 } elseif ($district['report']['status'] == 3) {
                                                     $class = '<span class="warning">В работе</span>';
                                                 } elseif ($district['report']['status'] == 4) {
-                                                    $class = '<span class="expired">Дорабатывается</span>';
+                                                    $class = '<span class="warning">На проверке</span>';
                                                 } elseif ($district['report']['status'] == 9) {
                                                     $class = '<span class="completed">Завершен</span>';
                                                 }

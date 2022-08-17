@@ -10,6 +10,7 @@ class SupportController extends AbstractController {
     public $uins;
     public $marks;
     public $calculations;
+    public $supports;
 
     public function __construct()
     {
@@ -17,10 +18,27 @@ class SupportController extends AbstractController {
         $this->users = new \App\Models\UserModel;
         $this->marks = new \App\Models\MarkModel;
         $this->calculations = new \App\Models\CalculateModel;
+        $this->supports = new \App\Models\SupportModel;
         $this->security = new Security();
     }
 
     public function support() {
+        if ($_POST && isset($_POST['message'])) {
+            $this->supports->add([
+                'id_user' => $this->user()['id'],
+                'date' => new \DateTime('now'),
+                'message' => $_POST['message'],
+                'seen' => 0
+            ]);
+
+            setcookie('alert', json_encode([
+                'message' => 'Ваше сообщение отправлено в службу поддержки: ' . $_POST['message'],
+                'type' => 'success'
+            ]), time()+1, '/');
+
+            $this->redirectToRoute('/support');
+        }
+
         $this->render('/staff/support/support.php');
     }
 

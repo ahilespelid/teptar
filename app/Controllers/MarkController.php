@@ -21,7 +21,7 @@ class MarkController
 
     public function jsonGeneralRating() {
         if (isset($_GET['mark']) && $this->marks->findOneBy(['num' => $_GET['mark']]) || isset($_GET['mark']) && $_GET['mark'] == 'ko') {
-            $calculations = $this->calculations->markGeneralRating($_GET['mark']);
+            $calculations = $this->calculations->markGeneralRating($_GET['mark'],$_GET['year']);
 
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode($calculations, JSON_UNESCAPED_UNICODE);
@@ -32,9 +32,9 @@ class MarkController
     }
 
     public function jsonDistrictRating() {
-        if (isset($_GET['mark']) && isset($_GET['district']) && $this->marks->findOneBy(['num' => $_GET['mark']]) && $this->districts->findOneBy(['slug' => $_GET['district']])) {
+        if (isset($_GET['mark']) && isset($_GET['district']) && isset($_GET['year']) && $this->marks->findOneBy(['num' => $_GET['mark']]) && $this->districts->findOneBy(['slug' => $_GET['district']])) {
             $districtRating = $this->calculations->markDistrictRating($_GET['mark'], $_GET['district']);
-            $markRating = $this->calculations->markGeneralRating($_GET['mark']);
+            $markRating = $this->calculations->markGeneralRating($_GET['mark'], $_GET['year']);
 
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode([

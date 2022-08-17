@@ -1,7 +1,6 @@
 <div class="rating">
 
     <div class="rating__regions block-box sub-block-margin-right">
-
         <ul>
             <?php foreach ($ratings as $key => $rating) { ?>
                 <li><b><?= $key + 1 ?>.</b> <?= $rating['owner'] ?></li>
@@ -16,15 +15,18 @@
 
             <a id="districtsRating" class="custom-anchor"></a>
 
-<!--            <div class="dropdown interactive rounded right dark chevron">-->
-<!--                <div class="current button button-dropdown rounded">--><?php //if (isset($_GET['ratingYear'])) { ?><!----><?//= $_GET['ratingYear'] ?><!----><?php //} else { ?><!--2020--><?php //} ?><!--</div>-->
-<!---->
-<!--                <div class="options">-->
-<!--                    <a class="option" href="?ratingYear=2020#districtsRating">2020</a>-->
-<!--                    <a class="option" href="?ratingYear=2019#districtsRating">2019</a>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div class="dropdown interactive rounded right dark chevron" id="districtsGeneralRatingToggle">
+                <div class="current button button-dropdown rounded"><?= (new DateTime('-1 year'))->format('Y') ?></div>
 
+                <?php $first = 2020 ?>
+                <?php $last = (int)(new DateTime('-1 year'))->format('Y') ?>
+
+                <div class="options">
+                    <?php for ($i = 0; $i <= $last - $first; $i++) { ?>
+                        <span class="option"><?= $first + $i ?></span>
+                    <?php } ?>
+                </div>
+            </div>
         </div>
 
         <div class="rating__diagram block-box sub-block-margin-top">

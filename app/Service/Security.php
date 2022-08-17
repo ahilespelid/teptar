@@ -30,7 +30,7 @@ class Security
     }
 
     public function unreadMessages() {
-        return $this->messages->count(['seen' => 0]);
+        return $this->messages->count(['answered' => 0]);
     }
 
     // Получает массив правил из файла core/rules.php

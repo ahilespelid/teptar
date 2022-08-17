@@ -26,7 +26,7 @@
                 <?php } ?>
 
                 <?php if ($this->security->userHasRole(['admin_admin'])) { ?>
-                    <a href="/messages" <?php if ($this->security->route == 'messages') { echo 'class="active"'; } ?>>
+                    <a href="/messages" <?php if ($this->security->route == 'messages' || $this->security->route == 'messages/answers') { echo 'class="active"'; } ?>>
                         <span class="if_active">
                             <span class="icon-envelope menu-icon"></span>
                             <span>Сообщении</span>

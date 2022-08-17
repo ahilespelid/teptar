@@ -156,7 +156,7 @@
                                 <span class="side-block__header__status"><?= $data['status']['name'] ?></span>
                                 <span class="side-block__header__date">
                                     <?php if ($data['report']['submitting']) { ?>
-                                        <?= (new DateTime($data['report']['submitting']))->format('d.m.o G:s') ?>
+                                        <?= (new DateTime($data['report']['submitting']))->format('d.m.o G:i') ?>
                                     <?php } ?>
                                 </span>
                             </div>
@@ -171,14 +171,14 @@
                                 <ul class="side-block__body__values">
                                     <li class="side-block__body__term-date">
                                         <?php if ($data['deadline']) { ?>
-                                            <?= (new DateTime($data['deadline']))->format('d.m.o G:s') ?>
+                                            <?= (new DateTime($data['deadline']))->format('d.m.o G:i') ?>
                                         <?php } else { ?>
                                             - дата не указана -
                                         <?php } ?>
                                      </li>
                                     <li class="side-block__body__create-date">
                                         <?php if ($data['report']['creating']) { ?>
-                                            <?= (new DateTime($data['report']['creating']))->format('d.m.o G:s') ?>
+                                            <?= (new DateTime($data['report']['creating']))->format('d.m.o G:i') ?>
                                         <?php } else { ?>
                                             - дата не указана -
                                         <?php } ?>

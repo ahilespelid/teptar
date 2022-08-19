@@ -35,6 +35,9 @@
         'report/sv-table',
         'switchReportStatus',
         'messages',
-        'messages/answers'
+        'messages/answers',
+        'profile/confirm',
+        'confirmUser',
+        'deleteUser'
     ]
 ];

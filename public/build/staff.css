@@ -3652,6 +3652,10 @@ body {
   background-color: #d8fecb;
 }
 
+.muted {
+  color: #aaa;
+}
+
 .reports {
   max-height: 70vh;
 }

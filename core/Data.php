@@ -241,7 +241,11 @@ abstract class Data{
         // Генерация строки запроса SQL для обязательного параметра критериев $criteria
         foreach ($criteria as $column => $value) {
             ($iteration == 1) ? $criteriaSQL .= "" : $criteriaSQL .= " AND ";
-            $criteriaSQL .= $column . " = '" . $value . "'";
+            if ($value === null) {
+                $criteriaSQL .= $column . " IS NULL";
+            } else {
+                $criteriaSQL .= $column . " = '" . $value . "'";
+            }
             $iteration += 1;
         }
 
@@ -300,7 +304,11 @@ abstract class Data{
         // Генерация строки запроса SQL для обязательного параметра критериев $criteria
         foreach ($criteria as $column => $value) {
             ($iteration == 1) ? $criteriaSQL .= "" : $criteriaSQL .= " AND ";
-            $criteriaSQL .= $column . " = '" . $value . "'";
+            if ($value === null) {
+                $criteriaSQL .= $column . " IS NULL";
+            } else {
+                $criteriaSQL .= $column . " = '" . $value . "'";
+            }
             $iteration += 1;
         }
 

@@ -1,10 +1,10 @@
-<?php
+ <?php
     $roles = ($roles = $this->model->getAll('roles')) ? array_combine(range(1, count($roles)), $roles) : null;
     $NA = 'n|a'; $readMarks =''; $uid = ($_GET['uid']) ?? false; $mid= ($_GET['mid']) ?? false;
 
     //$markForUser = $marks;
 
-    foreach ($marks as $user => $activMarks){ ///* / pa($activMarks); ///* /
+    foreach ($marks as $user => $activMarks) { ///* / pa($activMarks); ///* /
         $ava = (empty($ava = $marks[$user][0]['avatar'])) ? $this->security->setEmptyAvatar() : $ava; $fname = (empty($fname = $marks[$user][0]['firstname'])) ? $NA : $fname;
         $sname = (empty($sname = $marks[$user][0]['secondname'])) ? $NA : $sname; $lname = (empty($lname = $marks[$user][0]['lastname'])) ? $NA : $lname;
         $role = (empty($marks[$user][0]['id_role']['post'])) ? $roles[8]['post'] : $marks[$user][0]['id_role']['post'];
@@ -27,10 +27,8 @@
                 $listItem .= '<div class="item'.((!$mid && $m == $currMark[1]['id_mark']) ? ' active' :
                                                                  ((($user != $uid && $m == $currMark[1]['id_mark']) || ($user == $uid && $m == $mid)) ? ' active' : '')).'"><a href="/'.$_GET['q'].'?id='.$_GET['id'].'&uid='.$user.'&mid='.$m.'#'.$currMark[1]['id'].'">'.$m.'</a></div>';
         }}
-
 ?>
-    <div class="actions__info block-box sub-block-margin-top">
-
+     <div class="actions__info block-box sub-block-margin-top">
         <div class="actions__info-item">
             <div class="actions__activity-info">
                 <div class="actions__activity-user">
@@ -82,6 +80,7 @@
         </div>
     </div>
 <?php } ?>
+
 
 <!--    <div class="actions__info-item">-->
 <!---->

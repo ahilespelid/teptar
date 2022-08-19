@@ -134,6 +134,26 @@ class ProfileController extends AbstractController {
         $this->render('/staff/profile/new.php');
     }
 
+    public function confirmUser() {
+        if ($_GET['user']) {
+            $this->users->update(['active' => true],['id' => $_GET['user']]);
+        }
+        $this->redirectToRoute('/profile/confirm');
+    }
+
+    public function deleteUser() {
+        if ($_GET['user']) {
+            $this->users->remove(['id' => $_GET['user']]);
+        }
+        $this->redirectToRoute('/profile/confirm');
+    }
+
+    public function confirm() {
+        $this->render('/staff/profile/confirm.php', [
+            'users' => $this->users->inactiveUsers()
+        ]);
+    }
+
     public function fire() {
         if (isset($_GET['id'])) {
             $this->users->update(['active' => 0],['id' => $_GET['id']]);

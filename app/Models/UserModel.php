@@ -40,8 +40,30 @@ class UserModel extends \App\Data{
     public function getUIN(array $arg = []){if(empty($arg)){return false;}        
         $uin = $this->getWhere($this->tableUIN,$arg);
         return ((is_array($uin) && !empty($uin) && is_array(current($uin))) ? $uin[0] : []);
-        
     }
-    
+
+    public function inactiveUsers() {
+        return $this->customSQL('
+            SELECT
+                user.id,
+                user.login,
+                user.firstname,
+                user.lastname,
+                user.secondname,
+                user.phone,
+                user.email,
+                user.avatar,
+                user.age,
+                role.post,
+                uin.slug,
+                uin.owner AS district,
+                uin.type
+            FROM users user
+            LEFT JOIN roles role ON user.id_role = role.id
+            LEFT JOIN uin ON user.id_uin = uin.id
+            WHERE user.active IS NULL
+        ');
+    }
+
     public function __destruct() {$this->pdo = null;}
 }

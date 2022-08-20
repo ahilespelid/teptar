@@ -17,6 +17,20 @@
                             Вход в систему
                         </header>
 
+                        <?php if (isset($_COOKIE['defense'])) { ?>
+                            <?php $cookie = json_decode($_COOKIE['defense']) ?>
+                            <?php if ($cookie->attempts >= 3) { ?>
+                                <?php
+                                $date = new DateTime($cookie->time->date);
+                                $now = new DateTime('now');
+                                $diff = $date->diff($now);
+                                ?>
+                                <div class="form-alert">
+                                    Вы ввели неправильные данные <?= $cookie->attempts ?> раза, подождите <?= $diff->i . ':' . $diff->s . ' м.' ?> чтобы попробовать еще раз
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+
                         <div class="form">
 
                             <div class="form-group">
@@ -44,6 +58,17 @@
             </div>
 
         </div>
+
+        <style>
+            .form-alert {
+                background-color: rgba(255,255,255,0.03);
+                border-radius: 6px;
+                padding: 12px 14px;
+                margin-bottom: 20px;
+                color: #e1a6a6;
+                line-height: 24px;
+            }
+        </style>
 
     </body>
 

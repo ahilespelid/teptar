@@ -82,6 +82,25 @@ class UserController extends AbstractController{
                         }
                     }
                 }
+            } else {
+                if (isset($_COOKIE['defense'])) {
+                    $cookie = json_decode($_COOKIE['defense']);
+                    $date = new \DateTime('now');
+                    if ($cookie->attempts >= 4) {
+                        $date = new \DateTime('now + 1 minutes');
+                    }
+                    setcookie('defense', json_encode([
+                        'time' => $date,
+                        'attempts' => $cookie->attempts + 1
+                    ]), time()+3600, '/');
+                } else {
+                    setcookie('defense', json_encode([
+                        'time' => new \DateTime('now'),
+                        'attempts' => 1
+                    ]), time()+3600, '/');
+                }
+
+                $this->redirectToRoute('/login');
             }
         }
         if ($is_loginUrl) {

@@ -30,6 +30,7 @@ class AbstractController {
         } else {
             throw new \Exception("Файл на вид по пути '$view' не найден.");
         }
+        return $parameters;
     }
 
     public function layout($view) {

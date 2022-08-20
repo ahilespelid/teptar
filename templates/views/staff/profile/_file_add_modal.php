@@ -5,6 +5,7 @@
             <i class="icon-cross pointer"></i>
         </div>
         <div class="fileload-modal__body">
+        <form style="height: 100%; width: 100%;">
             <label for="fileload-modal__input">
                 <div class="fileload-modal__input__middle">
                     <img src="<?= $this->image('/assets/images/staff/file_dock.svg'); ?>" alt="file_dock">
@@ -12,6 +13,7 @@
                 </div>
             </label>
             <input type="file" id="fileload-modal__input" multiple="true">
+        </form>
         </div>
         <div class="fileload-modal__footer">
             <div class="fileload-modal__footer__files">

@@ -12,6 +12,7 @@
     'guest' => ['index', 'login'],
 
     'admin_admin' => [
+        'messages',
         'calculate',
         'disk',
         'disk/up',

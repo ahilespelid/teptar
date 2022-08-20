@@ -1,6 +1,0 @@
-
-[11:47:08] INSERT INTO `usersBlock` (`id_user`, `hash`, `token`) VALUES ('1', '1659128142', 'e8c5fea6c17de80f295c0db6afc9316886a955fb6ac0afa0833037e18f2e3f8dc845bc40914b0ffdfc4ec06f6ffe93f9d00ea2a3ef6fec0917cb9880be415c60');
-[12:57:16] INSERT INTO `usersBlock` (`id_user`, `hash`, `token`) VALUES ('7', '1659124252', 'ccbab4df4c0ab606bcd278c50429865d1a74aa91dd7abee71f0aa8d759a6051335f9d0f5cf05fea7e150f187ade5066d638823c1c9adb753c7002db888a81874');
-[13:01:30] INSERT INTO `usersBlock` (`id_user`, `hash`, `token`) VALUES ('1', '1659170828', '0acae329a7dbb742967601eb795683715aa1704ef360f036caffe2090d668ca7aa828de5aa4d4d979c5a4a69e493fcb483697396203e97a65984c7b3a41d29da');
-[13:42:28] INSERT INTO `usersBlock` (`id_user`, `hash`, `token`) VALUES ('1', '1659175290', 'ce43c2fda3f675f8534591ad5b12036a07caf344e8ddfcbd480d34266f958c7d807e10b3434ac04413ee801403a2a7a2caff7121a977adeff3f35b2adb53f316');
-[14:46:02] INSERT INTO `usersBlock` (`id_user`, `hash`, `token`) VALUES ('1', '1659177748', '752a02ecf1a346f98c270fb894c91ffc4c92ce76f9a8f97f356f1b3d33c5b23f8ebd978267465984cbed88f152537b1a6decf74d812ba42c9a86f69b4528c715');

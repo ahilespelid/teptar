@@ -42,7 +42,7 @@ class UserController extends AbstractController{
 
             $login = (!empty($login)) ? $login : false;
             $pass = (!empty($pass)) ? $pass : false;
-           
+
             $user = (!$is_loginUrl) ? $data : $this->model->getUser(['login' => $login, 'pass' => md5($pass)]); /*/ Взяли пользователя из базы /*/
 
             if (is_array($user) && !empty($user)) {
@@ -59,7 +59,7 @@ class UserController extends AbstractController{
                 $this->firstname        = (empty($user['firstname'])) ? '': $user['firstname'];
                 $this->secondname       = (empty($user['secondname'])) ? '': $user['secondname'];
                 $this->age              = (empty($user['age'])) ? '': $user['age'];
-                $this->active              = (empty($user['active'])) ? '': $user['active'];
+                $this->active           = (empty($user['active'])) ? '': $user['active'];
 
                 $this->district         = $user['district'] = (!empty($user['id_district'])) ? $this->model->getDistrict($user['id_district']) : [];
                 $this->uin              = $user['uin'] = (!empty($uin['name']) && !empty($user['id_uin'])) ? $this->model->getUIN(['id' => $user['id_uin'], 'name' => $uin['name']]) : [];
@@ -82,6 +82,25 @@ class UserController extends AbstractController{
                         }
                     }
                 }
+            } else {
+                if (isset($_COOKIE['defense'])) {
+                    $cookie = json_decode($_COOKIE['defense']);
+                    $date = new \DateTime('now');
+                    if ($cookie->attempts >= 4) {
+                        $date = new \DateTime('now + 1 minutes');
+                    }
+                    setcookie('defense', json_encode([
+                        'time' => $date,
+                        'attempts' => $cookie->attempts + 1
+                    ]), time()+3600, '/');
+                } else {
+                    setcookie('defense', json_encode([
+                        'time' => new \DateTime('now'),
+                        'attempts' => 1
+                    ]), time()+3600, '/');
+                }
+
+                $this->redirectToRoute('/login');
             }
         }
         if ($is_loginUrl) {

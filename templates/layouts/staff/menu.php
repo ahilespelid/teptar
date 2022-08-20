@@ -26,11 +26,23 @@
                 <?php } ?>
 
                 <?php if ($this->security->userHasRole(['admin_admin'])) { ?>
-                    <a href="/messages" <?php if ($this->security->route == 'messages') { echo 'class="active"'; } ?>>
+                    <a href="/messages" <?php if ($this->security->route == 'messages' || $this->security->route == 'messages/answers') { echo 'class="active"'; } ?>>
                         <span class="if_active">
                             <span class="icon-envelope menu-icon"></span>
                             <span>Сообщении</span>
-                            <span class="menu-counter"><?= $this->security->unreadMessages() ?></span>
+                            <?php if ($this->security->unreadMessages()) { ?>
+                                <span class="menu-counter"><?= $this->security->unreadMessages() ?></span>
+                            <?php } ?>
+                        </span>
+                    </a>
+
+                    <a href="/profile/confirm" <?php if ($this->security->route == 'profile/confirm') { echo 'class="active"'; } ?>>
+                        <span class="if_active">
+                            <span class="icon-user menu-icon"></span>
+                            <span>Новые сотрудники</span>
+                            <?php if ($this->security->inactiveUsers()) { ?>
+                                <span class="menu-counter"><?= $this->security->inactiveUsers() ?></span>
+                            <?php } ?>
                         </span>
                     </a>
                 <?php } ?>

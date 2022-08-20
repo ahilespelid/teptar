@@ -16,12 +16,17 @@
     'staff'                     =>  ['controller' => 'ProfileController', 'action' => 'staff'],
     'profile'                   =>  ['controller' => 'ProfileController', 'action' => 'profile'],
     'profile/new'               =>  ['controller' => 'ProfileController', 'action' => 'new'],
+    'profile/confirm'           =>  ['controller' => 'ProfileController', 'action' => 'confirm'],
+    'confirmUser'               =>  ['controller' => 'ProfileController', 'action' => 'confirmUser'],
+    'deleteUser'                =>  ['controller' => 'ProfileController', 'action' => 'deleteUser'],
     'profile/fire'              =>  ['controller' => 'ProfileController', 'action' => 'fire'],
     'notifications'             =>  ['controller' => 'ProfileController', 'action' => 'notifications'],
     'districtNotifications'     =>  ['controller' => 'ProfileController', 'action' => 'districtNotificationsJSON'],
 
     // SupportController
     'support'                   =>  ['controller' => 'SupportController', 'action' => 'support'],
+    'messages'                  =>  ['controller' => 'SupportController', 'action' => 'messages'],
+    'messages/answers'          =>  ['controller' => 'SupportController', 'action' => 'answers'],
     'rating'                    =>  ['controller' => 'SupportController', 'action' => 'rating'],
     'center'                    =>  ['controller' => 'SupportController', 'action' => 'center'],
     'callCenter'                =>  ['controller' => 'SupportController', 'action' => 'callCenter'],

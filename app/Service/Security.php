@@ -27,10 +27,15 @@ class Security
         $this->messages     = new \App\Models\SupportModel;
         $this->notifications = new \App\Models\NotificationModel;
         $this->uins = new \App\Models\UINModel;
+        $this->users = new \App\Models\UserModel;
     }
 
     public function unreadMessages() {
         return $this->messages->count(['answered' => 0]);
+    }
+
+    public function inactiveUsers() {
+        return $this->users->count(['active' => null]);
     }
 
     // Получает массив правил из файла core/rules.php

@@ -1,0 +1,6 @@
+
+[11:47:08] UPDATE `users` SET `hash`=:hash, `token`=:token WHERE `id` = :id;
+[12:57:16] UPDATE `users` SET `hash`=:hash, `token`=:token WHERE `id` = :id;
+[13:01:30] UPDATE `users` SET `hash`=:hash, `token`=:token WHERE `id` = :id;
+[13:42:28] UPDATE `users` SET `hash`=:hash, `token`=:token WHERE `id` = :id;
+[14:46:02] UPDATE `users` SET `hash`=:hash, `token`=:token WHERE `id` = :id;

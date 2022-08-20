@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers ; use App\Service\Security;
 /// */ Убираем вывод ошибок, устанавливаем необходимое количество памяти
-ini_set('display_errors', 0); ini_set('display_startup_errors', 0); error_reporting(E_ALL); ini_set('memory_limit','0');  ini_set('memory_limit','0'); set_time_limit(0); /// */
+ini_set('display_errors', 0); ini_set('display_startup_errors', 0); error_reporting(E_ALL); ini_set('memory_limit','0');  ini_set('memory_limit','0'); set_time_limit(0); ini_set('upload_max_filesize', '100M'); /// */
 
 class DiskController extends AbstractController{
     public  $model, $user, $path, $imgPath, $security;
@@ -15,10 +15,10 @@ class DiskController extends AbstractController{
         
     }
 /*/ -------------------------------------------------------------- Диск -------------------------------------------------------------- /*/
-    public function index($q){$xmr = ($_SERVER['HTTP_X_REQUESTED_WITH']) ?? false;
-        $path = $this->path;
-        if(!empty($q['07c5be14']) && str_starts_with($q['07c5be14'], $this->path)){$path = $q['07c5be14'];}
-    
+    public function index($q){$xmr = ($_SERVER['HTTP_X_REQUESTED_WITH']) ?? false; 
+        $ajaxPath = (!empty($q['07c5be14'])) ? $q['07c5be14'] : ((!empty($_REQUEST['07c5be14'])) ? $_REQUEST['07c5be14'] : false);
+        $path = (!empty($ajaxPath) && str_starts_with($ajaxPath, $this->path)) ? $ajaxPath : $this->path;
+///*/ Обработка выгрузки и\или удаления ///*/        
         if($xmr && !empty($q)){
             $file = (file_exists($q['05c7be12'])) ? $q['05c7be12'] : false;
             $rm = ('c287b455c3d5' == $q['bb4de946']) ? 1 : 0;           
@@ -31,32 +31,74 @@ class DiskController extends AbstractController{
                 header('Cache-Control: must-revalidate');
                 header('Pragma: public');
                 header('Content-Length: ' . filesize($file));
-                $return = @readfile($file);
-                if(-1 == $return){
+                if(empty($return = @file_get_contents($file))){
                     $zip = $this->zip($file);
                     header("Content-Type: application/zip");
                     header('Content-Length: ' . filesize($zip));
-                    $return = @readfile($zip);
+                    $return = @file_get_contents($zip);
                 }
-                if($rm){
-                    $this->rm($file); 
-                    if(-1 == $return){
-                        echo PHP_EOL.'(' . basename($file) . ').'.PHP_EOL.'ahilespelid@yandex.ru'.PHP_EOL;
-                }}
+                if($rm){$this->rm($file);}
                 echo $return;
-                
                 exit;
         }}
-        //$this->rm('/var/www/disk/log1');        
-      
+///*/  Обработка загрузки на диск ///*/
+        if(!empty($_POST['6f6Ad9D4'])){
+            $input_name = '29D7367d'; 
+            $allow = array('docx', 'xlsx', 'doc',  'xls',  'txt',  'tar',  'zip',  'rar',  '7z',  '7zip',  'gz',  'png',  'jpg',  'jpeg',  'gif',  'webp',  'mp3',  'mp4',  'mpeg'); 
+            $deny = array('phtml', 'php', 'php3', 'php4', 'php5', 'php6', 'php7', 'phps', 'cgi', 'pl', 'asp', 'aspx', 'shtml', 'shtm', 'htaccess', 'htpasswd', 'ini', 'log', 'sh', 'js', 'html', 'htm', 'css', 'sql', 'spl', 'scgi', 'fcgi', 'exe');
+            echo ini_get('upload_max_filesize');
+            $path = (!empty($_POST['6f6Ad9D4']) && str_starts_with($_POST['6f6Ad9D4'], $this->path)) ? $_POST['6f6Ad9D4'] : $this->path;
+            $path = ($this->is_seporator($path)) ? $path :  $path._DS_;
+            $data = array();
+            ///*/ pa($_FILES); ///*/
+            if(!isset($_FILES[$input_name])){$error = 'Файлы не загружены.';}else{
+                $files = array();
+                $diff = count($_FILES[$input_name]) - count($_FILES[$input_name], COUNT_RECURSIVE);
+                if ($diff == 0){$files = array($_FILES[$input_name]);}else{
+                    foreach($_FILES[$input_name] as $k => $l){foreach($l as $i => $v){$files[$i][$k] = $v;}
+                }}
+            foreach ($files as $file){$error = $success = '';
+                if (!empty($file['error']) || empty($file['tmp_name'])){$error = 'Не удалось загрузить файл.';}
+                elseif($file['tmp_name'] == 'none' || !is_uploaded_file($file['tmp_name'])){$error = 'Не удалось загрузить файл.1';}
+                else{
+                    $pattern = "[^A-zА-яЁё0-9,~!@#%^-_\$\?\(\)\{\}\[\]\.]";  pa($file); 
+                    $name = mb_eregi_replace($pattern, '-', $file['name']);  pa($name);$name = mb_ereg_replace('[-]+', '-', $name);
+                    $parts = pathinfo($name);
+                    
+                    if (empty($name) || empty($parts['extension'])){$error = 'Недопустимый тип файла';}
+                    elseif(!empty($allow) && !in_array(strtolower($parts['extension']), $allow)){$error = 'Недопустимый тип файла (позволять)';}
+                    elseif (!empty($deny) && in_array(strtolower($parts['extension']), $deny)){$error = 'Недопустимый тип файла (запрещать)';}
+                    else{
+                        if (move_uploaded_file($file['tmp_name'], $path . $name)){
+                            
+                            // Далее можно сохранить название файла в БД и т.п.
+                            $success = $path . $name. ' Файл «' . $name . '» успешно загружен.';}
+                        else{$error = 'Не удалось загрузить файл.';
+                }}}
+                if (!empty($success)){$data[] = '<p style="color: green">' . $success . '</p>';}
+                if (!empty($error)){$data[] = '<p style="color: red">' . $error . '</p>'; }
+        }}
+        ///*/ 
+        if(ob_get_level()){ob_end_clean();} ///*/ 
+        header('Content-Type: text/html; charset=utf-8'); foreach($data as $d){echo $d.'<br>';} exit;}
+ ///*/  Обработка переименовать ///*/       
+         if('621f0bb63e77' == $_POST['2788b398'] && str_starts_with($_POST['42208e4e'], $this->path) && file_exists($pathRn = $_POST['42208e4e'])){
+         ///*/ 
+        if(ob_get_level()){ob_end_clean();} ///*/
+        header('Content-Type: text/html; charset=utf-8');            
+             $this->rn($pathRn, uniqid()); exit;}
+
         $dirs = $this->dirScan($path,'d');
         $files = $this->dirScan($path,'f');
+        
+        //$this->rn('/var/www/disk/log3', uniqid());
 
-        $this->render('/staff/profile/disk.php', [
+        $return = $this->render('/staff/profile/disk.php', [
             'dirs' => $dirs,
             'files' => $files,
+            'path' => $path,
         ]);
-
+       
     }    
 ///*/ Сканирование файлов и папок ///*/
     public function dirScan($dir, $fORd = 'a'){$dir = (empty($dir)) ? $this->path : ((is_dir($dir)) ? $dir : false);
@@ -116,24 +158,6 @@ class DiskController extends AbstractController{
         return ($zip->close()) ? $destination : false;}  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// перезаписать файл
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-public function SetFile($file, $array)
-{
-$s = 1;
-
-foreach ($array as $value) {
-if ($s === 1) {
-file_put_contents($file, $value."\r\n");
-$s++;
-} else {
-file_put_contents($file, $value."\r\n", FILE_APPEND | LOCK_EX);
-}
-}
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Переименование файлов (работает для директорий) 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -190,62 +214,6 @@ file_put_contents($file, $value."\r\n", FILE_APPEND | LOCK_EX);
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Удаление директории
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public function Dir_delit($dir) {
-        $dir = $this -> dopRes($dir);
-        $dir = $_SERVER['DOCUMENT_ROOT'].'/'.$dir;
-        if ($objs = glob($dir."/*")) {
-            foreach($objs as $obj) {
-                is_dir($obj) ? Dir_delit($obj) : unlink($obj);
-            }
-        }   rmdir($dir);
-    }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Рекурсивное слияние и - или копирование дерикотрии с файлами внутри
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public function recurCopy($from, $to) {
-        $from = $this -> dopRes($from);
-        $to = $this -> dopRes($to);
-        $structure = $_SERVER['DOCUMENT_ROOT'].'/'.$from;
-        $structure2 = $_SERVER['DOCUMENT_ROOT'].'/'.$to;
-        if(!file_exists($structure2)){
-            mkdir($structure2);
-        }
-        if ($objs = glob($structure."/*")) {
-            foreach($objs as $obj) {
-                $forto=$structure2.str_replace($structure, '', $obj);
-                if(is_dir($obj)){
-                    recurCopy($obj, $forto);
-                } else {
-                    copy($obj, $forto);
-                }
-            }
-        } return true;
-    }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// считает колличество файлов в указанной дериктории
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public function CountFile($value)
-    {
-        $value = $this -> dopRes($value);
-        $dir = opendir($_SERVER['DOCUMENT_ROOT'].'/'.$value);
-        $count = 0;
-        while($file = readdir($dir)){
-            if($file == '.' || $file == '..' || is_dir($_SERVER['DOCUMENT_ROOT'] .'/'. $value . $file)){
-                continue;
-            }
-            $count++;
-        }
-        return $count;
-    }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // вспомогательная функция для внутреннего использования внутри класса (удаляет слешь в начале - если есть)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -263,99 +231,4 @@ file_put_contents($file, $value."\r\n", FILE_APPEND | LOCK_EX);
         $dir = $_SERVER['DOCUMENT_ROOT'].'/'.$dir;
         return $dir;
     }
-
-    private function dopCube($Search_str, $key, $i) 
-    {
-        unset($this -> in_file_clon[$key]);
-    }
-    
-    public function scan(object $iterator){$filelist =[];
-        foreach($iterator as $entry) {$filelist[] = $entry->getFilename();}
-        return $filelist;
-    }
-     /*/ -------------------------------------------------------------- Диск страница загрузки-------------------------------------------------------------- /*/
-    public function upload($q){
-?><style type="text/css">
-body {font-family: sans-serif;overflow:  hidden;}
-#drop-area {display: block; border: 2px dashed #ccc; border-radius: 20px; width: 99vw; height: 96vh; text-align: center; padding-top: 20px; overflow: auto; -ms-overflow-style: none; scrollbar-width: none;}
-#drop-area.highlight {border-color: purple;}
-p{margin-top: 0;}
-.my-form {margin-bottom: 10px;}
-#gallery {margin-top: 10px;}
-#gallery img {width: 150px; margin-bottom: 10px; margin-right: 10px; vertical-align: middle;}
-.button {display: inline-block; padding: 10px; background: #ccc; cursor: pointer; border-radius: 5px; border: 1px solid #ccc;}
-.button:hover {background: #ddd;}
-#fileElem {display: none;}
-</style>
-<script type="text/javascript">window.onload = function() {
-let dropArea = document.getElementById("drop-area");
-
-['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {dropArea.addEventListener(eventName, preventDefaults, false); document.body.addEventListener(eventName, preventDefaults, false);});
-['dragenter', 'dragover'].forEach(eventName => {dropArea.addEventListener(eventName, highlight, false)});
-['dragleave', 'drop'].forEach(eventName => {dropArea.addEventListener(eventName, unhighlight, false)});
-
-dropArea.addEventListener('drop', handleDrop, false);
-
-function preventDefaults (e) {e.preventDefault(); e.stopPropagation();}
-function highlight(e){dropArea.classList.add('highlight');}
-function unhighlight(e){dropArea.classList.remove('active');}
-function handleDrop(e){let dt = e.dataTransfer, files = dt.files; handleFiles(files);}
-
-let uploadProgress = [], progressBar = document.getElementById('progress-bar');
-
-function initializeProgress(numFiles){progressBar.value = 0; uploadProgress = [];for(let i = numFiles; i > 0; i--){uploadProgress.push(0);}}
-function updateProgress(fileNumber, percent){uploadProgress[fileNumber] = percent; let total = uploadProgress.reduce((tot, curr) => tot + curr, 0) / uploadProgress.length; progressBar.value = total;}
-function handleFiles(files){files = [...files]; initializeProgress(files.length); files.forEach(uploadFile); files.forEach(previewFile);}
-function previewFile(file){let reader = new FileReader(); reader.readAsDataURL(file); reader.onloadend = function(){let img = document.createElement('img'); img.src = reader.result; document.getElementById('gallery').appendChild(img);}}
-function uploadFile(file, i) {
-    console.log(file.name);
-    console.log(i);
-
-    let url = '/disk/up', xhr = new XMLHttpRequest(), formData = new FormData()
-
-    xhr.open('POST', url, true); xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    xhr.upload.addEventListener("progress", function(e){updateProgress(i, (e.loaded * 100.0 / e.total) || 100);});
-    xhr.addEventListener('readystatechange', function(e){
-        if (xhr.readyState == 4 && xhr.status == 200){
-        updateProgress(i, 100);
-        }else if(xhr.readyState == 4 && xhr.status != 200){
-        // Error. Inform the user
-    }});
-
-    formData.append('num', i);
-    formData.append('name', file.name);
-    formData.append('file', file);
-    xhr.send(formData);
-}
-
-let fileElem = document.getElementById('fileElem'); fileElem.addEventListener('change', (e) => {handleFiles(fileElem.files);}, false); }
-</script> 
- 
-<div id="drop-area">
-  <form class="my-form">
-    <p>Загрузите несколько файлов с помощью диалогового окна "Файл" или перетаскивая изображения в область, отмеченную пунктиром</p>
-    <input type="file" id="fileElem" multiple>
-    <label class="button" for="fileElem">Выберите файлы</label>
-  </form>
-  <progress id="progress-bar" max=100 value=0></progress>
-  <div id="gallery"></div>
-</div>
-
-<?php     
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    }   
-
-    
-    
-    
 }

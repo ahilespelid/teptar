@@ -47,7 +47,10 @@ class DiskController extends AbstractController{
                 if($rn){///*/ Переименование ///*/ 
                     header('Content-Type: text/html; charset=utf-8');
                     if (ob_get_level()){ob_end_clean();}
-                    if(str_starts_with($q['05c7be12'], $this->path)){echo $this->rn($file, $q['35208e6e']); exit;}      
+                    if(str_starts_with($q['05c7be12'], $this->path)){if($newDirPath = $this->rn($file, $q['35208e6e'])){
+                        $this->model->getQuery($sql = "DELETE FROM `".$this->model->tableDisk."` WHERE `path`='".$file."' AND `id_user`=".$this->user->getLoginUser()['id'].";", false);
+                        $this->model->getQuery($sql = "INSERT INTO `".$this->model->tableDisk."` VALUES (NULL,'".$newDirPath."', ".$this->user->getLoginUser()['id'].") ON DUPLICATE KEY UPDATE `id_user`= ".$this->user->getLoginUser()['id'].";", false);
+                    } exit;}      
                 }else{echo $return; exit;}}                
        
             ///*/  Обработка загрузки на диск ///*/
@@ -119,7 +122,7 @@ class DiskController extends AbstractController{
     public function rn($path, $name){
         $name = (trim($name)) ?? false;
         if(!file_exists($path) && !is_string($name)){return false;}
-        return rename($path, pathinfo($path)['dirname']._DS_. str_replace(' ', '_', $name));
+        return (rename($path, $newName = pathinfo($path)['dirname']._DS_. str_replace(' ', '_', $name))) ? $newName : false ;
     } 
  ///*/ Проверяет наличие сепоратора в начале или конце переданного пути ///*/       
     public function is_seporator($dir, $sORe = 'e'){

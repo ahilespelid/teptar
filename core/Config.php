@@ -17,21 +17,22 @@ $GLOBALS['lifeToken'] = (3600)*24;
 
 // База данных
 $table = [
-    'users'         => 'users',
-    'districts'     => 'districts',
-    'reports'       => 'reports',
-    'indexes'       => 'index',
-    'roles'         => 'roles',
-    'status'        => 'status',
-    'index'         => 'index',
-    'marks'         => 'marks',
-    'count'         => 'count',
-    'support'       => 'support',
-    'notifications' => 'notifications',
-    'usersBlock'    => 'usersBlock',
-    'tableUIN'      => 'uin',
-    'deadline'      => 'deadline',
-    'calculate'     => 'calculate',
+    'users'                 => 'users',
+    'districts'            => 'districts',
+    'reports'              => 'reports',
+    'indexes'             => 'index',
+    'roles'                  => 'roles',
+    'disk'                   => 'disk',
+    'status'                => 'status',
+    'index'                 => 'index',
+    'marks'                => 'marks',
+    'count'                 => 'count',
+    'support'             => 'support',
+    'notifications'     => 'notifications',
+    'usersBlock'        => 'usersBlock',
+    'tableUIN'           => 'uin',
+    'deadline'           => 'deadline',
+    'calculate'          => 'calculate',
 ];
 
 $GLOBALS['db']['table'] =  $table;

@@ -31,27 +31,9 @@ $(".disc__element").on("click", function (e){e.stopPropagation(); $(this).childr
     }discCheckbox.each(function (item, index){if($(item).prop("checked") === true){checkedDiscElements.push(item);}});
  });});
 
- ///*/ Переименование и удаление скачивание из выпадающего списка ///*/
-dropdownMenu.on("click", function (e){
-    var val = $(this).text().trim(), path = $(this).closest('.disc__element').attr('data-path'); 
-    if("Переименовать" == val){
-         var action = '621f0bb63e77';
-        
-        $('#rename_folder').on('input', function(){
-             $.ajax({
-                type: "POST",
-                url: '/disk',
-                cache: false,
-                contentType: false,
-                processData: false,
-                data: {'42208e4e': path, '2788b398': action, '3288b546': $(this).val()},
-                success: function(data){
-                    console.log(data);
-                    disc.pulse({times: 2, duration: 150});
-            }});
-        });       
-        
-        console.log(path);
+ ///*/ Удаление скачивание из выпадающего списка ///*/
+dropdownMenu.on("click", function (e){var val = $(this).text().trim(); 
+     if("Переименовать" == val){
         renameModal.addClass(O_1);
         blackBackground.addClass(O_1); 
     }else if("Удалить" == val){
@@ -77,8 +59,13 @@ $.ajax({
         link.download = filename; link.click();}});
 });});
 
-
-$('.ren').on('click', function(e){var name = $(this).attr('data-path'); console.log(name);});
+///*/ Переименование из выпадающего списка ///*/
+$('.ren').on('click', function(e){
+    var action = '621f0bb63e77', click = $(this).closest('.disc__element'), rename = $('input#rename_folder');
+    var path = click.attr('data-path'), text = click.find(".disc__element__name"), name = rename.val(); 
+    rename.attr('data-path', path); console.log(path);
+    rename.on('input', function(){console.log('05c7be12: ' +path, 'bb4de946: ' +action, '35208e6e: ' +rename.val());});    
+});
  
 ///*/ Навигация по папкам ///*/ 
 $('.disk').on("dblclick", function (e){
@@ -129,8 +116,10 @@ disc.pulse({times: 2, duration: 150});}
 
 ///*/   ///*/
 [$(".submit_added_folder"), $(".submit_added_files")].forEach(function (item, index){$(item).on("click", function (e){
-        divAddFile.removeClass(O_1); divAddFolder.removeClass(O_1); renameModal.removeClass(O_1); blackBackground.removeClass(O_1); 
-        $("#rename-folder").val("");
+        $('body').load("/disk?07c5be14="+$('.disc').attr('data-root'));
+        //
+        /*/divAddFile.removeClass(O_1); divAddFolder.removeClass(O_1); renameModal.removeClass(O_1); blackBackground.removeClass(O_1); 
+        $("#rename-folder").val("");///*/
 });});
 ///*/ Кнопка добавить файл ///*/
 $(".sumbit_add_file").on("click", function (e){divAddFile.addClass(O_1); blackBackground.addClass(O_1);});
@@ -146,15 +135,24 @@ if(nf_button){nf_button.addEventListener("change", function (e){var f = nf_butto
     }
     $(".files__element__delete").on("click", function (e){
         files.forEach(function (item, i){if(item.name.substring(0, 16) === $(e.target).prev().text()){
-            console.log(files);
+            console.log('1'+files);
             files.splice(i, 1);
             $(e.target).parent().remove();
     }});});
 });}
 ///*/ Отправка файлов ///*/
 $(".fileload-modal__footer__submit button").on("click", function (e){e.preventDefault(); console.log(files);blackBackground.removeClass(O_1);  divAddFile.removeClass(O_1);
+    var formData = new FormData(), rootPath = $('.disc').attr('data-root'), rename = $('input#rename_folder'), create = $('input#create_folder');
+
+    if('' != rename.val()){
+        var action = '621f0bb63e77'; 
+        $.ajax({url: '/disk', type: 'POST', data:  {'05c7be12' : rename.attr('data-path'), 'bb4de946' : action, '35208e6e' : rename.val()},success: function(data){location.reload();}});
+    }
+    if('' != create.val()){
+        var action = '777f0bb63e77'; 
+        $.ajax({url: '/disk', type: 'POST', data:  {'05c7be12' : rootPath, 'bb4de946' : action, '45208e6e' : create.val()},success: function(data){location.reload();}});
+    }
     if(undefined === window.FormData){console.log('В вашем браузере FormData не поддерживается');}else{
-        var formData = new FormData(), rootPath = $('.disc').attr('data-root');
         $.each(nf_button.files, function(key, input){formData.append('29D7367d[]', input); console.log(input)});  
         formData.append('6f6Ad9D4', $('.disc').attr('data-root'));
 
@@ -167,7 +165,7 @@ $(".fileload-modal__footer__submit button").on("click", function (e){e.preventDe
             data: formData,
             beforeSend: function(data){//console.log('1',data); 
             blackBackgroundWaiting.css('pointer-events: none!important'); blackBackgroundWaiting.addClass(O_1);},
-            success: function(data){ //console.log('2',data);
+            success: function(data){//console.log('2',data);
                 blackBackgroundWaiting.removeClass(O_1); blackBackgroundWaiting.css('pointer-events: auto!important');
                 disc.pulse({times: 2, duration: 150});
                 $('body').load("/disk?07c5be14="+rootPath);

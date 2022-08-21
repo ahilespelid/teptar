@@ -470,7 +470,7 @@ return;}
         echo '<a href="https://yandex.ru/images/search?text=сиськи"> （•ㅅ•） сиськи</a><br><br><form method="post" action=""><table>'.$table.'</table><br><input type="submit" value="СОХРАНИТЬ ЗНАЧЕНИЯ"></form><style>td{border-right:2px solid #000; padding: 0 5px}.textCenter{text-align: center;}.textRight{text-align: right;}</style>'; ///*/ 
     }
 /// */ Метод генерации exel с данными расчётов и записью файла в каталог /public/ftp /// */     
-    public function genExel($round = 16, $roundIndex = 3, $dirname = _DS_.'var'._DS_.'www'._DS_.'disk'._DS_.'exel'){///*/
+    public function genExel($round = 16, $roundIndex = 3, $dirname = _DS_.'var'._DS_.'www'._DS_.'disk'._DS_.'Отчёты'){///*/
         $date1 = (new \DateTime)->modify( '-1 year' )->format('Y'); 
         $date2 = (new \DateTime)->modify( '-2 year' )->format('Y'); 
         $date3 = (new \DateTime)->modify( '-3 year' )->format('Y'); 

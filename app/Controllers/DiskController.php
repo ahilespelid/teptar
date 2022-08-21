@@ -19,79 +19,79 @@ class DiskController extends AbstractController{
         $ajaxPath = (!empty($q['07c5be14'])) ? $q['07c5be14'] : ((!empty($_REQUEST['07c5be14'])) ? $_REQUEST['07c5be14'] : false);
         $path = (!empty($ajaxPath) && str_starts_with($ajaxPath, $this->path)) ? $ajaxPath : $this->path;
 ///*/ Обработка выгрузки и\или удаления ///*/        
-        if($xmr && !empty($q)){
+        if($xmr){
             $file = (file_exists($q['05c7be12'])) ? $q['05c7be12'] : false;
             $rm = ('c287b455c3d5' == $q['bb4de946']) ? 1 : 0;           
+            $rn = ('621f0bb63e77' == $q['bb4de946']) ? 1 : 0;           
+            $mk = ('777f0bb63e77' == $q['bb4de946']) ? 1 : 0;           
             if($file){
                 if (ob_get_level()){ob_end_clean();}
-                header('Content-Type: application/octet-stream');
-                header('Content-Disposition: attachment; filename=' . basename($file));
-                header('Content-Transfer-Encoding: binary');
-                header('Expires: 0');
-                header('Cache-Control: must-revalidate');
-                header('Pragma: public');
-                header('Content-Length: ' . filesize($file));
+                if(!$rn){
+                    header('Content-Type: application/octet-stream');
+                    header('Content-Disposition: attachment; filename=' . basename($file));
+                    header('Content-Transfer-Encoding: binary');
+                    header('Expires: 0');
+                    header('Cache-Control: must-revalidate');
+                    header('Pragma: public');
+                    header('Content-Length: ' . filesize($file));}
                 if(empty($return = @file_get_contents($file))){
                     $zip = $this->zip($file);
                     header("Content-Type: application/zip");
                     header('Content-Length: ' . filesize($zip));
                     $return = @file_get_contents($zip);
                 }
-                if($rm){$this->rm($file);}
-                echo $return;
-                exit;
-        }}
-///*/  Обработка загрузки на диск ///*/
-        if(!empty($_POST['6f6Ad9D4'])){
-            $input_name = '29D7367d'; 
-            $allow = array('docx', 'xlsx', 'doc',  'xls',  'txt',  'tar',  'zip',  'rar',  '7z',  '7zip',  'gz',  'png',  'jpg',  'jpeg',  'gif',  'webp',  'mp3',  'mp4',  'mpeg'); 
-            $deny = array('phtml', 'php', 'php3', 'php4', 'php5', 'php6', 'php7', 'phps', 'cgi', 'pl', 'asp', 'aspx', 'shtml', 'shtm', 'htaccess', 'htpasswd', 'ini', 'log', 'sh', 'js', 'html', 'htm', 'css', 'sql', 'spl', 'scgi', 'fcgi', 'exe');
-            echo ini_get('upload_max_filesize');
-            $path = (!empty($_POST['6f6Ad9D4']) && str_starts_with($_POST['6f6Ad9D4'], $this->path)) ? $_POST['6f6Ad9D4'] : $this->path;
-            $path = ($this->is_seporator($path)) ? $path :  $path._DS_;
-            $data = array();
-            ///*/ pa($_FILES); ///*/
-            if(!isset($_FILES[$input_name])){$error = 'Файлы не загружены.';}else{
-                $files = array();
-                $diff = count($_FILES[$input_name]) - count($_FILES[$input_name], COUNT_RECURSIVE);
-                if ($diff == 0){$files = array($_FILES[$input_name]);}else{
-                    foreach($_FILES[$input_name] as $k => $l){foreach($l as $i => $v){$files[$i][$k] = $v;}
-                }}
-            foreach ($files as $file){$error = $success = '';
-                if (!empty($file['error']) || empty($file['tmp_name'])){$error = 'Не удалось загрузить файл.';}
-                elseif($file['tmp_name'] == 'none' || !is_uploaded_file($file['tmp_name'])){$error = 'Не удалось загрузить файл.1';}
-                else{
-                    $pattern = "[^A-zА-яЁё0-9,~!@#%^-_\$\?\(\)\{\}\[\]\.]";  pa($file); 
-                    $name = mb_eregi_replace($pattern, '-', $file['name']);  pa($name);$name = mb_ereg_replace('[-]+', '-', $name);
-                    $parts = pathinfo($name);
-                    
-                    if (empty($name) || empty($parts['extension'])){$error = 'Недопустимый тип файла';}
-                    elseif(!empty($allow) && !in_array(strtolower($parts['extension']), $allow)){$error = 'Недопустимый тип файла (позволять)';}
-                    elseif (!empty($deny) && in_array(strtolower($parts['extension']), $deny)){$error = 'Недопустимый тип файла (запрещать)';}
+                if($rm){$this->rm($file); echo $return; exit;} ///*/  Удаление ///*/ 
+                if($mk){if($newDirPath = $this->mk($file, $q['45208e6e'])){
+                    $this->model->getQuery($sql = "INSERT INTO `".$this->model->tableDisk."` VALUES (NULL,'".$newDirPath."', ".$this->user->getLoginUser()['id'].") ON DUPLICATE KEY UPDATE `id_user`= ".$this->user->getLoginUser()['id'].";", false);
+                } exit;} ///*/  Создание каталога ///*/ 
+                if($rn){///*/ Переименование ///*/ 
+                    header('Content-Type: text/html; charset=utf-8');
+                    if (ob_get_level()){ob_end_clean();}
+                    if(str_starts_with($q['05c7be12'], $this->path)){echo $this->rn($file, $q['35208e6e']); exit;}      
+                }else{echo $return; exit;}}                
+       
+            ///*/  Обработка загрузки на диск ///*/
+            if(!empty($_POST['6f6Ad9D4'])){
+                $input_name = '29D7367d'; 
+                $allow = array('docx', 'xlsx', 'doc',  'xls',  'txt',  'tar',  'zip',  'rar',  '7z',  '7zip',  'gz',  'png',  'jpg',  'jpeg',  'gif',  'webp',  'mp3',  'mp4',  'mpeg'); 
+                $deny = array('phtml', 'php', 'php3', 'php4', 'php5', 'php6', 'php7', 'phps', 'cgi', 'pl', 'asp', 'aspx', 'shtml', 'shtm', 'htaccess', 'htpasswd', 'ini', 'log', 'sh', 'js', 'html', 'htm', 'css', 'sql', 'spl', 'scgi', 'fcgi', 'exe');
+                echo ini_get('upload_max_filesize');
+                $path = (!empty($_POST['6f6Ad9D4']) && str_starts_with($_POST['6f6Ad9D4'], $this->path)) ? $_POST['6f6Ad9D4'] : $this->path;
+                $path = ($this->is_seporator($path)) ? $path :  $path._DS_;
+                $data = array();
+                ///*/ 
+                pa($_FILES); ///*/
+                if(!isset($_FILES[$input_name])){$error = 'Файлы не загружены.';}else{
+                    $files = array();
+                    $diff = count($_FILES[$input_name]) - count($_FILES[$input_name], COUNT_RECURSIVE);
+                    if ($diff == 0){$files = array($_FILES[$input_name]);}else{
+                        foreach($_FILES[$input_name] as $k => $l){foreach($l as $i => $v){$files[$i][$k] = $v;}
+                    }}
+                foreach ($files as $file){$error = $success = '';
+                    if (!empty($file['error']) || empty($file['tmp_name'])){$error = 'Не удалось загрузить файл.';}
+                    elseif($file['tmp_name'] == 'none' || !is_uploaded_file($file['tmp_name'])){$error = 'Не удалось загрузить файл.1';}
                     else{
-                        if (move_uploaded_file($file['tmp_name'], $path . $name)){
-                            
-                            // Далее можно сохранить название файла в БД и т.п.
-                            $success = $path . $name. ' Файл «' . $name . '» успешно загружен.';}
-                        else{$error = 'Не удалось загрузить файл.';
-                }}}
-                if (!empty($success)){$data[] = '<p style="color: green">' . $success . '</p>';}
-                if (!empty($error)){$data[] = '<p style="color: red">' . $error . '</p>'; }
-        }}
-        ///*/ 
-        if(ob_get_level()){ob_end_clean();} ///*/ 
-        header('Content-Type: text/html; charset=utf-8'); foreach($data as $d){echo $d.'<br>';} exit;}
- ///*/  Обработка переименовать ///*/       
-         if('621f0bb63e77' == $_POST['2788b398'] && str_starts_with($_POST['42208e4e'], $this->path) && file_exists($pathRn = $_POST['42208e4e'])){
-         ///*/ 
-        if(ob_get_level()){ob_end_clean();} ///*/
-        header('Content-Type: text/html; charset=utf-8');            
-             $this->rn($pathRn, uniqid()); exit;}
-
+                        $pattern = "[^A-zА-яЁё0-9,~!@#%^-_\$\?\(\)\{\}\[\]\.]";  pa($file); 
+                        $name = mb_eregi_replace($pattern, '-', $file['name']);  pa($name);$name = mb_ereg_replace('[-]+', '-', $name);
+                        $parts = pathinfo($name);
+                        
+                        if (empty($name) || empty($parts['extension'])){$error = 'Недопустимый тип файла';}
+                        elseif(!empty($allow) && !in_array(strtolower($parts['extension']), $allow)){$error = 'Недопустимый тип файла (позволять)';}
+                        elseif (!empty($deny) && in_array(strtolower($parts['extension']), $deny)){$error = 'Недопустимый тип файла (запрещать)';}
+                        else{
+                            if (move_uploaded_file($file['tmp_name'], $path . $name)){
+                                $this->model->getQuery($sql = "INSERT INTO `".$this->model->tableDisk."` VALUES (NULL,'".$path.$name."', ".$this->user->getLoginUser()['id'].") ON DUPLICATE KEY UPDATE `id_user`= ".$this->user->getLoginUser()['id'].";", false); 
+                                $data[] = $sql;
+                                $success = $path . $name. ' Файл «' . $name . '» успешно загружен.';}
+                            else{$error = 'Не удалось загрузить файл.';
+                    }}}
+                    if (!empty($success)){$data[] = '<p style="color: green">' . $success . '</p>';}
+                    if (!empty($error)){$data[] = '<p style="color: red">' . $error . '</p>'; }
+            }}header('Content-Type: text/html; charset=utf-8'); foreach($data as $d){echo $d.'<br>';} exit;}
+        }
+        
         $dirs = $this->dirScan($path,'d');
         $files = $this->dirScan($path,'f');
-        
-        //$this->rn('/var/www/disk/log3', uniqid());
 
         $return = $this->render('/staff/profile/disk.php', [
             'dirs' => $dirs,
@@ -156,79 +156,10 @@ class DiskController extends AbstractController{
                     $zip->addFromString(str_replace($source . _DS_, '', $file),file_get_contents($file));
         }}} elseif (is_file($source)){$zip->addFromString(basename($source), file_get_contents($source));}
         return ($zip->close()) ? $destination : false;}  
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Переименование файлов (работает для директорий) 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public function rename($file_old, $file_new) {
-        $file_old = $this -> dopRes($file_old);
-        $file_new = $this -> dopRes($file_new);
-        rename($file_old, $file_new);
-    }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Создание файла
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public function File_great($file, $text, $options = 'r') {
-
-        $file = $_SERVER['DOCUMENT_ROOT'].'/'.$file;
-
-        if (!file_exists($file)) {
-            $fp = fopen($file, $options);
-
-            if (!$text == '') {
-                fwrite($fp, $text);
-
-            }   fclose($fp);
-        } else {
-            $fp = fopen($file, $options);
-
-            if (!$text == '') {
-                fwrite($fp, $text);
-
-            }   fclose($fp);
-        }
-    }
-    
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Создание директории
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public function Dir_great($dir, $glob) {
-        $dir = $this -> dopRes($dir);
-        $structure = $_SERVER['DOCUMENT_ROOT'].'/'.$dir;
-
-        if ($glob == true) {
-            if (@!mkdir($structure, 0777, true)) {
-                // die('Не удалось создать путь из директорий.');
-                return false;
-            }
-        } else {
-            if (@!mkdir($structure, 0777)) {
-                // die('Не удалось создать директорию.');
-                return false;
-            }
-        }
-    }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// вспомогательная функция для внутреннего использования внутри класса (удаляет слешь в начале - если есть)
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    private function dopRes($dir)
-    {
-        if ($dir[0] == '/') {
-            $dir = mb_substr($dir, 1);
-        }
-
-        return $dir;
-    }
-
-    private function dopUrl($dir)
-    {
-        $dir = $_SERVER['DOCUMENT_ROOT'].'/'.$dir;
-        return $dir;
+///*/ Создание директории ///*/ 
+    public function mk($path, $name, $glob = false){
+        if(!str_starts_with($path, $this->path)){return false;}        
+        $structure = (($this->is_seporator($path)) ?  $path :  $path._DS_). str_replace(' ', '_', $name);
+        return (@!mkdir($structure, 0777, $glob)) ? false : $structure;
     }
 }

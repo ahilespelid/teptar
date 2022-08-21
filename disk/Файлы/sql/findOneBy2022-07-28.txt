@@ -1,0 +1,450 @@
+
+[00:22:05] SELECT * FROM uin WHERE slug = 'Grozny' LIMIT 1
+[00:22:14] SELECT * FROM uin WHERE slug = 'Grozny' LIMIT 1
+[00:22:15] SELECT * FROM uin WHERE slug = 'Grozny' LIMIT 1
+[00:23:10] SELECT * FROM uin WHERE slug = 'Grozny' LIMIT 1
+[00:23:10] SELECT * FROM uin WHERE slug = 'Grozny' LIMIT 1
+[00:23:10] SELECT * FROM uin WHERE slug = 'Grozny' LIMIT 1
+[12:16:05] SELECT * FROM uin WHERE slug = 'Grozny' LIMIT 1
+[12:21:19] SELECT * FROM uin WHERE slug = 'Grozny' LIMIT 1
+[13:22:08] SELECT * FROM uin WHERE slug = 'Groznensky' LIMIT 1
+[13:22:08] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:22:08] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:22:08] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:22:08] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:22:08] SELECT * FROM users WHERE id = '23' LIMIT 1
+[13:22:08] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:22:08] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:22:08] SELECT * FROM users WHERE id = '24' LIMIT 1
+[13:22:08] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:22:08] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:22:08] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:22:08] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:22:08] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:22:13] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:22:13] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:22:21] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:22:29] SELECT * FROM uin WHERE type = 'ministry' LIMIT 1
+[13:22:29] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:22:51] SELECT * FROM uin WHERE type = 'district' LIMIT 1
+[13:22:51] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:22:52] SELECT * FROM uin WHERE type = 'ministry' LIMIT 1
+[13:22:52] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:23:07] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[13:23:07] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[13:23:07] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[13:23:07] SELECT * FROM uin WHERE id = '4' LIMIT 1
+[13:23:07] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:23:19] SELECT * FROM uin WHERE type = 'ministry' LIMIT 1
+[13:23:19] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:23:20] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:23:21] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:23:21] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:23:32] SELECT * FROM uin WHERE slug = 'Groznensky' LIMIT 1
+[13:23:32] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:23:32] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:23:32] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:23:32] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:23:32] SELECT * FROM users WHERE id = '23' LIMIT 1
+[13:23:32] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:23:32] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:23:32] SELECT * FROM users WHERE id = '24' LIMIT 1
+[13:23:32] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:23:32] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:23:32] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:23:32] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:23:32] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:23:34] SELECT * FROM reports WHERE id = '4' LIMIT 1
+[13:23:34] SELECT * FROM uin WHERE id = '4' LIMIT 1
+[13:23:34] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:23:34] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:23:34] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:23:34] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:07] SELECT * FROM uin WHERE slug = 'Groznensky' LIMIT 1
+[13:24:07] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:07] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:24:07] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:07] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:07] SELECT * FROM users WHERE id = '23' LIMIT 1
+[13:24:07] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:07] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:07] SELECT * FROM users WHERE id = '24' LIMIT 1
+[13:24:07] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:07] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:07] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:24:07] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:07] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:11] SELECT * FROM reports WHERE id = '21' LIMIT 1
+[13:24:11] SELECT * FROM uin WHERE id = '4' LIMIT 1
+[13:24:11] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:11] SELECT * FROM users WHERE id = '23' LIMIT 1
+[13:24:11] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:11] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:18] SELECT * FROM uin WHERE slug = 'Groznensky' LIMIT 1
+[13:24:18] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:18] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:24:18] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:18] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:18] SELECT * FROM users WHERE id = '23' LIMIT 1
+[13:24:18] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:18] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:18] SELECT * FROM users WHERE id = '24' LIMIT 1
+[13:24:18] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:18] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:18] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:24:18] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:18] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:23] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:23] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:24] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:26] SELECT * FROM uin WHERE type = 'ministry' LIMIT 1
+[13:24:26] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:27] SELECT * FROM uin WHERE id = '19' LIMIT 1
+[13:24:27] SELECT * FROM uin WHERE id = '19' LIMIT 1
+[13:24:28] SELECT * FROM uin WHERE id = '20' LIMIT 1
+[13:24:28] SELECT * FROM uin WHERE id = '20' LIMIT 1
+[13:24:29] SELECT * FROM uin WHERE id = '21' LIMIT 1
+[13:24:29] SELECT * FROM uin WHERE id = '21' LIMIT 1
+[13:24:30] SELECT * FROM uin WHERE id = '22' LIMIT 1
+[13:24:30] SELECT * FROM uin WHERE id = '22' LIMIT 1
+[13:24:30] SELECT * FROM uin WHERE slug = 'Communal' LIMIT 1
+[13:24:30] SELECT * FROM uin WHERE slug = 'Communal' LIMIT 1
+[13:24:30] SELECT * FROM users WHERE id_uin = '22' LIMIT 1
+[13:24:30] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:30] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[13:24:30] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[13:24:30] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[13:24:30] SELECT * FROM uin WHERE id = '4' LIMIT 1
+[13:24:30] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:32] SELECT * FROM uin WHERE type = 'ministry' LIMIT 1
+[13:24:32] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:34] SELECT * FROM uin WHERE id = '20' LIMIT 1
+[13:24:34] SELECT * FROM uin WHERE id = '20' LIMIT 1
+[13:24:34] SELECT * FROM uin WHERE id = '20' LIMIT 1
+[13:24:34] SELECT * FROM uin WHERE id = '20' LIMIT 1
+[13:24:34] SELECT * FROM uin WHERE slug = 'Labor' LIMIT 1
+[13:24:34] SELECT * FROM uin WHERE slug = 'Labor' LIMIT 1
+[13:24:34] SELECT * FROM users WHERE id_uin = '20' LIMIT 1
+[13:24:35] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:39] SELECT * FROM uin WHERE type = 'ministry' LIMIT 1
+[13:24:39] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:40] SELECT * FROM uin WHERE id = '21' LIMIT 1
+[13:24:40] SELECT * FROM uin WHERE id = '21' LIMIT 1
+[13:24:40] SELECT * FROM uin WHERE slug = 'Agriculture' LIMIT 1
+[13:24:40] SELECT * FROM uin WHERE slug = 'Agriculture' LIMIT 1
+[13:24:40] SELECT * FROM users WHERE id_uin = '21' LIMIT 1
+[13:24:40] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:44] SELECT * FROM uin WHERE type = 'ministry' LIMIT 1
+[13:24:44] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:44] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:45] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:45] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:48] SELECT * FROM uin WHERE slug = 'Groznensky' LIMIT 1
+[13:24:48] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:48] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:24:48] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:48] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:48] SELECT * FROM users WHERE id = '23' LIMIT 1
+[13:24:48] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:48] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:48] SELECT * FROM users WHERE id = '24' LIMIT 1
+[13:24:48] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:48] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:24:48] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:24:48] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:24:48] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:51] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[13:24:51] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[13:24:51] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[13:24:51] SELECT * FROM uin WHERE id = '4' LIMIT 1
+[13:24:51] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:58] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:24:58] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:25:10] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:25:10] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[13:25:12] SELECT * FROM uin WHERE slug = 'Groznensky' LIMIT 1
+[13:25:12] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:25:12] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:25:12] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:25:12] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:25:12] SELECT * FROM users WHERE id = '23' LIMIT 1
+[13:25:12] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:25:12] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:25:12] SELECT * FROM users WHERE id = '24' LIMIT 1
+[13:25:12] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:25:12] SELECT * FROM users WHERE id = '7' LIMIT 1
+[13:25:12] SELECT * FROM users WHERE id = '22' LIMIT 1
+[13:25:12] SELECT * FROM status WHERE id = '1' LIMIT 1
+[13:25:12] SELECT * FROM notifications WHERE receiver = '22' AND seen = '' LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '1' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '2' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '3' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '4' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '5' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '6' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '7' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '8' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '9' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '10' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '11' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '12' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '13' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '14' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '15' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '16' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM reports WHERE id_uin = '17' ORDER BY submitting DESC LIMIT 1
+[14:39:48] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:40:06] SELECT * FROM users WHERE login = 'hasan' LIMIT 1
+[14:40:06] SELECT * FROM users WHERE login = 'hasan' LIMIT 1
+[14:40:06] SELECT * FROM users WHERE login = 'hasan' LIMIT 1
+[14:40:06] SELECT * FROM uin WHERE id = '19' LIMIT 1
+[14:40:06] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '1' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '2' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '3' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '4' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '5' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '6' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '7' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '8' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '9' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '10' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '11' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '12' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '13' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '14' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '15' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '16' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM reports WHERE id_uin = '17' ORDER BY submitting DESC LIMIT 1
+[14:40:37] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:40:54] SELECT * FROM users WHERE login = 'Nadterechny' LIMIT 1
+[14:40:54] SELECT * FROM users WHERE login = 'Nadterechny' LIMIT 1
+[14:40:54] SELECT * FROM users WHERE login = 'Nadterechny' LIMIT 1
+[14:40:54] SELECT * FROM uin WHERE id = '9' LIMIT 1
+[14:40:54] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '1' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '2' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '3' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '4' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '5' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '6' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '7' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '8' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '9' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '10' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '11' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '12' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '13' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '14' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '15' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '16' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM reports WHERE id_uin = '17' ORDER BY submitting DESC LIMIT 1
+[14:41:06] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:07] SELECT * FROM users WHERE login = 'groz_sport' LIMIT 1
+[14:41:07] SELECT * FROM users WHERE login = 'groz_sport' LIMIT 1
+[14:41:07] SELECT * FROM users WHERE login = 'groz_sport' LIMIT 1
+[14:41:07] SELECT * FROM uin WHERE id = '4' LIMIT 1
+[14:41:07] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '1' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '2' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '3' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '4' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '5' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '6' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '7' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '8' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '9' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '10' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '11' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '12' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '13' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '14' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '15' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '16' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM reports WHERE id_uin = '17' ORDER BY submitting DESC LIMIT 1
+[14:41:14] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:17] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[14:41:17] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[14:41:17] SELECT * FROM users WHERE login = 'salman' LIMIT 1
+[14:41:17] SELECT * FROM uin WHERE id = '4' LIMIT 1
+[14:41:17] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '1' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '2' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '3' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '4' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '5' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '6' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '7' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '8' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '9' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '10' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '11' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '12' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '13' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '14' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '15' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '16' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM reports WHERE id_uin = '17' ORDER BY submitting DESC LIMIT 1
+[14:41:26] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:29] SELECT * FROM users WHERE login = 'argun_sport' LIMIT 1
+[14:41:29] SELECT * FROM users WHERE login = 'argun_sport' LIMIT 1
+[14:41:29] SELECT * FROM users WHERE login = 'argun_sport' LIMIT 1
+[14:41:29] SELECT * FROM uin WHERE id = '1' LIMIT 1
+[14:41:29] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '1' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '2' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '3' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '4' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '5' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '6' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '7' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '8' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '9' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '10' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '11' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '12' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '13' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '14' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '15' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '16' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM reports WHERE id_uin = '17' ORDER BY submitting DESC LIMIT 1
+[14:41:41] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:47] SELECT * FROM uin WHERE slug = 'Shelkovskoy' LIMIT 1
+[14:41:47] SELECT * FROM users WHERE id = '20' LIMIT 1
+[14:41:47] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:47] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:47] SELECT * FROM users WHERE id = '20' LIMIT 1
+[14:41:47] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:47] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:47] SELECT * FROM users WHERE id = '20' LIMIT 1
+[14:41:47] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:47] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:47] SELECT * FROM users WHERE id = '20' LIMIT 1
+[14:41:47] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:47] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:47] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '1' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '2' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '3' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '4' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '5' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '6' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '7' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '8' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '9' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '10' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '11' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '12' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '13' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '14' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '15' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '16' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM reports WHERE id_uin = '17' ORDER BY submitting DESC LIMIT 1
+[14:41:49] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:51] SELECT * FROM uin WHERE slug = 'Vedensky' LIMIT 1
+[14:41:51] SELECT * FROM users WHERE id = '6' LIMIT 1
+[14:41:51] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:51] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:51] SELECT * FROM users WHERE id = '6' LIMIT 1
+[14:41:51] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:51] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:51] SELECT * FROM users WHERE id = '6' LIMIT 1
+[14:41:51] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:51] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:51] SELECT * FROM users WHERE id = '6' LIMIT 1
+[14:41:51] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:51] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:51] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:54] SELECT * FROM reports WHERE id = '20' LIMIT 1
+[14:41:54] SELECT * FROM uin WHERE id = '3' LIMIT 1
+[14:41:54] SELECT * FROM users WHERE id = '6' LIMIT 1
+[14:41:54] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:54] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:54] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:41:58] SELECT * FROM uin WHERE slug = 'Vedensky' LIMIT 1
+[14:41:58] SELECT * FROM users WHERE id = '6' LIMIT 1
+[14:41:58] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:58] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:58] SELECT * FROM users WHERE id = '6' LIMIT 1
+[14:41:58] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:58] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:58] SELECT * FROM users WHERE id = '6' LIMIT 1
+[14:41:58] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:58] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:58] SELECT * FROM users WHERE id = '6' LIMIT 1
+[14:41:58] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:41:58] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:41:58] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '1' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '2' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '3' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '4' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '5' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '6' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '7' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '8' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '9' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '10' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '11' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '12' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '13' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '14' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '15' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '16' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM reports WHERE id_uin = '17' ORDER BY submitting DESC LIMIT 1
+[14:42:00] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:42:04] SELECT * FROM uin WHERE slug = 'UrusMartanovsky' LIMIT 1
+[14:42:04] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:04] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:04] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:04] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:04] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:04] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:04] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:04] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:04] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:04] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:04] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:04] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:04] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:42:14] SELECT * FROM users WHERE login = 'UrusMartanovsky' LIMIT 1
+[14:42:14] SELECT * FROM users WHERE login = 'UrusMartanovsky' LIMIT 1
+[14:42:14] SELECT * FROM users WHERE login = 'UrusMartanovsky' LIMIT 1
+[14:42:14] SELECT * FROM uin WHERE id = '13' LIMIT 1
+[14:42:14] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:42:19] SELECT * FROM uin WHERE slug = 'UrusMartanovsky' LIMIT 1
+[14:42:19] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:19] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:19] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:19] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:19] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:19] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:19] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:19] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:19] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:19] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:19] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:19] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:19] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:42:26] SELECT * FROM reports WHERE id = '13' LIMIT 1
+[14:42:26] SELECT * FROM uin WHERE id = '13' LIMIT 1
+[14:42:26] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:26] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:26] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:26] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[14:42:50] SELECT * FROM uin WHERE slug = 'UrusMartanovsky' LIMIT 1
+[14:42:50] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:50] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:50] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:50] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:50] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:50] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:50] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:50] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:50] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:50] SELECT * FROM users WHERE id = '16' LIMIT 1
+[14:42:50] SELECT * FROM users WHERE id = '22' LIMIT 1
+[14:42:50] SELECT * FROM status WHERE id = '1' LIMIT 1
+[14:42:51] SELECT * FROM notifications WHERE receiver = '26' AND seen = '' LIMIT 1
+[15:58:33] SELECT * FROM uin WHERE slug = 'Grozny' LIMIT 1
+[16:49:18] SELECT * FROM uin WHERE slug = 'Grozny' LIMIT 1

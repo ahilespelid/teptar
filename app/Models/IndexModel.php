@@ -11,6 +11,7 @@ class IndexModel extends \App\Data{
         $this->tableUser = $GLOBALS['db']['table']['users'];
         $this->tableMark = $GLOBALS['db']['table']['marks'];
         $this->tableRole = $GLOBALS['db']['table']['roles'];
+        $this->tableDisk = $GLOBALS['db']['table']['disk'];
         (object)$this->pdo = $this->connPDO();
     }
 

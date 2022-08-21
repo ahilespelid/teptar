@@ -6,7 +6,7 @@
         </div>
         <div class="fileload-modal__footer">
             <div class="fileload-modal__footer__files">
-                <input type="text" placeholder="Введите название" maxlength="40">
+                <input id="create_folder" type="text" placeholder="Введите название" maxlength="40">
             </div>
             <div class="fileload-modal__footer__submit">
                 <div class="reports-title__my-reports__btn submit_added_folder">

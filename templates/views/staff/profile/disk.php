@@ -110,10 +110,11 @@ $(document).ready(function(){
                         </div>
                         <div class="disc__element__name"></div>
                     </div>                
-<?php }} if($dirs){foreach($dirs as $dir){ ?>
+<?php }} if($dirs){foreach($dirs as $dir){$yourDir = (new \App\Models\IndexModel)->getQuery($sql = "SELECT * FROM `disk` WHERE `path`= '".$dir['path']."' AND `id_user`= '".$dir['user']."';")[0]; ?>
                     <div class="disc__element disk"  data-path="<?= $dir['path']; ?>">
                         <div class="disc__element__header">
                             <span class="icon-menu"></span>
+                            <?php if(!empty($yourDir)){ ?>
                             <div class="dropdown__menu none">
                                 <!--div class="dropdown__menu__element get">
                                     Скачать
@@ -125,6 +126,7 @@ $(document).ready(function(){
                                     Удалить
                                 </div>
                             </div>
+                            <?php } ?>
                             <!--input class="disc__element__header__checkbox" type="checkbox"-->
                         </div>
                         <div class="disc__element__img">
@@ -132,7 +134,7 @@ $(document).ready(function(){
                         </div>
                         <div class="disc__element__name"><?= $dir['name']; ?></div>
                     </div>
-<?php }} if($files){foreach($files as $file){ ?>
+<?php }} if($files){foreach($files as $file){$yourFile = (new \App\Models\IndexModel)->getQuery($sql = "SELECT * FROM `disk` WHERE `path`= '".$file['path']."' AND `id_user`= '".$file['user']."';")[0]; ?>
                     <div class="disc__element pointer" data-path="<?= $file['path']; ?>" data-mime="<?= $file['mime']; ?>">
                         <div class="disc__element__header">
                             <span class="icon-menu"></span>
@@ -140,14 +142,18 @@ $(document).ready(function(){
                                 <div class="dropdown__menu__element get">
                                     Скачать
                                 </div>
+                                <?php if(!empty($yourFile)){ ?>
                                 <div class="dropdown__menu__element ren">
                                     Переименовать
                                 </div>
                                 <div class="dropdown__menu__element del">
                                     Удалить
                                 </div>
+                                <?php } ?>
                             </div>
+                            <?php if(!empty($yourFile)){ ?>
                             <input class="disc__element__header__checkbox" type="checkbox">
+                            <?php } ?>
                         </div>
                         <div class="disc__element__img">
                             <img src="<?= $this->image($file['img']); ?>" alt="">

@@ -1,5 +1,5 @@
 Мин.фин. Приватный портал оценки эффективности органов самоуправления, указ 607 Президента. (пилотный регион ЧР)
-![teptarLeader1](https://user-images.githubusercontent.com/47417767/205386419-32a71ca6-c3f0-431e-aece-e61eb08e3081.png)
-![teptarLeader4](https://user-images.githubusercontent.com/47417767/205386376-a4efe89f-4d10-4b9d-9efe-14f9ee45f20d.png)
-![teptarLeader2](https://user-images.githubusercontent.com/47417767/205386489-ab4203a9-2bb8-4e06-b2eb-984f07057373.png)
+![Teptar_page-0001](https://user-images.githubusercontent.com/47417767/205393877-659e08c6-4cc8-4c29-85bd-eb1a6ebeae7f.jpg)
+![Teptar_page-0002](https://user-images.githubusercontent.com/47417767/205393951-4df0129a-7b2a-4d8d-a98b-0d00837cfb11.jpg)
+
 ![teptarLeader3](https://user-images.githubusercontent.com/47417767/205386476-a146c99f-4cd4-42d7-9d08-6c868050fc0f.png)
